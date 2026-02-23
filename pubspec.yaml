@@ -1,0 +1,51 @@
+name: employee_monitoring_system
+description: "A New Flutter Project"
+
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+
+
+
+  #---------------- Packages start ------------#
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  #Icons
+  cupertino_icons: ^1.0.8
+  # usage helper functions
+  go_router: ^17.0.0
+  google_fonts: ^6.3.2
+  url_strategy: ^0.3.0
+  #state management#
+  get: ^4.7.3
+
+
+  #------- packages end ----------#
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+
+  # ---------- Local Assets --------- #
+  assets:
+    - assets/icons/
+
+
+
+
+
