@@ -8,7 +8,6 @@
 // Inter ExtraBold – 800
 // Inter Black – 900
 
-import 'dart:ui';
 import 'package:employee_monitoring_system/Resources/AppTextSizes.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:flutter/material.dart';
