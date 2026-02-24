@@ -39,7 +39,7 @@ class SidebarScreen extends StatelessWidget {
       controller.syncWithRoute(currentRoute);
     });
 
-    /// 1. Sidebar Content Function
+    ///  Sidebar Content
 
     Widget sidebarContent() {
       return Obx(() {
@@ -212,7 +212,7 @@ class SidebarScreen extends StatelessWidget {
       });
     }
 
-    /// RETURN Statement
+    /// AppBars
     if (isMobile) {
       return Scaffold(
         key: _scaffoldKey,

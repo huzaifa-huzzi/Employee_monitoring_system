@@ -44,6 +44,7 @@ flutter:
   # ---------- Local Assets --------- #
   assets:
     - assets/icons/
+    - assets/Images/UniversalPics/
 
 
 

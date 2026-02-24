@@ -37,7 +37,7 @@ class SidebarComponents {
     );
   }
 
-  ///  Regular Menu Item
+  ///  Menu Item
   static Widget menuItem(
       BuildContext context,
       SideBarController controller, {

@@ -1,5 +1,6 @@
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/ImageString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:employee_monitoring_system/SidebarScreen/SidebarController.dart';
 import 'package:flutter/material.dart';
@@ -112,7 +113,7 @@ class WebAppBAr extends StatelessWidget {
                 onTap: _profileController.toggle,
                 child: Row(
                   children: [
-                    const CircleAvatar(radius: 18, backgroundColor: Colors.black),
+                    CircleAvatar(radius: 18,backgroundImage: AssetImage(ImageString.profilePic),),
                     const SizedBox(width: 10),
                      Column(
                       mainAxisAlignment: MainAxisAlignment.center,

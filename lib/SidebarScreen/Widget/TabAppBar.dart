@@ -1,5 +1,6 @@
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/ImageString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -111,7 +112,7 @@ class _TabletAppBarState extends State<TabletAppBar> {
                     children: [
                       const CircleAvatar(
                         radius: 20,
-                        backgroundImage: NetworkImage('https://via.placeholder.com/150'),
+                        backgroundImage: AssetImage(ImageString.profilePic),
                       ),
                       const SizedBox(width: 10),
                       Column(
