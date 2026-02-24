@@ -1,145 +1,152 @@
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
-import 'package:employee_monitoring_system/SidebarScreen/SidebarController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:employee_monitoring_system/SidebarScreen/SidebarController.dart';
 
-class WebAppBAr extends StatelessWidget {
-  final VoidCallback onMenuClick;
-  WebAppBAr({super.key, required this.onMenuClick});
+class TabletAppBar extends StatefulWidget implements PreferredSizeWidget {
+  final VoidCallback onMenuTap;
 
+  const TabletAppBar({super.key, required this.onMenuTap});
 
-  final SideBarController controller = Get.put(SideBarController());
+  @override
+  State<TabletAppBar> createState() => _TabletAppBarState();
 
+  @override
+  Size get preferredSize => const Size.fromHeight(70);
+}
+
+class _TabletAppBarState extends State<TabletAppBar> {
   final OverlayPortalController _timerController = OverlayPortalController();
   final _timerLink = LayerLink();
+
   final OverlayPortalController _profileController = OverlayPortalController();
   final _profileLink = LayerLink();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 62,
-      margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Row(
-        children: [
-          InkWell(
-            onTap:onMenuClick,
-            child: Image.asset(
-              IconString.menuIcon,
-            ),
-          ),
-          const SizedBox(width: 10),
+    final SideBarController controller = Get.find<SideBarController>();
 
-          //  TIMER SECTION
-          CompositedTransformTarget(
-            link: _timerLink,
-            child: OverlayPortal(
-              controller: _timerController,
-              overlayChildBuilder: (context) => CompositedTransformFollower(
-                link: _timerLink,
-                targetAnchor: Alignment.bottomLeft,
-                followerAnchor: Alignment.topLeft,
-                offset: const Offset(0, 8),
-                child: Align(alignment: Alignment.topLeft, child: _buildTimerPopup(context)),
+    return AppBar(
+      elevation: 0,
+      backgroundColor: Colors.white,
+      automaticallyImplyLeading: false,
+      titleSpacing: 0,
+      title: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Row(
+          children: [
+            InkWell(
+              onTap:widget.onMenuTap,
+              child: Image.asset(
+                IconString.menuIcon,
               ),
-              child: InkWell(
-                onTap: _timerController.toggle,
-                borderRadius: BorderRadius.circular(8),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.borderColor),
-                    borderRadius: BorderRadius.circular(8),
+            ),
+
+            const SizedBox(width: 10),
+
+            /// Timer Box
+            CompositedTransformTarget(
+              link: _timerLink,
+              child: OverlayPortal(
+                controller: _timerController,
+                overlayChildBuilder: (context) => CompositedTransformFollower(
+                  link: _timerLink,
+                  targetAnchor: Alignment.bottomLeft,
+                  followerAnchor: Alignment.topLeft,
+                  offset: const Offset(0, 8),
+                  child: Align(alignment: Alignment.topLeft, child: _buildTimerPopup(SideBarController())),
+                ),
+                child: InkWell(
+                  onTap: _timerController.toggle,
+                  borderRadius: BorderRadius.circular(8),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: AppColors.borderColor),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Image.asset(IconString.timerIcon),
+                        const SizedBox(width: 8),
+                        Obx(() => Text(
+                          controller.formattedTime,
+                          style: TTextTheme.timerText(context),
+                        )),
+                        const SizedBox(width: 8),
+                        Image.asset(IconString.forwardIcon),
+                      ],
+                    ),
                   ),
+                ),
+              ),
+            ),
+
+            const Spacer(),
+
+
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: AppColors.backgroundContainerOfNotification,
+                shape: BoxShape.circle,
+              ),
+              child:Image.asset(IconString.notificationIcon,height: 18,width: 18,),
+            ),
+
+            const SizedBox(width: 15),
+
+            ///  PROFILE SECTION
+            CompositedTransformTarget(
+              link: _profileLink,
+              child: OverlayPortal(
+                controller: _profileController,
+                overlayChildBuilder: (context) => _buildSignOutPopup(controller),
+                child: InkWell(
+                  onTap: _profileController.toggle,
                   child: Row(
-                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      Image.asset(IconString.timerIcon),
-                      const SizedBox(width: 8),
-                      Obx(() => Text(
-                        controller.formattedTime,
-                        style: TTextTheme.timerText(context),
-                      )),
-                      const SizedBox(width: 8),
-                      Image.asset(IconString.forwardIcon),
+                      const CircleAvatar(
+                        radius: 20,
+                        backgroundImage: NetworkImage('https://via.placeholder.com/150'),
+                      ),
+                      const SizedBox(width: 10),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children:  [
+                          Text(
+                            "Alina Thompson",
+                            style:TTextTheme.titleOne(context),
+                          ),
+                          Text(
+                            "User",
+                            style: TTextTheme.titleTwo(context),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(width: 5),
+                      Image.asset(IconString.arrowDownIcon),
                     ],
                   ),
                 ),
               ),
             ),
-          ),
-
-          const Spacer(),
-          InkWell(
-            onTap: () {
-            },
-            borderRadius: BorderRadius.circular(50),
-            child: Container(
-              padding: const EdgeInsets.all(11),
-              decoration: BoxDecoration(
-                color: AppColors.backgroundContainerOfNotification,
-                shape: BoxShape.circle,
-              ),
-              child: Image.asset(
-                IconString.notificationIcon,
-                height: 18,
-                width: 18,
-              ),
-            ),
-          ),
-          const SizedBox(width: 15),
-
-          //  PROFILE SECTION
-          CompositedTransformTarget(
-            link: _profileLink,
-            child: OverlayPortal(
-              controller: _profileController,
-              overlayChildBuilder: (context) => CompositedTransformFollower(
-                link: _profileLink,
-                targetAnchor: Alignment.bottomRight,
-                followerAnchor: Alignment.topRight,
-                offset: const Offset(0, 8),
-                child: Align(alignment: Alignment.topRight, child: _buildSignOutPopup(context)),
-              ),
-              child: InkWell(
-                onTap: _profileController.toggle,
-                child: Row(
-                  children: [
-                    const CircleAvatar(radius: 18, backgroundColor: Colors.black),
-                    const SizedBox(width: 10),
-                     Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Alina Thompson", style: TTextTheme.titleOne(context)),
-                        Text("User", style: TTextTheme.titleTwo(context)),
-                      ],
-                    ),
-                    const SizedBox(width: 5),
-                    Image.asset(IconString.arrowDownIcon,height: 18,width: 18,),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 
-   /// -------- Extra Widgets -------- ///
-  // Timer Popup
-  Widget _buildTimerPopup(BuildContext context) {
+  /// ---------- Extra Widget -------///
+
+   // Timer popup
+  Widget _buildTimerPopup(SideBarController controller) {
     return Material(
       elevation: 8,
-      shadowColor: Colors.black26,
       borderRadius: BorderRadius.circular(12),
       child: Container(
         width: 350,
@@ -205,7 +212,7 @@ class WebAppBAr extends StatelessWidget {
 
                   const SizedBox(width: 12),
 
-                   Text(
+                  Text(
                     "-----",
                     style: TTextTheme.titleThree(context),
                   ),
@@ -221,16 +228,16 @@ class WebAppBAr extends StatelessWidget {
                         style: TTextTheme.InsidetimerText(context),
                       )),
                       const SizedBox(height: 2),
-                       Text(
-                        "Today: 00:00:00",
-                        style: TTextTheme.titleFour(context)
+                      Text(
+                          "Today: 00:00:00",
+                          style: TTextTheme.titleFour(context)
                       ),
                     ],
                   ),
                 ],
               ),
 
-               Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(vertical: 15),
                 child: Divider(
                   color: AppColors.textGrey,
@@ -239,7 +246,7 @@ class WebAppBAr extends StatelessWidget {
               ),
 
               ///  PROJECT NAME
-               Text(
+              Text(
                 "Project Name",
                 style: TTextTheme.titleFive(context),
               ),
@@ -300,23 +307,40 @@ class WebAppBAr extends StatelessWidget {
     );
   }
 
-  // Signout Popup
-  Widget _buildSignOutPopup(BuildContext context) {
-    return Material(
-      elevation: 8,
-      borderRadius: BorderRadius.circular(10),
-      child: Container(
-        width: 160,
-        decoration: BoxDecoration(color: AppColors.whiteColor, borderRadius: BorderRadius.circular(10)),
-        child: ListTile(
-          leading: Image.asset(IconString.logoutIcon),
-          title:  Text("Sign Out", style: TTextTheme.signoutIconText(context)),
-          onTap: () {
-            _profileController.hide();
-            controller.signOut();
-          },
+  // SIGN OUT POPUP
+  Widget _buildSignOutPopup(SideBarController controller) {
+    return Stack(
+      children: [
+        GestureDetector(onTap: _profileController.hide, child: Container(color: Colors.transparent)),
+        CompositedTransformFollower(
+          link: _profileLink,
+          targetAnchor: Alignment.bottomRight,
+          followerAnchor: Alignment.topRight,
+          offset: const Offset(0, 10),
+          child: Material(
+            elevation: 10,
+            borderRadius: BorderRadius.circular(12),
+            child: Container(
+              width: 150,
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(color: AppColors.whiteColor, borderRadius: BorderRadius.circular(12)),
+              child: InkWell(
+                onTap: () {
+                  controller.signOut();
+                  _profileController.hide();
+                },
+                child: Row(
+                  children:  [
+                    Image.asset(IconString.logoutIcon),
+                    SizedBox(width: 10),
+                    Text("Sign Out", style: TTextTheme.signoutIconText(context)),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 }

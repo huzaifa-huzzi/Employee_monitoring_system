@@ -13,8 +13,9 @@ class AppColors{
   static const Color pendingColor = Color(0xFFDFC902);
   static const Color graphColor = Color(0xFF8A38F5);
   static const Color backgroundContainerOfNotification = Color(0xffE8F2FD);
-
-
+  static const Color  crossBackground = Color(0xFFE5E5E5); // grey/Medium
+  static const Color textGrey = Color(0xFF686868); // text second color
+  static const Color tertiaryTextColor = Color(0xFF667085); // gray/500
 
 
 

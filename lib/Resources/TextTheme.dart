@@ -36,6 +36,47 @@ class TTextTheme{
     return _textStyle(fontSize:AppTextSizes.size(context, 16, 16, 16),fontWeight: FontWeight.w500,color: AppColors.whiteColor);
   }
 
+  static TextStyle timerText(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 14, 14, 14),fontWeight: FontWeight.w500,color: AppColors.primaryColor);
+  }
+
+  static TextStyle titleFive(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 14, 14, 14),fontWeight: FontWeight.w500,color: AppColors.textColor);
+  }
+
+  static TextStyle InsidetimerText(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 14, 15, 16),fontWeight: FontWeight.w600,color: AppColors.textColor);
+  }
+
+  static TextStyle selectProjectText(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 14, 16, 16),fontWeight: FontWeight.w400,color: AppColors.tertiaryTextColor);
+  }
+
+  static TextStyle btnTextOne(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 11, 12, 12),fontWeight: FontWeight.w500,color: AppColors.whiteColor);
+  }
+
+  static TextStyle signoutIconText(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 14, 16, 16),fontWeight: FontWeight.w600,color: AppColors.rejectedColor);
+  }
+
+  static TextStyle titleOne(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 11, 12, 12),fontWeight: FontWeight.w500,color: AppColors.textColor);
+  }
+  static TextStyle titleTwo(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 11, 12, 12),fontWeight: FontWeight.w500,color: AppColors.subtextColor);
+  }
+
+  static TextStyle titleThree(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 14, 16, 16),fontWeight: FontWeight.w400,color: AppColors.textColor);
+  }
+
+  static TextStyle titleFour(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 12, 14, 14),fontWeight: FontWeight.w400,color: AppColors.textGrey);
+  }
+
+
+
 
 
 

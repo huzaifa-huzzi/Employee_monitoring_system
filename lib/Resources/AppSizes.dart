@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class AppSizes {
 
-  static const double webBreakpoint = 800;
-  static const double tabletBreakpoint = 500;
+  static const double webBreakpoint = 850;
+  static const double tabletBreakpoint = 550;
 
 
   static double screenWidth(BuildContext context) =>

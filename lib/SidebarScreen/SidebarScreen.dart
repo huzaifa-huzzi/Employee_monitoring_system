@@ -3,6 +3,7 @@ import 'package:employee_monitoring_system/Resources/IconString.dart';
 import 'package:employee_monitoring_system/SidebarScreen/SidebarController.dart';
 import 'package:employee_monitoring_system/SidebarScreen/Widget/MobileAppBar.dart';
 import 'package:employee_monitoring_system/SidebarScreen/Widget/SidebarComponentWidget.dart';
+import 'package:employee_monitoring_system/SidebarScreen/Widget/TabAppBar.dart';
 import 'package:employee_monitoring_system/SidebarScreen/Widget/WebAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -212,20 +213,21 @@ class SidebarScreen extends StatelessWidget {
     }
 
     /// RETURN Statement
-    if (isMobile || isTab) {
+    if (isMobile) {
       return Scaffold(
         key: _scaffoldKey,
         drawer: Drawer(child: sidebarContent()),
-        appBar: hideMobileAppBar
-            ? null
-            : MobileAppBar(
-          onMenuTap: () {
-            _scaffoldKey.currentState?.openDrawer();
-          },
-        ),
+        appBar: MobileAppBar(onMenuTap: () => _scaffoldKey.currentState?.openDrawer()),
         body: child,
       );
-    } else {
+    }else if (isTab){
+      return Scaffold(
+        key: _scaffoldKey,
+        drawer: Drawer(child: sidebarContent()),
+        appBar: TabletAppBar(onMenuTap: () => _scaffoldKey.currentState?.openDrawer()),
+        body: child,
+      );
+      } else {
       return Scaffold(
         body: Row(
           children: [

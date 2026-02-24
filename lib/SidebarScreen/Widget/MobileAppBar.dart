@@ -1,3 +1,6 @@
+import 'package:employee_monitoring_system/Resources/Colors.dart';
+import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:employee_monitoring_system/SidebarScreen/SidebarController.dart';
@@ -18,6 +21,9 @@ class _MobileAppBarState extends State<MobileAppBar> {
   final OverlayPortalController _timerController = OverlayPortalController();
   final _timerLink = LayerLink();
 
+  final OverlayPortalController _profileController = OverlayPortalController();
+  final _profileLink = LayerLink();
+
   @override
   Widget build(BuildContext context) {
     final SideBarController controller = Get.find<SideBarController>();
@@ -28,186 +34,278 @@ class _MobileAppBarState extends State<MobileAppBar> {
       automaticallyImplyLeading: false,
       titleSpacing: 0,
       title: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8), // Padding kam ki taake space bache
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            /// ☰ HAMBURGER MENU
-            IconButton(
-              onPressed: widget.onMenuTap,
-              icon: const Icon(Icons.menu, color: Colors.black87, size: 22),
-              padding: EdgeInsets.zero,
-              constraints: const BoxConstraints(),
-            ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                InkWell(
+                  onTap:widget.onMenuTap,
+                  child: Image.asset(
+                    IconString.menuIcon,
+                  ),
+                ),
 
-            const SizedBox(width: 8),
+                const SizedBox(width: 12),
 
-            /// ⏱ FULLY RESPONSIVE TIMER BOX
-            // Flexible use kiya hai taake screen choti hone par ye box compress ho sake
-            Flexible(
-              child: CompositedTransformTarget(
-                link: _timerLink,
-                child: OverlayPortal(
-                  controller: _timerController,
-                  overlayChildBuilder: (context) => _buildTimerPopup(controller),
-                  child: InkWell(
-                    onTap: _timerController.toggle,
-                    borderRadius: BorderRadius.circular(10),
-                    child: Container(
-                      height: 38,
-                      // Max width set ki hai lekin ye flexible hai
-                      constraints: const BoxConstraints(maxWidth: 180, minWidth: 100),
-                      padding: const EdgeInsets.symmetric(horizontal: 6),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: const Color(0xFFE0E4EC), width: 1),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(Icons.access_time, color: Colors.grey, size: 16),
-
-                          const SizedBox(width: 4),
-
-                          // FittedBox text ko resize kar dega agar jagah bohot kam ho jaye
-                          Expanded(
-                            child: Center(
-                              child: FittedBox(
-                                fit: BoxFit.scaleDown, // Text overflow nahi hone dega
-                                child: Obx(() => Text(
-                                  controller.seconds.value == 0 ? "--:--:--" : controller.formattedTime,
-                                  style: const TextStyle(
-                                    color: Color(0xFF4B84FB),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
-                                  ),
-                                )),
+                /// TIMER BOX
+                CompositedTransformTarget(
+                  link: _timerLink,
+                  child: OverlayPortal(
+                    controller: _timerController,
+                    overlayChildBuilder: (context) => _buildTimerPopup(controller),
+                    child: InkWell(
+                      onTap: _timerController.toggle,
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        height: 40,
+                        width: MediaQuery.of(context).size.width < 400 ? 130 : 165,
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: AppColors.borderColor, width: 1.2),
+                        ),
+                        child: Row(
+                          children: [
+                           Image.asset(IconString.timerIcon),
+                            Expanded(
+                              child: Center(
+                                child: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Obx(() => Text(
+                                    controller.seconds.value == 0 ? "--:--:--" : controller.formattedTime,
+                                    style: TTextTheme.timerText(context),
+                                  )),
+                                ),
                               ),
                             ),
-                          ),
-
-                          const SizedBox(width: 4),
-
-                          const Icon(Icons.north_east, color: Colors.black54, size: 10),
-                        ],
+                            Image.asset(IconString.forwardIcon),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
+              ],
             ),
 
-            const SizedBox(width: 8),
-
-            /// 👤 PROFILE DROPDOWN
-            const Icon(Icons.keyboard_arrow_down, color: Colors.black87, size: 22),
+            CompositedTransformTarget(
+              link: _profileLink,
+              child: OverlayPortal(
+                controller: _profileController,
+                overlayChildBuilder: (context) => _buildSignOutPopup(controller),
+                child: IconButton(
+                  onPressed: _profileController.toggle,
+                  icon: Image.asset(IconString.arrowDownIcon),
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(),
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  /// 🛠 TIMER POPUP UI (Wahi logic jo hamesha popup niche dikhaye)
+  /// ------------ Extra Widget ---------- ///
+
+  // Timer Popup
   Widget _buildTimerPopup(SideBarController controller) {
-    return Stack(
-      children: [
-        GestureDetector(
-          onTap: _timerController.hide,
-          child: Container(color: Colors.transparent),
+    return Material(
+      elevation: 8,
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        width: 350,
+        constraints: const BoxConstraints(
+          maxHeight: 500,
         ),
-        CompositedTransformFollower(
-          link: _timerLink,
-          targetAnchor: Alignment.bottomLeft,
-          followerAnchor: Alignment.topLeft,
-          offset: const Offset(0, 8),
-          child: Material(
-            elevation: 10,
-            borderRadius: BorderRadius.circular(12),
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.85,
-              constraints: const BoxConstraints(maxWidth: 320),
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.black12),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: InkWell(
-                      onTap: _timerController.hide,
-                      child: const Icon(Icons.close, size: 16, color: Colors.grey),
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Align(
+                alignment: Alignment.topRight,
+                child: InkWell(
+                  onTap: _timerController.hide,
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      color: AppColors.crossBackground,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.close,
+                      size: 16,
+                      color: AppColors.textColor,
                     ),
                   ),
-                  Row(
+                ),
+              ),
+
+              const SizedBox(height: 10),
+
+              /// TIMER ROW
+              Row(
+                children: [
+
+                  InkWell(
+                    onTap: () {
+                      if (!controller.isRunning.value) {
+                        controller.toggleTimer();
+                      }
+                    },
+                    child: Obx(() => Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color:  AppColors.backgroundContainerOfNotification,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        controller.isRunning.value
+                            ? Icons.pause
+                            : Icons.play_arrow,
+                        size: 28,
+                        color:AppColors.primaryColor,
+                      ),
+                    )),
+                  ),
+
+                  const SizedBox(width: 12),
+
+                  Text(
+                    "-----",
+                    style: TTextTheme.titleThree(context),
+                  ),
+
+                  const Spacer(),
+
+                  ///  TIME DISPLAY
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Obx(() => IconButton(
-                        icon: Icon(controller.isRunning.value ? Icons.pause_circle_filled : Icons.play_circle_fill),
-                        color: const Color(0xFF4B84FB),
-                        iconSize: 35,
-                        onPressed: controller.toggleTimer,
+                      Obx(() => Text(
+                        controller.formattedTime,
+                        style: TTextTheme.InsidetimerText(context),
                       )),
-                      const Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Obx(() => Text(
-                            controller.formattedTime,
-                            style: const TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )),
-                          const SizedBox(height: 2),
-                          const Text(
-                            "Today: 00:00:00",
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ],
+                      const SizedBox(height: 2),
+                      Text(
+                          "Today: 00:00:00",
+                          style: TTextTheme.titleFour(context)
                       ),
                     ],
                   ),
-                  const Divider(),
-                  const Text("Project Name", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
-                  const SizedBox(height: 10),
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade300),
+                ],
+              ),
+
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 15),
+                child: Divider(
+                  color: AppColors.textGrey,
+                  thickness: 0.8,
+                ),
+              ),
+
+              ///  PROJECT NAME
+              Text(
+                "Project Name",
+                style: TTextTheme.titleFive(context),
+              ),
+
+              const SizedBox(height: 10),
+
+              /// PROJECT DROPDOWN
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                  vertical: 12,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: Colors.grey.shade300),
+                ),
+                child:  Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Select Project",
+                      style: TTextTheme.selectProjectText(context),
+                    ),
+                    Image.asset(IconString.arrowDownIcon),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              ///  STOP BUTTON
+              Align(
+                alignment: Alignment.bottomRight,
+                child: ElevatedButton(
+                  onPressed: controller.toggleTimer,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primaryColor,
+                    foregroundColor: AppColors.whiteColor,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 25,
+                      vertical: 12,
+                    ),
+                    shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6),
                     ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Select Project", style: TextStyle(fontSize: 12)),
-                        Icon(Icons.keyboard_arrow_down, size: 16),
-                      ],
-                    ),
+                    elevation: 0,
                   ),
-                  const SizedBox(height: 15),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: controller.toggleTimer,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF4B84FB),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-                      ),
-                      child: Obx(() => Text(
-                        controller.isRunning.value ? "Stop" : "Start",
-                        style: const TextStyle(color: Colors.white),
-                      )),
-                    ),
-                  ),
-                ],
+                  child: Obx(() => Text(
+                    controller.isRunning.value ? "Stop" : "Start",
+                    style: TTextTheme.btnTextOne(context),
+                  )),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // SIGN OUT POPUP
+  Widget _buildSignOutPopup(SideBarController controller) {
+    return Stack(
+      children: [
+        GestureDetector(onTap: _profileController.hide, child: Container(color: Colors.transparent)),
+        CompositedTransformFollower(
+          link: _profileLink,
+          targetAnchor: Alignment.bottomRight,
+          followerAnchor: Alignment.topRight,
+          offset: const Offset(0, 8),
+          child: Material(
+            elevation: 10,
+            borderRadius: BorderRadius.circular(8),
+            child: InkWell(
+              onTap: () {
+                controller.signOut();
+                _profileController.hide();
+              },
+              child: Container(
+                width: 140,
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                decoration: BoxDecoration(color: AppColors.whiteColor, borderRadius: BorderRadius.circular(8)),
+                child: Row(
+                  children:  [
+                    Image.asset(IconString.logoutIcon),
+                    SizedBox(width: 10),
+                    Text("Sign Out", style: TTextTheme.signoutIconText(context)),
+                  ],
+                ),
               ),
             ),
           ),

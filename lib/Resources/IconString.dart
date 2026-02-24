@@ -4,6 +4,13 @@ class IconString{
 
    /// logo
   static const String  logoIcon = 'assets/icons/LogoIcon.png';
+  /// Universal Icons
+  static const String  menuIcon = 'assets/icons/MenuIcon.png';
+  static const String  timerIcon = 'assets/icons/TimerIcon.png';
+  static const String  forwardIcon = 'assets/icons/ForwardIcon.png';
+  static const String  notificationIcon = 'assets/icons/NotificationIcon.png';
+  static const String  arrowDownIcon = 'assets/icons/arrowDownIcon.png';
+  static const String  logoutIcon = 'assets/icons/logoutIcon.png';
 
    /// DahboardIcon
   static const String  dashboardIcon = 'assets/icons/DashboardIcon.png';
