@@ -42,10 +42,8 @@ class _MobileAppBarState extends State<MobileAppBar> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 InkWell(
-                  onTap:widget.onMenuTap,
-                  child: Image.asset(
-                    IconString.menuIcon,
-                  ),
+                  onTap: widget.onMenuTap,
+                  child: Image.asset(IconString.menuIcon),
                 ),
 
                 const SizedBox(width: 12),
@@ -55,7 +53,16 @@ class _MobileAppBarState extends State<MobileAppBar> {
                   link: _timerLink,
                   child: OverlayPortal(
                     controller: _timerController,
-                    overlayChildBuilder: (context) => _buildTimerPopup(controller),
+                    overlayChildBuilder: (context) => CompositedTransformFollower(
+                      link: _timerLink,
+                      targetAnchor: Alignment.bottomLeft,
+                      followerAnchor: Alignment.topLeft,
+                      offset: const Offset(0, 8),
+                      child: Align(
+                          alignment: Alignment.topLeft,
+                          child: _buildTimerPopup(controller)
+                      ),
+                    ),
                     child: InkWell(
                       onTap: _timerController.toggle,
                       borderRadius: BorderRadius.circular(10),
@@ -70,7 +77,7 @@ class _MobileAppBarState extends State<MobileAppBar> {
                         ),
                         child: Row(
                           children: [
-                           Image.asset(IconString.timerIcon),
+                            Image.asset(IconString.timerIcon),
                             Expanded(
                               child: Center(
                                 child: FittedBox(
@@ -92,6 +99,7 @@ class _MobileAppBarState extends State<MobileAppBar> {
               ],
             ),
 
+            /// PROFILE SECTION
             CompositedTransformTarget(
               link: _profileLink,
               child: OverlayPortal(
@@ -111,19 +119,21 @@ class _MobileAppBarState extends State<MobileAppBar> {
     );
   }
 
-  /// ------------ Extra Widget ---------- ///
+  /// ------- Extra Widget -------- ///
 
-  // Timer Popup
+  //  TIMER POPUP
   Widget _buildTimerPopup(SideBarController controller) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Material(
       elevation: 8,
       borderRadius: BorderRadius.circular(12),
       child: Container(
-        width: 350,
+        width: screenWidth < 400 ? screenWidth * 0.85 : 350,
         constraints: const BoxConstraints(
           maxHeight: 500,
         ),
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
@@ -133,6 +143,7 @@ class _MobileAppBarState extends State<MobileAppBar> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              /// CLOSE BUTTON
               Align(
                 alignment: Alignment.topRight,
                 child: InkWell(
@@ -143,11 +154,7 @@ class _MobileAppBarState extends State<MobileAppBar> {
                       color: AppColors.crossBackground,
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(
-                      Icons.close,
-                      size: 16,
-                      color: AppColors.textColor,
-                    ),
+                    child: const Icon(Icons.close, size: 16, color: AppColors.textColor),
                   ),
                 ),
               ),
@@ -157,50 +164,51 @@ class _MobileAppBarState extends State<MobileAppBar> {
               /// TIMER ROW
               Row(
                 children: [
-
                   InkWell(
-                    onTap: () {
-                      if (!controller.isRunning.value) {
-                        controller.toggleTimer();
-                      }
-                    },
+                    onTap: controller.toggleTimer,
                     child: Obx(() => Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color:  AppColors.backgroundContainerOfNotification,
+                        color: AppColors.backgroundContainerOfNotification,
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
-                        controller.isRunning.value
-                            ? Icons.pause
-                            : Icons.play_arrow,
-                        size: 28,
-                        color:AppColors.primaryColor,
+                        controller.isRunning.value ? Icons.pause : Icons.play_arrow,
+                        size: 24,
+                        color: AppColors.primaryColor,
                       ),
                     )),
                   ),
 
-                  const SizedBox(width: 12),
+                  const SizedBox(width: 8),
 
-                  Text(
-                    "-----",
-                    style: TTextTheme.titleThree(context),
+                  Expanded(
+                    child: Text(
+                      "-----",
+                      style: TTextTheme.titleThree(context),
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
 
-                  const Spacer(),
-
-                  ///  TIME DISPLAY
+                  /// TIME DISPLAY
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Obx(() => Text(
-                        controller.formattedTime,
-                        style: TTextTheme.InsidetimerText(context),
+                      Obx(() => FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          controller.formattedTime,
+                          style: TTextTheme.InsidetimerText(context),
+                        ),
                       )),
                       const SizedBox(height: 2),
-                      Text(
-                          "Today: 00:00:00",
-                          style: TTextTheme.titleFour(context)
+                      FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          "Today: 00:00",
+                          style: TTextTheme.titleFour(context),
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ],
                   ),
@@ -208,46 +216,36 @@ class _MobileAppBarState extends State<MobileAppBar> {
               ),
 
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 15),
-                child: Divider(
-                  color: AppColors.textGrey,
-                  thickness: 0.8,
-                ),
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: Divider(color: AppColors.textGrey, thickness: 0.8),
               ),
 
-              ///  PROJECT NAME
-              Text(
-                "Project Name",
-                style: TTextTheme.titleFive(context),
-              ),
+              /// PROJECT SECTION
+              Text("Project Name", style: TTextTheme.titleFive(context)),
+              const SizedBox(height: 8),
 
-              const SizedBox(height: 10),
-
-              /// PROJECT DROPDOWN
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 12,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(color: Colors.grey.shade300),
                 ),
-                child:  Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Row(
                   children: [
-                    Text(
-                      "Select Project",
-                      style: TTextTheme.selectProjectText(context),
+                    Expanded(
+                      child: Text(
+                        "Select Project",
+                        style: TTextTheme.selectProjectText(context),
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
-                    Image.asset(IconString.arrowDownIcon),
+                    Image.asset(IconString.arrowDownIcon, height: 12),
                   ],
                 ),
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
 
-              ///  STOP BUTTON
               Align(
                 alignment: Alignment.bottomRight,
                 child: ElevatedButton(
@@ -277,7 +275,7 @@ class _MobileAppBarState extends State<MobileAppBar> {
     );
   }
 
-  // SIGN OUT POPUP
+  //SIGN OUT POPUP
   Widget _buildSignOutPopup(SideBarController controller) {
     return Stack(
       children: [
@@ -302,7 +300,7 @@ class _MobileAppBarState extends State<MobileAppBar> {
                 child: Row(
                   children:  [
                     Image.asset(IconString.logoutIcon),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     Text("Sign Out", style: TTextTheme.signoutIconText(context)),
                   ],
                 ),

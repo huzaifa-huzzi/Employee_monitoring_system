@@ -14,10 +14,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
       backgroundColor: const Color(0xFFF8F9FA),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column( // Column rakhein taake upar se gap control kar saken
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // YAHAN SE WEBAPPBAR HATA DIYA HAI
 
             Text(
               "Dashboard Overview",
