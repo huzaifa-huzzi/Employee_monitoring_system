@@ -12,7 +12,6 @@ class WebAppBAr extends StatelessWidget {
 
 
   final SideBarController controller = Get.put(SideBarController());
-
   final OverlayPortalController _timerController = OverlayPortalController();
   final _timerLink = LayerLink();
   final OverlayPortalController _profileController = OverlayPortalController();
