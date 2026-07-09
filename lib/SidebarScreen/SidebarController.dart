@@ -12,7 +12,6 @@ class SideBarController extends GetxController {
     isCollapsed.value = !isCollapsed.value;
   }
 
-  // Time Sheet dropdown toggle
   void toggleTimeSheet() {
     isTimeSheetExpanded.value = !isTimeSheetExpanded.value;
     selected.value = "Time Sheet";

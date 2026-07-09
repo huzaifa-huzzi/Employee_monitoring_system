@@ -23,6 +23,10 @@ class TTextTheme{
     return _textStyle(fontSize:AppTextSizes.size(context, 16, 18, 20),fontWeight: FontWeight.w600,color: AppColors.textColor);
   }
 
+  static TextStyle h3Style(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 22, 23, 24),fontWeight: FontWeight.w600,color: AppColors.textColor);
+  }
+
   static TextStyle hLogoName(BuildContext context){
     return _textStyle(fontSize:AppTextSizes.size(context, 19, 20, 21),fontWeight: FontWeight.w600,color: AppColors.textColor);
   }
@@ -73,6 +77,28 @@ class TTextTheme{
   static TextStyle titleFour(BuildContext context){
     return _textStyle(fontSize:AppTextSizes.size(context, 12, 14, 14),fontWeight: FontWeight.w400,color: AppColors.textGrey);
   }
+
+  static TextStyle titleSix(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 12, 14, 14),fontWeight: FontWeight.w400,color: AppColors.tertiaryTextColor);
+  }
+
+  static TextStyle FieldWriteTheText(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 14, 14, 14),fontWeight: FontWeight.w400,color: AppColors.textColor);
+  }
+
+  static TextStyle InsideAlreadyWrittenText(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 13, 14, 14),fontWeight: FontWeight.w400,color: AppColors.tertiaryTextColor);
+  }
+
+  static TextStyle ForgotPasswordText(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 13, 14, 14),fontWeight: FontWeight.w400,color: AppColors.primaryColor);
+  }
+
+
+  static TextStyle loginTexts(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 13, 14, 14),fontWeight: FontWeight.w600,color: AppColors.primaryColor);
+  }
+
 
 
 

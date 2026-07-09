@@ -12,6 +12,14 @@ class IconString{
   static const String  arrowDownIcon = 'assets/icons/arrowDownIcon.png';
   static const String  logoutIcon = 'assets/icons/logoutIcon.png';
 
+   /// Authentication
+  static const String  loginUser = 'assets/icons/loginUser.svg';
+  static const String  eyeIcon = 'assets/icons/eyeIcon.svg';
+  static const String  helpLoginIcon = 'assets/icons/HelpIcon.svg';
+  static const String  privacyIcon = 'assets/icons/PrivacyIcon.svg';
+  static const String  termIcon = 'assets/icons/TermIcon.svg';
+  static const String  googleIcon = 'assets/icons/GoogleIcon.svg';
+
    /// DahboardIcon
   static const String  dashboardIcon = 'assets/icons/DashboardIcon.png';
   static const String  teamIcon = 'assets/icons/TeamIcon.png';
