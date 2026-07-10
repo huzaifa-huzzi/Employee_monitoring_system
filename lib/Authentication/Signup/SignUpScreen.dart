@@ -4,6 +4,7 @@ import 'package:employee_monitoring_system/Resources/AppSizes.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
 import 'package:employee_monitoring_system/Resources/ImageString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -87,7 +88,7 @@ class SignUpScreen extends StatelessWidget {
                       Image.asset(IconString.logoIcon),
                       const SizedBox(width: 10),
                       Text(
-                        'Soft Snip',
+                        TextString.logoText,
                         style: TTextTheme.hLogoName(context),
                       ),
                     ],
@@ -127,17 +128,17 @@ class SignUpScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'Sign Up',
+                       TextString.signUpTitle,
                         style: TTextTheme.h3Style(context),
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'Enter your details to Sign Up',
+                        TextString.signUpSubtitle,
                         style: TTextTheme.selectProjectText(context),
                       ),
                       const SizedBox(height: 24),
                       Text(
-                        'Name*',
+                        TextString.signUpName,
                         style: TTextTheme.titleSix(context),
                       ),
                       const SizedBox(height: 6),
@@ -145,12 +146,12 @@ class SignUpScreen extends StatelessWidget {
                         cursorColor: AppColors.textColor,
                         style: TTextTheme.FieldWriteTheText(context),
                         controller: controller.nameController,
-                        decoration: _inputDecoration('Enter your name', context),
+                        decoration: _inputDecoration(TextString.signUpField, context),
                       ),
 
                       const SizedBox(height: 16),
                       Text(
-                        'Email*',
+                        TextString.signUpEmail,
                         style: TTextTheme.titleSix(context),
                       ),
                       const SizedBox(height: 6),
@@ -158,12 +159,12 @@ class SignUpScreen extends StatelessWidget {
                         cursorColor: AppColors.textColor,
                         style: TTextTheme.FieldWriteTheText(context),
                         controller: controller.emailController,
-                        decoration: _inputDecoration('Enter your email', context),
+                        decoration: _inputDecoration(TextString.signUpEmailField, context),
                       ),
 
                       const SizedBox(height: 16),
                       Text(
-                        'Password*',
+                       TextString.signUpPassword,
                         style: TTextTheme.titleSix(context),
                       ),
                       const SizedBox(height: 6),
@@ -174,7 +175,7 @@ class SignUpScreen extends StatelessWidget {
                           controller: controller.passwordController,
                           obscureText: controller.isPasswordHidden.value,
                           decoration: _inputDecoration(
-                            'Create a password',
+                            TextString.signupPasswordField,
                             context,
                             suffixIcon: IconButton(
                               icon: Icon(
@@ -191,7 +192,7 @@ class SignUpScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'Must be at least 8 characters.',
+                        TextString.passwordFieldTwo,
                         style: TTextTheme.titleSix(context).copyWith(
                           fontSize: 12,
                           color: AppColors.tertiaryTextColor,
@@ -249,7 +250,7 @@ class SignUpScreen extends StatelessWidget {
                             ),
                             const SizedBox(width: 8),
                             Text(
-                              'Sign up with Google',
+                              TextString.invitationSignupGoogle,
                               style: TTextTheme.FieldWriteTheText(context).copyWith(
                                 fontWeight: FontWeight.w500,
                               ),
@@ -272,7 +273,7 @@ class SignUpScreen extends StatelessWidget {
                               ),
                               children: [
                                 const TextSpan(
-                                  text: "Already have an account? ",
+                                  text:TextString.alreadyAccount ,
                                 ),
                                 TextSpan(
                                   text: 'Log in',
@@ -294,17 +295,17 @@ class SignUpScreen extends StatelessWidget {
                     spacing: 12,
                     children: [
                       Text(
-                        '© 2026 Soft Snip',
+                        TextString.footerOne,
                         style: TTextTheme.titleSix(context),
                       ),
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          _footerLink(context, IconString.privacyIcon, 'Privacy'),
+                          _footerLink(context, IconString.privacyIcon, TextString.footerTwo),
                           const SizedBox(width: 12),
-                          _footerLink(context, IconString.termIcon, 'Terms'),
+                          _footerLink(context, IconString.termIcon, TextString.footerThree),
                           const SizedBox(width: 12),
-                          _footerLink(context, IconString.helpLoginIcon, 'Get help'),
+                          _footerLink(context, IconString.helpLoginIcon, TextString.footerFour),
                         ],
                       )
                     ],
@@ -318,7 +319,7 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
-  // Common Input Decoration Helper
+  //  Input Decoration Helper
   InputDecoration _inputDecoration(String hintText, BuildContext context,
       {Widget? suffixIcon}) {
     return InputDecoration(

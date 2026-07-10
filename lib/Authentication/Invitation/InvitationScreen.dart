@@ -4,6 +4,7 @@ import 'package:employee_monitoring_system/Resources/AppSizes.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
 import 'package:employee_monitoring_system/Resources/ImageString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -85,7 +86,7 @@ class InvitationScreen extends StatelessWidget {
                       Image.asset(IconString.logoIcon),
                       const SizedBox(width: 10),
                       Text(
-                        'Soft Snip',
+                        TextString.logoText,
                         style: TTextTheme.hLogoName(context),
                       ),
                     ],
@@ -125,17 +126,17 @@ class InvitationScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'You have been invited to Sign Up',
+                       TextString.InvitationTitle,
                         style: TTextTheme.h3Style(context),
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'Enter your details to Sign Up',
+                      TextString.invitationSubtitle,
                         style: TTextTheme.selectProjectText(context),
                       ),
                       const SizedBox(height: 24),
                       Text(
-                        'Name*',
+                       TextString.invitationName ,
                         style: TTextTheme.titleSix(context),
                       ),
                       const SizedBox(height: 6),
@@ -148,7 +149,7 @@ class InvitationScreen extends StatelessWidget {
 
                       const SizedBox(height: 16),
                       Text(
-                        'Email*',
+                        TextString.invitationEmail,
                         style: TTextTheme.titleSix(context),
                       ),
                       const SizedBox(height: 6),
@@ -161,7 +162,7 @@ class InvitationScreen extends StatelessWidget {
 
                       const SizedBox(height: 16),
                       Text(
-                        'Password*',
+                        TextString.invitationPassword,
                         style: TTextTheme.titleSix(context),
                       ),
                       const SizedBox(height: 6),
@@ -172,7 +173,7 @@ class InvitationScreen extends StatelessWidget {
                           controller: controller.passwordController,
                           obscureText: controller.isPasswordHidden.value,
                           decoration: _inputDecoration(
-                            'Create a password',
+                            TextString.passwordFieldOne,
                             context,
                             suffixIcon: IconButton(
                               icon: Icon(
@@ -190,7 +191,7 @@ class InvitationScreen extends StatelessWidget {
                       const SizedBox(height: 4),
 
                       Text(
-                        'Must be at least 8 characters.',
+                        TextString.passwordFieldTwo,
                         style: TTextTheme.titleSix(context).copyWith(
                           fontSize: 12,
                           color: AppColors.tertiaryTextColor,
@@ -248,7 +249,7 @@ class InvitationScreen extends StatelessWidget {
                             ),
                             const SizedBox(width: 8),
                             Text(
-                              'Sign up with Google',
+                              TextString.invitationSignupGoogle,
                               style: TTextTheme.FieldWriteTheText(context).copyWith(
                                 fontWeight: FontWeight.w500,
                               ),
@@ -267,17 +268,17 @@ class InvitationScreen extends StatelessWidget {
                     spacing: 12,
                     children: [
                       Text(
-                        '© 2026 Soft Snip',
+                        TextString.footerOne,
                         style: TTextTheme.titleSix(context),
                       ),
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          _footerLink(context, IconString.privacyIcon, 'Privacy'),
+                          _footerLink(context, IconString.privacyIcon, TextString.footerTwo),
                           const SizedBox(width: 12),
-                          _footerLink(context, IconString.termIcon, 'Terms'),
+                          _footerLink(context, IconString.termIcon, TextString.footerThree),
                           const SizedBox(width: 12),
-                          _footerLink(context, IconString.helpLoginIcon, 'Get help'),
+                          _footerLink(context, IconString.helpLoginIcon, TextString.footerFour),
                         ],
                       )
                     ],

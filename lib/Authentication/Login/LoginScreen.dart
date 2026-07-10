@@ -4,6 +4,7 @@ import 'package:employee_monitoring_system/Resources/AppSizes.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
 import 'package:employee_monitoring_system/Resources/ImageString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -89,7 +90,7 @@ class LoginScreen extends StatelessWidget {
                       Image.asset(IconString.logoIcon),
                       const SizedBox(width: 10),
                       Text(
-                        'Soft Snip',
+                      TextString.logoText,
                         style: TTextTheme.hLogoName(context),
                       ),
                     ],
@@ -130,17 +131,17 @@ class LoginScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'Login to your account',
+                        TextString.loginTitle,
                         style: TTextTheme.h3Style(context),
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'Enter your details to login',
+                        TextString.loginSubtitle,
                         style: TTextTheme.selectProjectText(context),
                       ),
                       const SizedBox(height: 28),
                       Text(
-                        'Email',
+                        TextString.emailText,
                         style: TTextTheme.titleSix(context),
                       ),
                       const SizedBox(height: 6),
@@ -149,7 +150,7 @@ class LoginScreen extends StatelessWidget {
                         style: TTextTheme.FieldWriteTheText(context),
                         controller: controller.emailController,
                         decoration: InputDecoration(
-                          hintText: 'Enter Email',
+                          hintText: TextString.emailField,
                           hintStyle: TTextTheme.InsideAlreadyWrittenText(context),
                           filled: true,
                           fillColor: AppColors.whiteColor,
@@ -171,7 +172,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'Password',
+                        TextString.passwordText,
                         style: TTextTheme.titleSix(context),
                       ),
                       const SizedBox(height: 6),
@@ -182,7 +183,7 @@ class LoginScreen extends StatelessWidget {
                           controller: controller.passwordController,
                           obscureText: controller.isPasswordHidden.value,
                           decoration: InputDecoration(
-                            hintText: "Enter Password",
+                            hintText:TextString.passwordField ,
                             hintStyle: TTextTheme.InsideAlreadyWrittenText(context),
                             filled: true,
                             fillColor: AppColors.whiteColor,
@@ -237,7 +238,7 @@ class LoginScreen extends StatelessWidget {
                                 const SizedBox(width: 8),
                                 Flexible(
                                   child: Text(
-                                    'Keep me logged in',
+                                    TextString.loggedInText,
                                     style: TTextTheme.titleFive(context),
                                     overflow: TextOverflow.ellipsis,
                                   ),
@@ -251,7 +252,7 @@ class LoginScreen extends StatelessWidget {
                               context.go('/forgotPassword');
                             },
                             child: Text(
-                              'Forgot Password?',
+                             TextString.forgotPasswordText,
                               style: TTextTheme.ForgotPasswordText(context),
                             ),
                           ),
@@ -298,7 +299,7 @@ class LoginScreen extends StatelessWidget {
                               ),
                               children: [
                                 const TextSpan(
-                                  text: "Don't have an account? ",
+                                  text:TextString.dontAccount ,
                                 ),
                                 TextSpan(
                                   text: 'Sign up',
@@ -320,17 +321,17 @@ class LoginScreen extends StatelessWidget {
                     spacing: 12,
                     children: [
                       Text(
-                        '© 2026 Soft Snip',
+                       TextString.footerOne,
                         style: TTextTheme.titleSix(context),
                       ),
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          _footerLink(context, IconString.privacyIcon, 'Privacy'),
+                          _footerLink(context, IconString.privacyIcon,TextString.footerTwo ),
                           const SizedBox(width: 12),
-                          _footerLink(context, IconString.termIcon, 'Terms'),
+                          _footerLink(context, IconString.termIcon,TextString.footerThree ),
                           const SizedBox(width: 12),
-                          _footerLink(context, IconString.helpLoginIcon, 'Get help'),
+                          _footerLink(context, IconString.helpLoginIcon,TextString.footerFour ),
                         ],
                       )
                     ],

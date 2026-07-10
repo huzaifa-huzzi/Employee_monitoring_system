@@ -4,6 +4,7 @@ import 'package:employee_monitoring_system/Resources/AppSizes.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
 import 'package:employee_monitoring_system/Resources/ImageString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -87,7 +88,7 @@ class OtpVerificationScreen extends StatelessWidget {
                       Image.asset(IconString.logoIcon),
                       const SizedBox(width: 10),
                       Text(
-                        'Soft Snip',
+                        TextString.logoText,
                         style: TTextTheme.hLogoName(context),
                       ),
                     ],
@@ -128,17 +129,17 @@ class OtpVerificationScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'OTP Verification',
+                       TextString.otpTitle,
                         style: TTextTheme.h3Style(context),
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'Please Enter the OTP we have sent at your email address',
+                        TextString.otpSubtitle,
                         style: TTextTheme.selectProjectText(context),
                       ),
                       const SizedBox(height: 28),
                       Text(
-                        'OTP Code',
+                       TextString.otpCode,
                         style: TTextTheme.titleSix(context),
                       ),
                       const SizedBox(height: 6),
@@ -209,17 +210,17 @@ class OtpVerificationScreen extends StatelessWidget {
                     spacing: 12,
                     children: [
                       Text(
-                        '© 2026 Soft Snip',
+                        TextString.footerOne,
                         style: TTextTheme.titleSix(context),
                       ),
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          _footerLink(context, IconString.privacyIcon, 'Privacy'),
+                          _footerLink(context, IconString.privacyIcon, TextString.footerTwo),
                           const SizedBox(width: 12),
-                          _footerLink(context, IconString.termIcon, 'Terms'),
+                          _footerLink(context, IconString.termIcon, TextString.footerThree),
                           const SizedBox(width: 12),
-                          _footerLink(context, IconString.helpLoginIcon, 'Get help'),
+                          _footerLink(context, IconString.helpLoginIcon, TextString.footerFour),
                         ],
                       )
                     ],
