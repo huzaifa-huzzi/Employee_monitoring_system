@@ -48,7 +48,7 @@ class SidebarScreen extends StatelessWidget {
         return AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           margin: EdgeInsets.all(isCollapsed ? 12 : 0),
-          width: isWeb ? (isCollapsed ? 101 : 260) : 260,
+          width: isWeb ? (isCollapsed ? 111 : 260) : 260,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(isCollapsed ? 20 : 0),
@@ -107,7 +107,19 @@ class SidebarScreen extends StatelessWidget {
                           title: "Time Sheet",
                           isCollapsed: isCollapsed,
                           isExpanded: controller.isTimeSheetExpanded,
-                          onTap: (val) => context.go('/time-sheet'),
+                          subItems: [
+                            {
+                              'title': 'My time sheet',
+                              'icon': IconString.timeSheetIcon,
+                              'onTap': () => context.go('/time-sheet/my-timesheet'),
+                            },
+                            {
+                              'title': 'Approvals',
+                              'icon': IconString.projectManagementIcon,
+                              'onTap': () => context.go('/time-sheet/approvals'),
+                            },
+                          ],
+                          onTap: (val) => context.go('/time-sheet/my-timesheet'),
                           scaffoldKey: _scaffoldKey,
                         ),
 
@@ -171,16 +183,16 @@ class SidebarScreen extends StatelessWidget {
                           scaffoldKey: _scaffoldKey,
                         ),
 
-                        SidebarComponents.dropdownMenuItem(
-                          context,
-                          controller,
-                          iconPath: IconString.reportIcon,
-                          title: "Report",
-                          isCollapsed: isCollapsed,
-                          isExpanded: controller.isReportExpanded,
-                          onTap: (val) => context.go('/report'),
-                          scaffoldKey: _scaffoldKey,
-                        ),
+                        // SidebarComponents.dropdownMenuItem(
+                        //   context,
+                        //   controller,
+                        //   iconPath: IconString.reportIcon,
+                        //   title: "Report",
+                        //   isCollapsed: isCollapsed,
+                        //   isExpanded: controller.isReportExpanded,
+                        //   onTap: (val) => context.go('/report'),
+                        //   scaffoldKey: _scaffoldKey,
+                        // ),
 
                         SidebarComponents.menuItem(
                           context,

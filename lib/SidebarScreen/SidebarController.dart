@@ -3,6 +3,7 @@ import 'dart:async';
 
 class SideBarController extends GetxController {
   var selected = "Dashboard".obs;
+  var selectedSubItem = "".obs;
   var isTimeSheetExpanded = false.obs;
   var isReportExpanded = false.obs;
   var notificationCount = 0.obs;
@@ -17,42 +18,62 @@ class SideBarController extends GetxController {
     selected.value = "Time Sheet";
   }
 
-  // Report dropdown toggle
   void toggleReport() {
     isReportExpanded.value = !isReportExpanded.value;
     selected.value = "Report";
   }
 
-  void selectMenu(String title) {
+  void selectMenu(String title, {String subItem = ""}) {
     selected.value = title;
+    selectedSubItem.value = subItem;
 
     if (title != "Time Sheet") isTimeSheetExpanded.value = false;
     if (title != "Report") isReportExpanded.value = false;
   }
 
-
   void syncWithRoute(String route) {
-
     if (route == '/dashboard' || route == '/') {
       selected.value = "Dashboard";
+      selectedSubItem.value = "";
     } else if (route.startsWith('/team')) {
       selected.value = "Team";
+      selectedSubItem.value = "";
+    } else if (route.startsWith('/time-sheet')) {
+      selected.value = "Time Sheet";
+      isTimeSheetExpanded.value = true;
+      if (route.contains('approvals')) {
+        selectedSubItem.value = "Approvals";
+      } else {
+        selectedSubItem.value = "My time sheet";
+      }
     } else if (route.startsWith('/screenshots')) {
       selected.value = "Screen Shots";
+      selectedSubItem.value = "";
     } else if (route.startsWith('/activity')) {
       selected.value = "Activity Tracking";
+      selectedSubItem.value = "";
     } else if (route.startsWith('/app-tracking')) {
       selected.value = "Application Tracking";
+      selectedSubItem.value = "";
     } else if (route.startsWith('/url-tracking')) {
       selected.value = "URL Tracking";
+      selectedSubItem.value = "";
     } else if (route.startsWith('/meeting')) {
       selected.value = "Meeting";
+      selectedSubItem.value = "";
     } else if (route.startsWith('/projects')) {
       selected.value = "Project Management";
+      selectedSubItem.value = "";
+    } else if (route.startsWith('/report')) {
+      selected.value = "Report";
+      isReportExpanded.value = true;
+      selectedSubItem.value = "";
     } else if (route.startsWith('/settings')) {
       selected.value = "Setting";
+      selectedSubItem.value = "";
     } else if (route.startsWith('/help')) {
       selected.value = "Help & Support";
+      selectedSubItem.value = "";
     }
   }
 
@@ -60,8 +81,7 @@ class SideBarController extends GetxController {
     notificationCount.value = value;
   }
 
-
-  /// Web App Bar
+  /// Timer Logic
   var isRunning = false.obs;
   var seconds = 0.obs;
   Timer? _timer;

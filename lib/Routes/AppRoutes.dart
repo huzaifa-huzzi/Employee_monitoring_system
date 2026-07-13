@@ -5,6 +5,8 @@ import 'package:employee_monitoring_system/Authentication/OtpVerification/OtpVer
 import 'package:employee_monitoring_system/Authentication/ResetPassword/ResetPassword.dart';
 import 'package:employee_monitoring_system/Authentication/Signup/SignUpScreen.dart';
 import 'package:employee_monitoring_system/Team/Team.dart';
+import 'package:employee_monitoring_system/TimeSheet/Approval/Approval.dart';
+import 'package:employee_monitoring_system/TimeSheet/MyTimeSheet/MyTimeSheet.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../Dashboard/DashboardScreen.dart';
@@ -69,7 +71,19 @@ class AppNavigation {
             path: '/teamMember',
             builder: (context, state) => const TeamScreen(),
           ),
-          _buildRoute('/time-sheet', "Time Sheet Content"),
+            // Time Sheet
+          GoRoute(
+            path: '/time-sheet',
+            redirect: (context, state) => '/time-sheet/my-timesheet',
+          ),
+          GoRoute(
+            path: '/time-sheet/my-timesheet',
+            builder: (context, state) => const MyTimeSheet()),
+          GoRoute(
+            path: '/time-sheet/approvals',
+            builder: (context, state) => Approval()),
+
+
           _buildRoute('/screenshots', "Screen Shots Content"),
           _buildRoute('/activity', "Activity Tracking Content"),
           _buildRoute('/app-tracking', "Application Tracking Content"),
