@@ -283,7 +283,7 @@ class LoginScreen extends StatelessWidget {
                           text: 'Sign In',
                           height: 42,
                           width: double.infinity,
-                          onTap: () => controller.login(),
+                          onTap: () => controller.login(context),
                         ),
                       ),
                       const SizedBox(height: 16),

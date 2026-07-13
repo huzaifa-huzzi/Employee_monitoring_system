@@ -4,6 +4,7 @@ import 'package:employee_monitoring_system/Authentication/Login/LoginScreen.dart
 import 'package:employee_monitoring_system/Authentication/OtpVerification/OtpVerificationScreen.dart';
 import 'package:employee_monitoring_system/Authentication/ResetPassword/ResetPassword.dart';
 import 'package:employee_monitoring_system/Authentication/Signup/SignUpScreen.dart';
+import 'package:employee_monitoring_system/Team/Team.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../Dashboard/DashboardScreen.dart';
@@ -54,11 +55,20 @@ class AppNavigation {
           );
         },
         routes: [
+           // Dashboard
           GoRoute(
             path: '/dashboard',
             builder: (context, state) => const DashboardScreen(),
           ),
-          _buildRoute('/team', "Team Content"),
+           // Team
+          GoRoute(
+            path: '/team',
+            builder: (context, state) => const TeamScreen(),
+          ),
+          GoRoute(
+            path: '/teamMember',
+            builder: (context, state) => const TeamScreen(),
+          ),
           _buildRoute('/time-sheet', "Time Sheet Content"),
           _buildRoute('/screenshots', "Screen Shots Content"),
           _buildRoute('/activity', "Activity Tracking Content"),

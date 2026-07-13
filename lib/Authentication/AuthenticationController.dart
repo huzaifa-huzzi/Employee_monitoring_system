@@ -26,11 +26,13 @@ class AuthenticationController extends GetxController {
     passwordController.clear();
   }
 
-  Future<void> login() async {
+  Future<void> login(BuildContext context) async {
     isLoading.value = true;
     await Future.delayed(const Duration(seconds: 1));
 
     isLoading.value = false;
+
+    context.go('/dashboard');
   }
 
   @override
@@ -81,10 +83,12 @@ class AuthenticationController extends GetxController {
    /// Invitation Based
   final nameController = TextEditingController();
 
-  void signup() async {
+  void signup(BuildContext context) async {
     isLoading.value = true;
     await Future.delayed(const Duration(seconds: 1));
     isLoading.value = false;
+    context.go('/dashboard');
+
 
   }
 

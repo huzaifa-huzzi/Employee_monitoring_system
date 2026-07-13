@@ -20,7 +20,7 @@ class IconString{
   static const String  termIcon = 'assets/icons/TermIcon.svg';
   static const String  googleIcon = 'assets/icons/GoogleIcon.svg';
 
-   /// DahboardIcon
+   /// Sidebar
   static const String  dashboardIcon = 'assets/icons/DashboardIcon.png';
   static const String  teamIcon = 'assets/icons/TeamIcon.png';
   static const String  timeSheetIcon = 'assets/icons/TimeSheetIcon.png';
@@ -34,6 +34,9 @@ class IconString{
   static const String  settingIcon = 'assets/icons/Setting.png';
   static const String  helpIcon = 'assets/icons/HelpIcon.png';
 
+   /// Team
+  static const String  roleIcon = 'assets/icons/Role.svg';
+  static const String  DepartmentIcon = 'assets/icons/Department.svg';
 
 
 }

@@ -47,6 +47,14 @@ class TTextTheme{
     return _textStyle(fontSize:AppTextSizes.size(context, 14, 14, 14),fontWeight: FontWeight.w500,color: AppColors.textColor);
   }
 
+  static TextStyle titleSeven(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 14, 14, 14),fontWeight: FontWeight.w500,color: AppColors.tertiaryTextColor);
+  }
+
+  static TextStyle titleEight(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 14, 14, 14),fontWeight: FontWeight.w600,color: AppColors.textColor);
+  }
+
   static TextStyle InsidetimerText(BuildContext context){
     return _textStyle(fontSize:AppTextSizes.size(context, 14, 15, 16),fontWeight: FontWeight.w600,color: AppColors.textColor);
   }
@@ -78,6 +86,10 @@ class TTextTheme{
     return _textStyle(fontSize:AppTextSizes.size(context, 12, 14, 14),fontWeight: FontWeight.w400,color: AppColors.textGrey);
   }
 
+  static TextStyle TabsSelectedText(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 14, 15, 16),fontWeight: FontWeight.w600,color: AppColors.whiteColor);
+  }
+
   static TextStyle titleSix(BuildContext context){
     return _textStyle(fontSize:AppTextSizes.size(context, 12, 14, 14),fontWeight: FontWeight.w400,color: AppColors.tertiaryTextColor);
   }
@@ -98,6 +110,11 @@ class TTextTheme{
   static TextStyle loginTexts(BuildContext context){
     return _textStyle(fontSize:AppTextSizes.size(context, 13, 14, 14),fontWeight: FontWeight.w600,color: AppColors.primaryColor);
   }
+
+  static TextStyle Numbers(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 11, 12, 12),fontWeight: FontWeight.w600,color: AppColors.primaryColor);
+  }
+
 
 
 

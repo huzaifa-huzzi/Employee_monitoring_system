@@ -223,7 +223,7 @@ class InvitationScreen extends StatelessWidget {
                           text: 'Get started',
                           height: 42,
                           width: double.infinity,
-                          onTap: () => controller.signup(),
+                          onTap: () => controller.signup(context),
                         ),
                       ),
 
