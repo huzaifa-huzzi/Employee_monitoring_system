@@ -38,5 +38,8 @@ class IconString{
   static const String  roleIcon = 'assets/icons/Role.svg';
   static const String  DepartmentIcon = 'assets/icons/Department.svg';
 
+   /// Time Sheet
+  static const String  calendarIcon = 'assets/icons/CalendarIcon.svg';
+  static const String  editIcon = 'assets/icons/EditIcon.svg';
 
 }

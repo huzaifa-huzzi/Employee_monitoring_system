@@ -42,4 +42,18 @@ class TextString{
    static const String  signUpPassword=     'Password*';
    static const String  signupPasswordField=    'Create a password';
    static const String  alreadyAccount=    "Already have an account? ";
+
+      /// Team
+   static const String  teamTitle=     'Team';
+   static const String  teamSubtitle=     'You can see your team members here';
+   static const String  teamSubtitle2=     'Team Members';
+   static const String  teamTable1=      'Project Name';
+   static const String  teamTable2=     'Start Date';
+   static const String  teamTable3=     'End Date';
+   static const String  teamTable4=     'Team Members';
+   static const String  teamMemberSubtitle=      'You can see your team members here';
+   static const String  teamMemberTitle=     'All member';
+   static const String  teamMemberError=      'No members found';
+   static const String  teamRole=     'Role';
+   static const String  teamDepartment=       'Department';
 }

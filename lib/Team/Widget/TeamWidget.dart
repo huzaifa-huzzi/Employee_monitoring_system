@@ -1,4 +1,5 @@
 import 'package:employee_monitoring_system/Resources/Colors.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:employee_monitoring_system/Team/TeamController.dart';
 import 'package:employee_monitoring_system/Team/TeamMember/TeamMember.dart';
@@ -19,12 +20,12 @@ class TeamWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
            Text(
-            'Team',
+            TextString.teamTitle,
             style: TTextTheme.h1Style(context),
           ),
           const SizedBox(height: 4),
            Text(
-            'You can see your team members here',
+            TextString.teamSubtitle,
             style: TTextTheme.InsideAlreadyWrittenText(context),
           ),
           const SizedBox(height: 24),
@@ -47,7 +48,7 @@ class TeamWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                  Text(
-                  'Team Members',
+                  TextString.teamSubtitle2,
                   style: TTextTheme.h2Style(context),
                 ),
                 const SizedBox(height: 16),
@@ -127,28 +128,28 @@ class TeamWidget extends StatelessWidget {
            Expanded(
             flex: 3,
             child: Text(
-              'Project Name',
+             TextString.teamTable1,
               style: TTextTheme.titleSeven(context),
             ),
           ),
            Expanded(
             flex: 2,
             child: Text(
-              'Start Date',
+              TextString.teamTable2,
               style:TTextTheme.titleSeven(context),
             ),
           ),
            Expanded(
             flex: 2,
             child: Text(
-              'End Date',
+                TextString.teamTable3,
               style: TTextTheme.titleSeven(context)
             ),
           ),
            Expanded(
             flex: 2,
             child: Text(
-              'Team Members',
+                TextString.teamTable4,
               style: TTextTheme.titleSeven(context)
             ),
           ),
@@ -219,7 +220,6 @@ class TeamWidget extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    // Get.to() ki jagah Navigator.push use karein taake GoRouter se crash na ho
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => const TeamMembersScreen()),

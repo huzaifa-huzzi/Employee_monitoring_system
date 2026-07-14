@@ -1,5 +1,6 @@
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:employee_monitoring_system/Team/TeamController.dart' ;
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class TeamMembersWidget extends StatelessWidget {
               ),
               const SizedBox(width: 12),
               Text(
-                'Team',
+                TextString.teamTitle,
                 style: TTextTheme.h1Style(context),
               ),
             ],
@@ -38,13 +39,12 @@ class TeamMembersWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 32.0),
             child: Text(
-              'You can see your team members here',
+             TextString.teamMemberSubtitle,
               style: TTextTheme.InsideAlreadyWrittenText(context),
             ),
           ),
           const SizedBox(height: 24),
 
-          // Main Card View Container
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(24.0),
@@ -63,7 +63,7 @@ class TeamMembersWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'All member',
+                  TextString.teamMemberTitle,
                   style: TTextTheme.h2Style(context),
                 ),
                 const SizedBox(height: 16),
@@ -76,7 +76,7 @@ class TeamMembersWidget extends StatelessWidget {
                       padding: const EdgeInsets.all(32.0),
                       child: Center(
                         child: Text(
-                          'No members found',
+                         TextString.teamMemberError,
                           style: TTextTheme.InsideAlreadyWrittenText(context),
                         ),
                       ),
@@ -163,7 +163,7 @@ class TeamMembersWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: const Color(0xFFE2E8F0)),
+        border: Border.all(color: AppColors.borderColor),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -211,7 +211,7 @@ class TeamMembersWidget extends StatelessWidget {
               ),
               const SizedBox(width: 6),
               Text(
-                'Role',
+                TextString.teamRole,
                 style: TTextTheme.titleSeven(context),
               ),
               const SizedBox(width: 8),
@@ -226,8 +226,6 @@ class TeamMembersWidget extends StatelessWidget {
               ),
             ],
           ),
-
-          // Department Row
           Row(
             children: [
               SvgPicture.asset(
@@ -237,7 +235,7 @@ class TeamMembersWidget extends StatelessWidget {
               ),
               const SizedBox(width: 6),
               Text(
-                'Department',
+              TextString.teamDepartment,
                 style: TTextTheme.titleSeven(context),
               ),
               const SizedBox(width: 8),
