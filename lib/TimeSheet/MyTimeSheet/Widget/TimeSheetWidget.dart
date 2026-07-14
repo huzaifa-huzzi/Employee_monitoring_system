@@ -372,7 +372,6 @@ class _TimeSheetWidgetState extends State<TimeSheetWidget> {
                           child: Text(item.totalHours ?? "40 hrs",
                               style: TTextTheme.titleFour(context))),
                     ] else ...[
-                      // Day View Row Items
                       Expanded(
                           flex: 3,
                           child: Text(item.project,
