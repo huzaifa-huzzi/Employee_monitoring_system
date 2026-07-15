@@ -1,4 +1,5 @@
 import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:employee_monitoring_system/TimeSheet/ReusableWidget/CustomTimeDialog.dart';
 import 'package:flutter/material.dart';
@@ -88,7 +89,7 @@ class _EditTimeSheetDialogState extends State<EditTimeSheetDialog> {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFEFF6FF),
+                  color: AppColors.backgroundContainerOfNotification,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: SvgPicture.asset(
@@ -100,15 +101,15 @@ class _EditTimeSheetDialogState extends State<EditTimeSheetDialog> {
               const SizedBox(height: 12),
 
                Text(
-                "Edit Time Sheet",
+                 TextString.editTimeSheetTitle,
                 style: TTextTheme.h2Style(context),
               ),
               const SizedBox(height: 20),
 
-              _buildFieldLabel("Project Name"),
+              _buildFieldLabel(TextString.projectName),
               const SizedBox(height: 6),
               _buildCustomDropdown(
-                hintText: "Select Project",
+                hintText: TextString.selectProject,
                 selectedValue: _selectedProject,
                 isOpen: _isProjectOpen,
                 items: _projectList,
@@ -133,7 +134,7 @@ class _EditTimeSheetDialogState extends State<EditTimeSheetDialog> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _buildFieldLabel("From"),
+                        _buildFieldLabel(TextString.from),
                         const SizedBox(height: 6),
                         _buildTimeTextField(_fromTimeController),
                       ],
@@ -144,7 +145,7 @@ class _EditTimeSheetDialogState extends State<EditTimeSheetDialog> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _buildFieldLabel("To"),
+                        _buildFieldLabel(TextString.to),
                         const SizedBox(height: 6),
                         _buildTimeTextField(_toTimeController),
                       ],
@@ -155,11 +156,10 @@ class _EditTimeSheetDialogState extends State<EditTimeSheetDialog> {
 
               const SizedBox(height: 14),
 
-              // 3. Reason Dropdown
-              _buildFieldLabel("Reason"),
+              _buildFieldLabel(TextString.reason),
               const SizedBox(height: 6),
               _buildCustomDropdown(
-                hintText: "Select Reason",
+                hintText: TextString.selectReason,
                 selectedValue: _selectedReason,
                 isOpen: _isReasonOpen,
                 items: _reasonList,

@@ -1,4 +1,5 @@
 import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/TimeSheet/ReusableWidget/CustomDatePickerDialog.dart';
 import 'package:employee_monitoring_system/TimeSheet/ReusableWidget/EditTimeSheetDialog.dart';
 import 'package:employee_monitoring_system/TimeSheet/TimeSheetController.dart';
@@ -73,7 +74,7 @@ class _TimeSheetWidgetState extends State<TimeSheetWidget> {
         runSpacing: 12,
         children: [
           Text(
-            "Time Sheet",
+            TextString.timeSheetTitle,
             style: webMode
                 ? TTextTheme.h1Style(context)
                 : TTextTheme.h2Style(context),
@@ -140,7 +141,7 @@ class _TimeSheetWidgetState extends State<TimeSheetWidget> {
                   ),
                   const SizedBox(width: 6),
                   Text(
-                    "Pick Date",
+                   TextString.pickDateTitle,
                     style: TTextTheme.InsideAlreadyWrittenText(context),
                   ),
                 ],
@@ -191,8 +192,8 @@ class _TimeSheetWidgetState extends State<TimeSheetWidget> {
           child: Obx(() => Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              _buildToggleButton("Day", 0, controller),
-              _buildToggleButton("Week", 1, controller),
+              _buildToggleButton(TextString.dayTitle, 0, controller),
+              _buildToggleButton(TextString.weekTitle, 1, controller),
             ],
           )),
         ),
@@ -235,60 +236,60 @@ class _TimeSheetWidgetState extends State<TimeSheetWidget> {
                 if (isWeekView) ...[
                   Expanded(
                       flex: 3,
-                      child: Text("Project",
+                      child: Text(TextString.Project,
                           style: TTextTheme.titleSeven(context))),
                   Expanded(
                       flex: 2,
-                      child: Text("Monday",
+                      child: Text(TextString.timeMonday,
                           style: TTextTheme.titleSeven(context))),
                   Expanded(
                       flex: 2,
-                      child: Text("Tuesday",
+                      child: Text(TextString.timeTues,
                           style: TTextTheme.titleSeven(context))),
                   Expanded(
                       flex: 2,
-                      child: Text("Wednesday",
+                      child: Text(TextString.timeWed,
                           style: TTextTheme.titleSeven(context))),
                   Expanded(
                       flex: 2,
-                      child: Text("Thursday",
+                      child: Text(TextString.timeThurs,
                           style: TTextTheme.titleSeven(context))),
                   Expanded(
                       flex: 2,
-                      child: Text("Friday",
+                      child: Text(TextString.timeFri,
                           style: TTextTheme.titleSeven(context))),
                   Expanded(
                       flex: 2,
-                      child: Text("Saturday",
+                      child: Text(TextString.timeSat,
                           style: TTextTheme.titleSeven(context))),
                   Expanded(
                       flex: 2,
-                      child: Text("Sunday",
+                      child: Text(TextString.timeSun,
                           style: TTextTheme.titleSeven(context))),
                   Expanded(
                       flex: 2,
-                      child: Text("Total hours",
+                      child: Text(TextString.totalHours,
                           style: TTextTheme.titleSeven(context))),
                 ] else ...[
                   Expanded(
                       flex: 3,
-                      child: Text("Project",
+                      child: Text(TextString.Project,
                           style: TTextTheme.titleSeven(context))),
                   Expanded(
                       flex: 2,
-                      child: Text("Start Time",
+                      child: Text(TextString.startTime,
                           style: TTextTheme.titleSeven(context))),
                   Expanded(
                       flex: 2,
-                      child: Text("Stop Time",
+                      child: Text(TextString.stopTime,
                           style: TTextTheme.titleSeven(context))),
                   Expanded(
                       flex: 2,
-                      child: Text("Duration",
+                      child: Text(TextString.duration,
                           style: TTextTheme.titleSeven(context))),
                   SizedBox(
                       width: 50,
-                      child: Text("Action",
+                      child: Text(TextString.action,
                           style: TTextTheme.titleSeven(context))),
                 ],
               ],
@@ -296,7 +297,6 @@ class _TimeSheetWidgetState extends State<TimeSheetWidget> {
           ),
           const SizedBox(height: 10),
 
-          // Table Rows List
           ListView.separated(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),

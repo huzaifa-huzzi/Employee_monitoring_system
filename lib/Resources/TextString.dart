@@ -56,4 +56,30 @@ class TextString{
    static const String  teamMemberError=      'No members found';
    static const String  teamRole=     'Role';
    static const String  teamDepartment=       'Department';
+
+    /// Time Sheet
+   static const String  timeSheetTitle=     "Time Sheet";
+   static const String  pickDateTitle=     "PickDate";
+   static const String  dayTitle=    "Day";
+   static const String  weekTitle=     "Week";
+   static const String  Project=     "Project";
+   static const String  timeMonday=     "Monday";
+   static const String  timeTues=     "Tuesday";
+   static const String  timeWed=     "Wednesday";
+   static const String  timeThurs=     "Thursday";
+   static const String  timeFri=     "Friday";
+   static const String  timeSat=     "Saturday";
+   static const String  timeSun=     "Sunday";
+   static const String  totalHours=     "Total hours";
+   static const String  startTime=     "Start Time";
+   static const String  stopTime=     "Stop Time";
+   static const String  duration=     "Duration";
+   static const String  action=     "Action";
+   static const String  editTimeSheetTitle=     "Edit Time Sheet";
+   static const String  projectName=     "Project Name";
+   static const String  selectProject=     "Select Project";
+   static const String  from=     "From";
+   static const String  to=     "To";
+   static const String  reason=     "Reason";
+   static const String  selectReason=     "Select Reason";
 }

@@ -1,3 +1,4 @@
+import 'package:employee_monitoring_system/ActivityTracking/ActivityTracking.dart';
 import 'package:employee_monitoring_system/Authentication/ForgotPasswrod/ForgotPassword.dart';
 import 'package:employee_monitoring_system/Authentication/Invitation/InvitationScreen.dart';
 import 'package:employee_monitoring_system/Authentication/Login/LoginScreen.dart';
@@ -5,7 +6,6 @@ import 'package:employee_monitoring_system/Authentication/OtpVerification/OtpVer
 import 'package:employee_monitoring_system/Authentication/ResetPassword/ResetPassword.dart';
 import 'package:employee_monitoring_system/Authentication/Signup/SignUpScreen.dart';
 import 'package:employee_monitoring_system/Team/Team.dart';
-import 'package:employee_monitoring_system/TimeSheet/Approval/Approval.dart';
 import 'package:employee_monitoring_system/TimeSheet/MyTimeSheet/MyTimeSheet.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -79,9 +79,12 @@ class AppNavigation {
           GoRoute(
             path: '/time-sheet/my-timesheet',
             builder: (context, state) => const MyTimeSheet()),
+
+           // Activity Tracking
           GoRoute(
-            path: '/time-sheet/approvals',
-            builder: (context, state) => Approval()),
+            path: '/activityTracking',
+            builder: (context, state) => const ActivityTracking(),
+          ),
 
 
           _buildRoute('/screenshots', "Screen Shots Content"),

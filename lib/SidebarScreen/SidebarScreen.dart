@@ -113,11 +113,6 @@ class SidebarScreen extends StatelessWidget {
                               'icon': IconString.timeSheetIcon,
                               'onTap': () => context.go('/time-sheet/my-timesheet'),
                             },
-                            {
-                              'title': 'Approvals',
-                              'icon': IconString.projectManagementIcon,
-                              'onTap': () => context.go('/time-sheet/approvals'),
-                            },
                           ],
                           onTap: (val) => context.go('/time-sheet/my-timesheet'),
                           scaffoldKey: _scaffoldKey,
@@ -139,7 +134,7 @@ class SidebarScreen extends StatelessWidget {
                           iconPath: IconString.activityTrackingIcon,
                           title: "Activity Tracking",
                           isCollapsed: isCollapsed,
-                          onTap: (val) => context.go('/activity'),
+                          onTap: (val) => context.go('/activityTracking'),
                           scaffoldKey: _scaffoldKey,
                         ),
 
