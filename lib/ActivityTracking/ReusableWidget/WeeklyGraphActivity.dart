@@ -1,5 +1,6 @@
 import 'package:employee_monitoring_system/ActivityTracking/ActivityTrackingController.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart' show TTextTheme;
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -26,12 +27,12 @@ class WeeklyActivityGraphWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Weekly Activity Graph",
+            TextString.weeklyTitle,
             style: TTextTheme.titleOne(context).copyWith(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 4),
           Text(
-            "Activity percentage per day",
+           TextString.weeklySubtitle,
             style: TTextTheme.titleSeven(context).copyWith(color: AppColors.tertiaryTextColor),
           ),
           const SizedBox(height: 16),
@@ -40,11 +41,11 @@ class WeeklyActivityGraphWidget extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             child: Row(
               children: [
-                _buildLegendItem(context, "High Activity", const Color(0xFF10B981)),
+                _buildLegendItem(context, TextString.highActivity, AppColors.approvedColor),
                 const SizedBox(width: 16),
-                _buildLegendItem(context, "Low Activity", const Color(0xFFFBBF24)),
+                _buildLegendItem(context, TextString.lowActivity, AppColors.pendingColor),
                 const SizedBox(width: 16),
-                _buildLegendItem(context, "Idle Time", const Color(0xFFD1D5DB)),
+                _buildLegendItem(context, TextString.idleTime, AppColors.borderColor),
               ],
             ),
           ),
@@ -57,7 +58,7 @@ class WeeklyActivityGraphWidget extends StatelessWidget {
                 child: RotatedBox(
                   quarterTurns: 3,
                   child: Text(
-                    "Activity%",
+                   TextString.activityPercent,
                     style: TextStyle(
                       color: AppColors.tertiaryTextColor.withOpacity(0.8),
                       fontSize: 14,

@@ -1,3 +1,4 @@
+import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -90,19 +91,19 @@ class ActivityController extends GetxController {
   }
 
   var weeklyGraphData = <WeeklyGraphDataModel>[
-    WeeklyGraphDataModel(day: "Mon", percentage: 80, color: const Color(0xFF10B981)),
-    WeeklyGraphDataModel(day: "Tue", percentage: 55, color: const Color(0xFF10B981)),
-    WeeklyGraphDataModel(day: "Wed", percentage: 100, color: const Color(0xFF10B981)),
-    WeeklyGraphDataModel(day: "Thu", percentage: 90, color: const Color(0xFFFBBF24)),
-    WeeklyGraphDataModel(day: "Fri", percentage: 62, color: const Color(0xFF10B981)),
-    WeeklyGraphDataModel(day: "Sat", percentage: 94, color: const Color(0xFFD1D5DB)),
-    WeeklyGraphDataModel(day: "Sun", percentage: 86, color: const Color(0xFFD1D5DB)),
+    WeeklyGraphDataModel(day: "Mon", percentage: 80, color: AppColors.approvedColor),
+    WeeklyGraphDataModel(day: "Tue", percentage: 55, color: AppColors.approvedColor),
+    WeeklyGraphDataModel(day: "Wed", percentage: 100, color: AppColors.approvedColor),
+    WeeklyGraphDataModel(day: "Thu", percentage: 90, color: AppColors.pendingColor),
+    WeeklyGraphDataModel(day: "Fri", percentage: 62, color: AppColors.approvedColor),
+    WeeklyGraphDataModel(day: "Sat", percentage: 94, color: AppColors.borderColor),
+    WeeklyGraphDataModel(day: "Sun", percentage: 86, color: AppColors.borderColor),
   ].obs;
   var monthlyGraphData = <WeeklyGraphDataModel>[
-    WeeklyGraphDataModel(day: "Week 1", percentage: 80, color: const Color(0xFF10B981)),
-    WeeklyGraphDataModel(day: "Week 2", percentage: 51, color: const Color(0xFF10B981)),
-    WeeklyGraphDataModel(day: "Week 3", percentage: 105, color: const Color(0xFF10B981)), // Max 100 se thoda upar ya 100 tak rakhein
-    WeeklyGraphDataModel(day: "Week 4", percentage: 91, color: const Color(0xFFFBBF24)),
+    WeeklyGraphDataModel(day: "Week 1", percentage: 80, color: AppColors.approvedColor),
+    WeeklyGraphDataModel(day: "Week 2", percentage: 51, color: AppColors.approvedColor),
+    WeeklyGraphDataModel(day: "Week 3", percentage: 105, color: AppColors.approvedColor),
+    WeeklyGraphDataModel(day: "Week 4", percentage: 91, color: AppColors.pendingColor),
   ].obs;
 
   void _updateDisplayFormat() {

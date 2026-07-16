@@ -17,5 +17,4 @@ class AppColors{
   static const Color textGrey = Color(0xFF686868); // text second color
   static const Color tertiaryTextColor = Color(0xFF667085); // gray/500
 
-
 }

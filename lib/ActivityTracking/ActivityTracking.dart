@@ -2,6 +2,7 @@ import 'package:employee_monitoring_system/ActivityTracking/ActivityTrackingCont
 import 'package:employee_monitoring_system/ActivityTracking/Widget/ActivityTrackingWidget.dart';
 import 'package:employee_monitoring_system/Resources/AppSizes.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,7 +34,7 @@ class ActivityTracking extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Activity Tracking",
+                       TextString.activityTitle,
                         style: webMode
                             ? TTextTheme.h1Style(context)
                             : TTextTheme.h2Style(context).copyWith(
@@ -42,7 +43,7 @@ class ActivityTracking extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        "Track your activity efficiently here",
+                        TextString.activitySubtitle,
                         style: TTextTheme.titleSix(context).copyWith(
                           fontSize: isMobile ? 12 : null,
                         ),
@@ -61,9 +62,9 @@ class ActivityTracking extends StatelessWidget {
                     child: Obx(() => Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        _buildTopTabButton(context, "Day", 0, controller, isMobile),
-                        _buildTopTabButton(context, "Week", 1, controller, isMobile),
-                        _buildTopTabButton(context, "Month", 2, controller, isMobile),
+                        _buildTopTabButton(context, TextString.dayTitle, 0, controller, isMobile),
+                        _buildTopTabButton(context, TextString.weekTitle, 1, controller, isMobile),
+                        _buildTopTabButton(context,TextString.month , 2, controller, isMobile),
                       ],
                     )),
                   ),

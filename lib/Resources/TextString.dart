@@ -59,6 +59,7 @@ class TextString{
 
     /// Time Sheet
    static const String  timeSheetTitle=     "Time Sheet";
+   static const String  timeSheetSubtitle=     "You can see your time Sheet Here";
    static const String  pickDateTitle=     "PickDate";
    static const String  dayTitle=    "Day";
    static const String  weekTitle=     "Week";
@@ -82,4 +83,32 @@ class TextString{
    static const String  to=     "To";
    static const String  reason=     "Reason";
    static const String  selectReason=     "Select Reason";
+
+
+      /// Activity Tracking
+   static const String  selectedMonth=     "Selected Month: ";
+   static const String  selectedDate=     "Selected Date: ";
+   static const String  averageActivity=     "Average Activity";
+   static const String  mouseActivity=     "Mouse Activity";
+   static const String  keyboardActivity=      "Keyboard Activity";
+   static const String  idleTime=     "Idle Time";
+   static const String  activityTimeline=     "Activity Timeline";
+   static const String  activityTimelineSubtitle=     "Activity Break down by hours";
+   static const String  highActivity=     "High Activity";
+   static const String  lowActivity=     "Low Activity";
+   static const String  sessionBreakdown=     "Session Breakdown";
+   static const String  sessionBreakdownSubtitle=     "Hourly Activity Detail";
+   static const String  timeSlot=     "Time Slot";
+   static const String  mousePercent=     "Mouse%";
+   static const String  keyboardPercent=     "Keyboard%";
+   static const String  idlePercent=     "Idle %";
+   static const String  overall=    "Overall";
+   static const String  activityTitle=      "Activity Tracking";
+   static const String  activitySubtitle=    "Track your activity efficiently here";
+   static const String  month=     "Month";
+   static const String  monthlyTitle=      "Monthly Activity Graph";
+   static const String  monthlySubtitle=    "Activity percentage per week";
+   static const String  activityPercent=     "Activity%";
+   static const String  weeklyTitle=    "Weekly Activity Graph";
+   static const String  weeklySubtitle=     "Activity percentage per day";
 }

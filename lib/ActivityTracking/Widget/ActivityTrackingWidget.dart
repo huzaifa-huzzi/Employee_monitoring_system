@@ -5,6 +5,7 @@ import 'package:employee_monitoring_system/ActivityTracking/ReusableWidget/Weekl
 import 'package:employee_monitoring_system/Resources/AppSizes.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -87,7 +88,7 @@ class ActivityTrackingWidget extends StatelessWidget {
               Obx(() {
                 final bool isMonthMode = controller.selectedViewIndex.value == 2;
                 return Text(
-                  isMonthMode ? "Selected Month: " : "Selected Date: ",
+                  isMonthMode ? TextString.selectedMonth : TextString.selectedDate ,
                   style: TTextTheme.titleSeven(context).copyWith(fontSize: 13),
                 );
               }),
@@ -115,7 +116,7 @@ class ActivityTrackingWidget extends StatelessWidget {
                 ),
                 offset: const Offset(0, 42),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                color: Colors.white,
+                color: AppColors.whiteColor,
                 elevation: 4,
                 onOpened: () => isDropdownOpen.value = true,
                 onCanceled: () => isDropdownOpen.value = false,
@@ -143,7 +144,6 @@ class ActivityTrackingWidget extends StatelessWidget {
                         currentMonth,
                         style: TTextTheme.InsideAlreadyWrittenText(context).copyWith(
                           fontWeight: FontWeight.w600,
-                          fontSize: 13,
                           color: AppColors.textColor,
                         ),
                       ),
@@ -229,7 +229,7 @@ class ActivityTrackingWidget extends StatelessWidget {
                     ),
                     const SizedBox(width: 4),
                     Text(
-                      "Pick Date",
+                      TextString.pickDateTitle,
                       style: TTextTheme.InsideAlreadyWrittenText(context).copyWith(fontSize: 12),
                     ),
                   ],
@@ -245,18 +245,48 @@ class ActivityTrackingWidget extends StatelessWidget {
   // Stats Cards Grid
   Widget _buildStatsGrid(BuildContext context, bool webMode) {
     final cards = [
-      _buildStatCard(context, "Average Activity", "87%", AppColors.primaryColor, 0.87),
-      _buildStatCard(context, "Mouse Activity", "77%", const Color(0xFF10B981), 0.77),
-      _buildStatCard(context, "Keyboard Activity", "45%", const Color(0xFF8B5CF6), 0.45),
-      _buildStatCard(context, "Idle Time", "45 minutes", AppColors.tertiaryTextColor, 0.35),
+      _buildStatCard(
+        context: context,
+        title:TextString.averageActivity ,
+        value: "87%",
+        color: AppColors.primaryColor,
+        progress: 0.8,
+        iconPath: IconString.averageActivity
+      ),
+      _buildStatCard(
+        context: context,
+        title:TextString.mouseActivity ,
+        value: "77%",
+        color: AppColors.approvedColor,
+        progress: 0.77,
+        iconPath: IconString.mouseActivity
+      ),
+      _buildStatCard(
+        context: context,
+        title:TextString.keyboardActivity,
+        value: "45%",
+        color: AppColors.graphColor,
+        progress: 0.45,
+        iconPath: IconString.keyboardActivity
+      ),
+      _buildStatCard(
+        context: context,
+        title:TextString.idleTime ,
+        value: "45 minutes",
+        color: AppColors.tertiaryTextColor,
+        progress: 0.35,
+        iconPath: IconString.idleTime
+      ),
     ];
 
     if (webMode) {
       return Row(
-        children: cards.map((card) => Expanded(child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 6),
-          child: card,
-        ))).toList(),
+        children: cards.map((card) => Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 6),
+            child: card,
+          ),
+        )).toList(),
       );
     } else {
       return GridView.count(
@@ -265,13 +295,20 @@ class ActivityTrackingWidget extends StatelessWidget {
         crossAxisCount: MediaQuery.of(context).size.width > 550 ? 2 : 1,
         mainAxisSpacing: 12,
         crossAxisSpacing: 12,
-        childAspectRatio: MediaQuery.of(context).size.width > 550 ? 2.3 : 3.0,
+        childAspectRatio: MediaQuery.of(context).size.width > 550 ? 2.3 : 2.8,
         children: cards,
       );
     }
   }
 
-  Widget _buildStatCard(BuildContext context, String title, String value, Color color, double progress) {
+  Widget _buildStatCard({
+    required BuildContext context,
+    required String title,
+    required String value,
+    required Color color,
+    required double progress,
+    required String iconPath,
+  }) {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
@@ -285,7 +322,12 @@ class ActivityTrackingWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(Icons.trending_up_rounded, size: 16, color: color),
+              SvgPicture.asset(
+                iconPath,
+                height: 16,
+                width: 16,
+                colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+              ),
               const SizedBox(width: 6),
               Expanded(
                 child: Text(
@@ -321,16 +363,16 @@ class ActivityTrackingWidget extends StatelessWidget {
   //  Activity Timeline Chart Container
   Widget _buildActivityTimeline(BuildContext context) {
     final List<Map<String, dynamic>> blocks = [
-      {'color': const Color(0xFF10B981), 'type': 'high'},
-      {'color': const Color(0xFF10B981), 'type': 'high'},
-      {'color': const Color(0xFF10B981), 'type': 'high'},
-      {'color': const Color(0xFF10B981), 'type': 'high'},
-      {'color': const Color(0xFFEAB308), 'type': 'low'},
-      {'color': const Color(0xFFEAB308), 'type': 'low'},
-      {'color': const Color(0xFF10B981), 'type': 'high'},
+      {'color': AppColors.approvedColor, 'type': 'high'},
+      {'color': AppColors.approvedColor, 'type': 'high'},
+      {'color': AppColors.approvedColor, 'type': 'high'},
+      {'color':AppColors.approvedColor, 'type': 'high'},
+      {'color': AppColors.pendingColor, 'type': 'low'},
+      {'color': AppColors.pendingColor, 'type': 'low'},
+      {'color': AppColors.approvedColor, 'type': 'high'},
       {'color': AppColors.borderColor, 'type': 'idle'},
-      {'color': const Color(0xFF10B981), 'type': 'high'},
-      {'color': const Color(0xFF10B981), 'type': 'high'},
+      {'color': AppColors.approvedColor, 'type': 'high'},
+      {'color': AppColors.approvedColor, 'type': 'high'},
     ];
 
     return Container(
@@ -344,16 +386,16 @@ class ActivityTrackingWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Activity Timeline", style: TTextTheme.titleEight(context)),
-          Text("Activity Break down by hours", style: TTextTheme.titleSix(context)),
+          Text(TextString.activityTimeline, style: TTextTheme.titleEight(context)),
+          Text(TextString.activityTimelineSubtitle, style: TTextTheme.titleSix(context)),
           const SizedBox(height: 14),
           Row(
             children: [
-              _buildLegendItem(context, "High Activity", const Color(0xFF10B981)),
+              _buildLegendItem(context,TextString.highActivity , AppColors.approvedColor),
               const SizedBox(width: 14),
-              _buildLegendItem(context, "Low Activity", const Color(0xFFEAB308)),
+              _buildLegendItem(context,TextString.lowActivity , AppColors.pendingColor),
               const SizedBox(width: 14),
-              _buildLegendItem(context, "Idle Time", AppColors.borderColor),
+              _buildLegendItem(context,TextString.idleTime , AppColors.borderColor),
             ],
           ),
           const SizedBox(height: 20),
@@ -423,8 +465,8 @@ class ActivityTrackingWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Session Breakdown", style: TTextTheme.titleEight(context)),
-          Text("Hourly Activity Detail", style: TTextTheme.titleSix(context)),
+          Text(TextString.sessionBreakdown, style: TTextTheme.titleEight(context)),
+          Text(TextString.sessionBreakdownSubtitle, style: TTextTheme.titleSix(context)),
           const SizedBox(height: 16),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -446,11 +488,11 @@ class ActivityTrackingWidget extends StatelessWidget {
                   )),
                 ),
                 const SizedBox(width: 12),
-                Expanded(flex: 3, child: Text("Time Slot", style: TTextTheme.titleSeven(context))),
-                Expanded(flex: 2, child: Text("Mouse%", style: TTextTheme.titleSeven(context))),
-                Expanded(flex: 2, child: Text("Keyboard%", style: TTextTheme.titleSeven(context))),
-                Expanded(flex: 2, child: Text("Idle %", style: TTextTheme.titleSeven(context))),
-                Expanded(flex: 2, child: Text("Overall", style: TTextTheme.titleSeven(context))),
+                Expanded(flex: 3, child: Text(TextString.timeSlot, style: TTextTheme.titleSeven(context))),
+                Expanded(flex: 2, child: Text(TextString.mousePercent, style: TTextTheme.titleSeven(context))),
+                Expanded(flex: 2, child: Text(TextString.keyboardPercent, style: TTextTheme.titleSeven(context))),
+                Expanded(flex: 2, child: Text(TextString.idlePercent, style: TTextTheme.titleSeven(context))),
+                Expanded(flex: 2, child: Text(TextString.overall, style: TTextTheme.titleSeven(context))),
               ],
             ),
           ),
@@ -461,9 +503,9 @@ class ActivityTrackingWidget extends StatelessWidget {
             itemCount: controller.sessionList.length,
             itemBuilder: (context, index) {
               final item = controller.sessionList[index];
-              Color overallColor = const Color(0xFF10B981);
+              Color overallColor = AppColors.approvedColor;
               if (item.overallPercentage == "60%") {
-                overallColor = const Color(0xFFEAB308);
+                overallColor = AppColors.pendingColor;
               }
 
               return _buildTableRow(
