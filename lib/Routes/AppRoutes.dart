@@ -5,6 +5,7 @@ import 'package:employee_monitoring_system/Authentication/Login/LoginScreen.dart
 import 'package:employee_monitoring_system/Authentication/OtpVerification/OtpVerificationScreen.dart';
 import 'package:employee_monitoring_system/Authentication/ResetPassword/ResetPassword.dart';
 import 'package:employee_monitoring_system/Authentication/Signup/SignUpScreen.dart';
+import 'package:employee_monitoring_system/Screenshot/ScreenshotScreen.dart';
 import 'package:employee_monitoring_system/Team/Team.dart';
 import 'package:employee_monitoring_system/TimeSheet/MyTimeSheet/MyTimeSheet.dart';
 import 'package:flutter/material.dart';
@@ -84,6 +85,12 @@ class AppNavigation {
           GoRoute(
             path: '/activityTracking',
             builder: (context, state) => const ActivityTracking(),
+          ),
+
+          // Screenshot
+          GoRoute(
+            path: '/screenshot',
+            builder: (context, state) => ScreenshotScreen(),
           ),
 
 

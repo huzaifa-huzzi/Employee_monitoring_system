@@ -12,5 +12,6 @@ class ImageString{
   static const String user2 = 'assets/Images/Team/User2.png';
   static const String user3 = 'assets/Images/Team/User3.png';
 
-
+  /// Screenshot
+  static const String screenShotImage = 'assets/Images/Screenshot/ScreenshotImage.png';
 }

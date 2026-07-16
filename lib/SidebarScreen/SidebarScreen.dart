@@ -124,7 +124,7 @@ class SidebarScreen extends StatelessWidget {
                           iconPath: IconString.screenShotIcon,
                           title: "Screen Shots",
                           isCollapsed: isCollapsed,
-                          onTap: (val) => context.go('/screenshots'),
+                          onTap: (val) => context.go('/screenshot'),
                           scaffoldKey: _scaffoldKey,
                         ),
 

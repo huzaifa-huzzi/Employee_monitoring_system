@@ -77,18 +77,20 @@ class ActivityTrackingWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: isMobile ? CrossAxisAlignment.stretch : CrossAxisAlignment.center,
         children: [
-          Row(
+          Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 8,
+            runSpacing: 4,
             children: [
               SvgPicture.asset(
                 IconString.calendarIcon,
                 height: 18,
                 width: 18,
               ),
-              const SizedBox(width: 8),
               Obx(() {
                 final bool isMonthMode = controller.selectedViewIndex.value == 2;
                 return Text(
-                  isMonthMode ? TextString.selectedMonth : TextString.selectedDate ,
+                  isMonthMode ? TextString.selectedMonth : TextString.selectedDate,
                   style: TTextTheme.titleSeven(context).copyWith(fontSize: 13),
                 );
               }),
@@ -366,7 +368,7 @@ class ActivityTrackingWidget extends StatelessWidget {
       {'color': AppColors.approvedColor, 'type': 'high'},
       {'color': AppColors.approvedColor, 'type': 'high'},
       {'color': AppColors.approvedColor, 'type': 'high'},
-      {'color':AppColors.approvedColor, 'type': 'high'},
+      {'color': AppColors.approvedColor, 'type': 'high'},
       {'color': AppColors.pendingColor, 'type': 'low'},
       {'color': AppColors.pendingColor, 'type': 'low'},
       {'color': AppColors.approvedColor, 'type': 'high'},
@@ -389,13 +391,13 @@ class ActivityTrackingWidget extends StatelessWidget {
           Text(TextString.activityTimeline, style: TTextTheme.titleEight(context)),
           Text(TextString.activityTimelineSubtitle, style: TTextTheme.titleSix(context)),
           const SizedBox(height: 14),
-          Row(
+          Wrap(
+            spacing: 14,
+            runSpacing: 8,
             children: [
-              _buildLegendItem(context,TextString.highActivity , AppColors.approvedColor),
-              const SizedBox(width: 14),
-              _buildLegendItem(context,TextString.lowActivity , AppColors.pendingColor),
-              const SizedBox(width: 14),
-              _buildLegendItem(context,TextString.idleTime , AppColors.borderColor),
+              _buildLegendItem(context, TextString.highActivity, AppColors.approvedColor),
+              _buildLegendItem(context, TextString.lowActivity, AppColors.pendingColor),
+              _buildLegendItem(context, TextString.idleTime, AppColors.borderColor),
             ],
           ),
           const SizedBox(height: 20),
@@ -438,6 +440,7 @@ class ActivityTrackingWidget extends StatelessWidget {
 
   Widget _buildLegendItem(BuildContext context, String label, Color color) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Container(
           width: 12,

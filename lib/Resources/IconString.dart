@@ -48,4 +48,5 @@ class IconString{
   static const String  keyboardActivity = 'assets/icons/KeyboardActivity.svg';
   static const String  mouseActivity = 'assets/icons/MouseActivity.svg';
 
+
 }
