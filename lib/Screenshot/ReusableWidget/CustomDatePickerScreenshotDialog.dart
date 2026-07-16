@@ -173,7 +173,7 @@ class _CustomDatePickerScreenshotDialogState extends State<CustomDatePickerScree
                           padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                           decoration: BoxDecoration(
                             color: isSelected
-                                ? AppColors.primaryColor.withOpacity(0.08)
+                                ? AppColors.primaryColor.withValues(alpha: 0.08)
                                 : Colors.transparent,
                             borderRadius: BorderRadius.circular(6),
                           ),
@@ -255,7 +255,7 @@ class _CustomDatePickerScreenshotDialogState extends State<CustomDatePickerScree
                           padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                           decoration: BoxDecoration(
                             color: isSelected
-                                ? AppColors.primaryColor.withOpacity(0.08)
+                                ? AppColors.primaryColor.withValues(alpha: 0.08)
                                 : Colors.transparent,
                             borderRadius: BorderRadius.circular(6),
                           ),
@@ -406,7 +406,7 @@ class _CustomDatePickerScreenshotDialogState extends State<CustomDatePickerScree
             decoration: BoxDecoration(
               color: isSelected
                   ? const Color(0xFF3B82F6)
-                  : (isInWeek ? const Color(0xFF3B82F6).withOpacity(0.12) : Colors.transparent),
+                  : (isInWeek ? const Color(0xFF3B82F6).withValues(alpha: 0.12) : Colors.transparent),
               shape: BoxShape.circle,
             ),
             child: Center(

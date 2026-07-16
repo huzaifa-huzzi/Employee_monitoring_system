@@ -61,7 +61,7 @@ class MonthlyActivityGraphWidget extends StatelessWidget {
                   child: Text(
                     TextString.activityPercent,
                     style: TextStyle(
-                      color: AppColors.tertiaryTextColor.withOpacity(0.8),
+                      color: AppColors.tertiaryTextColor.withValues(alpha: 0.8),
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
                     ),

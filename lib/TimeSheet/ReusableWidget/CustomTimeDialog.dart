@@ -32,7 +32,7 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
     _parseInitialTime();
 
     _hourController = FixedExtentScrollController(
-      initialItem: _hours.indexOf(_selectedHour) != -1
+      initialItem: _hours.contains(_selectedHour)
           ? _hours.indexOf(_selectedHour)
           : 0,
     );
@@ -131,7 +131,7 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                                 color: isSelected
                                     ? AppColors.textColor
                                     : AppColors.tertiaryTextColor
-                                    .withOpacity(0.5),
+                                    .withValues(alpha: 0.5),
                               ),
                             ),
                           );
@@ -177,7 +177,7 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                                 color: isSelected
                                     ? AppColors.textColor
                                     : AppColors.tertiaryTextColor
-                                    .withOpacity(0.5),
+                                    .withValues(alpha: 0.5),
                               ),
                             ),
                           );
@@ -205,7 +205,7 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 color: _selectedPeriod == 'AM'
-                                    ? AppColors.primaryColor.withOpacity(0.15)
+                                    ? AppColors.primaryColor.withValues(alpha: 0.15)
                                     : Colors.transparent,
                                 borderRadius: const BorderRadius.vertical(
                                     top: Radius.circular(8)),
@@ -230,7 +230,7 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 color: _selectedPeriod == 'PM'
-                                    ? AppColors.primaryColor.withOpacity(0.15)
+                                    ? AppColors.primaryColor.withValues(alpha: 0.15)
                                     : Colors.transparent,
                                 borderRadius: const BorderRadius.vertical(
                                     bottom: Radius.circular(8)),
@@ -264,7 +264,7 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                   onPressed: () => Navigator.pop(context),
                   style: OutlinedButton.styleFrom(
                     side: BorderSide(
-                        color: AppColors.primaryColor.withOpacity(0.5)),
+                        color: AppColors.primaryColor.withValues(alpha: 0.5)),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),

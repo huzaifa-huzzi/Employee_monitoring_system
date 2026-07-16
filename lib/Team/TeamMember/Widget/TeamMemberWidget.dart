@@ -53,7 +53,7 @@ class TeamMembersWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.textColor.withOpacity(0.02),
+                  color: AppColors.textColor.withValues(alpha: 0.02),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
                 )

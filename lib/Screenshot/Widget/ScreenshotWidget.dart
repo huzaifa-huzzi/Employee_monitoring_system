@@ -167,7 +167,7 @@ class ScreenshotWidget extends StatelessWidget {
         spacing: 12,
         runSpacing: 6,
         children: [
-          Obx(() => Text("${controller.currentSlotRange.value}", style: TTextTheme.titleEight(context).copyWith(fontSize: 15))),
+          Obx(() => Text(controller.currentSlotRange.value, style: TTextTheme.titleEight(context).copyWith(fontSize: 15))),
           Obx(() => RichText(
             text: TextSpan(
               style: const TextStyle(fontSize: 14, fontFamily: 'Inter'),
@@ -249,7 +249,7 @@ class ScreenshotWidget extends StatelessWidget {
                         opacity: hovered ? 1.0 : 0.0,
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.45),
+                            color: Colors.black.withValues(alpha: 0.45),
                             borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
                           ),
                           child: Center(
@@ -261,7 +261,7 @@ class ScreenshotWidget extends StatelessWidget {
                                 // Full-Screen Interactive Responsive Gallery View
                                 showDialog(
                                   context: context,
-                                  barrierColor: Colors.black.withOpacity(0.85),
+                                  barrierColor: Colors.black.withValues(alpha: 0.85),
                                   builder: (_) => ScreenshotGalleryDialog(
                                     initialIndex: index,
                                     screenshots: allScreenshots,

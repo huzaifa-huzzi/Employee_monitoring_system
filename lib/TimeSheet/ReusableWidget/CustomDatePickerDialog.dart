@@ -214,7 +214,7 @@ class _CustomDatePickerDialogState extends State<CustomDatePickerDialog> {
             decoration: BoxDecoration(
               color: isSelected
                   ? AppColors.primaryColor
-                  : (isInWeek ? AppColors.primaryColor.withOpacity(0.12) : Colors.transparent),
+                  : (isInWeek ? AppColors.primaryColor.withValues(alpha: 0.12) : Colors.transparent),
               shape: BoxShape.circle,
             ),
             child: Center(

@@ -172,7 +172,7 @@ class ActivityTrackingWidget extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                         decoration: BoxDecoration(
                           color: isSelected
-                              ? AppColors.primaryColor.withOpacity(0.08)
+                              ? AppColors.primaryColor.withValues(alpha: 0.08)
                               : Colors.transparent,
                           borderRadius: BorderRadius.circular(6),
                         ),
@@ -352,7 +352,7 @@ class ActivityTrackingWidget extends StatelessWidget {
           ),
           LinearProgressIndicator(
             value: progress,
-            backgroundColor: color.withOpacity(0.1),
+            backgroundColor: color.withValues(alpha: 0.1),
             valueColor: AlwaysStoppedAnimation<Color>(color),
             minHeight: 6,
             borderRadius: BorderRadius.circular(10),
