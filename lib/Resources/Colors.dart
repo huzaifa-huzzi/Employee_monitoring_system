@@ -16,5 +16,5 @@ class AppColors{
   static const Color  crossBackground = Color(0xFFE5E5E5); // grey/Medium
   static const Color textGrey = Color(0xFF686868); // text second color
   static const Color tertiaryTextColor = Color(0xFF667085); // gray/500
-
+  static const Color secondDatePicker = Color(0xFF3B82F6);
 }

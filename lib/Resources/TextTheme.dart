@@ -23,6 +23,10 @@ class TTextTheme{
     return _textStyle(fontSize:AppTextSizes.size(context, 16, 18, 20),fontWeight: FontWeight.w600,color: AppColors.textColor);
   }
 
+  static TextStyle h4Style(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 17, 18, 20),fontWeight: FontWeight.w600,color: AppColors.primaryColor);
+  }
+
   static TextStyle h3Style(BuildContext context){
     return _textStyle(fontSize:AppTextSizes.size(context, 22, 23, 24),fontWeight: FontWeight.w600,color: AppColors.textColor);
   }

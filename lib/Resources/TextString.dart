@@ -84,6 +84,12 @@ class TextString{
    static const String  reason=     "Reason";
    static const String  selectReason=     "Select Reason";
 
+       /// Snap shots
+   static const String  mainSnapshotTitle=     "Work Snap Shots";
+   static const String  mainSnapshotSubtitle=     "Here are your Work Snap Shots";
+   static const String  snapShotTitle=      "Your Activity";
+   static const String  workedTime=     "Worked Time";
+   static const String  averageActivityTwo=     "Average Activity";
 
       /// Activity Tracking
    static const String  selectedMonth=     "Selected Month: ";
