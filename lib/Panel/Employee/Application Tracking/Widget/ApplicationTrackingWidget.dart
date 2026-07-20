@@ -30,7 +30,9 @@ class ApplicationTrackingWidget extends StatelessWidget {
     );
   }
 
-  /// -------- 1. Date Selector Bar ----------- ///
+   /// -------------- Extra Widget -------- ///
+
+  // Date Selector Bar
   Widget _buildDateSelectorBar(BuildContext context, ApplicationTrackingController controller) {
     final RxBool isDropdownOpen = false.obs;
     final double screenWidth = MediaQuery.of(context).size.width;
