@@ -75,7 +75,7 @@ class ApplicationTrackingWidget extends StatelessWidget {
             final bool isMonthMode = controller.selectedViewIndex.value == 2;
 
             if (isMonthMode) {
-              final DateTime currentDate = controller.currentSelectedDate?.value ?? DateTime.now();
+              final DateTime currentDate = controller.currentSelectedDate.value ?? DateTime.now();
               final String currentMonth = DateFormat('MMMM').format(currentDate);
               final List<String> months = controller.monthsList ?? [
                 'January', 'February', 'March', 'April', 'May', 'June',
@@ -164,7 +164,7 @@ class ApplicationTrackingWidget extends StatelessWidget {
             } else {
               return OutlinedButton(
                 onPressed: () {
-                  final DateTime currentDate = controller.currentSelectedDate?.value ?? DateTime.now();
+                  final DateTime currentDate = controller.currentSelectedDate.value ?? DateTime.now();
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
