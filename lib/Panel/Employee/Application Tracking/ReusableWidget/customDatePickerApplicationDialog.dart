@@ -76,7 +76,6 @@ class _CustomDatePickerApplicationDialogState extends State<CustomDatePickerAppl
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Month navigation bar
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

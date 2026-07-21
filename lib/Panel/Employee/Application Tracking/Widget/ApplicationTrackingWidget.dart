@@ -2,6 +2,8 @@ import 'package:employee_monitoring_system/Panel/Employee/Application%20Tracking
 import 'package:employee_monitoring_system/Panel/Employee/Application%20Tracking/ReusableWidget/customDatePickerApplicationDialog.dart';
 import 'package:employee_monitoring_system/Resources/AppSizes.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
+import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -43,7 +45,6 @@ class ApplicationTrackingWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.borderColor),
       ),
       child: Flex(
         direction: isMobile ? Axis.vertical : Axis.horizontal,
@@ -55,11 +56,19 @@ class ApplicationTrackingWidget extends StatelessWidget {
             spacing: 8,
             runSpacing: 4,
             children: [
-              const Icon(Icons.calendar_today_outlined, size: 16, color: AppColors.subtextColor),
+              SvgPicture.asset(
+               IconString.calendarIcon,
+                width: 16,
+                height: 16,
+                colorFilter: const ColorFilter.mode(
+                  AppColors.subtextColor,
+                  BlendMode.srcIn,
+                ),
+              ),
               Obx(() {
                 final bool isMonthMode = controller.selectedViewIndex.value == 2;
                 return Text(
-                  isMonthMode ? "Selected Month: " : "Selected Date: ",
+                  isMonthMode ? TextString.selectedMonth : TextString.selectedDate,
                   style: TTextTheme.titleSeven(context).copyWith(fontSize: 13),
                 );
               }),
@@ -101,7 +110,7 @@ class ApplicationTrackingWidget extends StatelessWidget {
                   isDropdownOpen.value = false;
                 },
                 child: Obx(() => AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
+                  duration: const Duration(milliseconds: 10),
                   height: 38,
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                   decoration: BoxDecoration(
@@ -199,10 +208,18 @@ class ApplicationTrackingWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: isMobile ? MainAxisSize.max : MainAxisSize.min,
                   children: [
-                    const Icon(Icons.calendar_month, size: 14, color: AppColors.subtextColor),
+                    SvgPicture.asset(
+                      IconString.calendarIcon,
+                      width: 16,
+                      height: 16,
+                      colorFilter: const ColorFilter.mode(
+                        AppColors.subtextColor,
+                        BlendMode.srcIn,
+                      ),
+                    ),
                     const SizedBox(width: 4),
                     Text(
-                      "Pick Date",
+                      TextString.pickDateTitle,
                       style: TTextTheme.InsideAlreadyWrittenText(context).copyWith(fontSize: 12),
                     ),
                   ],
@@ -318,7 +335,7 @@ class ApplicationTrackingWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Application used", style: TTextTheme.titleEight(context)),
+          Text(TextString.appSecondTitle, style: TTextTheme.titleEight(context)),
           const SizedBox(height: 16),
           LayoutBuilder(
             builder: (context, constraints) {
@@ -386,20 +403,20 @@ class ApplicationTrackingWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFFE2E8F0)),
+        border: Border.all(color: AppColors.borderColor),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-              "Daily tracking",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)
+          Text(
+           TextString.dailyTrackingTitle,
+            style: TTextTheme.titleEight(context),
           ),
           const SizedBox(height: 16),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
-              color: const Color(0xFFF8FAFC),
+              color: AppColors.backgroundOfScreenColor,
               borderRadius: BorderRadius.circular(8),
             ),
             child: Row(
@@ -410,42 +427,46 @@ class ApplicationTrackingWidget extends StatelessWidget {
                   child: Obx(() => Checkbox(
                     value: controller.isAllSelected.value,
                     onChanged: (val) => controller.toggleAllCheckboxes(val),
-                    side: const BorderSide(color: Color(0xFFCBD5E1), width: 1.5),
-                    activeColor: const Color(0xFF4880FF),
+                    side: const BorderSide(color: AppColors.borderColor, width: 1.5),
+                    activeColor: AppColors.primaryColor,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
                   )),
                 ),
                 const SizedBox(width: 12),
-                const Expanded(flex: 3, child: Text("Application", style: TextStyle(fontSize: 13, color: Color(0xFF64748B), fontWeight: FontWeight.w500))),
-                const Expanded(
-                    flex: 2,
-                    child: Row(
-                      children: [
-                        Icon(Icons.access_time, size: 14, color: Color(0xFF64748B)),
-                        SizedBox(width: 4),
-                        Text("Total Time", style: TextStyle(fontSize: 13, color: Color(0xFF64748B), fontWeight: FontWeight.w500)),
-                      ],
-                    )
+                Expanded(flex: 3, child: Text(TextString.applicationTitle, style: TTextTheme.titleSeven(context))),
+                Expanded(
+                  flex: 2,
+                  child: Row(
+                    children: [
+                      Icon(Icons.access_time, size: 14, color: AppColors.tertiaryTextColor),
+                      const SizedBox(width: 4),
+                      Text(TextString.totalTime, style: TTextTheme.titleSeven(context)),
+                    ],
+                  ),
                 ),
-                const Expanded(
-                    flex: 3,
-                    child: Row(
-                      children: [
-                        Icon(Icons.pie_chart_outline, size: 14, color: Color(0xFF64748B)),
-                        SizedBox(width: 4),
-                        Text("Time by %", style: TextStyle(fontSize: 13, color: Color(0xFF64748B), fontWeight: FontWeight.w500)),
-                      ],
-                    )
+                Expanded(
+                  flex: 3,
+                  child: Row(
+                    children: [
+                      Icon(Icons.access_time, size: 14, color: AppColors.tertiaryTextColor),
+                      const SizedBox(width: 4),
+                      Text(TextString.timeByPercent, style: TTextTheme.titleSeven(context)),
+                    ],
+                  ),
                 ),
-                const Expanded(
-                    flex: 2,
-                    child: Row(
-                      children: [
-                        Icon(Icons.sync_alt, size: 14, color: Color(0xFF64748B)),
-                        SizedBox(width: 4),
-                        Text("Comparison", style: TextStyle(fontSize: 13, color: Color(0xFF64748B), fontWeight: FontWeight.w500)),
-                      ],
-                    )
+                Expanded(
+                  flex: 2,
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        IconString.comparisonIcon,
+                        width: 16,
+                        height: 16,
+                      ),
+                      const SizedBox(width: 4),
+                      Text(TextString.comparison, style: TTextTheme.titleSeven(context)),
+                    ],
+                  ),
                 ),
                 const SizedBox(width: 24),
               ],
@@ -466,9 +487,9 @@ class ApplicationTrackingWidget extends StatelessWidget {
                 return Container(
                   margin: const EdgeInsets.symmetric(vertical: 4),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: AppColors.whiteColor,
                     borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: const Color(0xFFE2E8F0)),
+                    border: Border.all(color: AppColors.borderColor),
                   ),
                   child: Column(
                     children: [
@@ -488,15 +509,24 @@ class ApplicationTrackingWidget extends StatelessWidget {
                                 child: Checkbox(
                                   value: app['isSelected'] ?? false,
                                   onChanged: (val) => controller.toggleAppCheckbox(index, val),
-                                  side: const BorderSide(color: Color(0xFFCBD5E1), width: 1.5),
-                                  activeColor: const Color(0xFF4880FF),
+                                  side: const BorderSide(color: AppColors.borderColor, width: 1.5),
+                                  activeColor: AppColors.primaryColor,
                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
                                 ),
                               ),
                               const SizedBox(width: 12),
-                              Expanded(flex: 3, child: Text(app['name'] ?? '', style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Colors.black))),
-                              Expanded(flex: 2, child: Text(app['time'] ?? '', style: const TextStyle(fontSize: 13, color: Color(0xFF64748B)))),
-                              Expanded(flex: 3, child: Text(app['percentage'] ?? '', style: const TextStyle(fontSize: 13, color: Color(0xFF64748B)))),
+                              Expanded(
+                                flex: 3,
+                                child: Text(app['name'] ?? '', style: TTextTheme.titleEight(context)),
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: Text(app['time'] ?? '', style: TTextTheme.titleFour(context)),
+                              ),
+                              Expanded(
+                                flex: 3,
+                                child: Text(app['percentage'] ?? '', style: TTextTheme.titleFour(context)),
+                              ),
                               Expanded(
                                 flex: 2,
                                 child: Row(
@@ -505,23 +535,19 @@ class ApplicationTrackingWidget extends StatelessWidget {
                                     Icon(
                                       (app['isUp'] ?? true) ? Icons.arrow_upward : Icons.arrow_downward,
                                       size: 14,
-                                      color: (app['isUp'] ?? true) ? const Color(0xFF22C55E) : const Color(0xFFEF4444),
+                                      color: (app['isUp'] ?? true) ? AppColors.approvedColor : AppColors.rejectedColor,
                                     ),
                                     const SizedBox(width: 4),
                                     Text(
                                       "${app['compare']}",
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: (app['isUp'] ?? true) ? const Color(0xFF22C55E) : const Color(0xFFEF4444),
-                                        fontWeight: FontWeight.w500,
-                                      ),
+                                      style: (app['isUp'] ?? true) ? TTextTheme.upNumbers(context) : TTextTheme.downNumbers(context),
                                     ),
                                   ],
                                 ),
                               ),
                               Icon(
                                 isOpen ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
-                                color: const Color(0xFF64748B),
+                                color: AppColors.textColor,
                               ),
                             ],
                           ),
@@ -531,13 +557,13 @@ class ApplicationTrackingWidget extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.only(left: 52, right: 40, bottom: 16, top: 4),
                           width: double.infinity,
-                          color: const Color(0xFFFAFAFA),
+                          color: AppColors.whiteColor,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
-                                "Daily break down",
-                                style: TextStyle(fontSize: 13, color: Color(0xFF3B82F6), fontWeight: FontWeight.bold),
+                              Text(
+                              TextString.dailyBrakdown,
+                                style: TTextTheme.titleTen(context),
                               ),
                               const SizedBox(height: 8),
                               Builder(
@@ -565,23 +591,23 @@ class ApplicationTrackingWidget extends StatelessWidget {
                                           children: [
                                             Text(
                                               currentDay['date'] ?? '',
-                                              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Colors.black),
+                                              style: TTextTheme.DateBreakDown(context),
                                             ),
                                             currentDay['isHoliday'] == true
-                                                ? const Text(
-                                              "Holiday",
-                                              style: TextStyle(fontSize: 13, color: Color(0xFF3B82F6), fontWeight: FontWeight.bold),
+                                                ? Text(
+                                              TextString.holiday,
+                                              style: TTextTheme.titleTen(context),
                                             )
                                                 : RichText(
                                               text: TextSpan(
-                                                style: const TextStyle(fontSize: 12, color: Color(0xFF64748B)),
+                                                style: TTextTheme.TotalTimeHour(context),
                                                 children: [
-                                                  const TextSpan(text: "Total: "),
-                                                  TextSpan(text: "${currentDay['total']}   ", style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+                                                  const TextSpan(text: TextString.totalSimpleText),
+                                                  TextSpan(text: "${currentDay['total']}   ", style: TTextTheme.TotalTimeHour(context)),
                                                   const TextSpan(text: "High Activity: "),
-                                                  TextSpan(text: "${currentDay['high']} ", style: const TextStyle(color: Color(0xFF22C55E), fontWeight: FontWeight.w500)),
+                                                  TextSpan(text: "${currentDay['high']} ", style: TTextTheme.upNumbers(context)),
                                                   const TextSpan(text: ", Low Activity: "),
-                                                  TextSpan(text: "${currentDay['low']}", style: const TextStyle(color: Color(0xFFEF4444), fontWeight: FontWeight.w500)),
+                                                  TextSpan(text: "${currentDay['low']}", style: TTextTheme.downNumbers(context)),
                                                 ],
                                               ),
                                             ),

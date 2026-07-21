@@ -119,6 +119,27 @@ class TTextTheme{
     return _textStyle(fontSize:AppTextSizes.size(context, 11, 12, 12),fontWeight: FontWeight.w600,color: AppColors.primaryColor);
   }
 
+  static TextStyle upNumbers(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 12, 14, 14),fontWeight: FontWeight.w400,color: AppColors.approvedColor);
+  }
+
+  static TextStyle downNumbers(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 12, 14, 14),fontWeight: FontWeight.w400,color: AppColors.rejectedColor);
+  }
+
+  static TextStyle titleTen(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 12, 14, 16),fontWeight: FontWeight.w600,color: AppColors.primaryColor);
+  }
+
+  static TextStyle DateBreakDown(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 12, 14, 16),fontWeight: FontWeight.w500,color: AppColors.textColor);
+  }
+
+  static TextStyle TotalTimeHour(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 12, 14, 16),fontWeight: FontWeight.w500,color: AppColors.textGrey);
+  }
+
+
 
 
 

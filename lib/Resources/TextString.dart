@@ -60,7 +60,7 @@ class TextString{
     /// Time Sheet
    static const String  timeSheetTitle=     "Time Sheet";
    static const String  timeSheetSubtitle=     "You can see your time Sheet Here";
-   static const String  pickDateTitle=     "PickDate";
+   static const String  pickDateTitle=     "Pick Date";
    static const String  dayTitle=    "Day";
    static const String  weekTitle=     "Week";
    static const String  Project=     "Project";
@@ -117,4 +117,17 @@ class TextString{
    static const String  activityPercent=     "Activity%";
    static const String  weeklyTitle=    "Weekly Activity Graph";
    static const String  weeklySubtitle=     "Activity percentage per day";
+
+     /// Application Tracking
+   static const String  appTitle=     "Application Tracking";
+   static const String  appSubtitle=   "You can see your application tracking here";
+   static const String  appSecondTitle=    "Application used";
+   static const String  dailyTrackingTitle=     "Daily tracking";
+   static const String  applicationTitle=    "Application";
+   static const String  totalTime=    "Total Time";
+   static const String  timeByPercent=    "Time by %";
+   static const String  comparison=    "Comparison";
+   static const String  dailyBrakdown=      "Daily break down";
+   static const String  holiday=    "Holiday";
+   static const String  totalSimpleText=    "Total: ";
 }
