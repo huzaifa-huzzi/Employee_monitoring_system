@@ -51,4 +51,6 @@ class IconString{
    /// Application Tracking
   static const String  applicationUsedIcon = 'assets/icons/applicationUsed.svg';
   static const String  comparisonIcon = 'assets/icons/ComparisonIcon.svg';
+    /// Url Tracking
+  static const String  urlICon = 'assets/icons/UrlIcon.svg';
 }

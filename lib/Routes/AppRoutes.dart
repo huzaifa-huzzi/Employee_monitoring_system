@@ -11,6 +11,7 @@ import 'package:employee_monitoring_system/Panel/Employee/Screenshot/ScreenshotS
 import 'package:employee_monitoring_system/Panel/Employee/SidebarScreen/SidebarScreen.dart';
 import 'package:employee_monitoring_system/Panel/Employee/Team/Team.dart';
 import 'package:employee_monitoring_system/Panel/Employee/TimeSheet/MyTimeSheet/MyTimeSheet.dart';
+import 'package:employee_monitoring_system/Panel/Employee/Url%20Tracking/UrlTracking.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -97,6 +98,12 @@ class AppNavigation {
           GoRoute(
             path: '/applicationTracking',
             builder: (context, state) => ApplicationTracking(),
+          ),
+
+            // Url Tracking
+          GoRoute(
+            path: '/urlTracking',
+            builder: (context, state) => UrlTracking(),
           ),
 
           _buildRoute('/screenshots', "Screen Shots Content"),

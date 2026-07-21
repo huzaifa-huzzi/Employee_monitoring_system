@@ -155,7 +155,7 @@ class SidebarScreen extends StatelessWidget {
                           iconPath: IconString.urlTrackingIcon,
                           title: "URL Tracking",
                           isCollapsed: isCollapsed,
-                          onTap: (val) => context.go('/url-tracking'),
+                          onTap: (val) => context.go('/urlTracking'),
                           scaffoldKey: _scaffoldKey,
                         ),
 
