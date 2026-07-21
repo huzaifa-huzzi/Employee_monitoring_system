@@ -66,7 +66,7 @@ class UrlTrackingController extends GetxController {
     {'title': 'Total tracked time', 'value': '1hr 24m', 'sub': '↑ 8.7% vs last day', 'icon': IconString.idleTime, 'color': AppColors.primaryColor, 'isPositive': true},
     {'title': 'Active Time', 'value': '87%', 'sub': '↑ 8.7% vs last day', 'icon': IconString.averageActivity, 'color': AppColors.approvedColor, 'isPositive': true},
     {'title': 'Idle Time', 'value': '10m', 'sub': '5% of the total time', 'icon': IconString.idleTime, 'color': AppColors.rejectedColor, 'isPositive': false},
-    {'title': 'Url used', 'value': '4', 'sub': 'Across work hours', 'icon': IconString.urlICon, 'color': AppColors.graphColor, 'isPositive': true},
+    {'title': 'Url used', 'value': '4', 'sub': 'Across work hours', 'icon': IconString.urlICon, 'color': AppColors.primaryColor, 'isPositive': true},
     {'title': 'Productive time', 'value': '77%', 'sub': '↑ 8.7% vs last day', 'icon': IconString.averageActivity, 'color': AppColors.approvedColor, 'isPositive': true},
   ];
 

@@ -64,6 +64,7 @@ class _TimeSheetWidgetState extends State<TimeSheetWidget> {
   }
 
   /// -------- Header Controls ---------- ///
+  // Header Controls
   Widget _buildHeaderControls(BuildContext context, bool webMode) {
     return SizedBox(
       width: double.infinity,

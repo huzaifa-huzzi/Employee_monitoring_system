@@ -106,10 +106,6 @@ class AppNavigation {
             builder: (context, state) => UrlTracking(),
           ),
 
-          _buildRoute('/screenshots', "Screen Shots Content"),
-          _buildRoute('/activity', "Activity Tracking Content"),
-          _buildRoute('/app-tracking', "Application Tracking Content"),
-          _buildRoute('/url-tracking', "URL Tracking Content"),
           _buildRoute('/meeting', "Meeting Content"),
           _buildRoute('/projects', "Project Management Content"),
           _buildRoute('/report', "Report Content"),
