@@ -357,7 +357,6 @@ class UrlTrackingWidget extends StatelessWidget {
       ),
     );
   }
-
   Widget _buildProgressRow(BuildContext context, Map<String, dynamic> item) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -618,8 +617,6 @@ class UrlTrackingWidget extends StatelessWidget {
         ],
       ),
     );
-
-    // Horizontal Scrolling for small screens
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth < 650) {
