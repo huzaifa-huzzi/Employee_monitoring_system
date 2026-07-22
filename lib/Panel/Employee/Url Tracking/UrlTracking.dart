@@ -34,7 +34,7 @@ class UrlTracking extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Url Tracking",
+                        TextString.urlTitle,
                         style: webMode
                             ? TTextTheme.h1Style(context)
                             : TTextTheme.h2Style(context).copyWith(
@@ -43,7 +43,7 @@ class UrlTracking extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        "You can see your application report here",
+                       TextString.urlSubtitle,
                         style: TTextTheme.titleSix(context).copyWith(
                           fontSize: isMobile ? 12 : null,
                         ),

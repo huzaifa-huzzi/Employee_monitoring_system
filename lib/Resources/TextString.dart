@@ -130,4 +130,9 @@ class TextString{
    static const String  dailyBrakdown=      "Daily break down";
    static const String  holiday=    "Holiday";
    static const String  totalSimpleText=    "Total: ";
+    /// Url Tracking
+   static const String  urlTitle=    "Url Tracking";
+   static const String  urlSubtitle=    "You can see your application report here";
+   static const String  urlBrowsingText=    "Url browse";
+   static const String  url=    "Url";
 }

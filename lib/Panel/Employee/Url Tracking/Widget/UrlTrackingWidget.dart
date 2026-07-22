@@ -323,7 +323,7 @@ class UrlTrackingWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Url browse", style: TTextTheme.titleEight(context)),
+          Text(TextString.urlBrowsingText, style: TTextTheme.titleEight(context)),
           const SizedBox(height: 16),
           LayoutBuilder(
             builder: (context, constraints) {
@@ -420,7 +420,7 @@ class UrlTrackingWidget extends StatelessWidget {
                   )),
                 ),
                 const SizedBox(width: 12),
-                Expanded(flex: 3, child: Text("Url", style: TTextTheme.titleSeven(context))),
+                Expanded(flex: 3, child: Text(TextString.url, style: TTextTheme.titleSeven(context))),
                 Expanded(
                   flex: 2,
                   child: Row(
