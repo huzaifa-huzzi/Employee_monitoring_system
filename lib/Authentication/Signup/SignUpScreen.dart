@@ -231,6 +231,7 @@ class SignUpScreen extends StatelessWidget {
                       const SizedBox(height: 12),
                       OutlinedButton(
                         onPressed: () {
+                          context.go('/vendor/dashboard');
                         },
                         style: OutlinedButton.styleFrom(
                           minimumSize: const Size(double.infinity, 42),
@@ -243,18 +244,26 @@ class SignUpScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SvgPicture.asset(
-                              IconString.googleIcon,
-                              height: 18,
-                              width: 18,
-                            ),
-                            const SizedBox(width: 8),
-                            Text(
-                              TextString.invitationSignupGoogle,
-                              style: TTextTheme.FieldWriteTheText(context).copyWith(
-                                fontWeight: FontWeight.w500,
+                            Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    SvgPicture.asset(
+                                      IconString.googleIcon,
+                                      height: 18,
+                                      width: 18,
+                                    ),
+                                    const SizedBox(width: 8),
+                                    Text(
+                                      TextString.invitationSignupGoogle,
+                                      style: TTextTheme.FieldWriteTheText(context).copyWith(
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
                           ],
                         ),
                       ),

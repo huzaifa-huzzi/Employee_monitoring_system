@@ -1,23 +1,24 @@
-import 'package:employee_monitoring_system/Panel/Employee/SidebarScreen/SidebarController.dart';
+
+import 'package:employee_monitoring_system/Panel/Vendor/SidebarVendor/SidebarVendorController.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class MobileAppBar extends StatefulWidget implements PreferredSizeWidget {
+class MobileVendorAppbar extends StatefulWidget implements PreferredSizeWidget {
   final VoidCallback onMenuTap;
 
-  const MobileAppBar({super.key, required this.onMenuTap});
+  const MobileVendorAppbar({super.key, required this.onMenuTap});
 
   @override
-  State<MobileAppBar> createState() => _MobileAppBarState();
+  State<MobileVendorAppbar> createState() => _MobileVendorAppbarState();
 
   @override
   Size get preferredSize => const Size.fromHeight(60);
 }
 
-class _MobileAppBarState extends State<MobileAppBar> {
+class _MobileVendorAppbarState extends State<MobileVendorAppbar> {
   final OverlayPortalController _timerController = OverlayPortalController();
   final _timerLink = LayerLink();
 
@@ -26,7 +27,7 @@ class _MobileAppBarState extends State<MobileAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    final SideBarController controller = Get.find<SideBarController>();
+    final SidebarVendorController controller = Get.find<SidebarVendorController>();
 
     return AppBar(
       elevation: 0,
@@ -122,7 +123,7 @@ class _MobileAppBarState extends State<MobileAppBar> {
   /// ------- Extra Widget -------- ///
 
   //  TIMER POPUP
-  Widget _buildTimerPopup(SideBarController controller) {
+  Widget _buildTimerPopup(SidebarVendorController controller) {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Material(
@@ -228,7 +229,7 @@ class _MobileAppBarState extends State<MobileAppBar> {
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.grey.shade300),
+                  border: Border.all(color: AppColors.borderColor),
                 ),
                 child: Row(
                   children: [
@@ -276,7 +277,7 @@ class _MobileAppBarState extends State<MobileAppBar> {
   }
 
   //SIGN OUT POPUP
-  Widget _buildSignOutPopup(SideBarController controller) {
+  Widget _buildSignOutPopup(SidebarVendorController controller) {
     return Stack(
       children: [
         GestureDetector(onTap: _profileController.hide, child: Container(color: Colors.transparent)),
