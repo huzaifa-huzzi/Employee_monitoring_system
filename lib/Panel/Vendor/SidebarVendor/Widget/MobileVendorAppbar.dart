@@ -72,7 +72,7 @@ class _MobileVendorAppbarState extends State<MobileVendorAppbar> {
                         width: MediaQuery.of(context).size.width < 400 ? 130 : 165,
                         padding: const EdgeInsets.symmetric(horizontal: 8),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: AppColors.whiteColor,
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(color: AppColors.borderColor, width: 1.2),
                         ),

@@ -10,13 +10,13 @@ class AppNavigation {
     initialLocation: '/login',
     debugLogDiagnostics: true,
     routes: [
-      /// 1. Authentication Routes
+      ///  Authentication Routes
       ...AuthRoutes.routes,
 
-      /// 2. Employee Panel Shell Route
+      ///  Employee Panel Shell Route
       EmployeeRoutes.shellRoute,
 
-      /// 3. Vendor Panel Shell Route
+      /// Vendor Panel Shell Route
       VendorRoutes.shellRoute,
     ],
   );

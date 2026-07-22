@@ -157,7 +157,7 @@ class _TabletVendorAppbarState extends State<TabletVendorAppbar> {
         ),
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.whiteColor,
           borderRadius: BorderRadius.circular(12),
         ),
         child: SingleChildScrollView(
@@ -263,7 +263,7 @@ class _TabletVendorAppbarState extends State<TabletVendorAppbar> {
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.grey.shade300),
+                  border: Border.all(color: AppColors.borderColor),
                 ),
                 child:  Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
