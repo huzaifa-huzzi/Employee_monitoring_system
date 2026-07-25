@@ -31,6 +31,10 @@ dependencies:
    # Activity Tracking
   fl_chart: ^1.2.0
 
+  # Employee Invitation
+  country_picker: ^2.0.20
+  dropdown_button2: ^2.3.9
+
   #state management#
   get: ^4.7.3
 
@@ -54,6 +58,7 @@ flutter:
     - assets/Images/Autentication/
     - assets/Images/Team/
     - assets/Images/Screenshot/
+    - assets/Images/Error/
 
 
 

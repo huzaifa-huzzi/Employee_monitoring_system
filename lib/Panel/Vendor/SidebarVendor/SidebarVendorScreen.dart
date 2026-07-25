@@ -96,6 +96,16 @@ class SidebarVendorScreen extends StatelessWidget {
                           context,
                           controller,
                           iconPath: IconString.teamIcon,
+                          title: "Employee",
+                          isCollapsed: isCollapsed,
+                          onTap: (val) => context.go('/vendor/employee'),
+                          scaffoldKey: _scaffoldKey,
+                        ),
+
+                        SidebarVendorComponent.menuItem(
+                          context,
+                          controller,
+                          iconPath: IconString.teamIcon,
                           title: "Team",
                           isCollapsed: isCollapsed,
                           onTap: (val) => context.go('/'),

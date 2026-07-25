@@ -2,6 +2,8 @@
 
 class IconString{
 
+   /// ------------ Employee ----------------- ///
+
    /// logo
   static const String  logoIcon = 'assets/icons/LogoIcon.png';
   /// Universal Icons
@@ -53,4 +55,13 @@ class IconString{
   static const String  comparisonIcon = 'assets/icons/ComparisonIcon.svg';
     /// Url Tracking
   static const String  urlICon = 'assets/icons/UrlIcon.svg';
+
+
+  /// --------------- Vendor -------------------///
+    /// Employee
+  static const String  deleteIcon = 'assets/icons/deleteIcon.svg';
+  static const String  editEmployeeICon = 'assets/icons/editEmployeeIcon.svg';
+  static const String  employeePerson = 'assets/icons/EmployeePerson.svg';
+  static const String  totalEmployeeIcon = 'assets/icons/totalEmployee.svg';
+
 }

@@ -14,4 +14,6 @@ class ImageString{
 
   /// Screenshot
   static const String screenShotImage = 'assets/Images/Screenshot/ScreenshotImage.png';
+    /// Error
+  static const String errorImage = 'assets/Images/Error/UnauthorizedImage.png';
 }

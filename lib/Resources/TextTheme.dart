@@ -24,7 +24,19 @@ class TTextTheme{
   }
 
   static TextStyle h4Style(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 17, 18, 20),fontWeight: FontWeight.w500,color: AppColors.tertiaryTextColor);
+  }
+
+  static TextStyle h7Style(BuildContext context){
     return _textStyle(fontSize:AppTextSizes.size(context, 17, 18, 20),fontWeight: FontWeight.w600,color: AppColors.primaryColor);
+  }
+
+  static TextStyle h6Style(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 17, 18, 20),fontWeight: FontWeight.w600,color: AppColors.primaryColor);
+  }
+
+  static TextStyle CancelBtn(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 17, 18, 20),fontWeight: FontWeight.w500,color: AppColors.primaryColor);
   }
 
   static TextStyle h3Style(BuildContext context){
@@ -139,7 +151,29 @@ class TTextTheme{
     return _textStyle(fontSize:AppTextSizes.size(context, 12, 14, 16),fontWeight: FontWeight.w500,color: AppColors.textGrey);
   }
 
+  static TextStyle titleRegular11(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 10, 11, 11),fontWeight: FontWeight.w400,color: AppColors.textGrey);
+  }
 
+  static TextStyle titleRegular12(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 10, 11, 12),fontWeight: FontWeight.w400,color: AppColors.crossBackground);
+  }
+
+  static TextStyle titleRegular12Grey12(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 10, 11, 12),fontWeight: FontWeight.w400,color: AppColors.subtextColor);
+  }
+
+  static TextStyle titleRegular12White(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 10, 11, 12),fontWeight: FontWeight.w400,color: AppColors.whiteColor);
+  }
+
+  static TextStyle titleMedium13(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 12, 14, 14),fontWeight: FontWeight.w500,color: AppColors.textColor);
+  }
+
+  static TextStyle countryCodeText(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 10, 10, 10),fontWeight: FontWeight.w400,color: AppColors.tertiaryTextColor);
+  }
 
 
 
