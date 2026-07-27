@@ -18,11 +18,11 @@ class Country {
 }
 
 class EmployeeModel {
-  final String name;
-  final String email;
-  final String role;
-  final String department;
-  final String joiningDate;
+   String name;
+   String email;
+   String role;
+   String department;
+   String joiningDate;
   final EmployeeStatus status;
   bool isSelected;
 
@@ -181,6 +181,85 @@ class EmployeeController extends GetxController {
     int secondLetter = cleanCode.codeUnitAt(1) - 0x41 + 0x1F1E6;
 
     return String.fromCharCode(firstLetter) + String.fromCharCode(secondLetter);
+  }
+
+  // ==========================================
+  // --- EDIT EMPLOYEE FORM SECTION ---
+  // ==========================================
+
+  final editEmployeeFormKey = GlobalKey<FormState>();
+
+  // Text Controllers
+  final editEmpFirstNameCtrl = TextEditingController();
+  final editEmpLastNameCtrl = TextEditingController();
+  final editEmpEmailCtrl = TextEditingController();
+  final editEmpPhoneCtrl = TextEditingController();
+  final editPhoneSearchController = TextEditingController(); // Search controller for edit dropdown
+
+  // Reactive Variables
+  var editEmpSelectedRole = ''.obs;
+  var editEmpSelectedDept = ''.obs;
+  var editEmpJoiningDate = ''.obs;
+  var editSelectedCountryName = ''.obs;
+  var editSelectedCode = ''.obs;
+
+  // Selected Employee Target Instance
+  var targetEditingEmployee = Rxn<EmployeeModel>();
+
+  // Initialize Edit Form Data
+  void prepareEmployeeForEditing(EmployeeModel employee) {
+    targetEditingEmployee.value = employee;
+
+    // Split Full Name into First & Last
+    List<String> nameParts = employee.name.trim().split(" ");
+    editEmpFirstNameCtrl.text = nameParts.isNotEmpty ? nameParts.first : "";
+    editEmpLastNameCtrl.text = nameParts.length > 1 ? nameParts.sublist(1).join(" ") : "";
+
+    editEmpEmailCtrl.text = employee.email;
+    editEmpSelectedRole.value = employee.role;
+    editEmpSelectedDept.value = employee.department;
+    editEmpJoiningDate.value = employee.joiningDate;
+
+    // Set Default Country if empty
+    if (countryList.isNotEmpty && editSelectedCountryName.value.isEmpty) {
+      Country defaultCountry = countryList.firstWhere(
+            (c) => c.countryCode.toUpperCase() == 'AU' || c.name.toLowerCase() == 'australia',
+        orElse: () => countryList.first,
+      );
+      editSelectedCountryName.value = defaultCountry.name;
+      editSelectedCode.value = "+${defaultCountry.phoneCode}";
+    }
+  }
+
+  // Save / Update Data Logic
+  void saveUpdatedEmployeeData() {
+    if (editEmployeeFormKey.currentState!.validate() && targetEditingEmployee.value != null) {
+      EmployeeModel emp = targetEditingEmployee.value!;
+
+      emp.name = "${editEmpFirstNameCtrl.text.trim()} ${editEmpLastNameCtrl.text.trim()}".trim();
+      emp.email = editEmpEmailCtrl.text.trim();
+      emp.role = editEmpSelectedRole.value;
+      emp.department = editEmpSelectedDept.value;
+      emp.joiningDate = editEmpJoiningDate.value;
+
+      allEmployees.refresh();
+      Get.back();
+
+      Get.snackbar(
+        "Updated",
+        "Employee details updated successfully!",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: AppColors.approvedColor,
+        colorText: AppColors.whiteColor,
+      );
+    }
+  }
+
+  String? validateEditField(String? value, String fieldLabel) {
+    if (value == null || value.trim().isEmpty) {
+      return "$fieldLabel field is required";
+    }
+    return null;
   }
 
   @override
