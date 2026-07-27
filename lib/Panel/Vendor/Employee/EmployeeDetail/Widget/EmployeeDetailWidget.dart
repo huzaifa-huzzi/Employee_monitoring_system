@@ -1,4 +1,5 @@
 import 'package:employee_monitoring_system/Panel/Vendor/Employee/EmployeeController.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 
@@ -130,7 +131,7 @@ class EmployeeDetailWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
                Text(
-                "Employee Info",
+                TextString.employeeInfo,
                 style: TTextTheme.h2Style(context),
               ),
               const SizedBox(height: 28),
@@ -146,13 +147,13 @@ class EmployeeDetailWidget extends StatelessWidget {
                     spacing: 24,
                     runSpacing: 24,
                     children: [
-                      _buildInfoField(context,"First Name", firstName, itemWidth),
-                      _buildInfoField(context,"Last Name", lastName, itemWidth),
-                      _buildInfoField(context,"Email", employee.email, itemWidth),
-                      _buildInfoField(context,"Phone Number", "+61430042030", itemWidth),
-                      _buildInfoField(context,"Role", employee.role, itemWidth),
-                      _buildInfoField(context,"Department", employee.department, itemWidth),
-                      _buildInfoField(context,"Joining Date", employee.joiningDate, itemWidth),
+                      _buildInfoField(context,TextString.employeeDetailFirst, firstName, itemWidth),
+                      _buildInfoField(context,TextString.employeeDetailLast, lastName, itemWidth),
+                      _buildInfoField(context,TextString.employeeDetailEmail, employee.email, itemWidth),
+                      _buildInfoField(context,TextString.employeeDetailPhone, "+61430042030", itemWidth),
+                      _buildInfoField(context,TextString.employeeDetailRole, employee.role, itemWidth),
+                      _buildInfoField(context,TextString.employeeDetailDept, employee.department, itemWidth),
+                      _buildInfoField(context,TextString.employeeDetailJoining, employee.joiningDate, itemWidth),
                     ],
                   );
                 },

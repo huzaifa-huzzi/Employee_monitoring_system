@@ -1,6 +1,7 @@
 import 'package:employee_monitoring_system/Panel/Vendor/Employee/EmployeeController.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -51,7 +52,7 @@ class EmployeeWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "All Employees",
+                      TextString.employeeTitle,
                       style: TTextTheme.titleOne(context).copyWith(
                         fontSize: isMobile ? 18 : 20,
                         fontWeight: FontWeight.bold,
@@ -110,14 +111,14 @@ class EmployeeWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Employees",
+            TextString.employeeTitleTwo,
             style: TTextTheme.titleOne(
               context,
             ).copyWith(fontSize: 22, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 4),
           Text(
-            "You can see your employees report here",
+            TextString.employeeSubtitle,
             style: TTextTheme.titleTwo(
               context,
             ).copyWith(color: AppColors.textGrey, fontSize: 12),
@@ -161,14 +162,14 @@ class EmployeeWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Employees",
+              TextString.employeeTitleTwo,
               style: TTextTheme.titleOne(
                 context,
               ).copyWith(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 4),
             Text(
-              "You can see your employees report here",
+              TextString.employeeSubtitle,
               style: TTextTheme.titleTwo(
                 context,
               ).copyWith(color: AppColors.textGrey),
@@ -214,14 +215,14 @@ class EmployeeWidget extends StatelessWidget {
           const SizedBox(height: 12),
           _buildProgressCard(
             context,
-            "Online Employees",
+            TextString.onlineEmployee,
             controller.onlineCount,
             AppColors.approvedColor,
           ),
           const SizedBox(height: 12),
           _buildProgressCard(
             context,
-            "Offline Employees",
+            TextString.offlineEmployee,
             controller.offlineCount,
             AppColors.rejectedColor,
           ),
@@ -238,7 +239,7 @@ class EmployeeWidget extends StatelessWidget {
         Expanded(
           child: _buildProgressCard(
             context,
-            "Online Employees",
+            TextString.onlineEmployee,
             controller.onlineCount,
             AppColors.approvedColor,
           ),
@@ -247,7 +248,7 @@ class EmployeeWidget extends StatelessWidget {
         Expanded(
           child: _buildProgressCard(
             context,
-            "Offline Employees",
+            TextString.offlineEmployee,
             controller.offlineCount,
             AppColors.rejectedColor,
           ),
@@ -285,7 +286,7 @@ class EmployeeWidget extends StatelessWidget {
                     onChanged: (val) => controller.searchQuery.value = val,
                     style: TTextTheme.titleTwo(context),
                     decoration: InputDecoration(
-                      hintText: "Search Dept",
+                      hintText: TextString.searchDept,
                       hintStyle: TTextTheme.titleTwo(
                         context,
                       ).copyWith(color: AppColors.textGrey, fontSize: 12),
@@ -334,7 +335,7 @@ class EmployeeWidget extends StatelessWidget {
                       onChanged: (val) => controller.searchQuery.value = val,
                       style: TTextTheme.titleTwo(context),
                       decoration: InputDecoration(
-                        hintText: "Search by Department",
+                        hintText: TextString.searchDept,
                         hintStyle: TTextTheme.titleTwo(
                           context,
                         ).copyWith(color: AppColors.textGrey, fontSize: 13),
@@ -395,7 +396,7 @@ class EmployeeWidget extends StatelessWidget {
               Expanded(
                 flex: 3,
                 child: Text(
-                  "Employee Name",
+                  TextString.employeeName,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TTextTheme.InsideAlreadyWrittenText(context),
@@ -404,7 +405,7 @@ class EmployeeWidget extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Text(
-                  "Role",
+                  TextString.employeeRole,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TTextTheme.InsideAlreadyWrittenText(context),
@@ -413,7 +414,7 @@ class EmployeeWidget extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Text(
-                  "Departement",
+                 TextString.employeeDept,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TTextTheme.InsideAlreadyWrittenText(context),
@@ -422,7 +423,7 @@ class EmployeeWidget extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Text(
-                  "Joining Date",
+                  TextString.employeeJoining,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TTextTheme.InsideAlreadyWrittenText(context),
@@ -431,7 +432,7 @@ class EmployeeWidget extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Text(
-                  "Status",
+                  TextString.employeeStatus,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TTextTheme.InsideAlreadyWrittenText(context),
@@ -440,7 +441,7 @@ class EmployeeWidget extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Text(
-                  "Action",
+                  TextString.employeeAction,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TTextTheme.InsideAlreadyWrittenText(context),
@@ -641,7 +642,7 @@ class EmployeeWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Results per page",
+                TextString.resultsPerPage,
                 style: TTextTheme.titleRegular11(context),
               ),
               const SizedBox(width: 12),
@@ -695,7 +696,7 @@ class EmployeeWidget extends StatelessWidget {
       children: [
         Row(
           children: [
-            Text("Results per page", style: TTextTheme.titleRegular11(context)),
+            Text(TextString.resultsPerPage, style: TTextTheme.titleRegular11(context)),
             const SizedBox(width: 16),
             Obx(
               () => DropdownButtonHideUnderline(
@@ -755,7 +756,7 @@ class EmployeeWidget extends StatelessWidget {
           ),
           SizedBox(width: 4),
           Text(
-            "Prev",
+            TextString.Prev,
             style: TTextTheme.titleRegular12(
               context,
             ).copyWith(color: AppColors.tertiaryTextColor),
@@ -770,7 +771,7 @@ class EmployeeWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       child: Row(
         children: [
-          Text("Next", style: TTextTheme.titleRegular12Grey12(context)),
+          Text(TextString.Next, style: TTextTheme.titleRegular12Grey12(context)),
           SizedBox(width: 4),
           Icon(
             Icons.chevron_right_rounded,
@@ -833,9 +834,9 @@ class EmployeeWidget extends StatelessWidget {
             controller.selectedDepartmentFilter.value = value;
           },
           itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-            _buildPopupItem(context, "Employee Name"),
-            _buildPopupItem(context, "Role"),
-            _buildPopupItem(context, "Departement"),
+            _buildPopupItem(context, TextString.employeeName),
+            _buildPopupItem(context, TextString.employeeRole),
+            _buildPopupItem(context, TextString.employeeDept),
           ],
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -975,7 +976,7 @@ class EmployeeWidget extends StatelessWidget {
               ),
               SizedBox(width: 8),
               Text(
-                "Total Employees",
+                TextString.employeeTotal,
                 style: TTextTheme.titleRegular12Grey12(context),
               ),
             ],
@@ -984,7 +985,7 @@ class EmployeeWidget extends StatelessWidget {
           Text("$count", style: TTextTheme.h2Style(context)),
           const SizedBox(height: 4),
           Text(
-            "6 new member added",
+           TextString.employeeTotalSubtitle,
             style: TTextTheme.titleRegular12Grey12(context),
           ),
         ],
@@ -1047,7 +1048,7 @@ class EmployeeWidget extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
-          insetPadding: const EdgeInsets.symmetric(
+          insetPadding:  EdgeInsets.symmetric(
             horizontal: 20,
             vertical: 24,
           ),
@@ -1080,12 +1081,12 @@ class EmployeeWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Delete Employee",
+                           TextString.DialogOne,
                             style: TTextTheme.h3Style(context),
                           ),
                           SizedBox(height: 4),
                           Text(
-                            "Are You Sure You want to delete it?",
+                            TextString.DialogTwo,
                             style: TTextTheme.selectProjectText(context),
                           ),
                         ],
@@ -1202,12 +1203,12 @@ class EmployeeWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Employee deleted Successfully",
+                       TextString.DialogThree,
                         style: TTextTheme.h3Style(context),
                       ),
                       SizedBox(height: 4),
                       Text(
-                        "Congrats! employee has successfully deleted in the system.",
+                        TextString.DialogFour,
                         style: TTextTheme.selectProjectText(context),
                       ),
                     ],

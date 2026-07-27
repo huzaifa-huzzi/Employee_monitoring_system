@@ -38,7 +38,6 @@ class EmployeeModel {
 }
 
 class EmployeeController extends GetxController {
-  // --- Existing Table & Stats Logic ---
   var selectedTabIndex = 0.obs;
   var searchQuery = ''.obs;
   var selectedDepartmentFilter = 'Employee Name'.obs;
@@ -183,34 +182,28 @@ class EmployeeController extends GetxController {
     return String.fromCharCode(firstLetter) + String.fromCharCode(secondLetter);
   }
 
-  // ==========================================
-  // --- EDIT EMPLOYEE FORM SECTION ---
-  // ==========================================
+
+  // EDIT EMPLOYEE FORM SECTION ---
+
 
   final editEmployeeFormKey = GlobalKey<FormState>();
 
-  // Text Controllers
   final editEmpFirstNameCtrl = TextEditingController();
   final editEmpLastNameCtrl = TextEditingController();
   final editEmpEmailCtrl = TextEditingController();
   final editEmpPhoneCtrl = TextEditingController();
-  final editPhoneSearchController = TextEditingController(); // Search controller for edit dropdown
+  final editPhoneSearchController = TextEditingController();
 
-  // Reactive Variables
   var editEmpSelectedRole = ''.obs;
   var editEmpSelectedDept = ''.obs;
   var editEmpJoiningDate = ''.obs;
   var editSelectedCountryName = ''.obs;
   var editSelectedCode = ''.obs;
 
-  // Selected Employee Target Instance
   var targetEditingEmployee = Rxn<EmployeeModel>();
 
-  // Initialize Edit Form Data
   void prepareEmployeeForEditing(EmployeeModel employee) {
     targetEditingEmployee.value = employee;
-
-    // Split Full Name into First & Last
     List<String> nameParts = employee.name.trim().split(" ");
     editEmpFirstNameCtrl.text = nameParts.isNotEmpty ? nameParts.first : "";
     editEmpLastNameCtrl.text = nameParts.length > 1 ? nameParts.sublist(1).join(" ") : "";
@@ -219,8 +212,6 @@ class EmployeeController extends GetxController {
     editEmpSelectedRole.value = employee.role;
     editEmpSelectedDept.value = employee.department;
     editEmpJoiningDate.value = employee.joiningDate;
-
-    // Set Default Country if empty
     if (countryList.isNotEmpty && editSelectedCountryName.value.isEmpty) {
       Country defaultCountry = countryList.firstWhere(
             (c) => c.countryCode.toUpperCase() == 'AU' || c.name.toLowerCase() == 'australia',
@@ -230,8 +221,6 @@ class EmployeeController extends GetxController {
       editSelectedCode.value = "+${defaultCountry.phoneCode}";
     }
   }
-
-  // Save / Update Data Logic
   void saveUpdatedEmployeeData() {
     if (editEmployeeFormKey.currentState!.validate() && targetEditingEmployee.value != null) {
       EmployeeModel emp = targetEditingEmployee.value!;
@@ -271,6 +260,11 @@ class EmployeeController extends GetxController {
     roleController.dispose();
     departmentController.dispose();
     searchController.dispose();
+    editEmpFirstNameCtrl.dispose();
+    editEmpLastNameCtrl.dispose();
+    editEmpEmailCtrl.dispose();
+    editEmpPhoneCtrl.dispose();
+    editPhoneSearchController.dispose();
     super.onClose();
   }
 }

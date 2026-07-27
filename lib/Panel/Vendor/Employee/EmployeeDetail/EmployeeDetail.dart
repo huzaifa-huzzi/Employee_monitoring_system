@@ -1,6 +1,8 @@
 import 'package:employee_monitoring_system/Panel/Vendor/Employee/EmployeeController.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/Employee/EmployeeDetail/Widget/EmployeeDetailWidget.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
+import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -38,30 +40,23 @@ class EmployeeDetail extends StatelessWidget {
                       child: Icon(
                         Icons.arrow_back_ios_new_rounded,
                         size: 20,
-                        color: Color(0xFF101828),
+                        color: AppColors.textColor,
                       ),
                     ),
                   ),
                   const SizedBox(width: 8),
-                  const Text(
-                    "Employee Detail",
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF101828),
-                    ),
+                   Text(
+                    TextString.employeeDetailTitle,
+                    style: TTextTheme.h1Style(context)
                   ),
                 ],
               ),
               const SizedBox(height: 4),
-              const Padding(
+               Padding(
                 padding: EdgeInsets.only(left: 32),
                 child: Text(
-                  "You can see your employees report here",
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Color(0xFF667085),
-                  ),
+                  TextString.employeeDetailSubtitle,
+                  style: TTextTheme.titleFour(context),
                 ),
               ),
               const SizedBox(height: 20),

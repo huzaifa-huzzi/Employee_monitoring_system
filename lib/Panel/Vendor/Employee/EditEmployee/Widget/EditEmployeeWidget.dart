@@ -4,6 +4,7 @@ import 'package:employee_monitoring_system/Panel/Vendor/Employee/ReusableWidget/
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
 import 'package:employee_monitoring_system/Resources/ImageString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -107,7 +108,7 @@ class EditEmployeeWidget extends StatelessWidget {
                       children: [
                         const Icon(Icons.arrow_back_ios_new, size: 18, color: AppColors.textColor),
                         const SizedBox(width: 8),
-                        Text("Edit Employee", style: TTextTheme.h1Style(context)),
+                        Text(TextString.editEmployeeTitle, style: TTextTheme.h1Style(context)),
                       ],
                     ),
                   ),
@@ -115,7 +116,7 @@ class EditEmployeeWidget extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 26.0),
                     child: Text(
-                      "You can see your employees report here",
+                      TextString.editEmployeeSubtitle,
                       style: TTextTheme.titleFour(context),
                     ),
                   ),
@@ -232,7 +233,7 @@ class EditEmployeeWidget extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Employee Info", style: TTextTheme.h2Style(context)),
+                          Text(TextString.employeeInfo, style: TTextTheme.h2Style(context)),
                           const SizedBox(height: 24),
                           LayoutBuilder(
                             builder: (context, innerConstraints) {
@@ -246,12 +247,12 @@ class EditEmployeeWidget extends StatelessWidget {
                                     context: context,
                                     width: innerConstraints.maxWidth,
                                     columns: columns,
-                                    label: "First Name",
+                                    label: TextString.employeeFirstName,
                                     child: TextFormField(
                                       cursorColor: AppColors.textColor,
                                       controller: controller.editEmpFirstNameCtrl,
                                       style: TTextTheme.FieldWriteTheText(context),
-                                      decoration: _inputDecoration("Enter Name"),
+                                      decoration: _inputDecoration(TextString.employeeFirstSubtitle),
                                       validator: (val) => controller.validateEditField(val, "First Name"),
                                     ),
                                   ),
@@ -259,12 +260,12 @@ class EditEmployeeWidget extends StatelessWidget {
                                     context: context,
                                     width: innerConstraints.maxWidth,
                                     columns: columns,
-                                    label: "Last Name",
+                                    label: TextString.employeeLastName,
                                     child: TextFormField(
                                       cursorColor: AppColors.textColor,
                                       controller: controller.editEmpLastNameCtrl,
                                       style: TTextTheme.FieldWriteTheText(context),
-                                      decoration: _inputDecoration("Enter Name"),
+                                      decoration: _inputDecoration(TextString.employeeFirstSubtitle),
                                       validator: (val) => controller.validateEditField(val, "Last Name"),
                                     ),
                                   ),
@@ -272,12 +273,12 @@ class EditEmployeeWidget extends StatelessWidget {
                                     context: context,
                                     width: innerConstraints.maxWidth,
                                     columns: columns,
-                                    label: "Email",
+                                    label: TextString.employeeEmail,
                                     child: TextFormField(
                                       cursorColor: AppColors.textColor,
                                       controller: controller.editEmpEmailCtrl,
                                       style: TTextTheme.FieldWriteTheText(context),
-                                      decoration: _inputDecoration("Enter email address"),
+                                      decoration: _inputDecoration(TextString.employeeEmailSubtitle),
                                       validator: (val) => controller.validateEmail(val),
                                     ),
                                   ),
@@ -285,28 +286,28 @@ class EditEmployeeWidget extends StatelessWidget {
                                     context: context,
                                     width: innerConstraints.maxWidth,
                                     columns: columns,
-                                    label: "Phone Number",
+                                    label: TextString.employeePhone,
                                     child: _buildPhoneField(context, controller),
                                   ),
                                   _buildResponsiveField(
                                     context: context,
                                     width: innerConstraints.maxWidth,
                                     columns: columns,
-                                    label: "Role",
+                                    label: TextString.employeeRole,
                                     child: _buildRolePopupMenu(context, controller),
                                   ),
                                   _buildResponsiveField(
                                     context: context,
                                     width: innerConstraints.maxWidth,
                                     columns: columns,
-                                    label: "Departement",
+                                    label: TextString.employeeDetailDept,
                                     child: _buildDepartmentPopupMenu(context, controller),
                                   ),
                                   _buildResponsiveField(
                                     context: context,
                                     width: innerConstraints.maxWidth,
                                     columns: columns,
-                                    label: "Joining Date",
+                                    label: TextString.employeeJoining,
                                     child: _buildJoiningDatePickerField(context, controller),
                                   ),
                                 ],
@@ -390,7 +391,7 @@ class EditEmployeeWidget extends StatelessWidget {
         );
       },
       child: InputDecorator(
-        decoration: _inputDecoration("Select Date").copyWith(
+        decoration: _inputDecoration(TextString.selectDate).copyWith(
           suffixIcon: Padding(
             padding: const EdgeInsets.all(12.0),
             child: SvgPicture.asset(
@@ -407,7 +408,7 @@ class EditEmployeeWidget extends StatelessWidget {
         child: Obx(
               () => Text(
             controller.editEmpJoiningDate.value.isEmpty
-                ? "Select Date"
+                ? TextString.selectDate
                 : controller.editEmpJoiningDate.value,
             style: controller.editEmpJoiningDate.value.isEmpty
                 ? TTextTheme.selectProjectText(context)
@@ -468,7 +469,7 @@ class EditEmployeeWidget extends StatelessWidget {
                     );
 
                     if (selectedLabel.isEmpty || found.isEmpty) {
-                      return Text("Select Department", style: TTextTheme.selectProjectText(context));
+                      return Text(TextString.selectDepartment, style: TTextTheme.selectProjectText(context));
                     }
 
                     return Row(
@@ -535,7 +536,7 @@ class EditEmployeeWidget extends StatelessWidget {
                 Obx(
                       () => Text(
                     controller.editEmpSelectedRole.value.isEmpty
-                        ? "Select Role"
+                        ? TextString.selectRole
                         : controller.editEmpSelectedRole.value,
                     style: controller.editEmpSelectedRole.value.isEmpty
                         ? TTextTheme.selectProjectText(context)
@@ -719,7 +720,7 @@ class EditEmployeeWidget extends StatelessWidget {
         style: const TextStyle(fontSize: 13),
         decoration: InputDecoration(
           isDense: true,
-          hintText: 'Search country...',
+          hintText: TextString.searchCountry,
           hintStyle: const TextStyle(fontSize: 12),
           prefixIcon: const Icon(Icons.search, size: 16),
           border: OutlineInputBorder(
@@ -819,12 +820,12 @@ class EditEmployeeWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Edit Employee",
+                            TextString.editEmployeeTitleOne,
                             style: TTextTheme.h3Style(context),
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            "Are You Sure You want to edit it?",
+                            TextString.editEmployeeTitleTwo,
                             style: TTextTheme.selectProjectText(context),
                           ),
                         ],
@@ -941,12 +942,12 @@ class EditEmployeeWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Employee Edited Successfully",
+                        TextString.editEmployeeTitleThree,
                         style: TTextTheme.h3Style(context),
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        "Congrats! employee has successfully edited in the system.",
+                        TextString.editEmployeeTitleFour,
                         style: TTextTheme.selectProjectText(context),
                       ),
                     ],

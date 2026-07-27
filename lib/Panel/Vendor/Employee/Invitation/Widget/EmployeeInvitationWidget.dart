@@ -1,6 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/Employee/EmployeeController.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,7 +35,7 @@ class EmployeeInvitationWidget extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               Text(
-                "Invite Employee",
+                TextString.InviteEmployee,
                 style: TTextTheme.titleOne(context).copyWith(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
@@ -47,7 +48,7 @@ class EmployeeInvitationWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 28.0),
             child: Text(
-              "You can see your employees report here",
+              TextString.InviteEmployeeSubtitle,
               style: TTextTheme.titleTwo(context).copyWith(
                 color: AppColors.tertiaryTextColor,
                 fontSize: 13,
@@ -72,7 +73,7 @@ class EmployeeInvitationWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Invite Employee",
+                    TextString.InviteEmployee,
                     style: TTextTheme.h3Style(context).copyWith(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -90,19 +91,19 @@ class EmployeeInvitationWidget extends StatelessWidget {
                             isMobile,
                             _buildTextField(
                               context,
-                              label: "First Name*",
-                              hint: "Enter your name",
+                              label:TextString.employeeFirstName ,
+                              hint:TextString.employeeFirstSubtitle ,
                               controller: controller.firstNameController,
                               validator: (v) => controller.validateRequired(
-                                  v, "First Name"),
+                                  v, TextString.employeeFirstSubtitle),
                             ),
                             _buildTextField(
                               context,
-                              label: "Last Name*",
-                              hint: "Enter your name",
+                              label:TextString.employeeLastName ,
+                              hint:TextString.employeeFirstSubtitle ,
                               controller: controller.lastNameController,
                               validator: (v) => controller.validateRequired(
-                                  v, "Last Name"),
+                                  v,TextString.employeeLastSubtitle ),
                             ),
                           ),
                           const SizedBox(height: 16),
@@ -110,8 +111,8 @@ class EmployeeInvitationWidget extends StatelessWidget {
                             isMobile,
                             _buildTextField(
                               context,
-                              label: "Email*",
-                              hint: "Enter your email",
+                              label:TextString.employeeEmail ,
+                              hint:TextString.employeeEmailSubtitle ,
                               controller: controller.emailController,
                               validator: (v) => controller.validateEmail(v),
                             ),
@@ -122,16 +123,16 @@ class EmployeeInvitationWidget extends StatelessWidget {
                             isMobile,
                             _buildTextField(
                               context,
-                              label: "Role*",
-                              hint: "Enter your name",
+                              label:TextString.employeeRoleTwo ,
+                              hint:TextString.employeeRoleTwoSubtitle ,
                               controller: controller.roleController,
                               validator: (v) =>
                                   controller.validateRequired(v, "Role"),
                             ),
                             _buildTextField(
                               context,
-                              label: "Department",
-                              hint: "Enter your name",
+                              label:TextString.employeeDeptTwo ,
+                              hint:TextString.employeeDeptTwoSubtitle ,
                               controller: controller.departmentController,
                               isOptional: true,
                             ),
@@ -281,7 +282,7 @@ class EmployeeInvitationWidget extends StatelessWidget {
       children: [
         RichText(
           text: TextSpan(
-            text: "Phone Number",
+            text: TextString.employeePhone,
             style: TTextTheme.titleFive(context).copyWith(
               fontSize: 13,
               fontWeight: FontWeight.w500,
@@ -496,7 +497,7 @@ class EmployeeInvitationWidget extends StatelessWidget {
         style: TTextTheme.FieldWriteTheText(context).copyWith(fontSize: 13),
         decoration: InputDecoration(
           isDense: true,
-          hintText: 'Search country...',
+          hintText: TextString.searchCountry,
           hintStyle: TTextTheme.InsideAlreadyWrittenText(context)
               .copyWith(fontSize: 12),
           prefixIcon: const Icon(
@@ -557,12 +558,12 @@ class EmployeeInvitationWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Invite Send Successfully",
+                        TextString.InvitationDialogOne,
                         style: TTextTheme.h3Style(context),
                       ),
                       SizedBox(height: 4),
                       Text(
-                        "Congrats! Invite has successfully sent to the employee.",
+                        TextString.InvitationDialogTwo,
                         style: TTextTheme.selectProjectText(context),
                       ),
                     ],

@@ -43,6 +43,8 @@ class TextString{
    static const String  signupPasswordField=    'Create a password';
    static const String  alreadyAccount=    "Already have an account? ";
 
+    /// --------------------- Employee ------------///
+
       /// Team
    static const String  teamTitle=     'Team';
    static const String  teamSubtitle=     'You can see your team members here';
@@ -135,4 +137,69 @@ class TextString{
    static const String  urlSubtitle=    "You can see your application report here";
    static const String  urlBrowsingText=    "Url browse";
    static const String  url=    "Url";
+
+   /// ---------------- Vendor ------------ ///
+
+       /// Employee
+   static const String  employeeTitle=   "All Employees";
+   static const String  employeeTitleTwo=   "Employees";
+   static const String  employeeSubtitle=   "You can see your employees report here";
+   static const String  onlineEmployee=   "Online Employees";
+   static const String  offlineEmployee=   "Offline Employees";
+   static const String  searchDept=   "Search Dept";
+   static const String  employeeName=   "Employee Name";
+   static const String  employeeRole=   "Role";
+   static const String  employeeDept=    "Departement";
+   static const String  employeeJoining=   "Joining Date";
+   static const String  employeeStatus=   "Status";
+   static const String  employeeAction=   "Action";
+   static const String  resultsPerPage=   "Results per page";
+   static const String  Prev=   "Prev";
+   static const String  Next=   "Next";
+   static const String  employeeTotal=  "Total Employees";
+   static const String  employeeTotalSubtitle=    "6 new member added";
+   static const String  DialogOne=    "Delete Employee";
+   static const String  DialogTwo=   "Are You Sure You want to delete it?";
+   static const String  DialogThree=    "Employee deleted Successfully";
+   static const String  DialogFour=   "Congrats! employee has successfully deleted in the system.";
+   static const String  InviteEmployee=  "Invite Employee";
+   static const String  InviteEmployeeSubtitle=  "You can see your employees report here";
+   static const String  employeeFirstName=   "First Name*";
+   static const String  employeeFirstSubtitle=   "Enter your name";
+   static const String  employeeSecondSubtitle=   "First Name";
+   static const String  employeeLastName=   "Last Name*";
+   static const String  employeeLastSubtitle=   "Last Name";
+   static const String  employeeEmail=   "Email*";
+   static const String  employeeEmailSubtitle=   "Enter your email";
+   static const String  employeeRoleTwo=   "Role*";
+   static const String  employeeDeptTwo=   "Department";
+   static const String  employeeRoleTwoSubtitle=   "Enter your Role";
+   static const String  employeeDeptTwoSubtitle=   "Enter your Department";
+   static const String  employeePhone=   "Phone Number";
+   static const String  searchCountry=   'Search country...';
+   static const String  InvitationDialogOne=  "Invite Send Successfully";
+   static const String  InvitationDialogTwo=   "Congrats! Invite has successfully sent to the employee.";
+   static const String  employeeDetailTitle=   "Employee Detail";
+   static const String  employeeDetailSubtitle=  "You can see your employees report here";
+   static const String  employeeInfo=   "Employee Info";
+   static const String  employeeDetailFirst=   "First Name";
+   static const String  employeeDetailLast=   "Last Name";
+   static const String  employeeDetailEmail=   "Email";
+   static const String  employeeDetailPhone=   "Phone Number";
+   static const String  employeeDetailRole=   "Role";
+   static const String  employeeDetailDept=   "Department";
+   static const String  employeeDetailJoining=   "Joining Date";
+   static const String  editEmployeeTitle=   "Edit Employee";
+   static const String  editEmployeeSubtitle=   "You can see your employees report here";
+   static const String  selectDate=   "Select Date";
+   static const String  selectDepartment=   "Select Department";
+   static const String  selectRole=  "Select Role";
+   static const String  editEmployeeTitleOne=   "Edit Employee";
+   static const String  editEmployeeTitleTwo=   "Are You Sure You want to edit it?";
+   static const String  editEmployeeTitleThree=  "Employee Edited Successfully";
+   static const String  editEmployeeTitleFour=   "Congrats! employee has successfully edited in the system.";
+
+
+
+
 }

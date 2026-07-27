@@ -11,14 +11,6 @@ class EditEmployee extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.find<EmployeeController>();
 
-    // Route Se Pass kiye gaye employee data ko read karega:
-    if (Get.arguments != null && Get.arguments is EmployeeModel) {
-      controller.prepareEmployeeForEditing(Get.arguments as EmployeeModel);
-    } else if (controller.targetEditingEmployee.value == null && controller.allEmployees.isNotEmpty) {
-      // Fallback logic for testing
-      controller.prepareEmployeeForEditing(controller.allEmployees.first);
-    }
-
     return const Scaffold(
       backgroundColor: AppColors.backgroundOfScreenColor,
       body: SafeArea(
