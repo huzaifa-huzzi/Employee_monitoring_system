@@ -97,7 +97,7 @@ class _CustomDatePickerEmployeeState extends State<CustomDatePickerEmployee> {
           ),
 
           const SizedBox(height: 12),
-          Divider(color: AppColors.borderColor.withOpacity(0.5), height: 1),
+          Divider(color: AppColors.borderColor.withValues(alpha: 0.5), height: 1),
           const SizedBox(height: 12),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -1,4 +1,3 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/Employee/EmployeeController.dart' show EmployeeController;
 import 'package:employee_monitoring_system/Panel/Vendor/Employee/Invitation/Widget/EmployeeInvitationWidget.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';

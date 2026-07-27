@@ -29,7 +29,7 @@ class ErrorPage extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: AppColors.primaryColor.withOpacity(0.08),
+                          color: AppColors.primaryColor.withValues(alpha: 0.08),
                           shape: BoxShape.circle,
                         ),
                         child: const Icon(

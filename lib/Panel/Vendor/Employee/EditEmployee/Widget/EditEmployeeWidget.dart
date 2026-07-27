@@ -127,7 +127,7 @@ class EditEmployeeWidget extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: AppColors.whiteColor,
                       borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+                      border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
                     ),
                     child: LayoutBuilder(
                       builder: (context, headerConstraints) {
@@ -226,7 +226,7 @@ class EditEmployeeWidget extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: AppColors.whiteColor,
                       borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+                      border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
                     ),
                     child: Form(
                       key: controller.editEmployeeFormKey,
