@@ -9,6 +9,7 @@ import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 
 class EditEmployeeWidget extends StatelessWidget {
@@ -102,7 +103,9 @@ class EditEmployeeWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   InkWell(
-                    onTap: () => Get.back(),
+                    onTap: () {
+                      context.go('/vendor/employee');
+                    },
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
