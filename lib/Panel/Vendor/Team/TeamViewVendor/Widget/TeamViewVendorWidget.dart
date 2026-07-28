@@ -48,7 +48,7 @@ class TeamViewVendorWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppColors.whiteColor,
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+              border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -180,7 +180,7 @@ class TeamViewVendorWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+        border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -190,7 +190,7 @@ class TeamViewVendorWidget extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 22,
-                backgroundColor: AppColors.borderColor.withOpacity(0.3),
+                backgroundColor: AppColors.borderColor.withValues(alpha: 0.3),
                 child: const Icon(Icons.person, color: AppColors.textColor, size: 24),
               ),
               const SizedBox(width: 10),

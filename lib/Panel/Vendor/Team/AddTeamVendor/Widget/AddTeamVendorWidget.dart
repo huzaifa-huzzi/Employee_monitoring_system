@@ -48,7 +48,7 @@ class AddTeamVendorWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppColors.whiteColor,
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+              border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +69,7 @@ class AddTeamVendorWidget extends StatelessWidget {
                     fillColor: AppColors.whiteColor,
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: AppColors.borderColor.withOpacity(0.6)),
+                      borderSide: BorderSide(color: AppColors.borderColor.withValues(alpha: 0.6)),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -88,7 +88,7 @@ class AddTeamVendorWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppColors.whiteColor,
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+              border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,7 +118,7 @@ class AddTeamVendorWidget extends StatelessWidget {
                               fillColor: AppColors.whiteColor,
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
-                                borderSide: BorderSide(color: AppColors.borderColor.withOpacity(0.6)),
+                                borderSide: BorderSide(color: AppColors.borderColor.withValues(alpha: 0.6)),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
@@ -184,7 +184,7 @@ class AddTeamVendorWidget extends StatelessWidget {
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(4),
                                       ),
-                                      side: BorderSide(color: AppColors.borderColor.withOpacity(0.8)),
+                                      side: BorderSide(color: AppColors.borderColor.withValues(alpha: 0.8)),
                                     ),
                                   )),
                                   const SizedBox(width: 8),
@@ -224,7 +224,7 @@ class AddTeamVendorWidget extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       color: AppColors.whiteColor,
                                       borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+                                      border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
                                     ),
                                     child: Row(
                                       children: [
@@ -238,7 +238,7 @@ class AddTeamVendorWidget extends StatelessWidget {
                                             shape: RoundedRectangleBorder(
                                               borderRadius: BorderRadius.circular(4),
                                             ),
-                                            side: BorderSide(color: AppColors.borderColor.withOpacity(0.8)),
+                                            side: BorderSide(color: AppColors.borderColor.withValues(alpha: 0.8)),
                                           ),
                                         ),
                                         const SizedBox(width: 8),
@@ -393,7 +393,7 @@ class AddTeamVendorWidget extends StatelessWidget {
                           return Container(
                             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                             decoration: BoxDecoration(
-                              border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+                              border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
                               borderRadius: BorderRadius.circular(6),
                             ),
                             child: DropdownButtonHideUnderline(

@@ -51,7 +51,7 @@ class EditTeamVendorWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppColors.whiteColor,
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+              border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,7 +71,7 @@ class EditTeamVendorWidget extends StatelessWidget {
                     fillColor: AppColors.whiteColor,
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: AppColors.borderColor.withOpacity(0.6)),
+                      borderSide: BorderSide(color: AppColors.borderColor.withValues(alpha: 0.6)),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -90,7 +90,7 @@ class EditTeamVendorWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppColors.whiteColor,
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+              border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,7 +119,7 @@ class EditTeamVendorWidget extends StatelessWidget {
                               fillColor: AppColors.whiteColor,
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
-                                borderSide: BorderSide(color: AppColors.borderColor.withOpacity(0.6)),
+                                borderSide: BorderSide(color: AppColors.borderColor.withValues(alpha: 0.6)),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
@@ -185,7 +185,7 @@ class EditTeamVendorWidget extends StatelessWidget {
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(4),
                                       ),
-                                      side: BorderSide(color: AppColors.borderColor.withOpacity(0.8)),
+                                      side: BorderSide(color: AppColors.borderColor.withValues(alpha: 0.8)),
                                     ),
                                   )),
                                   const SizedBox(width: 8),
@@ -225,7 +225,7 @@ class EditTeamVendorWidget extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       color: AppColors.whiteColor,
                                       borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+                                      border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
                                     ),
                                     child: Row(
                                       children: [
@@ -239,7 +239,7 @@ class EditTeamVendorWidget extends StatelessWidget {
                                             shape: RoundedRectangleBorder(
                                               borderRadius: BorderRadius.circular(4),
                                             ),
-                                            side: BorderSide(color: AppColors.borderColor.withOpacity(0.8)),
+                                            side: BorderSide(color: AppColors.borderColor.withValues(alpha: 0.8)),
                                           ),
                                         ),
                                         const SizedBox(width: 8),

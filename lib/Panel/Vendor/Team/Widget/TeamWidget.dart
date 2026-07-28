@@ -56,7 +56,7 @@ class TeamVendorWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppColors.whiteColor,
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+              border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,7 +94,7 @@ class TeamVendorWidget extends StatelessWidget {
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(4),
                                       ),
-                                      side: BorderSide(color: AppColors.borderColor.withOpacity(0.8)),
+                                      side: BorderSide(color: AppColors.borderColor.withValues(alpha: 0.8)),
                                     ),
                                   )),
                                   const SizedBox(width: 8),
@@ -130,7 +130,7 @@ class TeamVendorWidget extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       color: AppColors.whiteColor,
                                       borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+                                      border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
                                     ),
                                     child: Row(
                                       children: [
@@ -144,7 +144,7 @@ class TeamVendorWidget extends StatelessWidget {
                                             shape: RoundedRectangleBorder(
                                               borderRadius: BorderRadius.circular(4),
                                             ),
-                                            side: BorderSide(color: AppColors.borderColor.withOpacity(0.8)),
+                                            side: BorderSide(color: AppColors.borderColor.withValues(alpha: 0.8)),
                                           ),
                                         ),
                                         const SizedBox(width: 8),
@@ -247,7 +247,7 @@ class TeamVendorWidget extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: AppColors.whiteColor,
                           borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+                          border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
                         ),
                         child: const Icon(Icons.arrow_back, size: 18, color: AppColors.textColor),
                       ),
@@ -263,7 +263,7 @@ class TeamVendorWidget extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: AppColors.whiteColor,
                           borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+                          border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
                         ),
                         child: const Icon(Icons.arrow_forward, size: 18, color: AppColors.textColor),
                       ),
