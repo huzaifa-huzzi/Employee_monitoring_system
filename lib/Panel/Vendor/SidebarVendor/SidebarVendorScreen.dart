@@ -108,7 +108,7 @@ class SidebarVendorScreen extends StatelessWidget {
                           iconPath: IconString.teamIcon,
                           title: "Team",
                           isCollapsed: isCollapsed,
-                          onTap: (val) => context.go('/'),
+                          onTap: (val) => context.go('/vendor/Team'),
                           scaffoldKey: _scaffoldKey,
                         ),
 

@@ -64,4 +64,7 @@ class IconString{
   static const String  employeePerson = 'assets/icons/EmployeePerson.svg';
   static const String  totalEmployeeIcon = 'assets/icons/totalEmployee.svg';
 
+     /// Team
+  static const String  teamAdded = 'assets/icons/TeamAdded.svg';
+
 }

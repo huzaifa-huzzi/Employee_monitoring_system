@@ -6,6 +6,10 @@ import 'package:employee_monitoring_system/Panel/Vendor/Employee/EmployeeControl
 import 'package:employee_monitoring_system/Panel/Vendor/Employee/EmployeeDetail/EmployeeDetail.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/Employee/Invitation/EmployeeInvitation.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/SidebarVendor/SidebarVendorScreen.dart';
+import 'package:employee_monitoring_system/Panel/Vendor/Team/AddTeamVendor/AddTeamVendor.dart';
+import 'package:employee_monitoring_system/Panel/Vendor/Team/EditTeam/EditTeamVendor.dart';
+import 'package:employee_monitoring_system/Panel/Vendor/Team/Team.dart';
+import 'package:employee_monitoring_system/Panel/Vendor/Team/TeamViewVendor/TeamViewVendor.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -67,6 +71,21 @@ class VendorRoutes {
           return const EditEmployee();
         },
       ),
+
+      // vendor Team
+      GoRoute(
+          path: '/vendor/Team',
+          builder: (context, state) => Team()),
+      GoRoute(
+          path: '/vendor/EditTeam',
+          builder: (context, state) => EditTeamVendor()),
+      GoRoute(
+          path: '/vendor/TeamMembers',
+          builder: (context, state) => TeamViewVendor()),
+
+      GoRoute(
+          path: '/vendor/addTeam',
+          builder: (context, state) => AddTeamVendor()),
 
     ],
   );
