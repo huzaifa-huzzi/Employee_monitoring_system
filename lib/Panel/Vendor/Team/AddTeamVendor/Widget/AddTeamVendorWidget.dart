@@ -198,7 +198,7 @@ class AddTeamVendorWidget extends StatelessWidget {
                                   ),
                                   Expanded(
                                     flex: 2,
-                                    child: Text("Departement", style: TTextTheme.textFieldAboveText(context)),
+                                    child: Text("Department", style: TTextTheme.textFieldAboveText(context)),
                                   ),
                                   Expanded(
                                     flex: 2,
