@@ -2,7 +2,6 @@ import 'package:employee_monitoring_system/Panel/Vendor/Employee/EmployeeControl
 import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../Resources/Colors.dart' show AppColors;
 
 
