@@ -2,6 +2,7 @@ import 'package:employee_monitoring_system/Panel/Vendor/Team/ReusableWidget/Prim
 import 'package:employee_monitoring_system/Panel/Vendor/Team/TeamController.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -29,10 +30,10 @@ class TeamVendorWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Team", style: TTextTheme.h1Style(context)),
+                    Text(TextString.teamVendorTitle, style: TTextTheme.h1Style(context)),
                     const SizedBox(height: 4),
                     Text(
-                      "You can see your team members here",
+                      TextString.teamVendorSubtitle,
                       style: TTextTheme.titleFour(context),
                     ),
                   ],
@@ -61,7 +62,7 @@ class TeamVendorWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Team Members", style: TTextTheme.h2Style(context)),
+                Text(TextString.teamVendorMembers, style: TTextTheme.h2Style(context)),
                 const SizedBox(height: 20),
                 LayoutBuilder(
                   builder: (context, constraints) {
@@ -100,19 +101,19 @@ class TeamVendorWidget extends StatelessWidget {
                                   const SizedBox(width: 8),
                                   Expanded(
                                     flex: 3,
-                                    child: Text("Team Name", style: TTextTheme.textFieldAboveText(context)),
+                                    child: Text(TextString.teamVendorName, style: TTextTheme.textFieldAboveText(context)),
                                   ),
                                   Expanded(
                                     flex: 2,
-                                    child: Text("Creation Date", style: TTextTheme.textFieldAboveText(context)),
+                                    child: Text(TextString.teamCreationDate, style: TTextTheme.textFieldAboveText(context)),
                                   ),
                                   Expanded(
                                     flex: 2,
-                                    child: Text("Team Members", style: TTextTheme.textFieldAboveText(context)),
+                                    child: Text(TextString.teamVendorMembers, style: TTextTheme.textFieldAboveText(context)),
                                   ),
                                   SizedBox(
                                     width: 100,
-                                    child: Text("Action", style: TTextTheme.textFieldAboveText(context)),
+                                    child: Text(TextString.teamAction, style: TTextTheme.textFieldAboveText(context)),
                                   ),
                                 ],
                               ),
@@ -325,12 +326,12 @@ class TeamVendorWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Delete Team",
+                            TextString.teamVendorDialogOne,
                             style: TTextTheme.h3Style(context),
                           ),
                           SizedBox(height: 4),
                           Text(
-                            "Are you Sure you want to Delete it ?",
+                            TextString.teamVendorDialogTwo,
                             style: TTextTheme.selectProjectText(context),
                           ),
                         ],
@@ -447,12 +448,12 @@ class TeamVendorWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Team Deleted Successfully",
+                        TextString.teamVendorSuccessDialogOne,
                         style: TTextTheme.h3Style(context),
                       ),
                       SizedBox(height: 4),
                       Text(
-                        "congrats! Team has successfully deleted in the System",
+                        TextString.teamVendorSuccessDialogTwo,
                         style: TTextTheme.selectProjectText(context),
                       ),
                     ],

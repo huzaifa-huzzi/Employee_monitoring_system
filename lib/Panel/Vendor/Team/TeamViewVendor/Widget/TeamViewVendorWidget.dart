@@ -1,8 +1,11 @@
 import 'package:employee_monitoring_system/Panel/Vendor/Team/ReusableWidget/PrimaryBtnOfTeam.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/Team/TeamController.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
+import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
@@ -28,7 +31,7 @@ class TeamViewVendorWidget extends StatelessWidget {
               children: [
                 const Icon(Icons.arrow_back_ios_new, size: 18, color: AppColors.textColor),
                 const SizedBox(width: 8),
-                Text("Team Members", style: TTextTheme.h1Style(context)),
+                Text(TextString.teamVendorMembers, style: TTextTheme.h1Style(context)),
               ],
             ),
           ),
@@ -36,7 +39,7 @@ class TeamViewVendorWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 26.0),
             child: Text(
-              "You can see your team members here",
+             TextString.teamMemberVendorSubtitle,
               style: TTextTheme.titleFour(context),
             ),
           ),
@@ -57,7 +60,7 @@ class TeamViewVendorWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text("All member", style: TTextTheme.h2Style(context)),
+                    Text(TextString.allMemberVendor, style: TTextTheme.h2Style(context)),
                     PrimaryBtnOfTeam(text: 'Add Employee', onTap: (){
 
                     },isIconLeft: true,icon: Icon(Icons.add,color: AppColors.whiteColor,),)
@@ -94,7 +97,7 @@ class TeamViewVendorWidget extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 40),
                       child: Center(
                         child: Text(
-                          "No members found in this status",
+                          TextString.errorVendorTeamText,
                           style: TTextTheme.titleFour(context),
                         ),
                       ),
@@ -218,11 +221,11 @@ class TeamViewVendorWidget extends StatelessWidget {
 
           const SizedBox(height: 16),
 
-          _buildInfoRow(context, Icons.bubble_chart_outlined, "Role", member.role),
+          _buildInfoRow(context, IconString.roleIcon,TextString.teamRole, member.role),
           const SizedBox(height: 10),
-          _buildInfoRow(context, Icons.apartment_outlined, "Departement", member.department),
+          _buildInfoRow(context, IconString.DepartmentIcon, TextString.teamDepartment, member.department),
           const SizedBox(height: 10),
-          _buildInfoRow(context, Icons.calendar_today_outlined, "Joining Date", member.joiningDate),
+          _buildInfoRow(context, IconString.calendarIcon, TextString.employeeDetailJoining, member.joiningDate),
 
           const Spacer(),
           SizedBox(
@@ -251,10 +254,18 @@ class TeamViewVendorWidget extends StatelessWidget {
   }
 
   // Info Row
-  Widget _buildInfoRow(BuildContext context, IconData icon, String title, String value) {
+  Widget _buildInfoRow(BuildContext context, String iconPath, String title, String value) {
     return Row(
       children: [
-        Icon(icon, size: 16, color: AppColors.primaryColor),
+        SvgPicture.asset(
+          iconPath,
+          width: 16,
+          height: 16,
+          colorFilter: const ColorFilter.mode(
+            AppColors.primaryColor,
+            BlendMode.srcIn,
+          ),
+        ),
         const SizedBox(width: 8),
         Text(
           title,

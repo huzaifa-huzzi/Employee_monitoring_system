@@ -1,6 +1,7 @@
 import 'package:employee_monitoring_system/Panel/Vendor/Team/TeamController.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -31,7 +32,7 @@ class EditTeamVendorWidget extends StatelessWidget {
               children: [
                 const Icon(Icons.arrow_back_ios_new, size: 18, color: AppColors.textColor),
                 const SizedBox(width: 8),
-                Text("Edit Team", style: TTextTheme.h1Style(context)),
+                Text(TextString.editTeamVendorTitle, style: TTextTheme.h1Style(context)),
               ],
             ),
           ),
@@ -39,7 +40,7 @@ class EditTeamVendorWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 26.0),
             child: Text(
-              "You can see your team members here",
+              TextString.editTeamVendorSubtitle,
               style: TTextTheme.titleFour(context),
             ),
           ),
@@ -56,15 +57,16 @@ class EditTeamVendorWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Team Detail", style: TTextTheme.h2Style(context)),
+                Text(TextString.teamVendorDetail, style: TTextTheme.h2Style(context)),
                 const SizedBox(height: 20),
-                Text("Team Name", style: TTextTheme.textFieldAboveText(context)),
+                Text(TextString.teamNameDetail, style: TTextTheme.textFieldAboveText(context)),
                 const SizedBox(height: 8),
                 TextFormField(
+                  cursorColor: AppColors.textColor,
                   controller: controller.editTeamNameCtrl,
                   style: TTextTheme.FieldWriteTheText(context),
                   decoration: InputDecoration(
-                    hintText: "Enter Team Name",
+                    hintText:TextString.teamtextFieldText ,
                     hintStyle: TTextTheme.selectProjectText(context),
                     contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                     filled: true,
@@ -108,11 +110,12 @@ class EditTeamVendorWidget extends StatelessWidget {
                           width: isMobile ? double.infinity : 260,
                           height: 42,
                           child: TextField(
+                            cursorColor: AppColors.textColor,
                             onChanged: (val) => controller.searchQuery.value = val,
                             style: TTextTheme.FieldWriteTheText(context),
                             decoration: InputDecoration(
                               prefixIcon: const Icon(Icons.search, size: 20, color: AppColors.tertiaryTextColor),
-                              hintText: "Search by Departement",
+                              hintText: TextString.searchFieldText,
                               hintStyle: TTextTheme.selectProjectText(context).copyWith(fontSize: 13),
                               contentPadding: const EdgeInsets.symmetric(vertical: 0),
                               filled: true,
@@ -136,7 +139,7 @@ class EditTeamVendorWidget extends StatelessWidget {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Create Team", style: TTextTheme.h2Style(context)),
+                          Text(TextString.vendorCreateTeam, style: TTextTheme.h2Style(context)),
                           const SizedBox(height: 16),
                           searchAndFilter,
                         ],
@@ -146,7 +149,7 @@ class EditTeamVendorWidget extends StatelessWidget {
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Create Team", style: TTextTheme.h2Style(context)),
+                        Text(TextString.vendorCreateTeam, style: TTextTheme.h2Style(context)),
                         searchAndFilter,
                       ],
                     );
@@ -191,23 +194,23 @@ class EditTeamVendorWidget extends StatelessWidget {
                                   const SizedBox(width: 8),
                                   Expanded(
                                     flex: 3,
-                                    child: Text("Employee Name", style: TTextTheme.textFieldAboveText(context)),
+                                    child: Text(TextString.employeeName, style: TTextTheme.textFieldAboveText(context)),
                                   ),
                                   Expanded(
                                     flex: 2,
-                                    child: Text("Role", style: TTextTheme.textFieldAboveText(context)),
+                                    child: Text(TextString.employeeRole, style: TTextTheme.textFieldAboveText(context)),
                                   ),
                                   Expanded(
                                     flex: 2,
-                                    child: Text("Departement", style: TTextTheme.textFieldAboveText(context)),
+                                    child: Text(TextString.employeeDept, style: TTextTheme.textFieldAboveText(context)),
                                   ),
                                   Expanded(
                                     flex: 2,
-                                    child: Text("Joining Date", style: TTextTheme.textFieldAboveText(context)),
+                                    child: Text(TextString.employeeJoining, style: TTextTheme.textFieldAboveText(context)),
                                   ),
                                   const SizedBox(
                                     width: 90,
-                                    child: Text("Action"),
+                                    child: Text(TextString.employeeAction),
                                   ),
                                 ],
                               ),
@@ -243,7 +246,6 @@ class EditTeamVendorWidget extends StatelessWidget {
                                           ),
                                         ),
                                         const SizedBox(width: 8),
-                                        // Name + Avatar + Email
                                         Expanded(
                                           flex: 3,
                                           child: Row(
@@ -369,7 +371,7 @@ class EditTeamVendorWidget extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                 ),
-                child: Text("Edit Team", style: TTextTheme.TabsSelectedText(context)),
+                child: Text(TextString.editTeamVendorTitle, style: TTextTheme.TabsSelectedText(context)),
               ),
             ),
           ),
@@ -403,9 +405,9 @@ class EditTeamVendorWidget extends StatelessWidget {
             controller.selectedFilter.value = value;
           },
           itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-            _buildPopupItem(context, "Employee Name"),
-            _buildPopupItem(context, "Role"),
-            _buildPopupItem(context, "Department"),
+            _buildPopupItem(context, TextString.employeeName),
+            _buildPopupItem(context, TextString.employeeRole),
+            _buildPopupItem(context, TextString.employeeDept),
           ],
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -490,12 +492,12 @@ class EditTeamVendorWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Edit Team",
+                            TextString.editTeamVendorDialogOne,
                             style: TTextTheme.h3Style(context),
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            "Are you sure you want to edit it",
+                            TextString.editTeamVendorDialogTwo ,
                             style: TTextTheme.selectProjectText(context),
                           ),
                         ],
@@ -612,12 +614,12 @@ class EditTeamVendorWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Team Edited Successfully",
+                       TextString.editTeamVendorSuccessDialogOne,
                         style: TTextTheme.h3Style(context),
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        "congrats! team has successfully edited in the system",
+                        TextString.editTeamVendorSuccessDialogTwo,
                         style: TTextTheme.selectProjectText(context),
                       ),
                     ],

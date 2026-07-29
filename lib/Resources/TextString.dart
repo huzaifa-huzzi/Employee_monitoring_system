@@ -199,6 +199,35 @@ class TextString{
    static const String  editEmployeeTitleThree=  "Employee Edited Successfully";
    static const String  editEmployeeTitleFour=   "Congrats! employee has successfully edited in the system.";
 
+     /// Team Vendor
+   static const String  teamVendorTitle= "Team";
+   static const String  teamVendorSubtitle=  "You can see your team members here";
+   static const String  teamVendorMembers=  "Team Members";
+   static const String  teamVendorName=  "Team Name";
+   static const String  teamCreationDate=  "Creation Date";
+   static const String  teamAction=  "Action";
+   static const String  teamVendorDialogOne= "Delete Team";
+   static const String  teamVendorDialogTwo=   "Are you Sure you want to Delete it ?";
+   static const String  teamVendorSuccessDialogOne= "Team Deleted Successfully";
+   static const String  teamVendorSuccessDialogTwo=  "congrats! Team has successfully deleted in the System";
+   static const String  teamMemberVendorSubtitle=   "You can see your team members here";
+   static const String  allMemberVendor= "All member";
+   static const String  errorVendorTeamText=  "No members found in this status";
+   static const String  editTeamVendorTitle= "Edit Team";
+   static const String  editTeamVendorSubtitle=  "You can see your team members here";
+   static const String  teamVendorDetail=  "Team Detail";
+   static const String  teamNameDetail=  "Team Name";
+   static const String  teamtextFieldText=  "Enter Team Name";
+   static const String  searchFieldText=  "Search by Departement";
+   static const String  vendorCreateTeam=  "Create Team";
+   static const String  editTeamVendorDialogOne=  "Edit Team";
+   static const String  editTeamVendorDialogTwo=  "Are you sure you want to edit it";
+   static const String  editTeamVendorSuccessDialogOne=  "Team Edited Successfully" ;
+   static const String  editTeamVendorSuccessDialogTwo=   "congrats! team has successfully edited in the system";
+   static const String  addVendorTeamTitle= "Add Team";
+   static const String  addVendorTeamSubtitle=   "You can see your team members here";
+
+
 
 
 
