@@ -224,7 +224,7 @@ class TextString{
    static const String  editTeamVendorDialogTwo=  "Are you sure you want to edit it";
    static const String  editTeamVendorSuccessDialogOne=  "Team Edited Successfully" ;
    static const String  editTeamVendorSuccessDialogTwo=   "congrats! team has successfully edited in the system";
-   static const String  addVendorTeamTitle= "Add Team";
+   static const String  addVendorTeamTitle= "Add Team Members";
    static const String  addVendorTeamSubtitle=   "You can see your team members here";
 
 
