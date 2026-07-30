@@ -293,7 +293,7 @@ class EmployeeWidget extends StatelessWidget {
                       prefixIcon: const Icon(
                         Icons.search,
                         size: 18,
-                        color: AppColors.textGrey,
+                        color: AppColors.textColor,
                       ),
                       border: InputBorder.none,
                       contentPadding: const EdgeInsets.symmetric(vertical: 10),

@@ -68,14 +68,9 @@ class _EmployeeDetailViewWidgetState extends State<EmployeeDetailViewWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Header User Details (Clean without redundant back icon)
           Row(
             children: [
-              const CircleAvatar(
-                radius: 18,
-                backgroundColor: Colors.transparent,
-                child: Icon(Icons.person_outline, size: 24, color: AppColors.primaryColor),
-              ),
+              Icon(Icons.person_outline, size: 24, color: AppColors.primaryColor),
               const SizedBox(width: 12),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,8 +89,6 @@ class _EmployeeDetailViewWidgetState extends State<EmployeeDetailViewWidget> {
           ),
 
           const SizedBox(height: 20),
-
-          // Scrollable Table Design
           LayoutBuilder(
             builder: (context, constraints) {
               const double minWidth = 700;
@@ -179,6 +172,9 @@ class _EmployeeDetailViewWidgetState extends State<EmployeeDetailViewWidget> {
     );
   }
 
+  /// ------------ Extra Widget --------///
+
+   // Detail Row
   Widget _buildDetailRow(
       BuildContext context,
       Map<String, dynamic> data, {
