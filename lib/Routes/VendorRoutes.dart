@@ -10,6 +10,7 @@ import 'package:employee_monitoring_system/Panel/Vendor/Team/AddTeamVendor/AddTe
 import 'package:employee_monitoring_system/Panel/Vendor/Team/EditTeam/EditTeamVendor.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/Team/Team.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/Team/TeamViewVendor/TeamViewVendor.dart';
+import 'package:employee_monitoring_system/Panel/Vendor/VendorTimeSheet/VendorTeamTimeSheet/VendorTeamTimeSheet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -86,6 +87,11 @@ class VendorRoutes {
       GoRoute(
           path: '/vendor/addTeam',
           builder: (context, state) => AddTeamVendor()),
+
+        // Team TimeSheet
+      GoRoute(
+          path: '/vendor/TeamTimeSheet',
+          builder: (context, state) => VendorTeamTimeSheet()),
 
     ],
   );

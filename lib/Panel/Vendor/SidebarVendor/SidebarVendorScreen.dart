@@ -121,9 +121,9 @@ class SidebarVendorScreen extends StatelessWidget {
                           isExpanded: controller.isTimeSheetExpanded,
                           subItems: [
                             {
-                              'title': 'My time sheet',
+                              'title': 'Team TimeSheet',
                               'icon': IconString.timeSheetIcon,
-                              'onTap': () => context.go(''),
+                              'onTap': () => context.go('/vendor/TeamTimeSheet'),
                             },
                           ],
                           onTap: (val) => context.go(''),
