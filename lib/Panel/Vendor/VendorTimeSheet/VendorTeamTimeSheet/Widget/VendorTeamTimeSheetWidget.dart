@@ -73,7 +73,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                     context,
                     width: isMobile ? double.infinity : (constraints.maxWidth - 36) / 4,
                     icon: Icons.access_time,
-                    iconColor: Colors.blue,
+                    iconColor: AppColors.primaryColor,
                     title: "Total time Tracked",
                     value: "45 hrs 50 mints",
                     subValue: "2 more hours added",
@@ -84,27 +84,27 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                     context,
                     width: isMobile ? double.infinity : (constraints.maxWidth - 36) / 4,
                     icon: Icons.access_time,
-                    iconColor: Colors.green,
+                    iconColor: AppColors.approvedColor,
                     title: "Active Time",
                     value: "36 hrs 20 mints",
-                    barColor: Colors.green,
+                    barColor: AppColors.approvedColor,
                     progress: 0.7,
                   ),
                   _buildMetricCard(
                     context,
                     width: isMobile ? double.infinity : (constraints.maxWidth - 36) / 4,
                     icon: Icons.access_time,
-                    iconColor: Colors.red,
+                    iconColor: AppColors.rejectedColor,
                     title: "Idle time",
                     value: "9 hrs 30 mints",
-                    barColor: Colors.red,
+                    barColor: AppColors.rejectedColor,
                     progress: 0.3,
                   ),
                   _buildMetricCard(
                     context,
                     width: isMobile ? double.infinity : (constraints.maxWidth - 36) / 4,
                     icon: Icons.bar_chart,
-                    iconColor: Colors.blue,
+                    iconColor: AppColors.primaryColor,
                     title: "Productivity Score",
                     value: "65%",
                     barColor: AppColors.primaryColor,
@@ -117,17 +117,14 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
 
           const SizedBox(height: 24),
           Obx(() {
-            // 1. Agar koi employee select hua hai, to faqt table ki jagah detail widget ayega
             if (controller.selectedEmployee.value != null) {
               return EmployeeDetailViewWidget(
                 employee: controller.selectedEmployee.value,
                 onBackTap: () {
-                  controller.selectedEmployee.value = null; // Back button par wapis normal view par jane ke liye
+                  controller.selectedEmployee.value = null;
                 },
               );
             }
-
-            // 2. Normal View (Jab koi detail state active na ho)
             if (controller.selectedTab.value == 0) {
               return _buildEmployeeTabContent(context, controller, width);
             } else {
