@@ -1,4 +1,4 @@
-import 'package:employee_monitoring_system/Panel/Vendor/VendorTimeSheet/ReusableWidget/CustimDatePickerTimeSheetWidget.dart';
+import 'package:employee_monitoring_system/Panel/Vendor/VendorTimeSheet/ReusableWidget/CustomDatePickerTimeSheetWidget.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/VendorTimeSheet/ReusableWidget/PrimaryBtnOfVendorTimeSheet.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/VendorTimeSheet/VendorTeamTimeSheet/Widget/EmployeeDetailTimeSheetWidget.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/VendorTimeSheet/VendorTimeSheetController.dart';
@@ -31,14 +31,42 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                 mainAxisAlignment: isMobile ? MainAxisAlignment.start : MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: isMobile ? CrossAxisAlignment.start : CrossAxisAlignment.center,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Time Sheet", style: TTextTheme.h1Style(context)),
-                      const SizedBox(height: 4),
-                      Text("You can see your time Sheet Here", style: TTextTheme.titleFour(context)),
-                    ],
-                  ),
+                  Obx(() {
+                    final isDetailView = controller.selectedEmployee.value != null;
+
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            if (isDetailView) ...[
+                              InkWell(
+                                borderRadius: BorderRadius.circular(20),
+                                onTap: () {
+                                  controller.selectedEmployee.value = null;
+                                },
+                                child: const Padding(
+                                  padding: EdgeInsets.only(right: 6.0),
+                                  child: Icon(
+                                    Icons.arrow_back_ios_new_rounded,
+                                    size: 18,
+                                    color: AppColors.textColor,
+                                  ),
+                                ),
+                              ),
+                            ],
+                            Text("Time Sheet", style: TTextTheme.h1Style(context)),
+                          ],
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          "You can see your time Sheet Here",
+                          style: TTextTheme.titleFour(context),
+                        ),
+                      ],
+                    );
+                  }),
 
                   if (isMobile) const SizedBox(height: 12),
                   Obx(() => Container(
@@ -120,9 +148,6 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
             if (controller.selectedEmployee.value != null) {
               return EmployeeDetailViewWidget(
                 employee: controller.selectedEmployee.value,
-                onBackTap: () {
-                  controller.selectedEmployee.value = null;
-                },
               );
             }
             if (controller.selectedTab.value == 0) {
@@ -564,7 +589,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 6),
-         Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text("9am", style: TTextTheme.FieldWriteTheText(context)),
@@ -839,7 +864,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
     );
   }
 
-  // DatePicker Dialog Trigger
+  // DatePicker Dialog
   void _openDatePickerDialog(BuildContext context, VendorTimeSheetController controller) {
     showDialog(
       context: context,

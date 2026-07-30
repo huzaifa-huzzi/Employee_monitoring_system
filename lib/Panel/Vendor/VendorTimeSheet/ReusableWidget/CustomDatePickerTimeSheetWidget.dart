@@ -531,7 +531,7 @@ class _YearSearchMenuListState extends State<_YearSearchMenuList> {
           Expanded(
             child: filteredYears.isEmpty
                 ? const Center(
-              child: Text("No Year Found", style: TextStyle(fontSize: 10, color: Colors.grey)),
+              child: Text("No Year Found", style: TextStyle(fontSize: 10, color: AppColors.tertiaryTextColor)),
             )
                 : ListView.builder(
               itemCount: filteredYears.length,

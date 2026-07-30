@@ -5,12 +5,10 @@ import 'package:flutter/material.dart';
 
 class EmployeeDetailViewWidget extends StatefulWidget {
   final dynamic employee;
-  final VoidCallback? onBackTap;
 
   const EmployeeDetailViewWidget({
     super.key,
     this.employee,
-    this.onBackTap,
   });
 
   @override
@@ -37,6 +35,7 @@ class _EmployeeDetailViewWidgetState extends State<EmployeeDetailViewWidget> {
     super.initState();
     _selectedRows = List<bool>.filled(dailyLogs.length, false);
   }
+
   void _toggleSelectAll(bool? val) {
     if (val == null) return;
     setState(() {
@@ -47,6 +46,7 @@ class _EmployeeDetailViewWidgetState extends State<EmployeeDetailViewWidget> {
       }
     });
   }
+
   void _onRowSelected(int index, bool? val) {
     if (val == null) return;
     setState(() {
@@ -68,17 +68,9 @@ class _EmployeeDetailViewWidgetState extends State<EmployeeDetailViewWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
+          // Header User Details (Clean without redundant back icon)
           Row(
             children: [
-              if (widget.onBackTap != null) ...[
-                IconButton(
-                  padding: EdgeInsets.zero,
-                  constraints: const BoxConstraints(),
-                  icon: const Icon(Icons.arrow_back, color: AppColors.textColor),
-                  onPressed: widget.onBackTap,
-                ),
-                const SizedBox(width: 8),
-              ],
               const CircleAvatar(
                 radius: 18,
                 backgroundColor: Colors.transparent,
@@ -102,6 +94,8 @@ class _EmployeeDetailViewWidgetState extends State<EmployeeDetailViewWidget> {
           ),
 
           const SizedBox(height: 20),
+
+          // Scrollable Table Design
           LayoutBuilder(
             builder: (context, constraints) {
               const double minWidth = 700;
@@ -143,6 +137,7 @@ class _EmployeeDetailViewWidgetState extends State<EmployeeDetailViewWidget> {
                       ),
 
                       const SizedBox(height: 10),
+
                       ...List.generate(dailyLogs.length, (index) {
                         return _buildDetailRow(
                           context,
@@ -152,6 +147,7 @@ class _EmployeeDetailViewWidgetState extends State<EmployeeDetailViewWidget> {
                           isTotalRow: false,
                         );
                       }),
+
                       _buildDetailRow(
                         context,
                         {
@@ -183,9 +179,6 @@ class _EmployeeDetailViewWidgetState extends State<EmployeeDetailViewWidget> {
     );
   }
 
-  /// -------- Extra Widget ------------///
-
-   // Detail Row
   Widget _buildDetailRow(
       BuildContext context,
       Map<String, dynamic> data, {

@@ -25,26 +25,18 @@ class TimeSheetEmployeeModel {
 }
 
 class VendorTimeSheetController extends GetxController {
-  // Top Tabs (0: Employee, 1: Team)
   var selectedTab = 0.obs;
   var selectedEmployee = Rxn<dynamic>();
-
-  // View Toggle (0: List View, 1: Grid View)
   var selectedViewType = 0.obs;
-
   var selectedTimeFilter = "Day".obs;
-
-  // Search Query
   var searchQuery = "".obs;
 
-  // Pagination
   var currentPage = 1.obs;
   var totalPages = 10.obs;
 
-  // Select All Checkbox
+
   var isAllSelected = false.obs;
 
-  // Dummy List
   var employeesList = <TimeSheetEmployeeModel>[
     TimeSheetEmployeeModel(
       name: "Jack Milson",
@@ -112,13 +104,11 @@ class VendorTimeSheetController extends GetxController {
       .obs;
   var weekRange = Rxn<DateTimeRange>();
 
-  // 2. Update Function Add karein (Jo red line de raha tha)
   void updateSelectedDate(DateTime date, DateTimeRange? range) {
     selectedDate.value = date;
     weekRange.value = range;
   }
 
-  // 3. Current Date Text Getter Function
   String get currentDateText {
     if (selectedTimeFilter.value == "Day") {
       return DateFormat('d MMMM, yyyy').format(selectedDate.value);
