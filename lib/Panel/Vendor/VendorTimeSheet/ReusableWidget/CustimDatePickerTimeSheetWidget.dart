@@ -440,7 +440,7 @@ class _CustomDatePickerTimeSheetWidgetState extends State<CustomDatePickerTimeSh
                                   fontSize: 11,
                                   fontWeight: (isSelectedDay || isInSelectedRange) ? FontWeight.w600 : FontWeight.w400,
                                   color: isFuture
-                                      ? AppColors.tertiaryTextColor.withOpacity(0.3)
+                                      ? AppColors.tertiaryTextColor.withValues(alpha: 0.3)
                                       : ((isSelectedDay || isInSelectedRange) ? AppColors.whiteColor : AppColors.textColor),
                                 ),
                               ),

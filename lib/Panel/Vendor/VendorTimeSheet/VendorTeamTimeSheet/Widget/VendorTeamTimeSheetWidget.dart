@@ -46,7 +46,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: AppColors.whiteColor,
                       borderRadius: BorderRadius.circular(30),
-                      border: Border.all(color: AppColors.borderColor.withOpacity(0.4)),
+                      border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.4)),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -148,7 +148,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+        border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -179,7 +179,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                       fillColor: AppColors.whiteColor,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: AppColors.borderColor.withOpacity(0.6)),
+                        borderSide: BorderSide(color: AppColors.borderColor.withValues(alpha: 0.6)),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
@@ -212,7 +212,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: AppColors.whiteColor,
                       borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: AppColors.borderColor.withOpacity(0.6)),
+                      border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.6)),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -271,7 +271,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(6),
                   decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+                    border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: const Icon(Icons.arrow_back_ios_new, size: 14, color: AppColors.textColor),
@@ -288,7 +288,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(6),
                   decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+                    border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: const Icon(Icons.arrow_forward_ios, size: 14, color: AppColors.textColor),
@@ -395,7 +395,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: AppColors.whiteColor,
                         borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+                        border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
                       ),
                       child: Row(
                         children: [
@@ -472,7 +472,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.whiteColor,
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+            border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -509,7 +509,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                     decoration: BoxDecoration(
-                      color: Colors.green.withOpacity(0.1),
+                      color: Colors.green.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(4),
                       border: Border.all(color: AppColors.approvedColor, width: 0.8),
                     ),
@@ -613,7 +613,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                     width: 55,
                     height: data["height"] as double,
                     decoration: BoxDecoration(
-                      color: isOff ? AppColors.primaryColor.withOpacity(0.5) : AppColors.primaryColor,
+                      color: isOff ? AppColors.primaryColor.withValues(alpha: 0.5) : AppColors.primaryColor,
                       borderRadius: isOff ? BorderRadius.circular(2) : BorderRadius.circular(8),
                     ),
                   ),
@@ -708,7 +708,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+        border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -765,7 +765,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+        border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -847,7 +847,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
     showDialog(
       context: context,
       barrierDismissible: true,
-      barrierColor: Colors.black.withOpacity(0.3),
+      barrierColor: Colors.black.withValues(alpha: 0.3),
       builder: (BuildContext dialogContext) {
         return Dialog(
           backgroundColor: Colors.transparent,

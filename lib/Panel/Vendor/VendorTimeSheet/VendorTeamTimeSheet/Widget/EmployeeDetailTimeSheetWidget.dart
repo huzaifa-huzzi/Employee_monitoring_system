@@ -62,7 +62,7 @@ class _EmployeeDetailViewWidgetState extends State<EmployeeDetailViewWidget> {
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+        border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,7 +117,7 @@ class _EmployeeDetailViewWidgetState extends State<EmployeeDetailViewWidget> {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                         decoration: BoxDecoration(
-                          color: AppColors.backgroundOfScreenColor.withOpacity(0.6),
+                          color: AppColors.backgroundOfScreenColor.withValues(alpha: 0.6),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Row(
@@ -203,7 +203,7 @@ class _EmployeeDetailViewWidgetState extends State<EmployeeDetailViewWidget> {
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: AppColors.borderColor.withOpacity(0.5)),
+        border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
       ),
       child: Row(
         children: [
