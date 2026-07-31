@@ -350,6 +350,7 @@ class _CustomDatePickerTimeSheetWidgetState extends State<CustomDatePickerTimeSh
     );
   }
 
+   // Calendar Grid
   Widget _buildCalendarGrid() {
     final daysInMonth = DateUtils.getDaysInMonth(_focusedMonth.year, _focusedMonth.month);
     final firstDayOffset = DateTime(_focusedMonth.year, _focusedMonth.month, 1).weekday - 1;
@@ -530,8 +531,8 @@ class _YearSearchMenuListState extends State<_YearSearchMenuList> {
           const Divider(height: 1, thickness: 0.5),
           Expanded(
             child: filteredYears.isEmpty
-                ? const Center(
-              child: Text("No Year Found", style: TextStyle(fontSize: 10, color: AppColors.tertiaryTextColor)),
+                ?  Center(
+              child: Text("No Year Found", style: TTextTheme.TextError(context)),
             )
                 : ListView.builder(
               itemCount: filteredYears.length,
