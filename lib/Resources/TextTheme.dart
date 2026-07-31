@@ -184,7 +184,7 @@ class TTextTheme{
   }
 
   static TextStyle TextError(BuildContext context){
-    return _textStyle(fontSize:AppTextSizes.size(context, 1, 10, 10),fontWeight: FontWeight.w400,color: AppColors.tertiaryTextColor);
+    return _textStyle(fontSize:AppTextSizes.size(context, 10, 10, 10),fontWeight: FontWeight.w400,color: AppColors.tertiaryTextColor);
   }
 
 

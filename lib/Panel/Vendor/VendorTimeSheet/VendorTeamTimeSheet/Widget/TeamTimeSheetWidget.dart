@@ -174,7 +174,7 @@ class TeamTimeSheetWidget extends StatelessWidget {
         alignment: Alignment.center,
         child: Text(
           "No Teams Found",
-          style: TTextTheme.titleSix(context).copyWith(color: AppColors.tertiaryTextColor),
+          style: TTextTheme.TextError(context),
         ),
       );
     }
@@ -317,7 +317,7 @@ class TeamTimeSheetWidget extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(
               "No Employees Found",
-              style: TTextTheme.titleSix(context).copyWith(color: AppColors.tertiaryTextColor),
+              style: TTextTheme.TextError(context),
             ),
           )
         else
@@ -402,7 +402,7 @@ class TeamTimeSheetWidget extends StatelessWidget {
         alignment: Alignment.center,
         child: Text(
           "No Employees Found",
-          style: TTextTheme.titleSix(context).copyWith(color: AppColors.tertiaryTextColor),
+          style: TTextTheme.TextError(context),
         ),
       );
     }

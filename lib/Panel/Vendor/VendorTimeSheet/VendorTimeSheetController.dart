@@ -144,7 +144,7 @@ class VendorTimeSheetController extends GetxController {
     employeesList.refresh();
   }
 
-  // --- TEAM SECTION STATE ---
+  //  Team Section
   var isAllTeamSelected = false.obs;
   var selectedTeam = Rxn<TimeSheetTeamModel>();
 
