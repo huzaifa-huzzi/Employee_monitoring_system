@@ -1,6 +1,7 @@
 import 'package:employee_monitoring_system/Panel/Vendor/VendorTimeSheet/ReusableWidget/CustomDatePickerTimeSheetWidget.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/VendorTimeSheet/ReusableWidget/PrimaryBtnOfVendorTimeSheet.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/VendorTimeSheet/VendorTeamTimeSheet/Widget/EmployeeDetailTimeSheetWidget.dart';
+import 'package:employee_monitoring_system/Panel/Vendor/VendorTimeSheet/VendorTeamTimeSheet/Widget/TeamTimeSheetWidget.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/VendorTimeSheet/VendorTimeSheetController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -32,7 +33,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                 crossAxisAlignment: isMobile ? CrossAxisAlignment.start : CrossAxisAlignment.center,
                 children: [
                   Obx(() {
-                    final isDetailView = controller.selectedEmployee.value != null;
+                    final isDetailView = controller.selectedEmployee.value != null || controller.selectedTeam.value != null;
 
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,6 +46,9 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20),
                                 onTap: () {
                                   controller.selectedEmployee.value = null;
+                                  controller.selectedEmployeeDetail.value = null;
+                                  controller.selectedTeam.value = null;
+                                  controller.isViewingMembers.value = false;
                                 },
                                 child: const Padding(
                                   padding: EdgeInsets.only(right: 6.0),
@@ -145,17 +149,24 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
 
           const SizedBox(height: 24),
           Obx(() {
-            if (controller.selectedEmployee.value != null) {
+            if (controller.selectedEmployeeDetail.value != null) {
               return EmployeeDetailViewWidget(
-                employee: controller.selectedEmployee.value,
+                employee: controller.selectedEmployeeDetail.value,
+                selectedFilter: controller.selectedTimeFilter.value,
               );
             }
             if (controller.selectedTab.value == 0) {
               return _buildEmployeeTabContent(context, controller, width);
-            } else {
-              return _buildTeamTabContent(context, width);
             }
-          }),
+            else {
+              return TeamTimeSheetWidget(
+                controller: controller,
+                onViewEmpTap: (teamData) {
+                  controller.selectedTeam.value = teamData;
+                },
+              );
+            }
+          })
         ],
       ),
     );
@@ -406,8 +417,6 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                 ),
 
                 const SizedBox(height: 10),
-
-                // Table Data Rows
                 Obx(() => Column(
                   children: List.generate(controller.employeesList.length, (index) {
                     final item = controller.employeesList[index];
@@ -463,6 +472,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                             child: InkWell(
                               onTap: () {
                                 controller.selectedEmployee.value = item;
+                                controller.selectedEmployeeDetail.value = item;
                               },
                               child: const Icon(Icons.remove_red_eye_outlined, size: 18, color: AppColors.tertiaryTextColor),
                             ),
@@ -653,7 +663,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
     );
   }
 
-  // Last 4 Weeks Vars
+  // Last 4 Weeks bars
   Widget _buildLast4WeeksBarChart() {
     final List<Map<String, dynamic>> fourWeekData = [
       {"label": "Week 1", "hours": "48hrs", "height": 150.0},
@@ -719,33 +729,6 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
           color: AppColors.primaryColor,
           borderRadius: BorderRadius.circular(10),
         ),
-      ),
-    );
-  }
-  // Tab content
-  Widget _buildTeamTabContent(BuildContext context, double width) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.all(width < 400 ? 16 : 32),
-      decoration: BoxDecoration(
-        color: AppColors.whiteColor,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Icon(Icons.groups_outlined, size: 48, color: AppColors.primaryColor),
-          const SizedBox(height: 12),
-          Text("Team Timesheet", style: TTextTheme.h2Style(context)),
-          const SizedBox(height: 6),
-          Text(
-            "Team specific UI and table view will be configured here.",
-            style: TTextTheme.titleSix(context).copyWith(color: AppColors.tertiaryTextColor),
-            textAlign: TextAlign.center,
-          ),
-        ],
       ),
     );
   }

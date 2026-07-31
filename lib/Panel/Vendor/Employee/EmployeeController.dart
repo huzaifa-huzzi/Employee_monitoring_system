@@ -183,7 +183,7 @@ class EmployeeController extends GetxController {
   }
 
 
-  // EDIT EMPLOYEE FORM SECTION ---
+  // EDIT EMPLOYEE FORM
 
 
   final editEmployeeFormKey = GlobalKey<FormState>();
