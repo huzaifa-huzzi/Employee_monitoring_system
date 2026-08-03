@@ -1,4 +1,3 @@
-import 'package:employee_monitoring_system/Panel/Vendor/Team/ReusableWidget/PrimaryBtnOfTeam.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/Team/TeamController.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
@@ -61,9 +60,6 @@ class TeamViewVendorWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(TextString.allMemberVendor, style: TTextTheme.h2Style(context)),
-                    PrimaryBtnOfTeam(text: 'Add Employee', onTap: (){
-
-                    },isIconLeft: true,icon: Icon(Icons.add,color: AppColors.whiteColor,),)
                   ],
                 ),
 
