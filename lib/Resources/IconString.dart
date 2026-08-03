@@ -63,6 +63,7 @@ class IconString{
   static const String  editEmployeeICon = 'assets/icons/editEmployeeIcon.svg';
   static const String  employeePerson = 'assets/icons/EmployeePerson.svg';
   static const String  totalEmployeeIcon = 'assets/icons/totalEmployee.svg';
+  static const String  searchIcon = 'assets/icons/Search.svg';
 
      /// Team
   static const String  teamAdded = 'assets/icons/TeamAdded.svg';
