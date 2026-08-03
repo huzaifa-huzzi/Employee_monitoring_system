@@ -2,8 +2,11 @@ import 'package:employee_monitoring_system/Panel/Vendor/VendorTimeSheet/Reusable
 import 'package:employee_monitoring_system/Panel/Vendor/VendorTimeSheet/ReusableWidget/PrimaryBtnOfVendorTimeSheet.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/VendorTimeSheet/VendorTimeSheetController.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
+import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart' show SvgPicture;
 import 'package:get/get.dart';
 
 
@@ -69,7 +72,7 @@ class TeamTimeSheetWidget extends StatelessWidget {
                         Text(
                           isMemberView
                               ? "${controller.selectedTeam.value?.teamName ?? "Team"} Members Time Sheet"
-                              : "Team Time Sheet",
+                              : TextString.vendorTeamTimeSheet,
                           style: TTextTheme.h2Style(context).copyWith(
                             fontSize: isMobile ? 16 : 18,
                             fontWeight: FontWeight.bold,
@@ -173,7 +176,7 @@ class TeamTimeSheetWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 40),
         alignment: Alignment.center,
         child: Text(
-          "No Teams Found",
+          TextString.vendorErrorText,
           style: TTextTheme.TextError(context),
         ),
       );
@@ -200,13 +203,13 @@ class TeamTimeSheetWidget extends StatelessWidget {
                 )),
               ),
               const SizedBox(width: 12),
-              Expanded(flex: 2, child: Text("Team Name", style: TTextTheme.textFieldAboveText(context))),
-              Expanded(flex: 2, child: Text("Team Member", style: TTextTheme.textFieldAboveText(context))),
-              Expanded(flex: 2, child: Text("Total Time", style: TTextTheme.textFieldAboveText(context))),
-              Expanded(flex: 2, child: Text("Active Time", style: TTextTheme.textFieldAboveText(context))),
-              Expanded(flex: 2, child: Text("Idle Time", style: TTextTheme.textFieldAboveText(context))),
-              Expanded(flex: 2, child: Text("Productivity", style: TTextTheme.textFieldAboveText(context))),
-              Expanded(flex: 2, child: Text("Action", style: TTextTheme.textFieldAboveText(context))),
+              Expanded(flex: 2, child: Text(TextString.teamName, style: TTextTheme.textFieldAboveText(context))),
+              Expanded(flex: 2, child: Text(TextString.teamMember, style: TTextTheme.textFieldAboveText(context))),
+              Expanded(flex: 2, child: Text(TextString.totalTime, style: TTextTheme.textFieldAboveText(context))),
+              Expanded(flex: 2, child: Text(TextString.activeTime, style: TTextTheme.textFieldAboveText(context))),
+              Expanded(flex: 2, child: Text(TextString.teamIdleTime, style: TTextTheme.textFieldAboveText(context))),
+              Expanded(flex: 2, child: Text(TextString.teamProductivity, style: TTextTheme.textFieldAboveText(context))),
+              Expanded(flex: 2, child: Text(TextString.action, style: TTextTheme.textFieldAboveText(context))),
             ],
           ),
         ),
@@ -298,13 +301,13 @@ class TeamTimeSheetWidget extends StatelessWidget {
                 )),
               ),
               const SizedBox(width: 8),
-              Expanded(flex: 3, child: Text("Employee", style: TTextTheme.textFieldAboveText(context))),
-              Expanded(flex: 2, child: Text("Designation", style: TTextTheme.textFieldAboveText(context))),
-              Expanded(flex: 2, child: Text("Total Time", style: TTextTheme.textFieldAboveText(context))),
-              Expanded(flex: 2, child: Text("Active Time", style: TTextTheme.textFieldAboveText(context))),
-              Expanded(flex: 2, child: Text("Idle Time", style: TTextTheme.textFieldAboveText(context))),
-              Expanded(flex: 2, child: Text("Productivity", style: TTextTheme.textFieldAboveText(context))),
-              const SizedBox(width: 60, child: Text("Action", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500))),
+              Expanded(flex: 3, child: Text(TextString.filterTitle, style: TTextTheme.textFieldAboveText(context))),
+              Expanded(flex: 2, child: Text(TextString.vendorTimeSheetDesignation, style: TTextTheme.textFieldAboveText(context))),
+              Expanded(flex: 2, child: Text(TextString.vendorTimeSheetTotalTime, style: TTextTheme.textFieldAboveText(context))),
+              Expanded(flex: 2, child: Text(TextString.vendorTimeSheetActiveTime, style: TTextTheme.textFieldAboveText(context))),
+              Expanded(flex: 2, child: Text(TextString.vendorTimeSheetIdleTime, style: TTextTheme.textFieldAboveText(context))),
+              Expanded(flex: 2, child: Text(TextString.vendorTimeSheetProductivity, style: TTextTheme.textFieldAboveText(context))),
+              const SizedBox(width: 60, child: Text(TextString.action, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500))),
             ],
           ),
         ),
@@ -451,11 +454,11 @@ class TeamTimeSheetWidget extends StatelessWidget {
               const SizedBox(height: 12),
               Row(
                 children: [
-                  Text("AVG Activity: ", style: TTextTheme.titleSix(context).copyWith(fontSize: 11, fontWeight: FontWeight.w500)),
+                  Text(TextString.averageActivityTitle, style: TTextTheme.titleSix(context).copyWith(fontSize: 11, fontWeight: FontWeight.w500)),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                     decoration: BoxDecoration(
-                      color: Colors.green.withValues(alpha: 0.1),
+                      color: AppColors.approvedColor.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(4),
                       border: Border.all(color: AppColors.approvedColor, width: 0.8),
                     ),
@@ -667,7 +670,7 @@ class TeamTimeSheetWidget extends StatelessWidget {
               onChanged: (value) => controller.searchQuery.value = value,
               style: TTextTheme.titleSix(context).copyWith(fontSize: 12, color: AppColors.textColor),
               decoration: InputDecoration(
-                hintText: "Search by Employee",
+                hintText: TextString.searchEmployee,
                 hintStyle: TTextTheme.titleSix(context).copyWith(fontSize: 12, color: AppColors.tertiaryTextColor),
                 border: InputBorder.none,
                 isDense: true,
@@ -690,39 +693,40 @@ class TeamTimeSheetWidget extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          InkWell(
-            onTap: () => controller.selectedViewType.value = 0,
-            child: Container(
-              padding: const EdgeInsets.all(6),
-              decoration: BoxDecoration(
-                color: controller.selectedViewType.value == 0 ? AppColors.primaryColor : Colors.transparent,
-                borderRadius: BorderRadius.circular(6),
-              ),
-              child: Icon(
-                Icons.format_list_bulleted,
-                size: 16,
-                color: controller.selectedViewType.value == 0 ? AppColors.whiteColor : AppColors.textColor,
-              ),
-            ),
+          _buildToggleItem(
+            index: 0,
+            svgPath: IconString.listviewIcon
           ),
-          InkWell(
-            onTap: () => controller.selectedViewType.value = 1,
-            child: Container(
-              padding: const EdgeInsets.all(6),
-              decoration: BoxDecoration(
-                color: controller.selectedViewType.value == 1 ? AppColors.primaryColor : Colors.transparent,
-                borderRadius: BorderRadius.circular(6),
-              ),
-              child: Icon(
-                Icons.grid_view_rounded,
-                size: 16,
-                color: controller.selectedViewType.value == 1 ? AppColors.whiteColor : AppColors.textColor,
-              ),
-            ),
+          _buildToggleItem(
+            index: 1,
+            svgPath: IconString.graphView
           ),
         ],
       ),
     ));
+  }
+
+  Widget _buildToggleItem({required int index, required String svgPath}) {
+    bool isSelected = controller.selectedViewType.value == index;
+    return InkWell(
+      onTap: () => controller.selectedViewType.value = index,
+      child: Container(
+        padding: const EdgeInsets.all(6),
+        decoration: BoxDecoration(
+          color: isSelected ? AppColors.primaryColor : Colors.transparent,
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: SvgPicture.asset(
+          svgPath,
+          width: 22,
+          height: 22,
+          colorFilter: ColorFilter.mode(
+            isSelected ? AppColors.whiteColor : AppColors.textColor,
+            BlendMode.srcIn,
+          ),
+        ),
+      ),
+    );
   }
 
   Widget _buildDatePickerBox(BuildContext context) {

@@ -66,5 +66,8 @@ class IconString{
 
      /// Team
   static const String  teamAdded = 'assets/icons/TeamAdded.svg';
+  static const String  productivityIcon = 'assets/icons/Productivity.svg';
+  static const String  graphView = 'assets/icons/GraphView.svg';
+  static const String  listviewIcon = 'assets/icons/ListViewIcon.svg';
 
 }

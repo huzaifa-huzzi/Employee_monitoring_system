@@ -1,4 +1,5 @@
 import 'package:employee_monitoring_system/Resources/Colors.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 
@@ -137,7 +138,7 @@ class _EmployeeDetailViewWidgetState extends State<EmployeeDetailViewWidget> {
         const Divider(color: AppColors.borderColor, thickness: 0.8),
         const SizedBox(height: 16),
         Text(
-          "Time Logs & Screenshot Timeline",
+          TextString.timeLogsTitle,
           style: TTextTheme.h2Style(context).copyWith(fontSize: 14, fontWeight: FontWeight.w600),
         ),
         const SizedBox(height: 16),
@@ -150,7 +151,7 @@ class _EmployeeDetailViewWidgetState extends State<EmployeeDetailViewWidget> {
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(
-            "Activity Log for filter: Day",
+            TextString.timeLogsSubtitle,
             style: TTextTheme.titleSix(context).copyWith(color: AppColors.tertiaryTextColor, fontSize: 13),
           ),
         ),
@@ -160,7 +161,7 @@ class _EmployeeDetailViewWidgetState extends State<EmployeeDetailViewWidget> {
 
   // Table View
   Widget _buildTableViewWidget(BuildContext context) {
-    bool isLast4Weeks = widget.selectedFilter == "Last 4 week";
+    bool isLast4Weeks = widget.selectedFilter == last4WeeksLogs;
     List<Map<String, dynamic>> logs = isLast4Weeks ? last4WeeksLogs : weeklyLogs;
     Map<String, dynamic> totalData = isLast4Weeks
         ? {
@@ -209,11 +210,11 @@ class _EmployeeDetailViewWidgetState extends State<EmployeeDetailViewWidget> {
                         ),
                       ),
                       const SizedBox(width: 12),
-                      Expanded(flex: 2, child: Text("Duration", style: TTextTheme.textFieldAboveText(context))),
-                      Expanded(flex: 2, child: Text("Total time", style: TTextTheme.textFieldAboveText(context))),
-                      Expanded(flex: 2, child: Text("Active Time", style: TTextTheme.textFieldAboveText(context))),
-                      Expanded(flex: 2, child: Text("Idle Time", style: TTextTheme.textFieldAboveText(context))),
-                      Expanded(flex: 2, child: Text("Productivity", style: TTextTheme.textFieldAboveText(context))),
+                      Expanded(flex: 2, child: Text(TextString.duration, style: TTextTheme.textFieldAboveText(context))),
+                      Expanded(flex: 2, child: Text(TextString.totalTime, style: TTextTheme.textFieldAboveText(context))),
+                      Expanded(flex: 2, child: Text(TextString.activeTime, style: TTextTheme.textFieldAboveText(context))),
+                      Expanded(flex: 2, child: Text(TextString.idleTime, style: TTextTheme.textFieldAboveText(context))),
+                      Expanded(flex: 2, child: Text(TextString.vendorTimeSheetProductivity, style: TTextTheme.textFieldAboveText(context))),
                     ],
                   ),
                 ),

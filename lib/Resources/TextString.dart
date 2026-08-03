@@ -228,7 +228,38 @@ class TextString{
    static const String  addVendorTeamSubtitle=   "You can see your team members here";
 
 
-
-
+      /// Time Sheet
+   static const String  timeSheetVendorTitle= "Time Sheet";
+   static const String  timeSheetVendorSubtitle=  "You can see your time Sheet Here";
+   static const String  timeSheetFirstTab= "Employee";
+   static const String  timeSheetSecondTab= "Team";
+   static const String  kpi1= "Total time Tracked";
+   static const String  kpi2= "45 hrs 50 mints";
+   static const String  kpi3= "2 more hours added";
+   static const String  kpi4= "Active Time";
+   static const String  kpi5= "36 hrs 20 mints";
+   static const String  kpi6= "Idle time";
+   static const String  kpi7= "9 hrs 30 mints";
+   static const String  kpi8=  "Productivity Score";
+   static const String  kpi9= "65%";
+   static const String  filterTitle= "Employees";
+   static const String  filterSubtitle= "Search by Employee";
+   static const String  lastFourWeek= "Last 4 week";
+   static const String  vendorTimeSheetDesignation= "Designation";
+   static const String  vendorTimeSheetTotalTime= "Total Time";
+   static const String  vendorTimeSheetActiveTime= "Active Time";
+   static const String  vendorTimeSheetIdleTime= "Idle Time";
+   static const String  vendorTimeSheetProductivity= "Productivity";
+   static const String  averageActivityTitle= "AVG Activity: ";
+   static const String  vendorTeamTimeSheet= "Team Time Sheet";
+   static const String  vendorErrorText= "No Teams Found";
+   static const String  teamName= "Team Name";
+   static const String  teamMember= "Team Member";
+   static const String  activeTime= "Active Time";
+   static const String  teamIdleTime= "Idle Time";
+   static const String  teamProductivity= "Productivity";
+   static const String  searchEmployee= "Search by Employee";
+   static const String  timeLogsTitle= "Time Logs & Screenshot Timeline";
+   static const String  timeLogsSubtitle= "Activity Log for filter: Day";
 
 }

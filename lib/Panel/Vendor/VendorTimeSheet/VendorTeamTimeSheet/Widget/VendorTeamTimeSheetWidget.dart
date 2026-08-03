@@ -3,7 +3,10 @@ import 'package:employee_monitoring_system/Panel/Vendor/VendorTimeSheet/Reusable
 import 'package:employee_monitoring_system/Panel/Vendor/VendorTimeSheet/VendorTeamTimeSheet/Widget/EmployeeDetailTimeSheetWidget.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/VendorTimeSheet/VendorTeamTimeSheet/Widget/TeamTimeSheetWidget.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/VendorTimeSheet/VendorTimeSheetController.dart';
+import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
@@ -60,12 +63,12 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                                 ),
                               ),
                             ],
-                            Text("Time Sheet", style: TTextTheme.h1Style(context)),
+                            Text(TextString.timeSheetVendorTitle, style: TTextTheme.h1Style(context)),
                           ],
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          "You can see your time Sheet Here",
+                          TextString.timeSheetVendorSubtitle,
                           style: TTextTheme.titleFour(context),
                         ),
                       ],
@@ -83,8 +86,8 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        _buildTopTab(context, controller, title: "Employee", index: 0),
-                        _buildTopTab(context, controller, title: "Team", index: 1),
+                        _buildTopTab(context, controller, title: TextString.timeSheetFirstTab, index: 0),
+                        _buildTopTab(context, controller, title:TextString.timeSheetSecondTab , index: 1),
                       ],
                     ),
                   )),
@@ -104,41 +107,41 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                   _buildMetricCard(
                     context,
                     width: isMobile ? double.infinity : (constraints.maxWidth - 36) / 4,
-                    icon: Icons.access_time,
+                    svgPath: IconString.idleTime,
                     iconColor: AppColors.primaryColor,
-                    title: "Total time Tracked",
-                    value: "45 hrs 50 mints",
-                    subValue: "2 more hours added",
+                    title: TextString.kpi1,
+                    value: TextString.kpi2,
+                    subValue:TextString.kpi3 ,
                     barColor: Colors.transparent,
                     progress: 0,
                   ),
                   _buildMetricCard(
                     context,
                     width: isMobile ? double.infinity : (constraints.maxWidth - 36) / 4,
-                    icon: Icons.access_time,
+                    svgPath: IconString.idleTime,
                     iconColor: AppColors.approvedColor,
-                    title: "Active Time",
-                    value: "36 hrs 20 mints",
+                    title:TextString.kpi4 ,
+                    value:TextString.kpi5 ,
                     barColor: AppColors.approvedColor,
                     progress: 0.7,
                   ),
                   _buildMetricCard(
                     context,
                     width: isMobile ? double.infinity : (constraints.maxWidth - 36) / 4,
-                    icon: Icons.access_time,
+                    svgPath: IconString.idleTime,
                     iconColor: AppColors.rejectedColor,
-                    title: "Idle time",
-                    value: "9 hrs 30 mints",
+                    title:TextString.kpi6 ,
+                    value:TextString.kpi7 ,
                     barColor: AppColors.rejectedColor,
                     progress: 0.3,
                   ),
                   _buildMetricCard(
                     context,
                     width: isMobile ? double.infinity : (constraints.maxWidth - 36) / 4,
-                    icon: Icons.bar_chart,
+                    svgPath: IconString.productivityIcon,
                     iconColor: AppColors.primaryColor,
-                    title: "Productivity Score",
-                    value: "65%",
+                    title:TextString.kpi8,
+                    value:TextString.kpi9 ,
                     barColor: AppColors.primaryColor,
                     progress: 0.65,
                   ),
@@ -186,7 +189,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Employees", style: TTextTheme.h2Style(context)),
+          Text(TextString.filterTitle, style: TTextTheme.h2Style(context)),
           const SizedBox(height: 16),
           Align(
             alignment: Alignment.centerRight,
@@ -205,7 +208,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                     style: TTextTheme.FieldWriteTheText(context),
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.search, size: 18, color: AppColors.tertiaryTextColor),
-                      hintText: "Search by Employee",
+                      hintText:TextString.filterSubtitle ,
                       hintStyle: TTextTheme.selectProjectText(context).copyWith(fontSize: 12),
                       contentPadding: const EdgeInsets.symmetric(vertical: 0),
                       filled: true,
@@ -221,21 +224,13 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                Obx(() => Container(
-                  height: 38,
-                  padding: const EdgeInsets.all(3),
-                  decoration: BoxDecoration(
-                    color: AppColors.backgroundOfScreenColor,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      _buildViewToggleButton(controller, index: 0, icon: Icons.format_list_bulleted),
-                      const SizedBox(width: 4),
-                      _buildViewToggleButton(controller, index: 1, icon: Icons.grid_view_outlined),
-                    ],
-                  ),
+                Obx(() => Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _buildViewToggleButton(controller, index: 0, svgPath: IconString.listviewIcon),
+                    const SizedBox(width: 4),
+                    _buildViewToggleButton(controller, index: 1, svgPath: IconString.graphView),
+                  ],
                 )),
                 InkWell(
                   borderRadius: BorderRadius.circular(20),
@@ -274,9 +269,9 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      _buildTimeFilterTab(context, controller, "Day"),
-                      _buildTimeFilterTab(context, controller, "Week"),
-                      _buildTimeFilterTab(context, controller, "Last 4 week"),
+                      _buildTimeFilterTab(context, controller, TextString.dayTitle),
+                      _buildTimeFilterTab(context, controller, TextString.weekTitle),
+                      _buildTimeFilterTab(context, controller, TextString.lastFourWeek),
                     ],
                   ),
                 )),
@@ -369,25 +364,15 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                         ),
                       )),
                       const SizedBox(width: 8),
-                      Expanded(flex: 3, child: Text("Employee", style: TTextTheme.textFieldAboveText(context))),
-                      Expanded(flex: 2, child: Text("Designation", style: TTextTheme.textFieldAboveText(context))),
+                      Expanded(flex: 3, child: Text(TextString.employeeTitleTwo, style: TTextTheme.textFieldAboveText(context))),
+                      Expanded(flex: 2, child: Text(TextString.vendorTimeSheetDesignation, style: TTextTheme.textFieldAboveText(context))),
                       Expanded(
                         flex: 2,
                         child: Row(
                           children: [
                             const Icon(Icons.access_time, size: 14, color: AppColors.tertiaryTextColor),
                             const SizedBox(width: 4),
-                            Text("Total Time", style: TTextTheme.textFieldAboveText(context)),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: Row(
-                          children: [
-                            const Icon(Icons.access_time, size: 14, color: AppColors.tertiaryTextColor),
-                            const SizedBox(width: 4),
-                            Text("Active Time", style: TTextTheme.textFieldAboveText(context)),
+                            Text(TextString.vendorTimeSheetTotalTime, style: TTextTheme.textFieldAboveText(context)),
                           ],
                         ),
                       ),
@@ -397,7 +382,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                           children: [
                             const Icon(Icons.access_time, size: 14, color: AppColors.tertiaryTextColor),
                             const SizedBox(width: 4),
-                            Text("Idle Time", style: TTextTheme.textFieldAboveText(context)),
+                            Text(TextString.vendorTimeSheetActiveTime, style: TTextTheme.textFieldAboveText(context)),
                           ],
                         ),
                       ),
@@ -405,13 +390,31 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                         flex: 2,
                         child: Row(
                           children: [
-                            const Icon(Icons.bar_chart, size: 14, color: AppColors.tertiaryTextColor),
+                            const Icon(Icons.access_time, size: 14, color: AppColors.tertiaryTextColor),
                             const SizedBox(width: 4),
-                            Text("Productivity", style: TTextTheme.textFieldAboveText(context)),
+                            Text(TextString.vendorTimeSheetIdleTime, style: TTextTheme.textFieldAboveText(context)),
                           ],
                         ),
                       ),
-                      SizedBox(width: 60, child: Text("Action", style: TTextTheme.textFieldAboveText(context))),
+                      Expanded(
+                        flex: 2,
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(
+                              IconString.productivityIcon,
+                              width: 14,
+                              height: 14,
+                              colorFilter: const ColorFilter.mode(
+                                AppColors.tertiaryTextColor,
+                                BlendMode.srcIn,
+                              ),
+                            ),
+                            const SizedBox(width: 4),
+                            Text(TextString.vendorTimeSheetProductivity, style: TTextTheme.textFieldAboveText(context)),
+                          ],
+                        ),
+                      ),
+                      SizedBox(width: 60, child: Text(TextString.action, style: TTextTheme.textFieldAboveText(context))),
                     ],
                   ),
                 ),
@@ -537,7 +540,7 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
               const SizedBox(height: 12),
               Row(
                 children: [
-                  Text("AVG Activity: ", style: TTextTheme.titleSix(context).copyWith(fontSize: 11, fontWeight: FontWeight.w500)),
+                  Text(TextString.averageActivityTitle, style: TTextTheme.titleSix(context).copyWith(fontSize: 11, fontWeight: FontWeight.w500)),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                     decoration: BoxDecoration(
@@ -753,10 +756,11 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
     );
   }
      // Metric Card
+
   Widget _buildMetricCard(
       BuildContext context, {
         required double width,
-        required IconData icon,
+        required String svgPath,
         required Color iconColor,
         required String title,
         required String value,
@@ -777,7 +781,12 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(icon, size: 16, color: iconColor),
+              SvgPicture.asset(
+                svgPath,
+                width: 16,
+                height: 16,
+                colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
+              ),
               const SizedBox(width: 6),
               Expanded(
                 child: Text(
@@ -809,7 +818,8 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
   }
 
    // View Toggle Button
-  Widget _buildViewToggleButton(VendorTimeSheetController controller, {required int index, required IconData icon}) {
+
+  Widget _buildViewToggleButton(VendorTimeSheetController controller, {required int index, required String svgPath}) {
     bool isSelected = controller.selectedViewType.value == index;
     return InkWell(
       onTap: () => controller.selectedViewType.value = index,
@@ -819,10 +829,14 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
           color: isSelected ? AppColors.primaryColor : Colors.transparent,
           borderRadius: BorderRadius.circular(6),
         ),
-        child: Icon(
-          icon,
-          size: 18,
-          color: isSelected ? AppColors.whiteColor : AppColors.tertiaryTextColor,
+        child: SvgPicture.asset(
+          svgPath,
+          width: 22,
+          height: 22,
+          colorFilter: ColorFilter.mode(
+            isSelected ? AppColors.whiteColor : AppColors.textColor,
+            BlendMode.srcIn,
+          ),
         ),
       ),
     );
