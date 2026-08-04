@@ -2,7 +2,6 @@ import 'package:employee_monitoring_system/Panel/Vendor/VendorSnapshot/VendorSna
 import 'package:employee_monitoring_system/Panel/Vendor/VendorSnapshot/Widget/VendorSnapShotWidget.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
 class VendorSnapShot extends StatelessWidget {
@@ -10,7 +9,6 @@ class VendorSnapShot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // GetX Controller Register
     Get.put(VendorSnapshotController());
 
     return const Scaffold(

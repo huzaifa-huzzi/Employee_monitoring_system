@@ -320,7 +320,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                             Container(
                               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                               decoration: BoxDecoration(
-                                color: Colors.blue.withValues(alpha: 0.08),
+                                color: AppColors.primaryColor.withValues(alpha: 0.08),
                                 borderRadius: BorderRadius.circular(4),
                               ),
                               child: Text(
@@ -421,7 +421,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                   if (isHovered.value) ...[
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.black.withValues(alpha: 0.45),
+                        color: AppColors.textColor.withValues(alpha: 0.45),
                         borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
                       ),
                       child: Center(
@@ -488,10 +488,6 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
             children: [
               Center(
                 child: Obx(() {
-                  final currentIndex = activeIndex.value;
-                  final shotData = (shots.isNotEmpty && currentIndex < shots.length)
-                      ? shots[currentIndex]
-                      : null;
 
                   return InteractiveViewer(
                     minScale: 0.5,
@@ -759,6 +755,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                                 const SizedBox(width: 8),
                                 Expanded(
                                   child: TextField(
+                                    cursorColor:AppColors.textColor,
                                     onChanged: (val) => controller.searchQuery.value = val,
                                     style: TTextTheme.titleSix(context).copyWith(fontSize: 12),
                                     decoration: InputDecoration(
