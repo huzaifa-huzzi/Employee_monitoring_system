@@ -71,4 +71,7 @@ class IconString{
   static const String  graphView = 'assets/icons/GraphView.svg';
   static const String  listviewIcon = 'assets/icons/ListViewIcon.svg';
 
+   /// Screenshot
+  static const String  totalScreenShot = 'assets/icons/TotalScreenShot.svg';
+
 }

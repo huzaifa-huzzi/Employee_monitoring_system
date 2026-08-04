@@ -99,6 +99,8 @@ class VendorRoutes {
           path: '/vendor/ScreenShot',
           builder: (context, state) => VendorSnapShot()),
 
+
+
     ],
   );
 }

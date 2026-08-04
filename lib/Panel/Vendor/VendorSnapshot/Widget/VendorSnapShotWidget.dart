@@ -3,6 +3,7 @@ import 'package:employee_monitoring_system/Panel/Vendor/VendorSnapshot/ReusableW
 import 'package:employee_monitoring_system/Panel/Vendor/VendorSnapshot/VendorSnapshotController.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/ImageString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,73 +16,187 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
 
   @override
   Widget build(BuildContext context) {
+    return Obx(() {
+      if (controller.isShowingEmployeeDetailView.value) {
+        return _buildEmployeeScreenshotsDetailView(context);
+      }
+      return SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            LayoutBuilder(
+              builder: (context, constraints) {
+                bool isMobile = constraints.maxWidth < 480;
+
+                return Flex(
+                  direction: isMobile ? Axis.vertical : Axis.horizontal,
+                  mainAxisAlignment: isMobile ? MainAxisAlignment.start : MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: isMobile ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Obx(() {
+                          if (controller.isShowingTeamEmpDetails.value) {
+                            return Padding(
+                              padding: const EdgeInsets.only(right: 8.0),
+                              child: InkWell(
+                                onTap: () => controller.isShowingTeamEmpDetails.value = false,
+                                borderRadius: BorderRadius.circular(20),
+                                child: const Icon(
+                                  Icons.arrow_back_ios_new_rounded,
+                                  size: 18,
+                                  color: AppColors.textColor,
+                                ),
+                              ),
+                            );
+                          }
+                          return const SizedBox.shrink();
+                        }),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Screen Shots",
+                              style: TTextTheme.h2Style(context).copyWith(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              "You can see screenshots here",
+                              style: TTextTheme.titleSix(context).copyWith(
+                                fontSize: 12,
+                                color: AppColors.tertiaryTextColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    if (isMobile) const SizedBox(height: 12),
+                    _buildTopToggleSwitch(context),
+                  ],
+                );
+              },
+            ),
+
+            const SizedBox(height: 20),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                bool isMobile = constraints.maxWidth < 700;
+
+                return Wrap(
+                  spacing: 16,
+                  runSpacing: 12,
+                  children: [
+                    _buildMetricCard(
+                      context,
+                      width: isMobile ? double.infinity : (constraints.maxWidth - 48) / 4,
+                      svgIconPath: IconString.totalScreenShot,
+                      iconColor: AppColors.primaryColor,
+                      title: "Total ScreenShots",
+                      value: "864",
+                      subValue: "2 more screenshots added",
+                      barColor: Colors.transparent,
+                      progress: 0,
+                    ),
+                    _buildMetricCard(
+                      context,
+                      width: isMobile ? double.infinity : (constraints.maxWidth - 48) / 4,
+                      svgIconPath: IconString.idleTime,
+                      iconColor: AppColors.approvedColor,
+                      title: "Active time",
+                      value: "126 hrs 30 mints",
+                      barColor: AppColors.approvedColor,
+                      progress: 0.75,
+                    ),
+                    _buildMetricCard(
+                      context,
+                      width: isMobile ? double.infinity : (constraints.maxWidth - 48) / 4,
+                      svgIconPath: IconString.idleTime,
+                      iconColor: AppColors.rejectedColor,
+                      title: "Idle time",
+                      value: "9 hrs 30 mints",
+                      barColor: AppColors.rejectedColor,
+                      progress: 0.25,
+                    ),
+                    _buildMetricCard(
+                      context,
+                      width: isMobile ? double.infinity : (constraints.maxWidth - 48) / 4,
+                      svgIconPath: IconString.productivityIcon,
+                      iconColor: AppColors.primaryColor,
+                      title: "Productivity Score",
+                      value: "65%",
+                      barColor: AppColors.primaryColor,
+                      progress: 0.65,
+                    ),
+                  ],
+                );
+              },
+            ),
+
+            const SizedBox(height: 24),
+            Obx(() {
+              if (controller.selectedToggleIndex.value == 0) {
+                return _buildEmployeeTableSection(context, isSubView: false);
+              } else {
+                if (controller.isShowingTeamEmpDetails.value) {
+                  return _buildEmployeeTableSection(context, isSubView: true);
+                } else {
+                  return _buildTeamTableSection(context);
+                }
+              }
+            }),
+          ],
+        ),
+      );
+    });
+  }
+       /// ----------- Extra Widget ------------- ///
+  // Employee ScreenshotDetail
+  Widget _buildEmployeeScreenshotsDetailView(BuildContext context) {
+    final emp = controller.selectedEmployeeDetails;
+
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          LayoutBuilder(
-            builder: (context, constraints) {
-              bool isMobile = constraints.maxWidth < 480;
-
-              return Flex(
-                direction: isMobile ? Axis.vertical : Axis.horizontal,
-                mainAxisAlignment: isMobile ? MainAxisAlignment.start : MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: isMobile ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+          Row(
+            children: [
+              InkWell(
+                onTap: () => controller.closeEmployeeDetailView(),
+                borderRadius: BorderRadius.circular(20),
+                child: const Padding(
+                  padding: EdgeInsets.only(right: 8.0),
+                  child: Icon(Icons.arrow_back_ios_new_rounded, size: 18, color: AppColors.textColor),
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Obx(() {
-                        if (controller.isShowingTeamEmpDetails.value) {
-                          return Padding(
-                            padding: const EdgeInsets.only(right: 8.0),
-                            child: InkWell(
-                              onTap: () => controller.isShowingTeamEmpDetails.value = false,
-                              borderRadius: BorderRadius.circular(20),
-                              child: const Icon(
-                                Icons.arrow_back_ios_new_rounded,
-                                size: 18,
-                                color: Colors.black,
-                              ),
-                            ),
-                          );
-                        }
-                        return const SizedBox.shrink();
-                      }),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Screen Shots",
-                            style: TTextTheme.h2Style(context).copyWith(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            "You can see screenshots here",
-                            style: TTextTheme.titleSix(context).copyWith(
-                              fontSize: 12,
-                              color: AppColors.tertiaryTextColor,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                  Text(
+                    "Screen Shots",
+                    style: TTextTheme.h2Style(context).copyWith(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
-                  if (isMobile) const SizedBox(height: 12),
-                  _buildTopToggleSwitch(context),
+                  const SizedBox(height: 2),
+                  Text(
+                    "You can see screenshots here",
+                    style: TTextTheme.titleSix(context).copyWith(fontSize: 12, color: AppColors.tertiaryTextColor),
+                  ),
                 ],
-              );
-            },
+              ),
+            ],
           ),
 
           const SizedBox(height: 20),
           LayoutBuilder(
             builder: (context, constraints) {
               bool isMobile = constraints.maxWidth < 700;
+              double cardWidth = isMobile ? double.infinity : (constraints.maxWidth - 48) / 4;
 
               return Wrap(
                 spacing: 16,
@@ -89,42 +204,42 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                 children: [
                   _buildMetricCard(
                     context,
-                    width: isMobile ? double.infinity : (constraints.maxWidth - 48) / 4,
-                    icon: Icons.photo_library_outlined,
+                    width: cardWidth,
+                    svgIconPath: IconString.totalScreenShot,
                     iconColor: AppColors.primaryColor,
                     title: "Total ScreenShots",
-                    value: "864",
+                    value: emp["totalScreenshots"] ?? "48",
                     subValue: "2 more screenshots added",
                     barColor: Colors.transparent,
                     progress: 0,
                   ),
                   _buildMetricCard(
                     context,
-                    width: isMobile ? double.infinity : (constraints.maxWidth - 48) / 4,
-                    icon: Icons.access_time_rounded,
-                    iconColor: Colors.green,
+                    width: cardWidth,
+                    svgIconPath: IconString.idleTime,
+                    iconColor: AppColors.approvedColor,
                     title: "Active time",
-                    value: "126 hrs 30 mints",
-                    barColor: Colors.green,
+                    value: emp["activeTime"] ?? "6 hrs 50 mints",
+                    barColor: AppColors.approvedColor,
                     progress: 0.75,
                   ),
                   _buildMetricCard(
                     context,
-                    width: isMobile ? double.infinity : (constraints.maxWidth - 48) / 4,
-                    icon: Icons.timer_outlined,
-                    iconColor: Colors.red,
+                    width: cardWidth,
+                    svgIconPath: IconString.idleTime,
+                    iconColor: AppColors.rejectedColor,
                     title: "Idle time",
-                    value: "9 hrs 30 mints",
-                    barColor: Colors.red,
+                    value: emp["idleTime"] ?? "1 hrs 10 mints",
+                    barColor: AppColors.rejectedColor,
                     progress: 0.25,
                   ),
                   _buildMetricCard(
                     context,
-                    width: isMobile ? double.infinity : (constraints.maxWidth - 48) / 4,
-                    icon: Icons.bar_chart_rounded,
+                    width: cardWidth,
+                    svgIconPath:IconString.productivityIcon ,
                     iconColor: AppColors.primaryColor,
                     title: "Productivity Score",
-                    value: "65%",
+                    value: emp["productivity"] ?? "65%",
                     barColor: AppColors.primaryColor,
                     progress: 0.65,
                   ),
@@ -133,26 +248,308 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
             },
           ),
 
-          const SizedBox(height: 24),
+          const SizedBox(height: 20),
+          Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: AppColors.whiteColor,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(Icons.person_outline, color: AppColors.primaryColor, size: 28),
+                        const SizedBox(width: 8),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              emp["name"] ?? "Jack Milson",
+                              style: TTextTheme.h2Style(context).copyWith(fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              emp["email"] ?? "jack@gmail.com",
+                              style: TTextTheme.titleSix(context).copyWith(fontSize: 12, color: AppColors.tertiaryTextColor),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    _buildDateSelectorWidget(context),
+                  ],
+                ),
 
-          // 3. Dynamic Section Render
-          Obx(() {
-            if (controller.selectedToggleIndex.value == 0) {
-              return _buildEmployeeTableSection(context, isSubView: false);
-            } else {
-              if (controller.isShowingTeamEmpDetails.value) {
-                return _buildEmployeeTableSection(context, isSubView: true);
-              } else {
-                return _buildTeamTableSection(context);
-              }
-            }
-          }),
+                const SizedBox(height: 20),
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    double width = (constraints.maxWidth - 16) / 2;
+
+                    return Row(
+                      children: [
+                        _buildSubSummaryBox(context, width: width, label: "Worked Time", value: "8hrs", valueColor: AppColors.textColor),
+                        const SizedBox(width: 16),
+                        _buildSubSummaryBox(context, width: width, label: "Average Activity", value: "65% of the time", valueColor: AppColors.approvedColor),
+                      ],
+                    );
+                  },
+                ),
+
+                const SizedBox(height: 24),
+                Obx(() => Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: List.generate(controller.screenshotTimeGroups.length, (groupIndex) {
+                    final group = controller.screenshotTimeGroups[groupIndex];
+                    final List shots = group["shots"] ?? [];
+
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              group["timeRange"] ?? "",
+                              style: TTextTheme.h2Style(context).copyWith(fontSize: 13, fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(width: 10),
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                              decoration: BoxDecoration(
+                                color: Colors.blue.withValues(alpha: 0.08),
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: Text(
+                                "Total time worked: ${group["totalWorked"]}",
+                                style: TTextTheme.h6Style(context),
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        const SizedBox(height: 14),
+
+                        LayoutBuilder(
+                          builder: (context, constraints) {
+                            int crossAxisCount = 3;
+                            if (constraints.maxWidth < 600) {
+                              crossAxisCount = 1;
+                            } else if (constraints.maxWidth < 900) crossAxisCount = 2;
+
+                            return GridView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: shots.length,
+                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: crossAxisCount,
+                                crossAxisSpacing: 16,
+                                mainAxisSpacing: 16,
+                                childAspectRatio: 1.25,
+                              ),
+                              itemBuilder: (context, index) {
+                                return _buildHoverScreenshotCard(context, shots[index], shots, index);
+                              },
+                            );
+                          },
+                        ),
+
+                        const SizedBox(height: 24),
+                      ],
+                    );
+                  }),
+                )),
+              ],
+            ),
+          ),
         ],
       ),
     );
   }
 
-    /// ------- Extra Widget -------------///
+   // Summary Box
+  Widget _buildSubSummaryBox(BuildContext context, {required double width, required String label, required String value, required Color valueColor}) {
+    return Container(
+      width: width,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: AppColors.whiteColor,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(label, style: TTextTheme.titleSix(context).copyWith(fontSize: 10, color: AppColors.tertiaryTextColor)),
+          const SizedBox(height: 6),
+          Text(value, style: TTextTheme.h6Style(context).copyWith(color: valueColor)),
+        ],
+      ),
+    );
+  }
+
+   // Hover Screenshot
+  Widget _buildHoverScreenshotCard(BuildContext context, Map<String, dynamic> item, List allShots, int currentIndex) {
+    RxBool isHovered = false.obs;
+
+    return MouseRegion(
+      onEnter: (_) => isHovered.value = true,
+      onExit: (_) => isHovered.value = false,
+      child: Obx(() => Container(
+        decoration: BoxDecoration(
+          color: AppColors.whiteColor,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
+                    child: Image.asset(
+                      ImageString.screenShotImage,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                    ),
+                  ),
+                  if (isHovered.value) ...[
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.black.withValues(alpha: 0.45),
+                        borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
+                      ),
+                      child: Center(
+                        child: PrimaryBtnOfVendorSnapahot(
+                          text: "View Screen Shot",
+                          height: 40,
+                          width: 200,
+                          borderRadius: BorderRadius.circular(8),
+                          onTap: () => _openLightboxViewerDialog(context, allShots, currentIndex),
+                        ),
+                      ),
+                    ),
+                  ]
+                ],
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              color: AppColors.backgroundOfScreenColor.withValues(alpha: 0.3),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Text(
+                      item['time'] ?? "",
+                      style: TTextTheme.titleSix(context).copyWith(fontSize: 11, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  LinearProgressIndicator(
+                    value: (item['activity'] ?? 50) / 100,
+                    backgroundColor: AppColors.tertiaryTextColor.withValues(alpha: 0.2),
+                    valueColor: const AlwaysStoppedAnimation<Color>(AppColors.approvedColor),
+                    minHeight: 4,
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    "${item['activity']}% of 10 minutes",
+                    style: TTextTheme.titleSix(context).copyWith(fontSize: 9, color: AppColors.tertiaryTextColor),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      )),
+    );
+  }
+
+   // LightBox
+  void _openLightboxViewerDialog(BuildContext context, List shots, int initialIndex) {
+    RxInt activeIndex = initialIndex.obs;
+
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (dialogContext) => Dialog(
+        backgroundColor: AppColors.textColor,
+        insetPadding: EdgeInsets.zero,
+        child: SafeArea(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Center(
+                child: Obx(() {
+                  final currentIndex = activeIndex.value;
+                  final shotData = (shots.isNotEmpty && currentIndex < shots.length)
+                      ? shots[currentIndex]
+                      : null;
+
+                  return InteractiveViewer(
+                    minScale: 0.5,
+                    maxScale: 4.0,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 40.0),
+                      child: Image.asset(
+                        ImageString.screenShotImage,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  );
+                }),
+              ),
+              Positioned(
+                top: 20,
+                right: 24,
+                child: InkWell(
+                  onTap: () => Navigator.pop(dialogContext),
+                  borderRadius: BorderRadius.circular(20),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Icon(Icons.close, color: AppColors.whiteColor, size: 28),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 20,
+                child: Obx(() => activeIndex.value > 0
+                    ? InkWell(
+                  onTap: () => activeIndex.value--,
+                  borderRadius: BorderRadius.circular(20),
+                  child: const Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: Icon(Icons.arrow_back, color: AppColors.whiteColor, size: 28),
+                  ),
+                )
+                    : const SizedBox.shrink()),
+              ),
+              Positioned(
+                right: 20,
+                child: Obx(() => activeIndex.value < shots.length - 1
+                    ? InkWell(
+                  onTap: () => activeIndex.value++,
+                  borderRadius: BorderRadius.circular(20),
+                  child: const Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: Icon(Icons.arrow_forward, color: AppColors.whiteColor, size: 28),
+                  ),
+                )
+                    : const SizedBox.shrink()),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
   // Team Tab
   Widget _buildTeamTableSection(BuildContext context) {
     return Container(
@@ -160,7 +557,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
+        border: Border.all(color: AppColors.borderColor),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -223,18 +620,16 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                             const SizedBox(width: 12),
                             Expanded(flex: 3, child: _buildTableHeaderTitle(context, "Team Name")),
                             Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Team Member")),
-                            Expanded(flex: 3, child: _buildTableHeaderTitle(context, "Total Screen Shots", icon: Icons.photo_library_outlined)),
-                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Active Time", icon: Icons.access_time_rounded)),
-                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Idle Time", icon: Icons.timer_outlined)),
-                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Productivity", icon: Icons.bar_chart_rounded)),
+                            Expanded(flex: 3, child: _buildTableHeaderTitle(context, "Total Screen Shots", svgIconPath: IconString.totalScreenShot)),
+                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Active Time",svgIconPath: IconString.idleTime)),
+                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Idle Time", svgIconPath: IconString.idleTime)),
+                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Productivity", svgIconPath: IconString.productivityIcon)),
                             Expanded(flex: 2, child: Text("Action", style: TTextTheme.textFieldAboveText(context))),
                           ],
                         ),
                       ),
 
                       const SizedBox(height: 10),
-
-                      // Data Rows
                       Obx(() => Column(
                         children: List.generate(controller.teamLogs.length, (index) {
                           final item = controller.teamLogs[index];
@@ -304,7 +699,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
     );
   }
 
-   // Employee Table Section
+  // Employee Table Section
   Widget _buildEmployeeTableSection(BuildContext context, {required bool isSubView}) {
     return Container(
       padding: const EdgeInsets.all(20),
@@ -424,10 +819,10 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                             ),
                             const SizedBox(width: 12),
                             Expanded(flex: 3, child: _buildTableHeaderTitle(context, "Project")),
-                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Total Screen Shots", icon: Icons.photo_library_outlined)),
-                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Active Time", icon: Icons.access_time_rounded)),
-                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Idle Time", icon: Icons.timer_outlined)),
-                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Productivity", icon: Icons.bar_chart_rounded)),
+                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Total Screen Shots", svgIconPath: IconString.totalScreenShot)),
+                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Active Time", svgIconPath: IconString.idleTime)),
+                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Idle Time", svgIconPath: IconString.idleTime)),
+                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Productivity", svgIconPath: IconString.productivityIcon)),
                             Expanded(flex: 1, child: Text("Action", style: TTextTheme.textFieldAboveText(context))),
                           ],
                         ),
@@ -489,7 +884,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                                 Expanded(
                                   flex: 1,
                                   child: InkWell(
-                                    onTap: () {},
+                                    onTap: () => controller.openEmployeeDetailView(item),
                                     child: SvgPicture.asset(
                                       IconString.eyeIcon,
                                       width: 18,
@@ -517,7 +912,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
     );
   }
 
-    // Date selector Widget
+  // Date selector Widget
   Widget _buildDateSelectorWidget(BuildContext context) {
     return Obx(() => Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
@@ -575,7 +970,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
     ));
   }
 
-   // Pagination Footer
+  // Pagination Footer
   Widget _buildPaginationFooter(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -610,7 +1005,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
     );
   }
 
-    // toggle Switch
+  // toggle Switch
   Widget _buildTopToggleSwitch(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(3),
@@ -654,11 +1049,11 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
     );
   }
 
-   // Metric Card Widget
+  // Metric Card Widget
   Widget _buildMetricCard(
       BuildContext context, {
         required double width,
-        required IconData icon,
+        required String svgIconPath,
         required Color iconColor,
         required String title,
         required String value,
@@ -679,7 +1074,12 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
         children: [
           Row(
             children: [
-              Icon(icon, size: 16, color: iconColor),
+              SvgPicture.asset(
+                svgIconPath,
+                width: 16,
+                height: 16,
+                colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
+              ),
               const SizedBox(width: 6),
               Expanded(
                 child: Text(
@@ -708,12 +1108,20 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
     );
   }
 
-   // Table Header Title
-  Widget _buildTableHeaderTitle(BuildContext context, String title, {IconData? icon}) {
+  // Table Header Title
+  Widget _buildTableHeaderTitle(BuildContext context, String title, {String? svgIconPath}) {
     return Row(
       children: [
-        if (icon != null) ...[
-          Icon(icon, size: 13, color: AppColors.tertiaryTextColor),
+        if (svgIconPath != null) ...[
+          SvgPicture.asset(
+            svgIconPath,
+            width: 13,
+            height: 13,
+            colorFilter: ColorFilter.mode(
+              AppColors.tertiaryTextColor,
+              BlendMode.srcIn,
+            ),
+          ),
           const SizedBox(width: 4),
         ],
         Expanded(
