@@ -3,7 +3,7 @@ import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 
 
-class PrimaryBtnOfVendorSnapahot extends StatelessWidget {
+class PrimaryBtnOfVendorScreenShot extends StatelessWidget {
   final String text;
   final double? height;
   final double? width;
@@ -12,7 +12,7 @@ class PrimaryBtnOfVendorSnapahot extends StatelessWidget {
   final Widget? icon;
   final bool isIconLeft;
 
-  const PrimaryBtnOfVendorSnapahot({
+  const PrimaryBtnOfVendorScreenShot({
     super.key,
     required this.text,
     required this.onTap,

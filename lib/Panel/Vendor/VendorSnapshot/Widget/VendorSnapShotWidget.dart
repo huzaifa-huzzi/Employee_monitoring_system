@@ -425,7 +425,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                         borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
                       ),
                       child: Center(
-                        child: PrimaryBtnOfVendorSnapahot(
+                        child: PrimaryBtnOfVendorScreenShot(
                           text: "View Screen Shot",
                           height: 40,
                           width: 200,
@@ -670,7 +670,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                                 Expanded(flex: 2, child: Text(item["productivity"] ?? "", style: TTextTheme.titleSix(context).copyWith(fontSize: 12))),
                                 Expanded(
                                   flex: 2,
-                                  child: PrimaryBtnOfVendorSnapahot(
+                                  child: PrimaryBtnOfVendorScreenShot(
                                     text: "View Emp",
                                     height: 40,
                                     borderRadius: BorderRadius.circular(6),
