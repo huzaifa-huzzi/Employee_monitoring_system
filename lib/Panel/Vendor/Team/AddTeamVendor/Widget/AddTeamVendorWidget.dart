@@ -1,3 +1,4 @@
+import 'package:employee_monitoring_system/Panel/Vendor/Team/ReusableWidget/PrimaryBtnOfTeam.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/Team/TeamController.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
@@ -555,7 +556,7 @@ class AddTeamVendorWidget extends StatelessWidget {
                           InkWell(
                             onTap: () => controller.toggleSelectAllAddMembers(true),
                             child: Text(
-                              "Select All",
+                              TextString.teamSelectAll,
                               style: TTextTheme.titleSix(context).copyWith(
                                 fontSize: 12,
                                 color: AppColors.primaryColor,
@@ -587,20 +588,13 @@ class AddTeamVendorWidget extends StatelessWidget {
           const SizedBox(height: 32),
           Align(
             alignment: Alignment.centerRight,
-            child: SizedBox(
+            child: PrimaryBtnOfTeam(
+              text: "Save Team",
               width: width < 400 ? double.infinity : 140,
-              child: ElevatedButton(
-                onPressed: () {
-                  _showSuccessTeamDialog(context);
-                  controller.createTeam();
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryColor,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                ),
-                child: Text("Save Team", style: TTextTheme.TabsSelectedText(context)),
-              ),
+              onTap: () {
+                _showSuccessTeamDialog(context);
+                controller.createTeam();
+              },
             ),
           ),
         ],

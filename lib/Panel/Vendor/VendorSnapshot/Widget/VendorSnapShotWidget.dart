@@ -4,6 +4,7 @@ import 'package:employee_monitoring_system/Panel/Vendor/VendorSnapshot/VendorSna
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
 import 'package:employee_monitoring_system/Resources/ImageString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -58,7 +59,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Screen Shots",
+                             TextString.vendorSnapshotTitle,
                               style: TTextTheme.h2Style(context).copyWith(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
@@ -66,7 +67,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              "You can see screenshots here",
+                              TextString.vendorSnapShotSubtitle,
                               style: TTextTheme.titleSix(context).copyWith(
                                 fontSize: 12,
                                 color: AppColors.tertiaryTextColor,
@@ -98,9 +99,9 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                       width: isMobile ? double.infinity : desktopCardWidth,
                       svgIconPath: IconString.totalScreenShot,
                       iconColor: AppColors.primaryColor,
-                      title: "Total ScreenShots",
-                      value: "864",
-                      subValue: "2 more screenshots added",
+                      title: TextString.vendorKpiOne,
+                      value:TextString.vendorKpiTwo ,
+                      subValue: TextString.vendorKpiThree,
                       barColor: Colors.transparent,
                       progress: 0,
                     ),
@@ -109,8 +110,8 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                       width: isMobile ? double.infinity : desktopCardWidth,
                       svgIconPath: IconString.idleTime,
                       iconColor: AppColors.approvedColor,
-                      title: "Active time",
-                      value: "126 hrs 30 mints",
+                      title:TextString.vendorKpiFour ,
+                      value: TextString.vendorKpiFive,
                       barColor: AppColors.approvedColor,
                       progress: 0.75,
                     ),
@@ -119,8 +120,8 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                       width: isMobile ? double.infinity : desktopCardWidth,
                       svgIconPath: IconString.idleTime,
                       iconColor: AppColors.rejectedColor,
-                      title: "Idle time",
-                      value: "9 hrs 30 mints",
+                      title:TextString.vendorKpiSix ,
+                      value: TextString.vendorKpiSeven,
                       barColor: AppColors.rejectedColor,
                       progress: 0.25,
                     ),
@@ -129,8 +130,8 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                       width: isMobile ? double.infinity : desktopCardWidth,
                       svgIconPath: IconString.productivityIcon,
                       iconColor: AppColors.primaryColor,
-                      title: "Productivity Score",
-                      value: "65%",
+                      title:TextString.vendorKpiEight ,
+                      value:TextString.vendorKpiNine ,
                       barColor: AppColors.primaryColor,
                       progress: 0.65,
                     ),
@@ -181,12 +182,12 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Screen Shots",
+                      TextString.vendorSnapshotTitle,
                       style: TTextTheme.h2Style(context).copyWith(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      "You can see screenshots here",
+                      TextString.vendorSnapShotSubtitle,
                       style: TTextTheme.titleSix(context).copyWith(fontSize: 12, color: AppColors.tertiaryTextColor),
                     ),
                   ],
@@ -210,9 +211,9 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                     width: isMobile ? double.infinity : desktopCardWidth,
                     svgIconPath: IconString.totalScreenShot,
                     iconColor: AppColors.primaryColor,
-                    title: "Total ScreenShots",
-                    value: "864",
-                    subValue: "2 more screenshots added",
+                    title: TextString.vendorKpiOne,
+                    value: TextString.vendorKpiTwo,
+                    subValue: TextString.vendorKpiThree,
                     barColor: Colors.transparent,
                     progress: 0,
                   ),
@@ -221,8 +222,8 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                     width: isMobile ? double.infinity : desktopCardWidth,
                     svgIconPath: IconString.idleTime,
                     iconColor: AppColors.approvedColor,
-                    title: "Active time",
-                    value: "126 hrs 30 mints",
+                    title: TextString.vendorKpiFour,
+                    value: TextString.vendorKpiFive,
                     barColor: AppColors.approvedColor,
                     progress: 0.75,
                   ),
@@ -231,8 +232,8 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                     width: isMobile ? double.infinity : desktopCardWidth,
                     svgIconPath: IconString.idleTime,
                     iconColor: AppColors.rejectedColor,
-                    title: "Idle time",
-                    value: "9 hrs 30 mints",
+                    title: TextString.vendorKpiSix,
+                    value: TextString.vendorKpiSeven,
                     barColor: AppColors.rejectedColor,
                     progress: 0.25,
                   ),
@@ -241,8 +242,8 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                     width: isMobile ? double.infinity : desktopCardWidth,
                     svgIconPath: IconString.productivityIcon,
                     iconColor: AppColors.primaryColor,
-                    title: "Productivity Score",
-                    value: "65%",
+                    title: TextString.vendorKpiEight,
+                    value: TextString.vendorKpiNine,
                     barColor: AppColors.primaryColor,
                     progress: 0.65,
                   ),
@@ -360,8 +361,8 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                       spacing: 16,
                       runSpacing: 12,
                       children: [
-                        _buildSubSummaryBox(context, width: boxWidth, label: "Worked Time", value: "8hrs", valueColor: AppColors.textColor),
-                        _buildSubSummaryBox(context, width: boxWidth, label: "Average Activity", value: "65% of the time", valueColor: AppColors.approvedColor),
+                        _buildSubSummaryBox(context, width: boxWidth, label: TextString.snapShotWorkedTime, value: "8hrs", valueColor: AppColors.textColor),
+                        _buildSubSummaryBox(context, width: boxWidth, label: TextString.averageActivity, value: "65% of the time", valueColor: AppColors.approvedColor),
                       ],
                     );
                   },
@@ -526,7 +527,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                     value: (item['activity'] ?? 50) / 100,
                     backgroundColor: AppColors.tertiaryTextColor.withValues(alpha: 0.2),
                     valueColor: const AlwaysStoppedAnimation<Color>(AppColors.approvedColor),
-                    minHeight: 4,
+                    minHeight: 8,
                     borderRadius: BorderRadius.circular(4),
                   ),
                   const SizedBox(height: 4),
@@ -638,7 +639,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Team Time Sheet",
+                   TextString.snapShotTeamTimeSheet,
                     style: TTextTheme.h2Style(context).copyWith(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -686,13 +687,13 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                               )),
                             ),
                             const SizedBox(width: 12),
-                            Expanded(flex: 3, child: _buildTableHeaderTitle(context, "Team Name")),
-                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Team Member")),
-                            Expanded(flex: 3, child: _buildTableHeaderTitle(context, "Total Screen Shots", svgIconPath: IconString.totalScreenShot)),
-                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Active Time",svgIconPath: IconString.idleTime)),
-                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Idle Time", svgIconPath: IconString.idleTime)),
-                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Productivity", svgIconPath: IconString.productivityIcon)),
-                            Expanded(flex: 2, child: Text("Action", style: TTextTheme.textFieldAboveText(context))),
+                            Expanded(flex: 3, child: _buildTableHeaderTitle(context,TextString.snapShotTeamName )),
+                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, TextString.snapShotTeamMemeber)),
+                            Expanded(flex: 3, child: _buildTableHeaderTitle(context,TextString.snapShotTotalScreenShot , svgIconPath: IconString.totalScreenShot)),
+                            Expanded(flex: 2, child: _buildTableHeaderTitle(context,TextString.snapShotActiveTime ,svgIconPath: IconString.idleTime)),
+                            Expanded(flex: 2, child: _buildTableHeaderTitle(context,TextString.snapShotIdleTime , svgIconPath: IconString.idleTime)),
+                            Expanded(flex: 2, child: _buildTableHeaderTitle(context,TextString.snapShotProductiveTime , svgIconPath: IconString.productivityIcon)),
+                            Expanded(flex: 2, child: Text(TextString.action, style: TTextTheme.textFieldAboveText(context))),
                           ],
                         ),
                       ),
@@ -814,7 +815,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                             onChanged: (val) => controller.searchQuery.value = val,
                             style: TTextTheme.titleSix(context).copyWith(fontSize: 12),
                             decoration: InputDecoration(
-                              hintText: "Search by Employee",
+                              hintText: TextString.snapShotTextFieldText,
                               hintStyle: TTextTheme.titleSix(context).copyWith(
                                 fontSize: 12,
                                 color: AppColors.tertiaryTextColor.withValues(alpha: 0.7),
@@ -886,12 +887,12 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                               )),
                             ),
                             const SizedBox(width: 12),
-                            Expanded(flex: 3, child: _buildTableHeaderTitle(context, "Project")),
-                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Total Screen Shots", svgIconPath: IconString.totalScreenShot)),
-                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Active Time", svgIconPath: IconString.idleTime)),
-                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Idle Time", svgIconPath: IconString.idleTime)),
-                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, "Productivity", svgIconPath: IconString.productivityIcon)),
-                            Expanded(flex: 1, child: Text("Action", style: TTextTheme.textFieldAboveText(context))),
+                            Expanded(flex: 3, child: _buildTableHeaderTitle(context,TextString.snapShotProject)),
+                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, TextString.snapShotTotalScreenShot, svgIconPath: IconString.totalScreenShot)),
+                            Expanded(flex: 2, child: _buildTableHeaderTitle(context,TextString.snapShotActiveTimeTwo , svgIconPath: IconString.idleTime)),
+                            Expanded(flex: 2, child: _buildTableHeaderTitle(context,TextString.snapShotIdleTimeTwo , svgIconPath: IconString.idleTime)),
+                            Expanded(flex: 2, child: _buildTableHeaderTitle(context, TextString.snapShotProductiveTime, svgIconPath: IconString.productivityIcon)),
+                            Expanded(flex: 1, child: Text(TextString.action, style: TTextTheme.textFieldAboveText(context))),
                           ],
                         ),
                       ),
@@ -1093,8 +1094,8 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
       child: Obx(() => Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _buildTogglePill(context, title: "Employees", index: 0),
-          _buildTogglePill(context, title: "Team", index: 1),
+          _buildTogglePill(context, title:TextString.snapShotTabOne , index: 0),
+          _buildTogglePill(context, title:TextString.snapShotTabTwo, index: 1),
         ],
       )),
     );

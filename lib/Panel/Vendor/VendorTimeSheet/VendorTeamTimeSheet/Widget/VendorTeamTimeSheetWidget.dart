@@ -613,8 +613,10 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("9am", style: TTextTheme.FieldWriteTheText(context)),
-            Text("9pm", style: TTextTheme.FieldWriteTheText(context)),
+            Text("12am", style: TTextTheme.FieldWriteTheText(context)),
+            Text("6am", style: TTextTheme.FieldWriteTheText(context)),
+            Text("12pm", style: TTextTheme.FieldWriteTheText(context)),
+            Text("6pm", style: TTextTheme.FieldWriteTheText(context)),
           ],
         )
       ],

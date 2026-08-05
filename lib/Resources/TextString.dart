@@ -228,6 +228,7 @@ class TextString{
    static const String  addVendorTeamSubtitle=   "You can see your team members here";
    static const String  teamVendorTitleOne= "Team Added Successfully";
    static const String  teamVendorTitleTwo= "Congrats! your team has successfully created in the system";
+   static const String  teamSelectAll= "Select All";
 
       /// Time Sheet
    static const String  timeSheetVendorTitle= "Time Sheet";
@@ -262,5 +263,33 @@ class TextString{
    static const String  searchEmployee= "Search by Employee";
    static const String  timeLogsTitle= "Time Logs & Screenshot Timeline";
    static const String  timeLogsSubtitle= "Activity Log for filter: Day";
+
+     /// SnapShot
+   static const String  vendorSnapshotTitle=  "Screen Shots";
+   static const String  vendorSnapShotSubtitle= "You can see screenshots here";
+   static const String  vendorKpiOne= "Total ScreenShots";
+   static const String  vendorKpiTwo= "864";
+   static const String  vendorKpiThree= "2 more screenshots added";
+   static const String  vendorKpiFour= "Active time";
+   static const String  vendorKpiFive= "126 hrs 30 mints";
+   static const String  vendorKpiSix= "Idle time";
+   static const String  vendorKpiSeven= "9 hrs 30 mints";
+   static const String  vendorKpiEight= "Productivity Score";
+   static const String  vendorKpiNine= "65%";
+   static const String  snapShotWorkedTime= "Worked Time";
+   static const String  snapShotAverageActivity= "Average Activity";
+   static const String  snapShotTeamTimeSheet=  "Team Time Sheet";
+   static const String  snapShotTeamName= "Team Name";
+   static const String  snapShotTeamMemeber= "Team Member";
+   static const String  snapShotTotalScreenShot= "Total Screen Shots";
+   static const String  snapShotActiveTime= "Active Time";
+   static const String  snapShotIdleTime= "Idle Time";
+   static const String  snapShotProductiveTime= "Productivity";
+   static const String  snapShotTextFieldText= "Search by Employee";
+   static const String  snapShotProject=  "Project";
+   static const String  snapShotActiveTimeTwo= "Active Time";
+   static const String  snapShotIdleTimeTwo= "Idle Time";
+   static const String  snapShotTabOne= "Employees";
+   static const String  snapShotTabTwo=  "Team";
 
 }
