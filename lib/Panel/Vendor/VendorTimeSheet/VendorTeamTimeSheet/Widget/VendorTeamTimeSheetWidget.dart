@@ -451,7 +451,15 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
                             flex: 3,
                             child: Row(
                               children: [
-                                Icon(Icons.person_outline, size: 16, color: AppColors.primaryColor),
+                                SvgPicture.asset(
+                                  IconString.employeePerson,
+                                  width: 16,
+                                  height: 16,
+                                  colorFilter: ColorFilter.mode(
+                                    AppColors.primaryColor,
+                                    BlendMode.srcIn,
+                                  ),
+                                ),
                                 const SizedBox(width: 8),
                                 Expanded(
                                   child: Column(

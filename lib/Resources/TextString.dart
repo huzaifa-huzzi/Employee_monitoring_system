@@ -219,14 +219,15 @@ class TextString{
    static const String  teamNameDetail=  "Team Name";
    static const String  teamtextFieldText=  "Enter Team Name";
    static const String  searchFieldText=  "Search by Departement";
-   static const String  vendorCreateTeam=  "Create Team";
+   static const String  vendorCreateTeam=  "Add Employees ";
    static const String  editTeamVendorDialogOne=  "Edit Team";
    static const String  editTeamVendorDialogTwo=  "Are you sure you want to edit it";
    static const String  editTeamVendorSuccessDialogOne=  "Team Edited Successfully" ;
    static const String  editTeamVendorSuccessDialogTwo=   "congrats! team has successfully edited in the system";
    static const String  addVendorTeamTitle= "Add Team Members";
    static const String  addVendorTeamSubtitle=   "You can see your team members here";
-
+   static const String  teamVendorTitleOne= "Team Added Successfully";
+   static const String  teamVendorTitleTwo= "Congrats! your team has successfully created in the system";
 
       /// Time Sheet
    static const String  timeSheetVendorTitle= "Time Sheet";

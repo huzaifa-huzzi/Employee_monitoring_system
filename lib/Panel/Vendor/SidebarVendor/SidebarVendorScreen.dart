@@ -112,21 +112,13 @@ class SidebarVendorScreen extends StatelessWidget {
                           scaffoldKey: _scaffoldKey,
                         ),
 
-                        SidebarVendorComponent.dropdownMenuItem(
+                        SidebarVendorComponent.menuItem(
                           context,
                           controller,
                           iconPath: IconString.timeSheetIcon,
                           title: "Time Sheet",
                           isCollapsed: isCollapsed,
-                          isExpanded: controller.isTimeSheetExpanded,
-                          subItems: [
-                            {
-                              'title': 'Team TimeSheet',
-                              'icon': IconString.timeSheetIcon,
-                              'onTap': () => context.go('/vendor/TeamTimeSheet'),
-                            },
-                          ],
-                          onTap: (val) => context.go(''),
+                          onTap: (val) => context.go('/vendor/TeamTimeSheet'),
                           scaffoldKey: _scaffoldKey,
                         ),
 

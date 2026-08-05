@@ -86,7 +86,8 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
             const SizedBox(height: 20),
             LayoutBuilder(
               builder: (context, constraints) {
-                bool isMobile = constraints.maxWidth < 700;
+                bool isMobile = constraints.maxWidth < 650;
+                double desktopCardWidth = (constraints.maxWidth - 48) / 4;
 
                 return Wrap(
                   spacing: 16,
@@ -94,7 +95,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                   children: [
                     _buildMetricCard(
                       context,
-                      width: isMobile ? double.infinity : (constraints.maxWidth - 48) / 4,
+                      width: isMobile ? double.infinity : desktopCardWidth,
                       svgIconPath: IconString.totalScreenShot,
                       iconColor: AppColors.primaryColor,
                       title: "Total ScreenShots",
@@ -105,7 +106,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                     ),
                     _buildMetricCard(
                       context,
-                      width: isMobile ? double.infinity : (constraints.maxWidth - 48) / 4,
+                      width: isMobile ? double.infinity : desktopCardWidth,
                       svgIconPath: IconString.idleTime,
                       iconColor: AppColors.approvedColor,
                       title: "Active time",
@@ -115,7 +116,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                     ),
                     _buildMetricCard(
                       context,
-                      width: isMobile ? double.infinity : (constraints.maxWidth - 48) / 4,
+                      width: isMobile ? double.infinity : desktopCardWidth,
                       svgIconPath: IconString.idleTime,
                       iconColor: AppColors.rejectedColor,
                       title: "Idle time",
@@ -125,7 +126,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                     ),
                     _buildMetricCard(
                       context,
-                      width: isMobile ? double.infinity : (constraints.maxWidth - 48) / 4,
+                      width: isMobile ? double.infinity : desktopCardWidth,
                       svgIconPath: IconString.productivityIcon,
                       iconColor: AppColors.primaryColor,
                       title: "Productivity Score",
@@ -175,19 +176,21 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                   child: Icon(Icons.arrow_back_ios_new_rounded, size: 18, color: AppColors.textColor),
                 ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Screen Shots",
-                    style: TTextTheme.h2Style(context).copyWith(fontSize: 22, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    "You can see screenshots here",
-                    style: TTextTheme.titleSix(context).copyWith(fontSize: 12, color: AppColors.tertiaryTextColor),
-                  ),
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Screen Shots",
+                      style: TTextTheme.h2Style(context).copyWith(fontSize: 22, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      "You can see screenshots here",
+                      style: TTextTheme.titleSix(context).copyWith(fontSize: 12, color: AppColors.tertiaryTextColor),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -195,8 +198,8 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
           const SizedBox(height: 20),
           LayoutBuilder(
             builder: (context, constraints) {
-              bool isMobile = constraints.maxWidth < 700;
-              double cardWidth = isMobile ? double.infinity : (constraints.maxWidth - 48) / 4;
+              bool isMobile = constraints.maxWidth < 650;
+              double desktopCardWidth = (constraints.maxWidth - 48) / 4;
 
               return Wrap(
                 spacing: 16,
@@ -204,42 +207,42 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                 children: [
                   _buildMetricCard(
                     context,
-                    width: cardWidth,
+                    width: isMobile ? double.infinity : desktopCardWidth,
                     svgIconPath: IconString.totalScreenShot,
                     iconColor: AppColors.primaryColor,
                     title: "Total ScreenShots",
-                    value: emp["totalScreenshots"] ?? "48",
+                    value: "864",
                     subValue: "2 more screenshots added",
                     barColor: Colors.transparent,
                     progress: 0,
                   ),
                   _buildMetricCard(
                     context,
-                    width: cardWidth,
+                    width: isMobile ? double.infinity : desktopCardWidth,
                     svgIconPath: IconString.idleTime,
                     iconColor: AppColors.approvedColor,
                     title: "Active time",
-                    value: emp["activeTime"] ?? "6 hrs 50 mints",
+                    value: "126 hrs 30 mints",
                     barColor: AppColors.approvedColor,
                     progress: 0.75,
                   ),
                   _buildMetricCard(
                     context,
-                    width: cardWidth,
+                    width: isMobile ? double.infinity : desktopCardWidth,
                     svgIconPath: IconString.idleTime,
                     iconColor: AppColors.rejectedColor,
                     title: "Idle time",
-                    value: emp["idleTime"] ?? "1 hrs 10 mints",
+                    value: "9 hrs 30 mints",
                     barColor: AppColors.rejectedColor,
                     progress: 0.25,
                   ),
                   _buildMetricCard(
                     context,
-                    width: cardWidth,
-                    svgIconPath:IconString.productivityIcon ,
+                    width: isMobile ? double.infinity : desktopCardWidth,
+                    svgIconPath: IconString.productivityIcon,
                     iconColor: AppColors.primaryColor,
                     title: "Productivity Score",
-                    value: emp["productivity"] ?? "65%",
+                    value: "65%",
                     barColor: AppColors.primaryColor,
                     progress: 0.65,
                   ),
@@ -250,7 +253,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
 
           const SizedBox(height: 20),
           Container(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: AppColors.whiteColor,
               borderRadius: BorderRadius.circular(12),
@@ -259,42 +262,106 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    bool isSmall = constraints.maxWidth < 550;
+
+                    return isSmall
+                        ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Icon(Icons.person_outline, color: AppColors.primaryColor, size: 28),
-                        const SizedBox(width: 8),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        Row(
                           children: [
-                            Text(
-                              emp["name"] ?? "Jack Milson",
-                              style: TTextTheme.h2Style(context).copyWith(fontSize: 16, fontWeight: FontWeight.bold),
+                            SvgPicture.asset(
+                              IconString.employeePerson,
+                              width: 16,
+                              height: 16,
+                              colorFilter: const ColorFilter.mode(
+                                AppColors.primaryColor,
+                                BlendMode.srcIn,
+                              ),
                             ),
-                            Text(
-                              emp["email"] ?? "jack@gmail.com",
-                              style: TTextTheme.titleSix(context).copyWith(fontSize: 12, color: AppColors.tertiaryTextColor),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    emp["name"] ?? "Jack Milson",
+                                    style: TTextTheme.h2Style(context).copyWith(fontSize: 16, fontWeight: FontWeight.bold),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  Text(
+                                    emp["email"] ?? "jack@gmail.com",
+                                    style: TTextTheme.titleSix(context).copyWith(fontSize: 12, color: AppColors.tertiaryTextColor),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
+                        const SizedBox(height: 12),
+                        _buildDateSelectorWidget(context),
                       ],
-                    ),
-                    _buildDateSelectorWidget(context),
-                  ],
+                    )
+                        : Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Row(
+                            children: [
+                              SvgPicture.asset(
+                                IconString.employeePerson,
+                                width: 16,
+                                height: 16,
+                                colorFilter: const ColorFilter.mode(
+                                  AppColors.primaryColor,
+                                  BlendMode.srcIn,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      emp["name"] ?? "Jack Milson",
+                                      style: TTextTheme.h2Style(context).copyWith(fontSize: 16, fontWeight: FontWeight.bold),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    Text(
+                                      emp["email"] ?? "jack@gmail.com",
+                                      style: TTextTheme.titleSix(context).copyWith(fontSize: 12, color: AppColors.tertiaryTextColor),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        _buildDateSelectorWidget(context),
+                      ],
+                    );
+                  },
                 ),
 
                 const SizedBox(height: 20),
                 LayoutBuilder(
                   builder: (context, constraints) {
-                    double width = (constraints.maxWidth - 16) / 2;
+                    bool isSmall = constraints.maxWidth < 500;
+                    double boxWidth = isSmall
+                        ? double.infinity
+                        : (constraints.maxWidth - 16) / 2;
 
-                    return Row(
+                    return Wrap(
+                      spacing: 16,
+                      runSpacing: 12,
                       children: [
-                        _buildSubSummaryBox(context, width: width, label: "Worked Time", value: "8hrs", valueColor: AppColors.textColor),
-                        const SizedBox(width: 16),
-                        _buildSubSummaryBox(context, width: width, label: "Average Activity", value: "65% of the time", valueColor: AppColors.approvedColor),
+                        _buildSubSummaryBox(context, width: boxWidth, label: "Worked Time", value: "8hrs", valueColor: AppColors.textColor),
+                        _buildSubSummaryBox(context, width: boxWidth, label: "Average Activity", value: "65% of the time", valueColor: AppColors.approvedColor),
                       ],
                     );
                   },
@@ -310,13 +377,15 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
+                        Wrap(
+                          spacing: 10,
+                          runSpacing: 8,
+                          crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
                             Text(
                               group["timeRange"] ?? "",
                               style: TTextTheme.h2Style(context).copyWith(fontSize: 13, fontWeight: FontWeight.bold),
                             ),
-                            const SizedBox(width: 10),
                             Container(
                               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                               decoration: BoxDecoration(
@@ -338,7 +407,9 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                             int crossAxisCount = 3;
                             if (constraints.maxWidth < 600) {
                               crossAxisCount = 1;
-                            } else if (constraints.maxWidth < 900) crossAxisCount = 2;
+                            } else if (constraints.maxWidth < 900) {
+                              crossAxisCount = 2;
+                            }
 
                             return GridView.builder(
                               shrinkWrap: true,
@@ -488,6 +559,7 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
             children: [
               Center(
                 child: Obx(() {
+                  final _ = activeIndex.value;
 
                   return InteractiveViewer(
                     minScale: 0.5,
@@ -737,47 +809,46 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                         SizedBox(
                           width: isSmall ? double.infinity : 220,
                           height: 38,
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            decoration: BoxDecoration(
-                              color: AppColors.backgroundOfScreenColor.withValues(alpha: 0.5),
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.4)),
-                            ),
-                            child: Row(
-                              children: [
-                                SvgPicture.asset(
+                          child: TextFormField(
+                            cursorColor: AppColors.textColor,
+                            onChanged: (val) => controller.searchQuery.value = val,
+                            style: TTextTheme.titleSix(context).copyWith(fontSize: 12),
+                            decoration: InputDecoration(
+                              hintText: "Search by Employee",
+                              hintStyle: TTextTheme.titleSix(context).copyWith(
+                                fontSize: 12,
+                                color: AppColors.tertiaryTextColor.withValues(alpha: 0.7),
+                              ),
+                              prefixIcon: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: SvgPicture.asset(
                                   IconString.searchIcon,
-                                  width: 16,
-                                  height: 16,
-                                  colorFilter: const ColorFilter.mode(AppColors.tertiaryTextColor, BlendMode.srcIn),
-                                ),
-                                const SizedBox(width: 8),
-                                Expanded(
-                                  child: TextField(
-                                    cursorColor:AppColors.textColor,
-                                    onChanged: (val) => controller.searchQuery.value = val,
-                                    style: TTextTheme.titleSix(context).copyWith(fontSize: 12),
-                                    decoration: InputDecoration(
-                                      hintText: "Search by Employee",
-                                      hintStyle: TTextTheme.titleSix(context).copyWith(
-                                        fontSize: 12,
-                                        color: AppColors.tertiaryTextColor.withValues(alpha: 0.7),
-                                      ),
-                                      border: InputBorder.none,
-                                      isDense: true,
-                                      contentPadding: EdgeInsets.zero,
-                                    ),
+                                  width: 14,
+                                  height: 14,
+                                  colorFilter: const ColorFilter.mode(
+                                    AppColors.tertiaryTextColor,
+                                    BlendMode.srcIn,
                                   ),
                                 ),
-                              ],
+                              ),
+                              contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
+                              filled: true,
+                              fillColor: AppColors.whiteColor,
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: AppColors.borderColor.withValues(alpha: 0.6)),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: const BorderSide(color: AppColors.primaryColor),
+                              ),
                             ),
                           ),
                         ),
                         _buildDateSelectorWidget(context),
                       ],
                     ),
-                  ),
+                  )
                 ],
               );
             },
@@ -856,7 +927,15 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
                                   flex: 3,
                                   child: Row(
                                     children: [
-                                      const Icon(Icons.person_outline, size: 20, color: AppColors.primaryColor),
+                                      SvgPicture.asset(
+                                        IconString.employeePerson,
+                                        width: 16,
+                                        height: 16,
+                                        colorFilter: ColorFilter.mode(
+                                          AppColors.primaryColor,
+                                          BlendMode.srcIn,
+                                        ),
+                                      ),
                                       const SizedBox(width: 8),
                                       Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1020,7 +1099,6 @@ class VendorSnapshotWidget extends GetView<VendorSnapshotController> {
       )),
     );
   }
-
   Widget _buildTogglePill(BuildContext context, {required String title, required int index}) {
     bool isSelected = controller.selectedToggleIndex.value == index;
     return InkWell(
