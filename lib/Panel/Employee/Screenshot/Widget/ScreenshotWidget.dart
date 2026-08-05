@@ -57,7 +57,7 @@ class ScreenshotWidget extends StatelessWidget {
             final cardWidth = isWeb ? (constraints.maxWidth - 24) / 2 : constraints.maxWidth;
             final content = [
               _buildTopStatCard(context,TextString.workedTime , controller.workedTime.value, AppColors.textColor),
-              _buildTopStatCard(context, IconString.averageActivity, controller.averageActivity.value, AppColors.approvedColor),
+              _buildTopStatCard(context, TextString.averageActivity, controller.averageActivity.value, AppColors.approvedColor),
             ];
             return isWeb
                 ? Row(children: content.map((e) => SizedBox(width: cardWidth, child: Padding(padding: const EdgeInsets.symmetric(horizontal: 6), child: e))).toList())
@@ -139,7 +139,7 @@ class ScreenshotWidget extends StatelessWidget {
               height: 14,
               width: 14,
               colorFilter: const ColorFilter.mode(
-                AppColors.textColor,
+                AppColors.textGrey,
                 BlendMode.srcIn,
               ),
             ),
@@ -162,7 +162,7 @@ class ScreenshotWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
-        color: AppColors.borderColor,
+        color: AppColors.backgroundOfScreenColor,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Wrap(
@@ -178,7 +178,7 @@ class ScreenshotWidget extends StatelessWidget {
               children: [
                 TextSpan(
                   text: controller.totalTimeWorkedInSlot.value,
-                  style: TTextTheme.h4Style(context)
+                  style: TTextTheme.h4Style(context).copyWith(color: AppColors.primaryColor)
                 ),
               ],
             ),

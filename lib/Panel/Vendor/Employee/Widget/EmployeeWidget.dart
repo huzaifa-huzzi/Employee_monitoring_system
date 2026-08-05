@@ -368,7 +368,6 @@ class EmployeeWidget extends StatelessWidget {
     EmployeeController controller,
   ) {
     final employees = controller.filteredEmployees;
-
     return Column(
       key: const ValueKey("employee_list_column"),
       children: [
@@ -457,7 +456,7 @@ class EmployeeWidget extends StatelessWidget {
             padding: EdgeInsets.all(40.0),
             child: Text(
               "No Employees Found",
-              style: TTextTheme.titleFour(context),
+              style: TTextTheme.TextError(context),
             ),
           )
         else
@@ -765,7 +764,6 @@ class EmployeeWidget extends StatelessWidget {
       ),
     );
   }
-
   Widget _buildNextBtn(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
@@ -808,7 +806,7 @@ class EmployeeWidget extends StatelessWidget {
     );
   }
 
-  // Filter Popmenu
+  // Filter PopMenu
   Widget _buildFilterPopupMenu(
     BuildContext context,
     EmployeeController controller,
