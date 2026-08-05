@@ -1,3 +1,4 @@
+import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -11,7 +12,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F9FA),
+      backgroundColor: AppColors.backgroundOfScreenColor,
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -23,7 +24,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Colors.blue.shade900,
+                color: AppColors.primaryColor
               ),
             ),
             const SizedBox(height: 20),

@@ -110,7 +110,7 @@ class ApplicationTrackingWidget extends StatelessWidget {
                   isDropdownOpen.value = false;
                 },
                 child: Obx(() => AnimatedContainer(
-                  duration: const Duration(milliseconds: 10),
+                  duration: const Duration(milliseconds: 2),
                   height: 38,
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                   decoration: BoxDecoration(
