@@ -763,9 +763,9 @@ class VendorActivityTrackingWidget extends StatelessWidget {
     required EmployeeActivityModel member,
     required int index,
   }) {
-    Color overallColor = const Color(0xFF22C55E);
+    Color overallColor = AppColors.approvedColor;
     if (member.overallPercent < 70) {
-      overallColor = const Color(0xFFEAB308);
+      overallColor = AppColors.pendingColor;
     }
 
     return Container(
