@@ -25,7 +25,6 @@ class VendorActivityTrackingWidget extends StatelessWidget {
         const SizedBox(height: 20),
         _buildMetricsRow(context),
         const SizedBox(height: 24),
-        // Switch between Main Table & Single Container Detail View
         Obx(() {
           if (controller.isDetailView.value) {
             return _buildEmployeeDetailView(context, controller);
@@ -393,7 +392,7 @@ class VendorActivityTrackingWidget extends StatelessWidget {
         final cards = [
           _buildMetricCard(
             context: context,
-            icon: Icons.trending_up,
+            iconPath: IconString.averageActivity,
             title: "Average Activity",
             value: "87%",
             progress: 0.87,
@@ -401,27 +400,27 @@ class VendorActivityTrackingWidget extends StatelessWidget {
           ),
           _buildMetricCard(
             context: context,
-            icon: Icons.mouse_outlined,
+            iconPath: IconString.mouseActivity,
             title: "Mouse Activity",
             value: "77%",
             progress: 0.77,
-            progressColor: const Color(0xFF22C55E),
+            progressColor: AppColors.approvedColor,
           ),
           _buildMetricCard(
             context: context,
-            icon: Icons.keyboard_outlined,
+            iconPath: IconString.keyboardActivity,
             title: "Keyboard Activity",
             value: "45%",
             progress: 0.45,
-            progressColor: const Color(0xFFA855F7),
+            progressColor: AppColors.graphColor,
           ),
           _buildMetricCard(
             context: context,
-            icon: Icons.access_time_rounded,
+            iconPath: IconString.idleTime,
             title: "Idle Time",
             value: "45 minutes",
             progress: 0.40,
-            progressColor: const Color(0xFFF97316),
+            progressColor: AppColors.rejectedColor,
           ),
         ];
 
@@ -459,7 +458,7 @@ class VendorActivityTrackingWidget extends StatelessWidget {
     required String value,
     required double progress,
     required Color progressColor,
-    required IconData icon,
+    required String iconPath,
   }) {
     return Container(
       padding: const EdgeInsets.all(16),
@@ -473,7 +472,15 @@ class VendorActivityTrackingWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(icon, size: 16, color: progressColor),
+              SvgPicture.asset(
+                iconPath,
+                width: 16,
+                height: 16,
+                colorFilter: ColorFilter.mode(
+                  progressColor,
+                  BlendMode.srcIn,
+                ),
+              ),
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
