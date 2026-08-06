@@ -222,7 +222,6 @@ class EditEmployeeWidget extends StatelessWidget {
 
                   const SizedBox(height: 24),
 
-                  // Employee Info Card
                   Container(
                     width: double.infinity,
                     padding: EdgeInsets.all(width < 400 ? 16 : 24),
@@ -725,7 +724,7 @@ class EditEmployeeWidget extends StatelessWidget {
           isDense: true,
           hintText: TextString.searchCountry,
           hintStyle: const TextStyle(fontSize: 12),
-          prefixIcon: const Icon(Icons.search, size: 16),
+          prefixIcon: const Icon(Icons.search, size: 16,color: AppColors.tertiaryTextColor,),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
           ),

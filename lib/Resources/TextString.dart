@@ -42,6 +42,7 @@ class TextString{
    static const String  signUpPassword=     'Password*';
    static const String  signupPasswordField=    'Create a password';
    static const String  alreadyAccount=    "Already have an account? ";
+   static const String  signOutText=   "Sign Out";
 
     /// --------------------- Employee ------------///
 
@@ -58,6 +59,10 @@ class TextString{
    static const String  teamMemberError=      'No members found';
    static const String  teamRole=     'Role';
    static const String  teamDepartment=       'Department';
+   static const String  teamAll=       "All";
+   static const String  teamActive=       "Active";
+   static const String  teamOffline=       "Offline";
+   static const String  teamIdle=       "Idle";
 
     /// Time Sheet
    static const String  timeSheetTitle=     "Time Sheet";

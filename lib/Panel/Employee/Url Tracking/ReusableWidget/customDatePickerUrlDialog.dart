@@ -76,7 +76,6 @@ class _CustomDatePickerUrlDialogState extends State<CustomDatePickerUrlDialog> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Month navigation bar
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -171,6 +170,7 @@ class _CustomDatePickerUrlDialogState extends State<CustomDatePickerUrlDialog> {
   }
 
   /// -----------Extra Widget --------- ///
+  // Calendar Grid
   Widget _buildCalendarGrid() {
     final daysInMonth = DateUtils.getDaysInMonth(_focusedMonth.year, _focusedMonth.month);
     final firstDayOffset = DateTime(_focusedMonth.year, _focusedMonth.month, 1).weekday - 1;
@@ -233,6 +233,7 @@ class _CustomDatePickerUrlDialogState extends State<CustomDatePickerUrlDialog> {
 }
 
 /// ---------- Extra class ------------ ///
+// Weekly Label Class
 class _WeekdayLabel extends StatelessWidget {
   final String label;
   const _WeekdayLabel(this.label);

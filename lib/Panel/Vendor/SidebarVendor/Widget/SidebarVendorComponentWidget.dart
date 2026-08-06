@@ -226,7 +226,7 @@ class SidebarVendorComponent {
                                                 : FontWeight.w500,
                                             color: isSubSelected
                                                 ? AppColors.primaryColor
-                                                : const Color(0xFF1E293B),
+                                                : AppColors.textColor,
                                           ),
                                           overflow: TextOverflow.ellipsis,
                                         ),

@@ -2,6 +2,7 @@ import 'package:employee_monitoring_system/Panel/Vendor/SidebarVendor/SidebarVen
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
 import 'package:employee_monitoring_system/Resources/ImageString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -37,8 +38,6 @@ class WebVendorAppbar extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 10),
-
-          //  TIMER SECTION
           CompositedTransformTarget(
             link: _timerLink,
             child: OverlayPortal(
@@ -97,7 +96,6 @@ class WebVendorAppbar extends StatelessWidget {
           ),
           const SizedBox(width: 15),
 
-          //  PROFILE SECTION
           CompositedTransformTarget(
             link: _profileLink,
             child: OverlayPortal(
@@ -149,7 +147,7 @@ class WebVendorAppbar extends StatelessWidget {
         ),
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.whiteColor,
           borderRadius: BorderRadius.circular(12),
         ),
         child: SingleChildScrollView(
@@ -238,16 +236,12 @@ class WebVendorAppbar extends StatelessWidget {
                   thickness: 0.8,
                 ),
               ),
-
-              ///  PROJECT NAME
               Text(
                 "Project Name",
                 style: TTextTheme.titleFive(context),
               ),
 
               const SizedBox(height: 10),
-
-              /// PROJECT DROPDOWN
               Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 15,
@@ -255,7 +249,7 @@ class WebVendorAppbar extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.grey.shade300),
+                  border: Border.all(color: AppColors.borderColor),
                 ),
                 child:  Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -270,8 +264,6 @@ class WebVendorAppbar extends StatelessWidget {
               ),
 
               const SizedBox(height: 20),
-
-              ///  STOP BUTTON
               Align(
                 alignment: Alignment.bottomRight,
                 child: ElevatedButton(
@@ -301,6 +293,8 @@ class WebVendorAppbar extends StatelessWidget {
     );
   }
 
+  /// ----------- Extra Widget ----------///
+
   // Signout Popup
   Widget _buildSignOutPopup(BuildContext context) {
     return Material(
@@ -311,7 +305,7 @@ class WebVendorAppbar extends StatelessWidget {
         decoration: BoxDecoration(color: AppColors.whiteColor, borderRadius: BorderRadius.circular(10)),
         child: ListTile(
           leading: Image.asset(IconString.logoutIcon),
-          title:  Text("Sign Out", style: TTextTheme.signoutIconText(context)),
+          title:  Text(TextString.signOutText, style: TTextTheme.signoutIconText(context)),
           onTap: () {
             _profileController.hide();
             controller.signOut();

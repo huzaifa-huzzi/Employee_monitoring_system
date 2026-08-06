@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:employee_monitoring_system/Resources/ImageString.dart'; // Apne ImageString path ke mutabiq verify karein
+import 'package:employee_monitoring_system/Resources/ImageString.dart';
 
 // Models
 class TeamProjectModel {
@@ -40,7 +40,7 @@ class TeamMemberModel {
 
 class TeamController extends GetxController {
 
-  // 1. PROJECTS LIST & PAGINATION STATE
+  // Project List
   RxInt currentPage = 1.obs;
   RxInt totalPages = 10.obs;
   RxBool selectAll = false.obs;
@@ -150,7 +150,7 @@ class TeamController extends GetxController {
     }
   }
 
-  //  TEAM MEMBERS & TABS STATE
+  //  Team Members Screen
 
   final List<String> memberTabs = ['All', 'Active', 'Offline', 'Idle'];
   RxString selectedTab = 'All'.obs;

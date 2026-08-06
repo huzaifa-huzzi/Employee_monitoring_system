@@ -148,7 +148,7 @@ class WebAppBAr extends StatelessWidget {
         ),
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.whiteColor,
           borderRadius: BorderRadius.circular(12),
         ),
         child: SingleChildScrollView(
@@ -254,7 +254,7 @@ class WebAppBAr extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.grey.shade300),
+                  border: Border.all(color: AppColors.borderColor),
                 ),
                 child:  Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -38,6 +38,7 @@ class EmployeeModel {
 }
 
 class EmployeeController extends GetxController {
+  /// Main Screen
   var selectedTabIndex = 0.obs;
   var searchQuery = ''.obs;
   var selectedDepartmentFilter = 'Employee Name'.obs;
@@ -183,8 +184,7 @@ class EmployeeController extends GetxController {
   }
 
 
-  // EDIT EMPLOYEE FORM
-
+  /// Edit Employee
 
   final editEmployeeFormKey = GlobalKey<FormState>();
 
@@ -251,6 +251,7 @@ class EmployeeController extends GetxController {
     return null;
   }
 
+  // On close function
   @override
   void onClose() {
     firstNameController.dispose();

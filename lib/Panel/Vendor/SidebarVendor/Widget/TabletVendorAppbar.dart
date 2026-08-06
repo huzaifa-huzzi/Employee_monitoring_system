@@ -2,6 +2,7 @@ import 'package:employee_monitoring_system/Panel/Vendor/SidebarVendor/SidebarVen
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
 import 'package:employee_monitoring_system/Resources/ImageString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -186,7 +187,6 @@ class _TabletVendorAppbarState extends State<TabletVendorAppbar> {
 
               const SizedBox(height: 10),
 
-              /// TIMER ROW
               Row(
                 children: [
 
@@ -221,7 +221,6 @@ class _TabletVendorAppbarState extends State<TabletVendorAppbar> {
 
                   const Spacer(),
 
-                  ///  TIME DISPLAY
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -247,7 +246,6 @@ class _TabletVendorAppbarState extends State<TabletVendorAppbar> {
                 ),
               ),
 
-              ///  PROJECT NAME
               Text(
                 "Project Name",
                 style: TTextTheme.titleFive(context),
@@ -255,7 +253,6 @@ class _TabletVendorAppbarState extends State<TabletVendorAppbar> {
 
               const SizedBox(height: 10),
 
-              /// PROJECT DROPDOWN
               Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 15,
@@ -279,7 +276,6 @@ class _TabletVendorAppbarState extends State<TabletVendorAppbar> {
 
               const SizedBox(height: 20),
 
-              ///  STOP BUTTON
               Align(
                 alignment: Alignment.bottomRight,
                 child: ElevatedButton(
@@ -309,6 +305,8 @@ class _TabletVendorAppbarState extends State<TabletVendorAppbar> {
     );
   }
 
+  /// ---------- Extra Widget ----------///
+
   // SIGN OUT POPUP
   Widget _buildSignOutPopup(SidebarVendorController controller) {
     return Stack(
@@ -335,7 +333,7 @@ class _TabletVendorAppbarState extends State<TabletVendorAppbar> {
                   children:  [
                     Image.asset(IconString.logoutIcon),
                     SizedBox(width: 10),
-                    Text("Sign Out", style: TTextTheme.signoutIconText(context)),
+                    Text(TextString.signOutText, style: TTextTheme.signoutIconText(context)),
                   ],
                 ),
               ),

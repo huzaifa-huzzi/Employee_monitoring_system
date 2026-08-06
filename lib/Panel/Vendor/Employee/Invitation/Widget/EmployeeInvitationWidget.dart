@@ -57,8 +57,6 @@ class EmployeeInvitationWidget extends StatelessWidget {
           ),
 
           const SizedBox(height: 24),
-
-          /// 2. MAIN FORM CARD
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(24.0),
@@ -144,7 +142,6 @@ class EmployeeInvitationWidget extends StatelessWidget {
 
                   const SizedBox(height: 32),
 
-                  /// SUBMIT BUTTON
                   Align(
                     alignment: Alignment.centerRight,
                     child: SizedBox(

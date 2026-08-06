@@ -136,7 +136,7 @@ class _MobileVendorAppbarState extends State<MobileVendorAppbar> {
         ),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.whiteColor,
           borderRadius: BorderRadius.circular(12),
         ),
         child: SingleChildScrollView(
@@ -144,7 +144,6 @@ class _MobileVendorAppbarState extends State<MobileVendorAppbar> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /// CLOSE BUTTON
               Align(
                 alignment: Alignment.topRight,
                 child: InkWell(
@@ -161,8 +160,6 @@ class _MobileVendorAppbarState extends State<MobileVendorAppbar> {
               ),
 
               const SizedBox(height: 10),
-
-              /// TIMER ROW
               Row(
                 children: [
                   InkWell(
@@ -190,8 +187,6 @@ class _MobileVendorAppbarState extends State<MobileVendorAppbar> {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-
-                  /// TIME DISPLAY
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -220,11 +215,8 @@ class _MobileVendorAppbarState extends State<MobileVendorAppbar> {
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 child: Divider(color: AppColors.textGrey, thickness: 0.8),
               ),
-
-              /// PROJECT SECTION
               Text("Project Name", style: TTextTheme.titleFive(context)),
               const SizedBox(height: 8),
-
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 decoration: BoxDecoration(
@@ -276,7 +268,9 @@ class _MobileVendorAppbarState extends State<MobileVendorAppbar> {
     );
   }
 
-  //SIGN OUT POPUP
+  /// ---------- Extra Widget ---------///
+
+  // Sign out Popup
   Widget _buildSignOutPopup(SidebarVendorController controller) {
     return Stack(
       children: [

@@ -71,7 +71,7 @@ class _MobileAppBarState extends State<MobileAppBar> {
                         width: MediaQuery.of(context).size.width < 400 ? 130 : 165,
                         padding: const EdgeInsets.symmetric(horizontal: 8),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: AppColors.whiteColor,
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(color: AppColors.borderColor, width: 1.2),
                         ),
@@ -135,7 +135,7 @@ class _MobileAppBarState extends State<MobileAppBar> {
         ),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.whiteColor,
           borderRadius: BorderRadius.circular(12),
         ),
         child: SingleChildScrollView(
@@ -228,7 +228,7 @@ class _MobileAppBarState extends State<MobileAppBar> {
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.grey.shade300),
+                  border: Border.all(color: AppColors.borderColor),
                 ),
                 child: Row(
                   children: [

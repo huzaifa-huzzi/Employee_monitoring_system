@@ -531,7 +531,7 @@ class AddTeamVendorWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withValues(alpha: 0.10),
+                            color: AppColors.textColor.withValues(alpha: 0.10),
                             blurRadius: 16,
                             spreadRadius: 1,
                             offset: const Offset(0, 4),

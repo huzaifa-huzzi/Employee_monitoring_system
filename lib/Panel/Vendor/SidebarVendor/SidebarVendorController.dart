@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'dart:async';
 
 class SidebarVendorController extends GetxController {
+  /// Vendor Sidebar controlling
   var selected = "Dashboard".obs;
   var selectedSubItem = "".obs;
   var isTimeSheetExpanded = false.obs;
@@ -112,6 +113,7 @@ class SidebarVendorController extends GetxController {
     print("User Signed Out");
   }
 
+  // On close method
   @override
   void onClose() {
     _timer?.cancel();

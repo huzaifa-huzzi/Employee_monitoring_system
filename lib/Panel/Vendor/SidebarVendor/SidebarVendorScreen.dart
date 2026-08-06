@@ -41,8 +41,6 @@ class SidebarVendorScreen extends StatelessWidget {
       controller.syncWithRoute(currentRoute);
     });
 
-    ///  Sidebar Content
-
     Widget sidebarContent() {
       return Obx(() {
         final isCollapsed = controller.isCollapsed.value;
@@ -138,7 +136,7 @@ class SidebarVendorScreen extends StatelessWidget {
                           iconPath: IconString.activityTrackingIcon,
                           title: "Activity Tracking",
                           isCollapsed: isCollapsed,
-                          onTap: (val) => context.go(''),
+                          onTap: (val) => context.go('/vendor/Activity'),
                           scaffoldKey: _scaffoldKey,
                         ),
 

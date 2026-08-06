@@ -182,7 +182,7 @@ class SidebarComponents {
                                       ? AppColors.primaryColor
                                       : AppColors.backgroundOfScreenColor,
                                   border: Border.all(
-                                    color: Colors.white,
+                                    color: AppColors.borderColor,
                                     width: 2,
                                   ),
                                 ),
@@ -227,7 +227,7 @@ class SidebarComponents {
                                                 : FontWeight.w500,
                                             color: isSubSelected
                                                 ? AppColors.primaryColor
-                                                : const Color(0xFF1E293B),
+                                                : AppColors.textColor,
                                           ),
                                           overflow: TextOverflow.ellipsis,
                                         ),
