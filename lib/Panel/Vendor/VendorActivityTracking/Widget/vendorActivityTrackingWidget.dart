@@ -1,5 +1,6 @@
 import 'package:employee_monitoring_system/Panel/Vendor/VendorActivityTracking/ReusableWidget/customDatePickerVendorActivity.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/VendorActivityTracking/VendorActivityController.dart';
+import 'package:employee_monitoring_system/Panel/Vendor/VendorActivityTracking/Widget/VendorActivityTeamTracking.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -26,6 +27,10 @@ class VendorActivityTrackingWidget extends StatelessWidget {
         _buildMetricsRow(context),
         const SizedBox(height: 24),
         Obx(() {
+          if (controller.selectedMainTab.value == "Team") {
+            return const VendorActivityTeamTracking();
+          }
+
           if (controller.isDetailView.value) {
             return _buildEmployeeDetailView(context, controller);
           }
@@ -46,13 +51,32 @@ class VendorActivityTrackingWidget extends StatelessWidget {
         final titleSection = Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Obx(
-                  () => Row(
+            Obx(() {
+              final isTeamEmployeeDetail = controller.selectedTeamEmployeeDetail.value != null;
+              final isShowingTeamEmp = controller.isShowingTeamEmployees.value;
+              final isEmpDetail = controller.isDetailView.value;
+              final currentTab = controller.selectedMainTab.value;
+
+              final showBack = (currentTab == "Employees" && isEmpDetail) ||
+                  (currentTab == "Team" && (isShowingTeamEmp || isTeamEmployeeDetail));
+
+              return Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  if (controller.isDetailView.value) ...[
+                  if (showBack) ...[
                     InkWell(
-                      onTap: () => controller.backToEmployeeList(),
+                      onTap: () {
+                        if (currentTab == "Team") {
+                          if (isTeamEmployeeDetail) {
+                            controller.hideTeamEmployeeDetail();
+                          }
+                          else if (isShowingTeamEmp) {
+                            controller.isShowingTeamEmployees.value = false;
+                          }
+                        } else {
+                          controller.backToEmployeeList();
+                        }
+                      },
                       borderRadius: BorderRadius.circular(4),
                       child: const Padding(
                         padding: EdgeInsets.only(right: 6.0),
@@ -73,8 +97,8 @@ class VendorActivityTrackingWidget extends StatelessWidget {
                     ),
                   ),
                 ],
-              ),
-            ),
+              );
+            }),
             const SizedBox(height: 4),
             Text(
               "Track your activity efficiently here",
@@ -562,6 +586,7 @@ class VendorActivityTrackingWidget extends StatelessWidget {
                 width: isMobile ? double.infinity : 260,
                 height: 42,
                 child: TextField(
+                  cursorColor: AppColors.textColor,
                   onChanged: (val) => controller.searchQuery.value = val,
                   style: TTextTheme.titleSix(context).copyWith(
                     fontSize: 13,
@@ -1143,11 +1168,61 @@ class VendorActivityTrackingWidget extends StatelessWidget {
                               );
                             }),
                             const SizedBox(width: 8),
-                            Expanded(flex: 3, child: Text("Day", style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textColor))),
-                            Expanded(flex: 2, child: Text("Mouse%", style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textColor))),
-                            Expanded(flex: 2, child: Text("Keyboard%", style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textColor))),
-                            Expanded(flex: 2, child: Text("Idle %", style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textColor))),
-                            Expanded(flex: 2, child: Text("Overall", style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textColor))),
+                            Expanded(
+                              flex: 3,
+                              child: Text(
+                                "Day",
+                                style: TTextTheme.titleSix(context).copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textColor,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                "Mouse%",
+                                style: TTextTheme.titleSix(context).copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textColor,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                "Keyboard%",
+                                style: TTextTheme.titleSix(context).copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textColor,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                "Idle %",
+                                style: TTextTheme.titleSix(context).copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textColor,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                "Overall",
+                                style: TTextTheme.titleSix(context).copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textColor,
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -1190,11 +1265,58 @@ class VendorActivityTrackingWidget extends StatelessWidget {
                                   );
                                 }),
                                 const SizedBox(width: 8),
-                                Expanded(flex: 3, child: Text(item["day"]!, style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w700, color: AppColors.textColor))),
-                                Expanded(flex: 2, child: Text(item["mouse"]!, style: TTextTheme.titleSix(context).copyWith(fontSize: 12, color: AppColors.tertiaryTextColor))),
-                                Expanded(flex: 2, child: Text(item["key"]!, style: TTextTheme.titleSix(context).copyWith(fontSize: 12, color: AppColors.tertiaryTextColor))),
-                                Expanded(flex: 2, child: Text(item["idle"]!, style: TTextTheme.titleSix(context).copyWith(fontSize: 12, color: AppColors.tertiaryTextColor))),
-                                Expanded(flex: 2, child: Text(item["overall"]!, style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w700, color: overallColor))),
+                                Expanded(
+                                  flex: 3,
+                                  child: Text(
+                                    item["day"]!,
+                                    style: TTextTheme.titleSix(context).copyWith(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.textColor,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Text(
+                                    item["mouse"]!,
+                                    style: TTextTheme.titleSix(context).copyWith(
+                                      fontSize: 12,
+                                      color: AppColors.tertiaryTextColor,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Text(
+                                    item["key"]!,
+                                    style: TTextTheme.titleSix(context).copyWith(
+                                      fontSize: 12,
+                                      color: AppColors.tertiaryTextColor,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Text(
+                                    item["idle"]!,
+                                    style: TTextTheme.titleSix(context).copyWith(
+                                      fontSize: 12,
+                                      color: AppColors.tertiaryTextColor,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Text(
+                                    item["overall"]!,
+                                    style: TTextTheme.titleSix(context).copyWith(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w700,
+                                      color: overallColor,
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           );
@@ -1285,11 +1407,61 @@ class VendorActivityTrackingWidget extends StatelessWidget {
                               );
                             }),
                             const SizedBox(width: 8),
-                            Expanded(flex: 3, child: Text("Time Slot", style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textColor))),
-                            Expanded(flex: 2, child: Text("Mouse%", style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textColor))),
-                            Expanded(flex: 2, child: Text("Keyboard%", style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textColor))),
-                            Expanded(flex: 2, child: Text("Idle %", style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textColor))),
-                            Expanded(flex: 2, child: Text("Overall", style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textColor))),
+                            Expanded(
+                              flex: 3,
+                              child: Text(
+                                "Time Slot",
+                                style: TTextTheme.titleSix(context).copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textColor,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                "Mouse%",
+                                style: TTextTheme.titleSix(context).copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textColor,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                "Keyboard%",
+                                style: TTextTheme.titleSix(context).copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textColor,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                "Idle %",
+                                style: TTextTheme.titleSix(context).copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textColor,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                "Overall",
+                                style: TTextTheme.titleSix(context).copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textColor,
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -1336,11 +1508,58 @@ class VendorActivityTrackingWidget extends StatelessWidget {
                                   );
                                 }),
                                 const SizedBox(width: 8),
-                                Expanded(flex: 3, child: Text(item["time"]!, style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w700, color: AppColors.textColor))),
-                                Expanded(flex: 2, child: Text(item["mouse"]!, style: TTextTheme.titleSix(context).copyWith(fontSize: 12, color: AppColors.tertiaryTextColor))),
-                                Expanded(flex: 2, child: Text(item["key"]!, style: TTextTheme.titleSix(context).copyWith(fontSize: 12, color: AppColors.tertiaryTextColor))),
-                                Expanded(flex: 2, child: Text(item["idle"]!, style: TTextTheme.titleSix(context).copyWith(fontSize: 12, color: AppColors.tertiaryTextColor))),
-                                Expanded(flex: 2, child: Text(item["overall"]!, style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w700, color: overallColor))),
+                                Expanded(
+                                  flex: 3,
+                                  child: Text(
+                                    item["time"]!,
+                                    style: TTextTheme.titleSix(context).copyWith(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.textColor,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Text(
+                                    item["mouse"]!,
+                                    style: TTextTheme.titleSix(context).copyWith(
+                                      fontSize: 12,
+                                      color: AppColors.tertiaryTextColor,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Text(
+                                    item["key"]!,
+                                    style: TTextTheme.titleSix(context).copyWith(
+                                      fontSize: 12,
+                                      color: AppColors.tertiaryTextColor,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Text(
+                                    item["idle"]!,
+                                    style: TTextTheme.titleSix(context).copyWith(
+                                      fontSize: 12,
+                                      color: AppColors.tertiaryTextColor,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Text(
+                                    item["overall"]!,
+                                    style: TTextTheme.titleSix(context).copyWith(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w700,
+                                      color: overallColor,
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           );
@@ -1356,7 +1575,6 @@ class VendorActivityTrackingWidget extends StatelessWidget {
       ),
     );
   }
-
    // Weekly Graph
   Widget _buildWeeklyGraphCard(BuildContext context) {
     return Container(
@@ -1391,9 +1609,9 @@ class VendorActivityTrackingWidget extends StatelessWidget {
             spacing: 16,
             runSpacing: 8,
             children: [
-              _buildLegendItem( AppColors.approvedColor, "High Activity"),
-              _buildLegendItem(AppColors.pendingColor, "Low Activity"),
-              _buildLegendItem(AppColors.borderColor, "Idle Time"),
+              _buildLegendItem(context, AppColors.approvedColor, "High Activity"),
+              _buildLegendItem(context, AppColors.pendingColor, "Low Activity"),
+              _buildLegendItem(context, AppColors.borderColor, "Idle Time"),
             ],
           ),
           const SizedBox(height: 20),
@@ -1415,13 +1633,13 @@ class VendorActivityTrackingWidget extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text("100%", style: TextStyle(fontSize: 10, color: AppColors.tertiaryTextColor)),
-                            Text("80%", style: TextStyle(fontSize: 10, color: AppColors.tertiaryTextColor)),
-                            Text("60%", style: TextStyle(fontSize: 10, color: AppColors.tertiaryTextColor)),
-                            Text("40%", style: TextStyle(fontSize: 10, color: AppColors.tertiaryTextColor)),
-                            Text("20%", style: TextStyle(fontSize: 10, color: AppColors.tertiaryTextColor)),
-                            Text("0%", style: TextStyle(fontSize: 10, color: AppColors.tertiaryTextColor)),
+                          children: [
+                            Text("100%", style: TTextTheme.titleSix(context).copyWith(fontSize: 10, color: AppColors.tertiaryTextColor)),
+                            Text("80%", style: TTextTheme.titleSix(context).copyWith(fontSize: 10, color: AppColors.tertiaryTextColor)),
+                            Text("60%", style: TTextTheme.titleSix(context).copyWith(fontSize: 10, color: AppColors.tertiaryTextColor)),
+                            Text("40%", style: TTextTheme.titleSix(context).copyWith(fontSize: 10, color: AppColors.tertiaryTextColor)),
+                            Text("20%", style: TTextTheme.titleSix(context).copyWith(fontSize: 10, color: AppColors.tertiaryTextColor)),
+                            Text("0%", style: TTextTheme.titleSix(context).copyWith(fontSize: 10, color: AppColors.tertiaryTextColor)),
                           ],
                         ),
                       ),
@@ -1430,42 +1648,42 @@ class VendorActivityTrackingWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            _buildStackedBar("Mon", [
+                            _buildStackedBar(context, "Mon", [
                               _BarSegment(flex: 35, color: AppColors.approvedColor),
                               _BarSegment(flex: 12, color: AppColors.pendingColor),
                               _BarSegment(flex: 8, color: AppColors.approvedColor),
                               _BarSegment(flex: 7, color: AppColors.borderColor),
                               _BarSegment(flex: 25, color: AppColors.approvedColor),
                             ]),
-                            _buildStackedBar("Tue", [
+                            _buildStackedBar(context, "Tue", [
                               _BarSegment(flex: 25, color: AppColors.approvedColor),
                               _BarSegment(flex: 8, color: AppColors.pendingColor),
                               _BarSegment(flex: 18, color: AppColors.approvedColor),
                             ]),
-                            _buildStackedBar("Wed", [
+                            _buildStackedBar(context, "Wed", [
                               _BarSegment(flex: 18, color: AppColors.approvedColor),
                               _BarSegment(flex: 18, color: AppColors.pendingColor),
                               _BarSegment(flex: 30, color: AppColors.approvedColor),
                               _BarSegment(flex: 10, color: AppColors.borderColor),
                               _BarSegment(flex: 20, color: AppColors.approvedColor),
                             ]),
-                            _buildStackedBar("Thu", [
+                            _buildStackedBar(context, "Thu", [
                               _BarSegment(flex: 20, color: AppColors.pendingColor),
                               _BarSegment(flex: 20, color: AppColors.approvedColor),
                               _BarSegment(flex: 25, color: AppColors.pendingColor),
-                              _BarSegment(flex: 25, color:AppColors.approvedColor),
+                              _BarSegment(flex: 25, color: AppColors.approvedColor),
                             ]),
-                            _buildStackedBar("Fri", [
+                            _buildStackedBar(context, "Fri", [
                               _BarSegment(flex: 20, color: AppColors.approvedColor),
                               _BarSegment(flex: 22, color: AppColors.pendingColor),
                               _BarSegment(flex: 8, color: AppColors.approvedColor),
-                              _BarSegment(flex: 20, color:AppColors.pendingColor),
+                              _BarSegment(flex: 20, color: AppColors.pendingColor),
                               _BarSegment(flex: 22, color: AppColors.approvedColor),
                             ]),
-                            _buildStackedBar("Sat", [
+                            _buildStackedBar(context, "Sat", [
                               _BarSegment(flex: 2, color: AppColors.borderColor),
                             ]),
-                            _buildStackedBar("Sun", [
+                            _buildStackedBar(context, "Sun", [
                               _BarSegment(flex: 2, color: AppColors.borderColor),
                             ]),
                           ],
@@ -1482,17 +1700,29 @@ class VendorActivityTrackingWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildLegendItem(Color color, String label) {
+  Widget _buildLegendItem(BuildContext context, Color color, String label) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Container(width: 12, height: 12, decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(3))),
+        Container(
+          width: 12,
+          height: 12,
+          decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(3)),
+        ),
         const SizedBox(width: 6),
-        Text(label, style: const TextStyle(fontSize: 11, color: AppColors.textColor, fontWeight: FontWeight.w500)),
+        Text(
+          label,
+          style: TTextTheme.titleSix(context).copyWith(
+            fontSize: 11,
+            color: AppColors.textColor,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
       ],
     );
   }
 
-  Widget _buildStackedBar(String dayLabel, List<_BarSegment> segments) {
+  Widget _buildStackedBar(BuildContext context, String dayLabel, List<_BarSegment> segments) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
@@ -1503,11 +1733,20 @@ class VendorActivityTrackingWidget extends StatelessWidget {
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(6)),
           child: Column(
             verticalDirection: VerticalDirection.up,
-            children: segments.map((seg) => Expanded(flex: seg.flex, child: Container(color: seg.color))).toList(),
+            children: segments
+                .map((seg) => Expanded(flex: seg.flex, child: Container(color: seg.color)))
+                .toList(),
           ),
         ),
         const SizedBox(height: 8),
-        Text(dayLabel, style: const TextStyle(fontSize: 11, color: AppColors.tertiaryTextColor, fontWeight: FontWeight.w500)),
+        Text(
+          dayLabel,
+          style: TTextTheme.titleSix(context).copyWith(
+            fontSize: 11,
+            color: AppColors.tertiaryTextColor,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
       ],
     );
   }
@@ -1545,9 +1784,9 @@ class VendorActivityTrackingWidget extends StatelessWidget {
             spacing: 16,
             runSpacing: 8,
             children: [
-              _buildLegendItem(AppColors.approvedColor, "High Activity"),
-              _buildLegendItem(AppColors.pendingColor, "Low Activity"),
-              _buildLegendItem(AppColors.borderColor, "Idle Time"),
+              _buildLegendItem(context, AppColors.approvedColor, "High Activity"),
+              _buildLegendItem(context, AppColors.pendingColor, "Low Activity"),
+              _buildLegendItem(context, AppColors.borderColor, "Idle Time"),
             ],
           ),
           const SizedBox(height: 20),
@@ -1644,11 +1883,39 @@ class VendorActivityTrackingWidget extends StatelessWidget {
                       const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          Text("12am", style: TextStyle(fontSize: 11, color: AppColors.tertiaryTextColor, fontWeight: FontWeight.w500)),
-                          Text("6am", style: TextStyle(fontSize: 11, color: AppColors.tertiaryTextColor, fontWeight: FontWeight.w500)),
-                          Text("12pm", style: TextStyle(fontSize: 11, color: AppColors.tertiaryTextColor, fontWeight: FontWeight.w500)),
-                          Text("6pm", style: TextStyle(fontSize: 11, color: AppColors.tertiaryTextColor, fontWeight: FontWeight.w500)),
+                        children: [
+                          Text(
+                            "12am",
+                            style: TTextTheme.titleSix(context).copyWith(
+                              fontSize: 11,
+                              color: AppColors.tertiaryTextColor,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          Text(
+                            "6am",
+                            style: TTextTheme.titleSix(context).copyWith(
+                              fontSize: 11,
+                              color: AppColors.tertiaryTextColor,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          Text(
+                            "12pm",
+                            style: TTextTheme.titleSix(context).copyWith(
+                              fontSize: 11,
+                              color: AppColors.tertiaryTextColor,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          Text(
+                            "6pm",
+                            style: TTextTheme.titleSix(context).copyWith(
+                              fontSize: 11,
+                              color: AppColors.tertiaryTextColor,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                         ],
                       ),
                     ],
@@ -1694,20 +1961,20 @@ class VendorActivityTrackingWidget extends StatelessWidget {
             RichText(
               text: TextSpan(
                 children: [
-                  const TextSpan(
+                  TextSpan(
                     text: "Total Time : ",
-                    style: TextStyle(
+                    style: TTextTheme.titleSix(context).copyWith(
                       fontSize: 13,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color: AppColors.textColor,
                     ),
                   ),
                   TextSpan(
                     text: totalTime,
-                    style: const TextStyle(
+                    style: TTextTheme.titleSix(context).copyWith(
                       fontSize: 13,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color: AppColors.textColor,
                     ),
                   ),
                 ],
@@ -1716,19 +1983,19 @@ class VendorActivityTrackingWidget extends StatelessWidget {
             const SizedBox(height: 6),
             Text(
               "High Activity : $highActivity",
-              style: const TextStyle(
+              style: TTextTheme.titleSix(context).copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w600,
-                color: Color(0xFF22C55E),
+                color: AppColors.approvedColor,
               ),
             ),
             const SizedBox(height: 4),
             Text(
               "Low Activity : $lowActivity",
-              style: const TextStyle(
+              style: TTextTheme.titleSix(context).copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w600,
-                color: Color(0xFFEAB308),
+                color: AppColors.pendingColor,
               ),
             ),
           ],
@@ -1774,9 +2041,9 @@ class VendorActivityTrackingWidget extends StatelessWidget {
             spacing: 16,
             runSpacing: 8,
             children: [
-              _buildLegendItem(AppColors.approvedColor, "High Activity"),
-              _buildLegendItem(AppColors.pendingColor, "Low Activity"),
-              _buildLegendItem(AppColors.borderColor, "Idle Time"),
+              _buildLegendItem(context, AppColors.approvedColor, "High Activity"),
+              _buildLegendItem(context, AppColors.pendingColor, "Low Activity"),
+              _buildLegendItem(context, AppColors.borderColor, "Idle Time"),
             ],
           ),
           const SizedBox(height: 20),
@@ -1797,13 +2064,13 @@ class VendorActivityTrackingWidget extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text("100%", style: TextStyle(fontSize: 10, color: AppColors.tertiaryTextColor)),
-                            Text("80%", style: TextStyle(fontSize: 10, color: AppColors.tertiaryTextColor)),
-                            Text("60%", style: TextStyle(fontSize: 10, color: AppColors.tertiaryTextColor)),
-                            Text("40%", style: TextStyle(fontSize: 10, color: AppColors.tertiaryTextColor)),
-                            Text("20%", style: TextStyle(fontSize: 10, color: AppColors.tertiaryTextColor)),
-                            Text("0%", style: TextStyle(fontSize: 10, color: AppColors.tertiaryTextColor)),
+                          children: [
+                            Text("100%", style: TTextTheme.titleSix(context).copyWith(fontSize: 10, color: AppColors.tertiaryTextColor)),
+                            Text("80%", style: TTextTheme.titleSix(context).copyWith(fontSize: 10, color: AppColors.tertiaryTextColor)),
+                            Text("60%", style: TTextTheme.titleSix(context).copyWith(fontSize: 10, color: AppColors.tertiaryTextColor)),
+                            Text("40%", style: TTextTheme.titleSix(context).copyWith(fontSize: 10, color: AppColors.tertiaryTextColor)),
+                            Text("20%", style: TTextTheme.titleSix(context).copyWith(fontSize: 10, color: AppColors.tertiaryTextColor)),
+                            Text("0%", style: TTextTheme.titleSix(context).copyWith(fontSize: 10, color: AppColors.tertiaryTextColor)),
                           ],
                         ),
                       ),
@@ -1812,27 +2079,27 @@ class VendorActivityTrackingWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            _buildStackedBar("Week 1", [
+                            _buildStackedBar(context, "Week 1", [
                               _BarSegment(flex: 30, color: AppColors.approvedColor),
                               _BarSegment(flex: 10, color: AppColors.pendingColor),
                               _BarSegment(flex: 40, color: AppColors.approvedColor),
                               _BarSegment(flex: 10, color: AppColors.borderColor),
                             ]),
-                            _buildStackedBar("Week 2", [
+                            _buildStackedBar(context, "Week 2", [
                               _BarSegment(flex: 35, color: AppColors.approvedColor),
-                              _BarSegment(flex: 2, color:  AppColors.borderColor),
+                              _BarSegment(flex: 2, color: AppColors.borderColor),
                               _BarSegment(flex: 15, color: AppColors.approvedColor),
                               _BarSegment(flex: 10, color: AppColors.pendingColor),
                             ]),
-                            _buildStackedBar("Week 3", [
+                            _buildStackedBar(context, "Week 3", [
                               _BarSegment(flex: 35, color: AppColors.approvedColor),
                               _BarSegment(flex: 15, color: AppColors.pendingColor),
                               _BarSegment(flex: 25, color: AppColors.approvedColor),
                               _BarSegment(flex: 10, color: AppColors.pendingColor),
                               _BarSegment(flex: 20, color: AppColors.approvedColor),
-                              _BarSegment(flex: 10, color:  AppColors.borderColor),
+                              _BarSegment(flex: 10, color: AppColors.borderColor),
                             ]),
-                            _buildStackedBar("Week 4", [
+                            _buildStackedBar(context, "Week 4", [
                               _BarSegment(flex: 45, color: AppColors.approvedColor),
                               _BarSegment(flex: 45, color: AppColors.pendingColor),
                             ]),
@@ -1919,11 +2186,61 @@ class VendorActivityTrackingWidget extends StatelessWidget {
                               );
                             }),
                             const SizedBox(width: 8),
-                            Expanded(flex: 3, child: Text("Week", style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textColor))),
-                            Expanded(flex: 2, child: Text("Mouse%", style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textColor))),
-                            Expanded(flex: 2, child: Text("Keyboard%", style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textColor))),
-                            Expanded(flex: 2, child: Text("Idle %", style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textColor))),
-                            Expanded(flex: 2, child: Text("Overall", style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textColor))),
+                            Expanded(
+                              flex: 3,
+                              child: Text(
+                                "Week",
+                                style: TTextTheme.titleSix(context).copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textColor,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                "Mouse%",
+                                style: TTextTheme.titleSix(context).copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textColor,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                "Keyboard%",
+                                style: TTextTheme.titleSix(context).copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textColor,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                "Idle %",
+                                style: TTextTheme.titleSix(context).copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textColor,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                "Overall",
+                                style: TTextTheme.titleSix(context).copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textColor,
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -1966,11 +2283,58 @@ class VendorActivityTrackingWidget extends StatelessWidget {
                                   );
                                 }),
                                 const SizedBox(width: 8),
-                                Expanded(flex: 3, child: Text(item["week"]!, style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w700, color: AppColors.textColor))),
-                                Expanded(flex: 2, child: Text(item["mouse"]!, style: TTextTheme.titleSix(context).copyWith(fontSize: 12, color: AppColors.tertiaryTextColor))),
-                                Expanded(flex: 2, child: Text(item["key"]!, style: TTextTheme.titleSix(context).copyWith(fontSize: 12, color: AppColors.tertiaryTextColor))),
-                                Expanded(flex: 2, child: Text(item["idle"]!, style: TTextTheme.titleSix(context).copyWith(fontSize: 12, color: AppColors.tertiaryTextColor))),
-                                Expanded(flex: 2, child: Text(item["overall"]!, style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w700, color: overallColor))),
+                                Expanded(
+                                  flex: 3,
+                                  child: Text(
+                                    item["week"]!,
+                                    style: TTextTheme.titleSix(context).copyWith(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.textColor,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Text(
+                                    item["mouse"]!,
+                                    style: TTextTheme.titleSix(context).copyWith(
+                                      fontSize: 12,
+                                      color: AppColors.tertiaryTextColor,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Text(
+                                    item["key"]!,
+                                    style: TTextTheme.titleSix(context).copyWith(
+                                      fontSize: 12,
+                                      color: AppColors.tertiaryTextColor,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Text(
+                                    item["idle"]!,
+                                    style: TTextTheme.titleSix(context).copyWith(
+                                      fontSize: 12,
+                                      color: AppColors.tertiaryTextColor,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Text(
+                                    item["overall"]!,
+                                    style: TTextTheme.titleSix(context).copyWith(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w700,
+                                      color: overallColor,
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           );
