@@ -2,6 +2,7 @@ import 'package:employee_monitoring_system/Panel/Vendor/VendorActivityTracking/R
 import 'package:employee_monitoring_system/Panel/Vendor/VendorActivityTracking/VendorActivityController.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -51,7 +52,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Team Activity",
+            TextString.vendorTeamActivity,
             style: TTextTheme.h2Style(context).copyWith(
               fontSize: 16,
               fontWeight: FontWeight.w700,
@@ -60,7 +61,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
           ),
           const SizedBox(height: 2),
           Text(
-            "Overall Team Activity",
+            TextString.vendorTeamActivitySubtitle,
             style: TTextTheme.titleSix(context).copyWith(
               fontSize: 11,
               color: AppColors.tertiaryTextColor,
@@ -108,7 +109,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 3,
                               child: Text(
-                                "Team Name",
+                                TextString.vendorTeamActivityTableOne,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -119,7 +120,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                "Members",
+                                TextString.vendorTeamActivityTableTwo,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -130,7 +131,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                "Mouse%",
+                                TextString.vendorActivityEmployeeTableTwo,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -141,7 +142,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                "Keyboard%",
+                                TextString.vendorActivityEmployeeTableThree,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -152,7 +153,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                "Idle %",
+                                TextString.vendorActivityEmployeeTableFour,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -163,7 +164,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                "Overall",
+                                TextString.vendorActivityEmployeeTableFive,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -174,7 +175,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             SizedBox(
                               width: 95,
                               child: Text(
-                                "Action",
+                                TextString.vendorActivityEmployeeTableSix,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -296,7 +297,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                                         ),
                                       ),
                                       SizedBox(
-                                        width: 95,
+                                        width: 110,
                                         child: PrimaryBtnOfVendorActivity(
                                           text: "View Emp",
                                           height: 40,
@@ -349,7 +350,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Team Employees Activity",
+                    TextString.vendorTeamActivityEmployee,
                     style: TTextTheme.h2Style(context).copyWith(
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
@@ -358,7 +359,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                   ),
                   const SizedBox(height: 2),
                   Text(
-                    "Overall all employees Activity",
+                    TextString.vendorTeamActivityEmployeeSubtitle,
                     style: TTextTheme.titleSix(context).copyWith(
                       fontSize: 11,
                       color: AppColors.tertiaryTextColor,
@@ -390,7 +391,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                           color: AppColors.textColor,
                         ),
                         decoration: InputDecoration(
-                          hintText: "Search by Employee",
+                          hintText: TextString.vendorActivityEmployeeActiviyFieldText,
                           hintStyle: TTextTheme.titleSix(context).copyWith(
                             fontSize: 12,
                             color: AppColors.tertiaryTextColor,
@@ -471,7 +472,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 3,
                               child: Text(
-                                "Employees",
+                                TextString.vendorTeamActivityEmployeeTableOne,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -482,7 +483,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                "Mouse%",
+                                TextString.vendorActivityEmployeeTableTwo,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -493,7 +494,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                "Keyboard%",
+                                TextString.vendorActivityEmployeeTableThree,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -504,7 +505,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                "Idle %",
+                                TextString.vendorActivityEmployeeTableFour,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -515,7 +516,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                "Overall",
+                                TextString.vendorActivityEmployeeTableFive,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -526,7 +527,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             SizedBox(
                               width: 60,
                               child: Text(
-                                "Action",
+                                TextString.vendorActivityEmployeeTableSix,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -546,11 +547,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             child: Center(
                               child: Text(
                                 "No Employees Found",
-                                style: TTextTheme.titleSix(context).copyWith(
-                                  fontSize: 13,
-                                  color: AppColors.tertiaryTextColor,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                                style: TTextTheme.TextError(context)
                               ),
                             ),
                           );
@@ -696,7 +693,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                                         icon: const Icon(
                                           Icons.remove_red_eye_outlined,
                                           size: 18,
-                                          color: AppColors.primaryColor,
+                                          color: AppColors.textColor,
                                         ),
                                         padding: EdgeInsets.zero,
                                         constraints: const BoxConstraints(),
@@ -871,7 +868,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(
-                    "Online",
+                    TextString.vendorActivityOnline,
                     style: TTextTheme.titleRegular12White(context).copyWith(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
@@ -997,7 +994,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Team Session Breakdown",
+            TextString.vendorTeamSession,
             style: TTextTheme.h2Style(context).copyWith(
               fontSize: 16,
               fontWeight: FontWeight.w700,
@@ -1005,7 +1002,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
             ),
           ),
           Text(
-            "Hourly Activity Detail for Selected Team",
+            TextString.vendorTeamSessionSubtitle,
             style: TTextTheme.titleSix(context).copyWith(
               fontSize: 11,
               color: AppColors.tertiaryTextColor,
@@ -1058,7 +1055,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 3,
                               child: Text(
-                                "Time Slot",
+                                TextString.vendorTeamSessionSlot,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -1069,7 +1066,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                "Mouse%",
+                                TextString.vendorActivityEmployeeTableTwo,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -1080,7 +1077,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                "Keyboard%",
+                                TextString.vendorActivityEmployeeTableThree,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -1091,7 +1088,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                "Idle %",
+                                TextString.vendorActivityEmployeeTableFour,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -1102,7 +1099,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                "Overall",
+                                TextString.vendorActivityEmployeeTableFive,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -1290,7 +1287,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Team Weekly Breakdown",
+            TextString.vendorTeamWeeklyBreakdown,
             style: TTextTheme.h2Style(context).copyWith(
               fontSize: 16,
               fontWeight: FontWeight.w700,
@@ -1299,7 +1296,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
           ),
           const SizedBox(height: 2),
           Text(
-            "4 Weeks cumulative performance for team",
+            TextString.vendorTeamWeeklyBreakdownSubtitle,
             style: TTextTheme.titleSix(context).copyWith(
               fontSize: 11,
               color: AppColors.tertiaryTextColor,
@@ -1351,7 +1348,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 3,
                               child: Text(
-                                "Week",
+                                TextString.vendorActivityWeek,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -1362,7 +1359,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                "Mouse%",
+                                TextString.vendorActivityEmployeeTableTwo,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -1373,7 +1370,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                "Keyboard%",
+                                TextString.vendorActivityEmployeeTableThree,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -1384,7 +1381,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                "Idle %",
+                                TextString.vendorActivityEmployeeTableThree,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -1395,7 +1392,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                "Overall",
+                                TextString.vendorActivityEmployeeTableFive,
                                 style: TTextTheme.titleSix(context).copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -1546,7 +1543,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Activity Timeline",
+           TextString.vendorActivityDaily,
             style: TTextTheme.h2Style(context).copyWith(
               fontSize: 16,
               fontWeight: FontWeight.w700,
@@ -1555,7 +1552,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
           ),
           const SizedBox(height: 2),
           Text(
-            "Activity Break down by hours",
+            TextString.vendorActivityDailySubtitle,
             style: TTextTheme.titleSix(context).copyWith(
               fontSize: 11,
               color: AppColors.tertiaryTextColor,
@@ -1566,9 +1563,9 @@ class VendorActivityTeamTracking extends StatelessWidget {
             spacing: 16,
             runSpacing: 8,
             children: [
-              _buildLegendItem(context, AppColors.approvedColor, "High Activity"),
-              _buildLegendItem(context, AppColors.pendingColor, "Low Activity"),
-              _buildLegendItem(context, AppColors.borderColor.withValues(alpha: 0.4), "Idle Time"),
+              _buildLegendItem(context, AppColors.approvedColor, TextString.vendorActivityHigh),
+              _buildLegendItem(context, AppColors.pendingColor, TextString.vendorActivityLow),
+              _buildLegendItem(context, AppColors.borderColor.withValues(alpha: 0.4), TextString.vendorActivityIdle),
             ],
           ),
           const SizedBox(height: 20),
@@ -1751,7 +1748,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Team Weekly Activity Graph",
+            TextString.vendorTeamWeeklyActivityGraph,
             style: TTextTheme.h2Style(context).copyWith(
               fontSize: 16,
               fontWeight: FontWeight.w700,
@@ -1760,7 +1757,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
           ),
           const SizedBox(height: 2),
           Text(
-            "Average Team activity percentage per day",
+            TextString.vendorTeamWeeklyActivityGraphSubtitle,
             style: TTextTheme.titleSix(context).copyWith(
               fontSize: 11,
               color: AppColors.tertiaryTextColor,
@@ -1771,9 +1768,9 @@ class VendorActivityTeamTracking extends StatelessWidget {
             spacing: 16,
             runSpacing: 8,
             children: [
-              _buildLegendItem(context, AppColors.approvedColor, "High Activity"),
-              _buildLegendItem(context, AppColors.pendingColor, "Low Activity"),
-              _buildLegendItem(context, AppColors.borderColor, "Idle Time"),
+              _buildLegendItem(context, AppColors.approvedColor, TextString.vendorActivityHigh),
+              _buildLegendItem(context, AppColors.pendingColor, TextString.vendorActivityLow),
+              _buildLegendItem(context, AppColors.borderColor, TextString.vendorActivityIdle),
             ],
           ),
           const SizedBox(height: 20),
@@ -1871,7 +1868,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Team Monthly Activity Graph",
+            TextString.vendorTeamMonthly,
             style: TTextTheme.h2Style(context).copyWith(
               fontSize: 16,
               fontWeight: FontWeight.w700,
@@ -1880,7 +1877,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
           ),
           const SizedBox(height: 2),
           Text(
-            "Monthly activity average for selected team",
+            TextString.vendorTeamMonthlySubtitle,
             style: TTextTheme.titleSix(context).copyWith(
               fontSize: 11,
               color: AppColors.tertiaryTextColor,
@@ -1891,9 +1888,9 @@ class VendorActivityTeamTracking extends StatelessWidget {
             spacing: 16,
             runSpacing: 8,
             children: [
-              _buildLegendItem(context, AppColors.approvedColor, "High Activity"),
-              _buildLegendItem(context, AppColors.pendingColor, "Low Activity"),
-              _buildLegendItem(context, AppColors.borderColor, "Idle Time"),
+              _buildLegendItem(context, AppColors.approvedColor, TextString.vendorActivityHigh),
+              _buildLegendItem(context, AppColors.pendingColor, TextString.vendorActivityLow),
+              _buildLegendItem(context, AppColors.borderColor, TextString.vendorActivityIdle),
             ],
           ),
           const SizedBox(height: 20),
@@ -2054,7 +2051,7 @@ class VendorActivityTeamTracking extends StatelessWidget {
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: "Total Time : ",
+                    text: TextString.vendorActivityTotalTime,
                     style: TTextTheme.titleEight(context).copyWith(
                       fontSize: 13,
                       fontWeight: FontWeight.bold,
