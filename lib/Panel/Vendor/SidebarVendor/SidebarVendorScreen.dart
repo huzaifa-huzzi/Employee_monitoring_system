@@ -144,7 +144,7 @@ class SidebarVendorScreen extends StatelessWidget {
                           context,
                           controller,
                           iconPath: IconString.applicationTrackingIcon,
-                          title: "Application Tracking",
+                          title: "Apps Tracking",
                           isCollapsed: isCollapsed,
                           onTap: (val) => context.go('/vendor/ApplicationTracking'),
                           scaffoldKey: _scaffoldKey,
