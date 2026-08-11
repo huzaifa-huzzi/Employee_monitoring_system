@@ -43,19 +43,23 @@ class _TimeSheetWidgetState extends State<TimeSheetWidget> {
           const SizedBox(height: 20),
           Obx(() {
             final bool isWeekView = controller.selectedViewIndex.value == 1;
-            final double minTableWidth = isWeekView ? 950 : 650;
 
-            if (webMode && !isWeekView) {
-              return _buildTableContent(context);
-            }
+            return LayoutBuilder(
+              builder: (context, constraints) {
+                final double minRequiredWidth = isWeekView ? 900.0 : 650.0;
+                final double actualTableWidth = constraints.maxWidth > minRequiredWidth
+                    ? constraints.maxWidth
+                    : minRequiredWidth;
 
-            return SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              child: SizedBox(
-                width: minTableWidth,
-                child: _buildTableContent(context),
-              ),
+                return SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
+                  child: SizedBox(
+                    width: actualTableWidth,
+                    child: _buildTableContent(context),
+                  ),
+                );
+              },
             );
           }),
         ],
@@ -64,7 +68,6 @@ class _TimeSheetWidgetState extends State<TimeSheetWidget> {
   }
 
   /// -------- Header Controls ---------- ///
-  // Header Controls
   Widget _buildHeaderControls(BuildContext context, bool webMode) {
     return SizedBox(
       width: double.infinity,
@@ -142,7 +145,7 @@ class _TimeSheetWidgetState extends State<TimeSheetWidget> {
                   ),
                   const SizedBox(width: 6),
                   Text(
-                   TextString.pickDateTitle,
+                    TextString.pickDateTitle,
                     style: TTextTheme.InsideAlreadyWrittenText(context),
                   ),
                 ],
@@ -202,13 +205,14 @@ class _TimeSheetWidgetState extends State<TimeSheetWidget> {
     );
   }
 
-   // Table Content
+  // Table Content
   Widget _buildTableContent(BuildContext context) {
     return Obx(() {
       final bool isWeekView = controller.selectedViewIndex.value == 1;
 
       return Column(
         children: [
+          // Table Header
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
@@ -298,6 +302,7 @@ class _TimeSheetWidgetState extends State<TimeSheetWidget> {
           ),
           const SizedBox(height: 10),
 
+          // Table Rows
           ListView.separated(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -333,8 +338,6 @@ class _TimeSheetWidgetState extends State<TimeSheetWidget> {
                       ),
                     ),
                     const SizedBox(width: 12),
-
-
                     if (isWeekView) ...[
                       Expanded(
                           flex: 3,

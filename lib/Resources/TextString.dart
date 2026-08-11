@@ -357,4 +357,45 @@ class TextString{
    static const String  vendorTeamMonthly=  "Team Monthly Activity Graph";
    static const String  vendorTeamMonthlySubtitle=  "Monthly activity average for selected team";
 
+      /// Application Tracking
+   static const String  vendorApplicationTitle=  'Application Tracking';
+   static const String  vendorApplicationSubtitle=  'You can see your application tracking here';
+   static const String  vendorApplicationTabOne=  'Employees';
+   static const String  vendorApplicationTabTwo=  'Team';
+   static const String  vendorApplicationKpiOne=  'Total tracked time';
+   static const String  vendorApplicationKpiTwo=  '6hrs 24m';
+   static const String  vendorApplicationKpiThree=  '↑ 9.7% vs last day';
+   static const String  vendorApplicationKpiFour=  'Active Time';
+   static const String  vendorApplicationKpiFive=  '87%';
+   static const String  vendorApplicationKpiSix=  '↑ 4.7% vs last day';
+   static const String  vendorApplicationKpiSeven=  'Idle Time';
+   static const String  vendorApplicationKpiEight=  '45m';
+   static const String  vendorApplicationKpiNine=  '5% of total time';
+   static const String  vendorApplicationKpiTen=  'Application used';
+   static const String  vendorApplicationKpiEleven=   '6';
+   static const String  vendorApplicationKpiTwelve=  'Apps / work hours';
+   static const String  vendorApplicationKpiThirteen=  'Productive time';
+   static const String  vendorApplicationKpiFourteen=  '77%';
+   static const String  vendorApplicationKpiFifteen=   '↑ 9.7% vs last day';
+   static const String  vendorApplicationEmployee=   'Employee Activity';
+   static const String  vendorApplicationEmployeeSubtitle=  'Overall all employees Activity';
+   static const String  vendorApplicationEmployeeSearchField=  'Search by Employee';
+   static const String  vendorApplicationEmployeeTableOne= 'Top Application';
+   static const String  vendorApplicationEmployeeTableTwo=   'Usage Time';
+   static const String  vendorApplicationEmployeeTableThree=  'Usage';
+   static const String  vendorApplicationEmployeeTableFour=  'Application Used';
+   static const String  vendorApplicationEmployeeTableFive=  'Action';
+   static const String  vendorApplicationOnline=  'Online';
+   static const String  vendorApplicationTop=  'Top Application used';
+   static const String  vendorDetailViewOne=   'Application';
+   static const String  vendorDetailViewTwo=  'Total Time';
+   static const String  vendorDetailViewThree=  'Time by %';
+   static const String  vendorDetailViewFour=  'Comparison';
+   static const String  vendorApplicationTeamActivityTitle=  'Team Activity';
+   static const String  vendorApplicationTeamActivitySubtitle=   'Overall Team Activity';
+   static const String  vendorApplicationTeamName=  'Team Name';
+   static const String  vendorApplicationTeamMembers=  'Members';
+   static const String  vendorApplicationTeamEmployeeActivity=  'Team Employees Activity';
+   static const String  vendorApplicationTeamEmployeeActivitySubtitle=  'Overall all employees Activity';
+
 }

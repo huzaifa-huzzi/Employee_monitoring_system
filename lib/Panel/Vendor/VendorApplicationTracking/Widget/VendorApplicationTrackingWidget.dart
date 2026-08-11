@@ -1,7 +1,9 @@
 import 'package:employee_monitoring_system/Panel/Vendor/VendorApplicationTracking/ReusableWidget/CustomPickerVendorApplication.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/VendorApplicationTracking/VendorApplicationTrackingController.dart';
+import 'package:employee_monitoring_system/Panel/Vendor/VendorApplicationTracking/Widget/VendorApplicationTeamWidget.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -33,7 +35,6 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
       },
     );
   }
-
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(VendorApplicationTrackingController());
@@ -57,7 +58,9 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                     ? _buildEmployeeDetailView(context, controller)
                     : _buildEmployeeActivitySection(context, controller);
               } else {
-                return _buildTeamActivitySection(context, controller);
+                return controller.isDetailView.value
+                    ? _buildEmployeeDetailView(context, controller)
+                    : const VendorApplicationTeamWidget();
               }
             }),
           ],
@@ -74,12 +77,21 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
       builder: (context, constraints) {
         bool isMobile = constraints.maxWidth < 600;
 
-        Widget titleSection = Obx(
-              () => Row(
+        Widget titleSection = Obx(() {
+          bool showBackButton = controller.isDetailView.value ||
+              (!controller.isEmployeesTab.value && controller.isTeamEmployeeView.value);
+
+          return Row(
             children: [
-              if (controller.isDetailView.value) ...[
+              if (showBackButton) ...[
                 InkWell(
-                  onTap: () => controller.closeEmployeeDetail(),
+                  onTap: () {
+                    if (controller.isDetailView.value) {
+                      controller.closeEmployeeDetail();
+                    } else if (controller.isTeamEmployeeView.value) {
+                      controller.isTeamEmployeeView.value = false;
+                    }
+                  },
                   borderRadius: BorderRadius.circular(4),
                   child: const Padding(
                     padding: EdgeInsets.only(right: 8.0),
@@ -96,7 +108,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Application Tracking',
+                      TextString.vendorApplicationTitle,
                       style: TTextTheme.h1Style(context).copyWith(
                         fontSize: isMobile ? 20 : 28,
                       ),
@@ -105,7 +117,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'You can see your application tracking here',
+                      TextString.vendorApplicationSubtitle,
                       style: TTextTheme.titleTwo(context).copyWith(
                         color: AppColors.subtextColor,
                         fontSize: isMobile ? 11 : 14,
@@ -117,8 +129,8 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-        );
+          );
+        });
 
         Widget toggleButtons = Obx(
               () => Container(
@@ -134,6 +146,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                   onTap: () {
                     controller.isEmployeesTab.value = true;
                     controller.isDetailView.value = false;
+                    controller.isTeamEmployeeView.value = false;
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -142,7 +155,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(
-                      'Employees',
+                      TextString.vendorApplicationTabOne,
                       style: controller.isEmployeesTab.value
                           ? TTextTheme.titleRegular12White(context).copyWith(fontWeight: FontWeight.w600)
                           : TTextTheme.titleFour(context),
@@ -153,6 +166,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                   onTap: () {
                     controller.isEmployeesTab.value = false;
                     controller.isDetailView.value = false;
+                    controller.isTeamEmployeeView.value = false;
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -161,7 +175,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(
-                      'Team',
+                      TextString.vendorApplicationTabTwo,
                       style: !controller.isEmployeesTab.value
                           ? TTextTheme.titleRegular12White(context).copyWith(fontWeight: FontWeight.w600)
                           : TTextTheme.titleFour(context),
@@ -175,7 +189,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
 
         if (isMobile) {
           return Column(
-            crossAxisAlignment:CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               titleSection,
               const SizedBox(height: 12),
@@ -310,41 +324,41 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
       {
         'icon': IconString.idleTime,
         'iconColor': AppColors.primaryColor,
-        'title': 'Total tracked time',
-        'value': '6hrs 24m',
-        'subText': '↑ 9.7% vs last day',
+        'title': TextString.vendorApplicationKpiOne ,
+        'value':  TextString.vendorApplicationKpiTwo ,
+        'subText':  TextString.vendorApplicationKpiThree,
         'subColor': AppColors.approvedColor,
       },
       {
         'icon': IconString.averageActivity,
         'iconColor': AppColors.approvedColor,
-        'title': 'Active Time',
-        'value': '87%',
-        'subText': '↑ 4.7% vs last day',
+        'title': TextString.vendorApplicationKpiFour ,
+        'value': TextString.vendorApplicationKpiFive ,
+        'subText':  TextString.vendorApplicationKpiSix ,
         'subColor': AppColors.approvedColor,
       },
       {
         'icon': IconString.idleTime,
         'iconColor': AppColors.rejectedColor,
-        'title': 'Idle Time',
-        'value': '45m',
-        'subText': '5% of total time',
+        'title':  TextString.vendorApplicationKpiSeven ,
+        'value':    TextString.vendorApplicationKpiEight ,
+        'subText':  TextString.vendorApplicationKpiNine ,
         'subColor': AppColors.subtextColor,
       },
       {
         'icon': IconString.applicationUsedIcon,
         'iconColor': AppColors.primaryColor,
-        'title': 'Application used',
-        'value': '6',
-        'subText': 'Apps / work hours',
+        'title':  TextString.vendorApplicationKpiTen ,
+        'value':   TextString.vendorApplicationKpiEleven,
+        'subText':  TextString.vendorApplicationKpiTwelve,
         'subColor': AppColors.subtextColor,
       },
       {
         'icon': IconString.averageActivity,
         'iconColor': AppColors.approvedColor,
-        'title': 'Productive time',
-        'value': '77%',
-        'subText': '↑ 9.7% vs last day',
+        'title':  TextString.vendorApplicationKpiThirteen ,
+        'value':   TextString.vendorApplicationKpiFourteen,
+        'subText':  TextString.vendorApplicationKpiFifteen,
         'subColor': AppColors.approvedColor,
       },
     ];
@@ -432,7 +446,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    'Employee Activity',
+                   TextString.vendorApplicationEmployee,
                     style: TTextTheme.titleThree(context).copyWith(
                       fontWeight: FontWeight.w600,
                       fontSize: 16,
@@ -440,7 +454,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                   ),
                   const SizedBox(height: 2),
                   Text(
-                    'Overall all employees Activity',
+                    TextString.vendorApplicationEmployeeSubtitle,
                     style: TTextTheme.titleTwo(context).copyWith(
                       color: AppColors.subtextColor,
                       fontSize: 12,
@@ -460,7 +474,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                     onChanged: (val) => controller.searchQuery.value = val,
                     style: TTextTheme.titleTwo(context).copyWith(fontSize: 12),
                     decoration: InputDecoration(
-                      hintText: 'Search by Employee',
+                      hintText: TextString.vendorApplicationEmployeeSearchField,
                       hintStyle: TTextTheme.titleTwo(context).copyWith(
                         color: AppColors.subtextColor,
                         fontSize: 12,
@@ -543,6 +557,13 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                                   value: controller.isAllSelected.value,
                                   onChanged: (val) => controller.toggleAllSelection(val),
                                   activeColor: AppColors.primaryColor,
+                                  side: const BorderSide(
+                                    color: AppColors.borderColor,
+                                    width: 1.5,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
                                 ),
                               ),
                             ),
@@ -550,7 +571,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                             Expanded(
                               flex: 3,
                               child: Text(
-                                'Employees',
+                                TextString.vendorApplicationTabOne,
                                 style: TTextTheme.titleTwo(context).copyWith(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 12,
@@ -561,7 +582,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                'Top Application',
+                                   TextString.vendorApplicationTabTwo,
                                 style: TTextTheme.titleTwo(context).copyWith(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 12,
@@ -572,7 +593,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                'Usage Time',
+                                  TextString.vendorApplicationEmployeeTableThree,
                                 style: TTextTheme.titleTwo(context).copyWith(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 12,
@@ -583,7 +604,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                'Usage',
+                                TextString.vendorApplicationEmployeeTableFour,
                                 style: TTextTheme.titleTwo(context).copyWith(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 12,
@@ -594,7 +615,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: Text(
-                                'Application Used',
+                                TextString.vendorApplicationEmployeeTableFive,
                                 style: TTextTheme.titleTwo(context).copyWith(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 12,
@@ -605,7 +626,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                             Expanded(
                               flex: 1,
                               child: Text(
-                                'Action',
+                                "Action",
                                 style: TTextTheme.titleTwo(context).copyWith(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 12,
@@ -641,10 +662,17 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                                         height: 24,
                                         width: 24,
                                         child: Checkbox(
-                                          value: emp.isSelected,
+                                          value: emp.isSelected.value,
                                           onChanged: (val) => controller
                                               .toggleSingleSelection(index, val),
                                           activeColor: AppColors.primaryColor,
+                                          side: const BorderSide(
+                                            color: AppColors.borderColor,
+                                            width: 1.5,
+                                          ),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(4),
+                                          ),
                                         ),
                                       ),
                                       const SizedBox(width: 12),
@@ -862,7 +890,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  'Online',
+                  TextString.vendorApplicationOnline,
                   style: TTextTheme.titleTwo(context).copyWith(
                     color: AppColors.whiteColor,
                     fontWeight: FontWeight.w600,
@@ -884,7 +912,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Top Application used',
+                  TextString.vendorApplicationTop,
                   style: TTextTheme.titleThree(context).copyWith(fontWeight: FontWeight.w600, fontSize: 15),
                 ),
                 const SizedBox(height: 16),
@@ -1005,7 +1033,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                                   Expanded(
                                     flex: 3,
                                     child: Text(
-                                      'Application',
+                                     TextString.vendorDetailViewOne,
                                       style: TTextTheme.titleTwo(context).copyWith(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 12,
@@ -1020,7 +1048,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                                         const Icon(Icons.access_time, size: 14, color: AppColors.textGrey),
                                         const SizedBox(width: 4),
                                         Text(
-                                          'Total Time',
+                                          TextString.vendorDetailViewTwo,
                                           style: TTextTheme.titleTwo(context).copyWith(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 12,
@@ -1037,7 +1065,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                                         const Icon(Icons.access_time, size: 14, color: AppColors.textGrey),
                                         const SizedBox(width: 4),
                                         Text(
-                                          'Time by %',
+                                          TextString.vendorDetailViewThree,
                                           style: TTextTheme.titleTwo(context).copyWith(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 12,
@@ -1062,7 +1090,7 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                                         ),
                                         const SizedBox(width: 4),
                                         Text(
-                                          'Comparison',
+                                          TextString.vendorDetailViewFour,
                                           style: TTextTheme.titleTwo(context).copyWith(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 12,
@@ -1107,7 +1135,11 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                                                   value: app.isSelected.value,
                                                   onChanged: (val) => controller.toggleAppSelection(index, val),
                                                   activeColor: AppColors.primaryColor,
-                                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+                                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4),),
+                                                  side: const BorderSide(
+                                                    color: AppColors.borderColor,
+                                                    width: 1.5,
+                                                  ),
                                                 ),
                                               ),
                                             ),
@@ -1191,10 +1223,4 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
       ),
     );
   }
-
-  Widget _buildTeamActivitySection(BuildContext context, VendorApplicationTrackingController controller) {
-    return const Center(
-      child: Text('Team Activity Section'),
-    );
   }
-}
