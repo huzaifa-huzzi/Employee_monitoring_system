@@ -34,6 +34,8 @@ class _CustomDatePickerVendorApplicationState extends State<CustomDatePickerVend
 
   late List<int> _years;
 
+  String get _normalizedMode => widget.timeFilterMode.trim().toLowerCase();
+
   @override
   void initState() {
     super.initState();
@@ -75,9 +77,9 @@ class _CustomDatePickerVendorApplicationState extends State<CustomDatePickerVend
   }
 
   String get _bottomDisplayText {
-    if (widget.timeFilterMode == "Day") {
+    if (_normalizedMode == "day") {
       return "Selected Day: ${DateFormat('d MMMM, yyyy').format(_selectedDate)}";
-    } else if (widget.timeFilterMode == "Week") {
+    } else if (_normalizedMode == "week") {
       final range = _getSingleWeekRange(_selectedDate);
       return "Selected Week: ${DateFormat('d MMM, yyyy').format(range.start)} to ${DateFormat('d MMM, yyyy').format(range.end)}";
     } else {
@@ -209,9 +211,9 @@ class _CustomDatePickerVendorApplicationState extends State<CustomDatePickerVend
                   height: 34,
                   borderRadius: BorderRadius.circular(8),
                   onTap: () {
-                    if (widget.timeFilterMode == "Week") {
+                    if (_normalizedMode == "week") {
                       widget.onDateSelected(_selectedDate, _getSingleWeekRange(_selectedDate));
-                    } else if (widget.timeFilterMode == "Last 4 week") {
+                    } else if (_normalizedMode == "last 4 week") {
                       widget.onDateSelected(_selectedDate, _getLast4WeeksRange(_selectedDate));
                     } else {
                       widget.onDateSelected(_selectedDate, null);
@@ -228,7 +230,7 @@ class _CustomDatePickerVendorApplicationState extends State<CustomDatePickerVend
 
   /// ------------- Extra Widget ------------///
 
-  //Custom Month Dropdown
+  // Custom Month Dropdown
   Widget _buildMonthPopupMenu() {
     return PopupMenuButton<int>(
       constraints: const BoxConstraints(maxHeight: 220, minWidth: 120),
@@ -357,9 +359,9 @@ class _CustomDatePickerVendorApplicationState extends State<CustomDatePickerVend
     final totalWeeks = ((daysInMonth + firstDayOffset) / 7).ceil();
 
     DateTimeRange? activeRange;
-    if (widget.timeFilterMode == "Week") {
+    if (_normalizedMode == "week") {
       activeRange = _getSingleWeekRange(_selectedDate);
-    } else if (widget.timeFilterMode == "Last 4 week") {
+    } else if (_normalizedMode == "last 4 week") {
       activeRange = _getLast4WeeksRange(_selectedDate);
     }
 
@@ -397,7 +399,7 @@ class _CustomDatePickerVendorApplicationState extends State<CustomDatePickerVend
                     bool isStartOfRow = dayOfWeekIndex == 0;
                     bool isEndOfRow = dayOfWeekIndex == 6;
 
-                    if (widget.timeFilterMode != "Day" && activeRange != null) {
+                    if (_normalizedMode != "day" && activeRange != null) {
                       DateTime dateOnly = DateTime(cellDate.year, cellDate.month, cellDate.day);
                       DateTime startOnly = DateTime(activeRange.start.year, activeRange.start.month, activeRange.start.day);
                       DateTime endOnly = DateTime(activeRange.end.year, activeRange.end.month, activeRange.end.day);
@@ -422,7 +424,7 @@ class _CustomDatePickerVendorApplicationState extends State<CustomDatePickerVend
                           height: 28,
                           decoration: BoxDecoration(
                             color: (isInSelectedRange && !isFuture) ? AppColors.primaryColor : Colors.transparent,
-                            borderRadius: widget.timeFilterMode != "Day" && isInSelectedRange
+                            borderRadius: _normalizedMode != "day" && isInSelectedRange
                                 ? BorderRadius.horizontal(
                               left: isStartOfRow ? const Radius.circular(14) : Radius.zero,
                               right: isEndOfRow ? const Radius.circular(14) : Radius.zero,
@@ -431,7 +433,7 @@ class _CustomDatePickerVendorApplicationState extends State<CustomDatePickerVend
                           ),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: (widget.timeFilterMode == "Day" && isSelectedDay) ? AppColors.primaryColor : Colors.transparent,
+                              color: (_normalizedMode == "day" && isSelectedDay) ? AppColors.primaryColor : Colors.transparent,
                               shape: BoxShape.circle,
                             ),
                             child: Center(
@@ -531,7 +533,7 @@ class _YearSearchMenuListState extends State<_YearSearchMenuList> {
           const Divider(height: 1, thickness: 0.5),
           Expanded(
             child: filteredYears.isEmpty
-                ?  Center(
+                ? Center(
               child: Text("No Year Found", style: TTextTheme.TextError(context)),
             )
                 : ListView.builder(
