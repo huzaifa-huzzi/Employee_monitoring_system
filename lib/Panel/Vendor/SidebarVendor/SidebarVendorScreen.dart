@@ -156,7 +156,7 @@ class SidebarVendorScreen extends StatelessWidget {
                           iconPath: IconString.urlTrackingIcon,
                           title: "URL Tracking",
                           isCollapsed: isCollapsed,
-                          onTap: (val) => context.go(''),
+                          onTap: (val) => context.go('/vendor/UrlTracking'),
                           scaffoldKey: _scaffoldKey,
                         ),
 

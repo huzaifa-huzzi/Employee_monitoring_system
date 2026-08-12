@@ -11,6 +11,7 @@ import 'package:employee_monitoring_system/Panel/Vendor/VendorActivityTracking/V
 import 'package:employee_monitoring_system/Panel/Vendor/VendorApplicationTracking/VendorApplicationTracking.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/VendorSnapshot/VendorSnapshot.dart';
 import 'package:employee_monitoring_system/Panel/Vendor/VendorTimeSheet/VendorTeamTimeSheet/VendorTeamTimeSheet.dart';
+import 'package:employee_monitoring_system/Panel/Vendor/VendorUrlTracking/VendorUrlTracking.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -103,9 +104,17 @@ class VendorRoutes {
           path: '/vendor/Activity',
           builder: (context, state) => VendorActivityTracking()),
 
+
+      // Application Tracking
       GoRoute(
           path: '/vendor/ApplicationTracking',
           builder: (context, state) => VendorApplicationTracking()),
+
+      // Url Tracking
+      GoRoute(
+          path: '/vendor/UrlTracking',
+          builder: (context, state) => VendorUrlTracking()),
+
 
 
 
