@@ -1,7 +1,9 @@
 import 'package:employee_monitoring_system/Resources/Colors.dart';
+import 'package:employee_monitoring_system/Resources/IconString.dart';
 import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class EmployeeDetailViewWidget extends StatefulWidget {
   final dynamic employee;
@@ -100,7 +102,15 @@ class _EmployeeDetailViewWidgetState extends State<EmployeeDetailViewWidget> {
         children: [
           Row(
             children: [
-              const Icon(Icons.person_outline, size: 24, color: AppColors.primaryColor),
+              SvgPicture.asset(
+                IconString.employeePerson,
+                width: 18,
+                height: 18,
+                colorFilter: const ColorFilter.mode(
+                  AppColors.primaryColor,
+                  BlendMode.srcIn,
+                ),
+              ),
               const SizedBox(width: 12),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

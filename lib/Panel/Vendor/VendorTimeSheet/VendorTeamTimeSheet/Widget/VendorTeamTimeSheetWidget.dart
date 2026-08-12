@@ -523,7 +523,15 @@ class VendorTeamTimeSheetWidget extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.person_outline, size: 16, color: AppColors.primaryColor),
+                  SvgPicture.asset(
+                    IconString.employeePerson,
+                    width: 18,
+                    height: 18,
+                    colorFilter: const ColorFilter.mode(
+                      AppColors.primaryColor,
+                      BlendMode.srcIn,
+                    ),
+                  ),
                   const SizedBox(width: 10),
                   Expanded(
                     child: Column(
