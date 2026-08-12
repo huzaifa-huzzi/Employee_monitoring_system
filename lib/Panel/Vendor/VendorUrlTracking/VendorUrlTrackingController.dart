@@ -4,24 +4,19 @@ import 'package:intl/intl.dart';
 
 
 class VendorUrlController extends GetxController {
-  // -----------------------------------------------------------------------------
-  // TAB & GLOBAL CONTROLS
-  // -----------------------------------------------------------------------------
+   // Tab controls
   var selectedTab = 'Employees'.obs;
   var selectedTimeFilter = 'Day'.obs;
   var currentPage = 1.obs;
   var totalPages = 5.obs;
 
-  // Global Navigation Reset Function
   void changeTab(String tab) {
     selectedTab.value = tab;
     isDetailView.value = false;
     isTeamEmpView.value = false;
   }
 
-  // -----------------------------------------------------------------------------
-  // EMPLOYEES TAB DATA & ACTIONS
-  // -----------------------------------------------------------------------------
+   // Employees Data Table
   var isDetailView = false.obs;
   var selectedEmployee = <String, dynamic>{}.obs;
 
@@ -60,13 +55,9 @@ class VendorUrlController extends GetxController {
     employeesList.refresh();
   }
 
-  // -----------------------------------------------------------------------------
-  // TEAM TAB DATA & NAVIGATION (3-STEP VIEW)
-  // -----------------------------------------------------------------------------
-  var isTeamEmpView = false.obs; // Step 2: Show Team Employees
+  // Team Tab Data
+  var isTeamEmpView = false.obs;
   var selectedTeam = <String, dynamic>{}.obs;
-
-  // 1. Teams List Data
   var teamsList = <Map<String, dynamic>>[
     {'teamName': 'Ui Ux', 'members': '10', 'topUrl': 'Google Docs', 'usageTime': '816hrs 40mints', 'usage': '65%', 'appUsed': '8', 'isSelected': false},
     {'teamName': 'Front End', 'members': '10', 'topUrl': 'Github', 'usageTime': '816hrs 40mints', 'usage': '65%', 'appUsed': '8', 'isSelected': false},
@@ -74,8 +65,6 @@ class VendorUrlController extends GetxController {
     {'teamName': 'QA', 'members': '10', 'topUrl': 'Google Chrome', 'usageTime': '816hrs 40mints', 'usage': '65%', 'appUsed': '8', 'isSelected': false},
     {'teamName': 'Ai Engineer', 'members': '10', 'topUrl': 'Github', 'usageTime': '816hrs 40mints', 'usage': '65%', 'appUsed': '8', 'isSelected': false},
   ].obs;
-
-  // 2. Team Employees Data
   var teamEmployeesList = <Map<String, dynamic>>[
     {'name': 'Jack Milson', 'email': 'jack@gmail.com', 'topUrl': 'Google docs', 'usageTime': '40hrs 10mints', 'usage': '75%', 'urlUsed': '8', 'isSelected': false},
     {'name': 'Ayan Ali', 'email': 'ayan@gmail.com', 'topUrl': 'Behance', 'usageTime': '40hrs 10mints', 'usage': '75%', 'urlUsed': '6', 'isSelected': false},
@@ -120,9 +109,7 @@ class VendorUrlController extends GetxController {
     teamEmployeesList.refresh();
   }
 
-  // -----------------------------------------------------------------------------
-  // DETAIL VIEW & CHART TRACKING DATA
-  // -----------------------------------------------------------------------------
+   // Detail View
   var hoveredBarIndex = (-1).obs;
   var detailRows = <Map<String, dynamic>>[].obs;
   var isAllDetailSelected = false.obs;
@@ -172,9 +159,6 @@ class VendorUrlController extends GetxController {
     detailRows.refresh();
   }
 
-  // -----------------------------------------------------------------------------
-  // DYNAMIC DATE RANGE PICKER
-  // -----------------------------------------------------------------------------
   var selectedDateTime = DateTime.now().obs;
   var selectedWeekRange = Rxn<DateTimeRange>();
 
