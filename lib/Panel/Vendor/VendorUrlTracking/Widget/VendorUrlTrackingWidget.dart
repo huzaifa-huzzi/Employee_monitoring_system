@@ -746,7 +746,7 @@ class VendorUrlTrackingWidget extends StatelessWidget {
                 child: const Padding(
                   padding: EdgeInsets.all(4.0),
                   child: Icon(Icons.remove_red_eye_outlined,
-                      size: 18, color: AppColors.primaryColor),
+                      size: 18, color: AppColors.tertiaryTextColor),
                 ),
               ),
             ),
