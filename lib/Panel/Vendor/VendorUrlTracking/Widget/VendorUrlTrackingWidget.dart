@@ -605,7 +605,7 @@ class VendorUrlTrackingWidget extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(4),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 150),
+        duration: const Duration(milliseconds: 10),
         width: 16,
         height: 16,
         decoration: BoxDecoration(
@@ -1186,7 +1186,7 @@ class VendorUrlTrackingWidget extends StatelessWidget {
                               width: 20,
                               height: 20,
                               colorFilter: const ColorFilter.mode(
-                                AppColors.primaryColor,
+                                AppColors.tertiaryTextColor,
                                 BlendMode.srcIn,
                               ),
                             ),
