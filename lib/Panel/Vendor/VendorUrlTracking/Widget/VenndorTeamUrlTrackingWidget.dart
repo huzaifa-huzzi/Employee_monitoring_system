@@ -946,7 +946,7 @@ class _TopUrlBrowseChartWidget extends StatelessWidget {
   }
 }
 
-/// Detail Tracking
+// Detail Tracking
 class _DetailTrackingTableWidget extends StatelessWidget {
   final VendorUrlController controller;
 
