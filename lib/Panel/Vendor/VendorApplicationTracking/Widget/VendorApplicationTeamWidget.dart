@@ -137,7 +137,6 @@ class VendorApplicationTeamWidget extends StatelessWidget {
                                             color: AppColors.borderColor,
                                             width: 1.5,
                                           ),
-
                                         ),
                                       ),
                                     ),

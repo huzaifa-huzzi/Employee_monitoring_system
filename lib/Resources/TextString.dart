@@ -398,4 +398,57 @@ class TextString{
    static const String  vendorApplicationTeamEmployeeActivity=  'Team Employees Activity';
    static const String  vendorApplicationTeamEmployeeActivitySubtitle=  'Overall all employees Activity';
 
+      /// Url Tracking
+   static const String  vendorUrlTrackingTitle=  'Url Tracking';
+   static const String  vendorUrlTrackingSubtitle=  'You can see your url tracking here';
+   static const String  vendorUrlTrackingTabOne=  'Employees';
+   static const String  vendorUrlTrackingTabTwo=  'Team';
+   static const String  vendorUrlTrackingKPIOne=  'Total tracked time';
+   static const String  vendorUrlTrackingKPITwo= '2hrs 24m';
+   static const String  vendorUrlTrackingKPIThree=   '↑ 8.7% vs last day';
+   static const String  vendorUrlTrackingKPIFour=  'Idle Time';
+   static const String  vendorUrlTrackingKPIFive=  '45m';
+   static const String  vendorUrlTrackingKPISix=  '12% of the total time';
+   static const String  vendorUrlTrackingKPISeven=  'Url used';
+   static const String  vendorUrlTrackingKPIEight=  '6';
+   static const String  vendorUrlTrackingKPINine=   'Across work hours';
+   static const String  vendorUrlTrackingKPITen=  'Productive Time';
+   static const String  vendorUrlTrackingKPIEleven=   '77%';
+   static const String  vendorUrlTrackingKPITwelve=  '↑ 8.7% vs last day';
+   static const String  vendorUrlTrackingKPIThirteen=  'Active Time';
+   static const String  vendorUrlTrackingKPIFourteen=  '87%';
+   static const String  vendorUrlTrackingKPIFifteen=  '↑ 8.7% vs last day';
+   static const String  vendorUrlTrackingEmployeeActivity=  'Employee Activity';
+   static const String  vendorUrlTrackingEmployeeActivitySubtitle=  'Overall all employees Activity';
+   static const String  vendorUrlTrackingFieldText=  'Search by Employee';
+   static const String  vendorUrlTrackingTopUrl=  'Top Url';
+   static const String  vendorUrlTrackingUsageTime=  'Usage Time';
+   static const String  vendorUrlTrackingUsage=  'Usage';
+   static const String  vendorUrlTrackingTopUrlUsed=  'Url Used';
+   static const String  vendorUrlTrackingAction=  'Action';
+   static const String  vendorUrlTrackingOnline=  'Online';
+   static const String  vendorUrlTrackingUrlBrowse=  'Top Url Browse';
+   static const String  vendorUrlTrackingTableOne=  'Url';
+   static const String  vendorUrlTrackingTableTwo=  'Total Time';
+   static const String  vendorUrlTrackingTableThree=  'Time by %';
+   static const String  vendorUrlTrackingTableFour=  'Comparison';
+   static const String  vendorUrlTrackingTeamActivity=  'Team Activity';
+   static const String  vendorUrlTrackingTeamActivitySubtitle=  'Overall Team Activity';
+   static const String  vendorUrlTrackingTeamTableOne=  'Team Name';
+   static const String  vendorUrlTrackingTeamTableTwo=  'Members';
+   static const String  vendorUrlTrackingTeamTableThree=  'Top Url';
+   static const String  vendorUrlTrackingTeamTableFour=  'Usage Time';
+   static const String  vendorUrlTrackingTeamTableFive=  'Usage';
+   static const String  vendorUrlTrackingTeamTableSix=   'Application Used';
+   static const String  vendorUrlTrackingTeamEmployees=  'Team Employees Activity';
+   static const String  vendorUrlTrackingTeamEmployeesSubtitle=  'Overall all employees Activity';
+   static const String  vendorUrlTrackingtopBrowse=  'Top Url Browse';
+   static const String  vendorUrlTrackingFieldTextTwo=  'Search employee...';
+   static const String  vendorUrlTracingUrlOne=  'URL / Domain';
+   static const String  vendorUrlTracingUrlTwo=  'Category';
+   static const String  vendorUrlTracingUrlThree=  'Active Time';
+   static const String  vendorUrlTracingUrlFour=  'Idle Time';
+   static const String  vendorUrlTracingUrlFive=  'Total Time';
+   static const String  vendorUrlTracingUrlSix=  'Productivity';
+
 }

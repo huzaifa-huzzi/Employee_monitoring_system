@@ -3,6 +3,7 @@ import 'package:employee_monitoring_system/Panel/Vendor/VendorUrlTracking/Vendor
 import 'package:employee_monitoring_system/Panel/Vendor/VendorUrlTracking/Widget/VenndorTeamUrlTrackingWidget.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -97,7 +98,7 @@ class VendorUrlTrackingWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Url Tracking',
+                          TextString.vendorUrlTrackingTitle,
                           style: TTextTheme.h1Style(context).copyWith(
                             fontSize: 20,
                             fontWeight: FontWeight.w700,
@@ -106,7 +107,7 @@ class VendorUrlTrackingWidget extends StatelessWidget {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          'You can see your url tracking here',
+                          TextString.vendorUrlTrackingSubtitle,
                           style: TTextTheme.h4Style(context).copyWith(
                             fontSize: 13,
                             fontWeight: FontWeight.w400,
@@ -132,7 +133,7 @@ class VendorUrlTrackingWidget extends StatelessWidget {
             children: [
               _buildPillTab(
                 context,
-                title: 'Employees',
+                title: TextString.vendorUrlTrackingTabOne,
                 isSelected: controller.selectedTab.value == 'Employees',
                 onTap: () {
                   controller.selectedTab.value = 'Employees';
@@ -141,7 +142,7 @@ class VendorUrlTrackingWidget extends StatelessWidget {
               ),
               _buildPillTab(
                 context,
-                title: 'Team',
+                title: TextString.vendorUrlTrackingTabTwo,
                 isSelected: controller.selectedTab.value == 'Team',
                 onTap: () {
                   controller.selectedTab.value = 'Team';
@@ -347,45 +348,45 @@ class VendorUrlTrackingWidget extends StatelessWidget {
         context,
         iconPath: IconString.idleTime,
         iconColor: AppColors.primaryColor,
-        title: 'Total tracked time',
-        value: '2hrs 24m',
-        subText: '↑ 8.7% vs last day',
+        title: TextString.vendorUrlTrackingKPIOne,
+        value: TextString.vendorUrlTrackingKPITwo ,
+        subText:TextString.vendorUrlTrackingKPIThree,
         subTextColor: AppColors.approvedColor,
       ),
       _buildSingleCard(
         context,
         iconPath: IconString.averageActivity,
         iconColor: AppColors.approvedColor,
-        title: 'Active Time',
-        value: '87%',
-        subText: '↑ 8.7% vs last day',
+        title:TextString.vendorUrlTrackingKPIThirteen ,
+        value:TextString.vendorUrlTrackingKPIFourteen ,
+        subText:TextString.vendorUrlTrackingKPIFifteen ,
         subTextColor: AppColors.approvedColor,
       ),
       _buildSingleCard(
         context,
         iconPath: IconString.idleTime,
         iconColor: AppColors.rejectedColor,
-        title: 'Idle Time',
-        value: '45m',
-        subText: '12% of the total time',
+        title:TextString.vendorUrlTrackingKPIFour ,
+        value:TextString.vendorUrlTrackingKPIFive ,
+        subText:TextString.vendorUrlTrackingKPISix ,
         subTextColor: AppColors.subtextColor,
       ),
       _buildSingleCard(
         context,
         iconPath: IconString.urlICon,
         iconColor: AppColors.primaryColor,
-        title: 'Url used',
-        value: '6',
-        subText: 'Across work hours',
+        title:TextString.vendorUrlTrackingKPISeven ,
+        value:TextString.vendorUrlTrackingKPIEight ,
+        subText:TextString.vendorUrlTrackingKPINine,
         subTextColor: AppColors.subtextColor,
       ),
       _buildSingleCard(
         context,
         iconPath: IconString.averageActivity,
         iconColor: AppColors.approvedColor,
-        title: 'Productive Time',
-        value: '77%',
-        subText: '↑ 8.7% vs last day',
+        title:TextString.vendorUrlTrackingKPITen ,
+        value:TextString.vendorUrlTrackingKPIEleven,
+        subText:TextString.vendorUrlTrackingKPITwelve ,
         subTextColor: AppColors.approvedColor,
       ),
     ];
@@ -485,7 +486,7 @@ class VendorUrlTrackingWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Employee Activity',
+                    TextString.vendorUrlTrackingEmployeeActivity,
                     style: TTextTheme.h3Style(context).copyWith(
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
@@ -494,7 +495,7 @@ class VendorUrlTrackingWidget extends StatelessWidget {
                   ),
                   const SizedBox(height: 3),
                   Text(
-                    'Overall all employees Activity',
+                    TextString.vendorUrlTrackingEmployeeActivitySubtitle,
                     style: TTextTheme.h4Style(context).copyWith(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
@@ -580,7 +581,7 @@ class VendorUrlTrackingWidget extends StatelessWidget {
                 color: AppColors.textColor,
               ),
               decoration: InputDecoration(
-                hintText: 'Search by Employee',
+                hintText: TextString.vendorUrlTrackingFieldText,
                 hintStyle: TTextTheme.titleFive(context).copyWith(
                   fontSize: 12,
                   fontWeight: FontWeight.w400,
@@ -652,22 +653,22 @@ class VendorUrlTrackingWidget extends StatelessWidget {
           ),
           Expanded(
               flex: 3,
-              child: Text('Employees', style: TTextTheme.titleSeven(context))),
+              child: Text(TextString.vendorUrlTrackingTabOne, style: TTextTheme.titleSeven(context))),
           Expanded(
               flex: 2,
-              child: Text('Top Url', style: TTextTheme.titleSeven(context))),
+              child: Text(TextString.vendorUrlTrackingTopUrl, style: TTextTheme.titleSeven(context))),
           Expanded(
               flex: 2,
-              child: Text('Usage Time', style: TTextTheme.titleSeven(context))),
+              child: Text(TextString.vendorUrlTrackingUsageTime, style: TTextTheme.titleSeven(context))),
           Expanded(
               flex: 2,
-              child: Text('Usage', style: TTextTheme.titleSeven(context))),
+              child: Text(TextString.vendorUrlTrackingUsage, style: TTextTheme.titleSeven(context))),
           Expanded(
               flex: 2,
-              child: Text('Url Used', style: TTextTheme.titleSeven(context))),
+              child: Text(TextString.vendorUrlTrackingTopUrlUsed, style: TTextTheme.titleSeven(context))),
           SizedBox(
               width: 50,
-              child: Text('Action',
+              child: Text(TextString.vendorUrlTrackingAction,
                   style: TTextTheme.titleSeven(context),
                   textAlign: TextAlign.center)),
         ],
@@ -885,7 +886,7 @@ class VendorUrlTrackingWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  'Online',
+                  TextString.vendorUrlTrackingOnline,
                   style: TTextTheme.titleFive(context).copyWith(
                     fontSize: 12,
                     color: AppColors.whiteColor,
@@ -910,7 +911,7 @@ class VendorUrlTrackingWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Top Url Browse',
+                  TextString.vendorUrlTrackingUrlBrowse,
                   style: TTextTheme.h3Style(context).copyWith(
                     fontSize: 15,
                     fontWeight: FontWeight.w700,
@@ -1150,7 +1151,7 @@ class VendorUrlTrackingWidget extends StatelessWidget {
                       const SizedBox(width: 8),
                       Expanded(
                         flex: 3,
-                        child: Text('Url',
+                        child: Text(TextString.vendorUrlTrackingTableOne,
                             style: TTextTheme.titleSeven(context)),
                       ),
                       Expanded(
@@ -1160,7 +1161,7 @@ class VendorUrlTrackingWidget extends StatelessWidget {
                             const Icon(Icons.access_time,
                                 size: 14, color: AppColors.tertiaryTextColor),
                             const SizedBox(width: 4),
-                            Text('Total Time',
+                            Text(TextString.vendorUrlTrackingTableTwo,
                                 style: TTextTheme.titleSeven(context)),
                           ],
                         ),
@@ -1172,7 +1173,7 @@ class VendorUrlTrackingWidget extends StatelessWidget {
                             const Icon(Icons.access_time,
                                 size: 14, color: AppColors.tertiaryTextColor),
                             const SizedBox(width: 4),
-                            Text('Time by %',
+                            Text(TextString.vendorUrlTrackingTableThree,
                                 style: TTextTheme.titleSeven(context)),
                           ],
                         ),
@@ -1191,7 +1192,7 @@ class VendorUrlTrackingWidget extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(width: 4),
-                            Text('Comparison',
+                            Text(TextString.vendorUrlTrackingTableFour,
                                 style: TTextTheme.titleSeven(context)),
                           ],
                         ),

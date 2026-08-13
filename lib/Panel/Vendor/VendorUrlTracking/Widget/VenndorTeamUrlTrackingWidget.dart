@@ -2,6 +2,7 @@ import 'package:employee_monitoring_system/Panel/Vendor/VendorUrlTracking/Reusab
 import 'package:employee_monitoring_system/Panel/Vendor/VendorUrlTracking/VendorUrlTrackingController.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart' show SvgPicture;
@@ -72,7 +73,7 @@ class _TeamsTableWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Team Activity',
+            TextString.vendorUrlTrackingTeamActivity,
             style: TTextTheme.h3Style(context).copyWith(
               fontSize: 16,
               fontWeight: FontWeight.w700,
@@ -81,7 +82,7 @@ class _TeamsTableWidget extends StatelessWidget {
           ),
           const SizedBox(height: 3),
           Text(
-            'Overall Team Activity',
+            TextString.vendorUrlTrackingTeamActivitySubtitle,
             style: TTextTheme.h4Style(context).copyWith(
               fontSize: 12,
               fontWeight: FontWeight.w400,
@@ -143,7 +144,7 @@ class _TeamsTableWidget extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Text(
-              'Team Name',
+              TextString.vendorUrlTrackingTeamTableOne,
               style: TTextTheme.titleSeven(context).copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
@@ -154,7 +155,7 @@ class _TeamsTableWidget extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Text(
-              'Members',
+              TextString.vendorUrlTrackingTeamTableTwo,
               style: TTextTheme.titleSeven(context).copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
@@ -165,7 +166,7 @@ class _TeamsTableWidget extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Text(
-              'Top Url',
+              TextString.vendorUrlTrackingTeamTableThree,
               style: TTextTheme.titleSeven(context).copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
@@ -176,7 +177,7 @@ class _TeamsTableWidget extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Text(
-              'Usage Time',
+              TextString.vendorUrlTrackingTeamTableFour,
               style: TTextTheme.titleSeven(context).copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
@@ -187,7 +188,7 @@ class _TeamsTableWidget extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Text(
-              'Usage',
+              TextString.vendorUrlTrackingTeamTableFive,
               style: TTextTheme.titleSeven(context).copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
@@ -198,7 +199,7 @@ class _TeamsTableWidget extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Text(
-              'Application Used',
+             TextString.vendorUrlTrackingTeamTableSix,
               style: TTextTheme.titleSeven(context).copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
@@ -209,7 +210,7 @@ class _TeamsTableWidget extends StatelessWidget {
           SizedBox(
             width: 85,
             child: Text(
-              'Action',
+              TextString.vendorUrlTrackingAction,
               style: TTextTheme.titleSeven(context).copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
@@ -356,7 +357,7 @@ class _TeamEmployeesTableWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Team Employees Activity',
+                    TextString.vendorUrlTrackingTeamEmployees,
                     style: TTextTheme.h3Style(context).copyWith(
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
@@ -365,7 +366,7 @@ class _TeamEmployeesTableWidget extends StatelessWidget {
                   ),
                   const SizedBox(height: 3),
                   Text(
-                    'Overall all employees Activity',
+                    TextString.vendorUrlTrackingTeamEmployeesSubtitle,
                     style: TTextTheme.h4Style(context).copyWith(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
@@ -437,7 +438,7 @@ class _TeamEmployeesTableWidget extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Text(
-              'Employees',
+              TextString.vendorUrlTrackingTabOne,
               style: TTextTheme.titleSeven(context).copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
@@ -448,7 +449,7 @@ class _TeamEmployeesTableWidget extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Text(
-              'Top Url',
+              TextString.vendorUrlTrackingTopUrl,
               style: TTextTheme.titleSeven(context).copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
@@ -459,7 +460,7 @@ class _TeamEmployeesTableWidget extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Text(
-              'Usage Time',
+             TextString.vendorUrlTrackingUsageTime,
               style: TTextTheme.titleSeven(context).copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
@@ -470,7 +471,7 @@ class _TeamEmployeesTableWidget extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Text(
-              'Usage',
+              TextString.vendorUrlTrackingUsage,
               style: TTextTheme.titleSeven(context).copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
@@ -481,7 +482,7 @@ class _TeamEmployeesTableWidget extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Text(
-              'Url Used',
+              TextString.vendorUrlTrackingTopUrlUsed,
               style: TTextTheme.titleSeven(context).copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
@@ -492,7 +493,7 @@ class _TeamEmployeesTableWidget extends StatelessWidget {
           SizedBox(
             width: 50,
             child: Text(
-              'Action',
+              TextString.vendorUrlTrackingAction,
               style: TTextTheme.titleSeven(context).copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
@@ -698,7 +699,7 @@ class _EmployeeDetailViewWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Text(
-                  'Online',
+                  TextString.vendorUrlTrackingOnline,
                   style: TextStyle(color: AppColors.approvedColor, fontSize: 11, fontWeight: FontWeight.w600),
                 ),
               ),
@@ -715,7 +716,7 @@ class _EmployeeDetailViewWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Top Url Browse', style: TTextTheme.h3Style(context)),
+                Text(TextString.vendorUrlTrackingtopBrowse, style: TTextTheme.h3Style(context)),
                 const SizedBox(height: 16),
                 _TopUrlBrowseChartWidget(controller: controller),
               ],
@@ -852,7 +853,7 @@ class _TableSearchBar extends StatelessWidget {
         cursorColor: AppColors.textColor,
         style: TTextTheme.titleTwo(context).copyWith(fontSize: 12),
         decoration: InputDecoration(
-          hintText: 'Search employee...',
+          hintText: TextString.vendorUrlTrackingFieldTextTwo,
           hintStyle: TTextTheme.titleTwo(context).copyWith(
             color: AppColors.subtextColor,
             fontSize: 12,
@@ -975,12 +976,12 @@ class _DetailTrackingTableWidget extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Expanded(flex: 3, child: Text('URL / Domain', style: TTextTheme.titleSeven(context))),
-                  Expanded(flex: 2, child: Text('Category', style: TTextTheme.titleSeven(context))),
-                  Expanded(flex: 2, child: Text('Active Time', style: TTextTheme.titleSeven(context))),
-                  Expanded(flex: 2, child: Text('Idle Time', style: TTextTheme.titleSeven(context))),
-                  Expanded(flex: 2, child: Text('Total Time', style: TTextTheme.titleSeven(context))),
-                  Expanded(flex: 2, child: Text('Productivity', style: TTextTheme.titleSeven(context))),
+                  Expanded(flex: 3, child: Text(TextString.vendorUrlTracingUrlOne, style: TTextTheme.titleSeven(context))),
+                  Expanded(flex: 2, child: Text(TextString.vendorUrlTracingUrlTwo, style: TTextTheme.titleSeven(context))),
+                  Expanded(flex: 2, child: Text(TextString.vendorUrlTracingUrlThree, style: TTextTheme.titleSeven(context))),
+                  Expanded(flex: 2, child: Text(TextString.vendorUrlTracingUrlFour, style: TTextTheme.titleSeven(context))),
+                  Expanded(flex: 2, child: Text(TextString.vendorUrlTracingUrlFive, style: TTextTheme.titleSeven(context))),
+                  Expanded(flex: 2, child: Text(TextString.vendorUrlTracingUrlSix, style: TTextTheme.titleSeven(context))),
                 ],
               ),
             ),
