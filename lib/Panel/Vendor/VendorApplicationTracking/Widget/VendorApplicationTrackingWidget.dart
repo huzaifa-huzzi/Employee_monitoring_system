@@ -1026,6 +1026,10 @@ class VendorApplicationTrackingWidget extends StatelessWidget {
                                         onChanged: (val) => controller.toggleAllAppsSelection(val),
                                         activeColor: AppColors.primaryColor,
                                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+                                        side: const BorderSide(
+                                          color: AppColors.borderColor,
+                                          width: 1.5,
+                                        ),
                                       ),
                                     ),
                                   ),
