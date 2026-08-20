@@ -661,7 +661,7 @@ class CompaniesWidget extends StatelessWidget {
                                       company.name,
                                       style: TTextTheme.titleFive(context)
                                           .copyWith(
-                                        fontWeight: FontWeight.w700,
+                                        fontWeight: FontWeight.w600,
                                         color: AppColors.textColor,
                                       ),
                                       overflow: TextOverflow.ellipsis,
@@ -960,7 +960,6 @@ class CompaniesWidget extends StatelessWidget {
         return AppColors.textColor;
     }
   }
-
   Color _getSubscriptionStatusColor(String status) {
     switch (status) {
       case 'Subscribed':
