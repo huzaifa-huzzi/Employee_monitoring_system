@@ -1,6 +1,5 @@
-
-
 import 'package:employee_monitoring_system/Resources/ErrorPage.dart';
+import 'package:employee_monitoring_system/Routes/AdminRoutes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:employee_monitoring_system/Routes/AuthRoutes.dart';
@@ -23,6 +22,9 @@ class AppNavigation {
 
       /// Vendor Panel Shell Route
       VendorRoutes.shellRoute,
+
+      /// Admin Routes
+      AdminRoutes.shellRoute,
     ],
   );
 }

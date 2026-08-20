@@ -74,4 +74,18 @@ class IconString{
    /// Screenshot
   static const String  totalScreenShot = 'assets/icons/TotalScreenShot.svg';
 
+  /// ----------------- Admin ---------------- ///
+
+   /// Sidebar Admin
+  static const String  dashboardAdminIcon = 'assets/icons/DashboardAdmin.svg';
+  static const String  companiesAdminIcon = 'assets/icons/Companies.svg';
+  static const String  demoRequestAdminIcon = 'assets/icons/DemoRequest.svg';
+  static const String  helpCenterAdminIcon = 'assets/icons/HelpCenter.svg';
+  static const String  paymentAdminIcon = 'assets/icons/Payment.svg';
+  static const String  pricingPlanAdminIcon = 'assets/icons/PricingPlan.svg';
+  static const String  reportsAdminIcon = 'assets/icons/Reports.svg';
+  static const String  subscriptionAdminIcon = 'assets/icons/Subscription.svg';
+  static const String  userAdminIcon = 'assets/icons/User.svg';
+
+
 }

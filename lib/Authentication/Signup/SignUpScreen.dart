@@ -273,7 +273,7 @@ class SignUpScreen extends StatelessWidget {
                       Center(
                         child: GestureDetector(
                           onTap: () {
-                           context.go('/login');
+                           context.go('/Admin/dashboard');
                           },
                           child: RichText(
                             text: TextSpan(
