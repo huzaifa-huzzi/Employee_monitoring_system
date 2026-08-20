@@ -90,5 +90,10 @@ class IconString{
    /// Company
   static const String  companyTable = 'assets/icons/CompanyTable.svg';
   static const String  blockIcon = 'assets/icons/blockIcon.svg';
+  static const String  activeCompany = 'assets/icons/ActiveCompanies.svg';
+  static const String  newCompany = 'assets/icons/NewCompany.svg';
+  static const String  suspendedCompany = 'assets/icons/SuspendedCompany.svg';
+
+
 
 }

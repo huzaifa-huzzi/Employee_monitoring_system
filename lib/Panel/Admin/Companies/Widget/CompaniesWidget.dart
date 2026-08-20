@@ -5,6 +5,8 @@ import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'dart:math' as math;
+
 
 class CompaniesWidget extends StatelessWidget {
   const CompaniesWidget({super.key});
@@ -149,25 +151,25 @@ class CompaniesWidget extends StatelessWidget {
 
         List<Widget> cards = [
           _kpiCard(context,
-              icon: Icons.article_outlined,
+              svgPath: IconString.companyTable,
               iconColor: AppColors.primaryColor,
               title: "Total Companies",
               count: "35",
               subText: "3 more companies joined"),
           _kpiCard(context,
-              icon: Icons.check_circle_outline,
+              svgPath: IconString.activeCompany,
               iconColor: AppColors.approvedColor,
               title: "Active Companies",
               count: "22",
               subText: "3 more companies joined"),
           _kpiCard(context,
-              icon: Icons.cancel_outlined,
+              svgPath: IconString.suspendedCompany,
               iconColor: AppColors.rejectedColor,
               title: "Suspended",
               count: "6",
               subText: "20 more employees added"),
           _kpiCard(context,
-              icon: Icons.push_pin_outlined,
+              svgPath: IconString.newCompany,
               iconColor: AppColors.textColor,
               title: "New Companies Joined",
               count: "8",
@@ -222,7 +224,7 @@ class CompaniesWidget extends StatelessWidget {
 
   Widget _kpiCard(
       BuildContext context, {
-        required IconData icon,
+        required String svgPath,
         required Color iconColor,
         required String title,
         required String count,
@@ -249,7 +251,15 @@ class CompaniesWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(icon, size: 18, color: iconColor),
+              SvgPicture.asset(
+                svgPath,
+                width: 18,
+                height: 18,
+                colorFilter: ColorFilter.mode(
+                  iconColor,
+                  BlendMode.srcIn,
+                ),
+              ),
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
@@ -518,15 +528,16 @@ class CompaniesWidget extends StatelessWidget {
     );
   }
 
-  // Fixed Table Layout
   Widget _buildCompaniesTable(
       BuildContext context, CompaniesController controller) {
     return LayoutBuilder(
       builder: (context, constraints) {
+        final double tableWidth = math.max(constraints.maxWidth, 1250.0);
+
         return SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(minWidth: 1250),
+          child: SizedBox(
+            width: tableWidth,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -557,46 +568,36 @@ class CompaniesWidget extends StatelessWidget {
                           onChanged: (val) => controller.toggleSelectAll(val),
                         )),
                       ),
-                      SizedBox(
-                          width: 170,
-                          child: Text("Company Name",
-                              style: TTextTheme.titleTwo(context))),
-                      SizedBox(
-                          width: 130,
-                          child: Text("Owner Name",
-                              style: TTextTheme.titleTwo(context))),
-                      SizedBox(
-                          width: 210,
-                          child: Text("Email",
-                              style: TTextTheme.titleTwo(context))),
-                      SizedBox(
-                          width: 120,
-                          child: Text("Email Status",
-                              style: TTextTheme.titleTwo(context))),
-                      SizedBox(
-                          width: 130,
-                          child: Text("Account Status",
-                              style: TTextTheme.titleTwo(context))),
-                      SizedBox(
-                          width: 110,
-                          child: Text("Subscription",
-                              style: TTextTheme.titleTwo(context))),
-                      SizedBox(
-                          width: 140,
-                          child: Text("Subscription Status",
-                              style: TTextTheme.titleTwo(context))),
-                      SizedBox(
-                          width: 120,
-                          child: Text("Joining Date",
-                              style: TTextTheme.titleTwo(context))),
-                      SizedBox(
-                          width: 80,
-                          child: Text("Employees",
-                              style: TTextTheme.titleTwo(context))),
-                      SizedBox(
-                          width: 100,
-                          child: Text("Action",
-                              style: TTextTheme.titleTwo(context))),
+                      Expanded(
+                          flex: 17,
+                          child: Text("Company Name", style: TTextTheme.titleTwo(context))),
+                      Expanded(
+                          flex: 13,
+                          child: Text("Owner Name", style: TTextTheme.titleTwo(context))),
+                      Expanded(
+                          flex: 21,
+                          child: Text("Email", style: TTextTheme.titleTwo(context))),
+                      Expanded(
+                          flex: 12,
+                          child: Text("Email Status", style: TTextTheme.titleTwo(context))),
+                      Expanded(
+                          flex: 13,
+                          child: Text("Account Status", style: TTextTheme.titleTwo(context))),
+                      Expanded(
+                          flex: 11,
+                          child: Text("Subscription", style: TTextTheme.titleTwo(context))),
+                      Expanded(
+                          flex: 14,
+                          child: Text("Subscription Status", style: TTextTheme.titleTwo(context))),
+                      Expanded(
+                          flex: 12,
+                          child: Text("Joining Date", style: TTextTheme.titleTwo(context))),
+                      Expanded(
+                          flex: 8,
+                          child: Text("Employees", style: TTextTheme.titleTwo(context))),
+                       SizedBox(
+                          width: 105,
+                          child: Text("Action", style: TTextTheme.titleTwo(context))),
                     ],
                   ),
                 ),
@@ -639,10 +640,10 @@ class CompaniesWidget extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(4),
                                 ),
                                 onChanged: (val) => controller.toggleItemSelection(company, val),
-                              )
+                              ),
                             ),
-                            SizedBox(
-                              width: 170,
+                            Expanded(
+                              flex: 17,
                               child: Row(
                                 children: [
                                   SvgPicture.asset(
@@ -669,24 +670,24 @@ class CompaniesWidget extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            SizedBox(
-                              width: 130,
+                            Expanded(
+                              flex: 13,
                               child: Text(
                                 company.ownerName,
                                 style: TTextTheme.titleFour(context),
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
-                            SizedBox(
-                              width: 210,
+                            Expanded(
+                              flex: 21,
                               child: Text(
                                 company.email,
                                 style: TTextTheme.titleFour(context),
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
-                            SizedBox(
-                              width: 120,
+                            Expanded(
+                              flex: 12,
                               child: Text(
                                 company.emailStatus,
                                 style: TextStyle(
@@ -698,8 +699,8 @@ class CompaniesWidget extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(
-                              width: 130,
+                            Expanded(
+                              flex: 13,
                               child: Text(
                                 company.accountStatus,
                                 style: TextStyle(
@@ -710,15 +711,15 @@ class CompaniesWidget extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(
-                              width: 110,
+                            Expanded(
+                              flex: 11,
                               child: Text(
                                 company.subscription,
                                 style: TTextTheme.titleFour(context),
                               ),
                             ),
-                            SizedBox(
-                              width: 140,
+                            Expanded(
+                              flex: 14,
                               child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: Container(
@@ -731,27 +732,27 @@ class CompaniesWidget extends StatelessWidget {
                                   ),
                                   child: Text(
                                     company.subscriptionStatus,
-                                    style: TTextTheme.SubscriptionStatusText(context)
+                                    style: TTextTheme.SubscriptionStatusText(context),
                                   ),
                                 ),
                               ),
                             ),
-                            SizedBox(
-                              width: 120,
+                            Expanded(
+                              flex: 12,
                               child: Text(
                                 company.joiningDate,
                                 style: TTextTheme.titleFour(context),
                               ),
                             ),
-                            SizedBox(
-                              width: 80,
+                            Expanded(
+                              flex: 8,
                               child: Text(
                                 "${company.employeesCount}",
                                 style: TTextTheme.titleFour(context),
                               ),
                             ),
                             SizedBox(
-                              width: 100,
+                              width: 105,
                               child: Row(
                                 children: [
                                   _actionIconButton(
