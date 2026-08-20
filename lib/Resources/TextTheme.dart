@@ -187,6 +187,22 @@ class TTextTheme{
     return _textStyle(fontSize:AppTextSizes.size(context, 10, 10, 10),fontWeight: FontWeight.w400,color: AppColors.tertiaryTextColor);
   }
 
+  static TextStyle SubscriptionStatusText(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 11, 11, 11),fontWeight: FontWeight.w400,color: AppColors.whiteColor);
+  }
+
+  static TextStyle PageNumber(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 12, 12, 12),fontWeight: FontWeight.w400,color: AppColors.textColor);
+  }
+
+
+  static TextStyle cancelBtnText(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 12, 14, 16),fontWeight: FontWeight.w500,color: AppColors.rejectedColor);
+  }
+
+  static TextStyle whiteColorBtn(BuildContext context){
+    return _textStyle(fontSize:AppTextSizes.size(context, 12, 14, 16),fontWeight: FontWeight.w500,color: AppColors.whiteColor);
+  }
 
 
 

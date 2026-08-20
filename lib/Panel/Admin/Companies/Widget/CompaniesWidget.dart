@@ -1,11 +1,1455 @@
+import 'package:employee_monitoring_system/Panel/Admin/Companies/CompaniesController.dart';
+import 'package:employee_monitoring_system/Resources/Colors.dart';
+import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class CompaniesWidget extends StatelessWidget {
   const CompaniesWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    final controller = Get.put(CompaniesController());
+
+    return Scaffold(
+      backgroundColor: AppColors.backgroundOfScreenColor,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Companies", style: TTextTheme.h1Style(context)),
+              const SizedBox(height: 4),
+              Text(
+                "You can see all companies here",
+                style: TTextTheme.titleSix(context),
+              ),
+              const SizedBox(height: 20),
+              _buildKpiSection(context, controller),
+              const SizedBox(height: 24),
+              Container(
+                decoration: BoxDecoration(
+                  color: AppColors.whiteColor,
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                      color: AppColors.borderColor.withValues(alpha: 0.6)),
+                ),
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        bool isSmallMobile = constraints.maxWidth < 420;
+
+                        if (isSmallMobile) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("All companies", style: TTextTheme.h3Style(context)),
+                                  const SizedBox(height: 2),
+                                  Text(
+                                    "List of all registered companies",
+                                    style: TTextTheme.titleFour(context),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 12),
+                              SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppColors.primaryColor,
+                                    elevation: 0,
+                                    padding: const EdgeInsets.symmetric(vertical: 10),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                  ),
+                                  child: Text("Add Company", style: TTextTheme.btnTextOne(context)),
+                                ),
+                              ),
+                            ],
+                          );
+                        }
+
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "All companies",
+                                    style: TTextTheme.h3Style(context),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  const SizedBox(height: 2),
+                                  Text(
+                                    "List of all registered companies",
+                                    style: TTextTheme.titleFour(context),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColors.primaryColor,
+                                elevation: 0,
+                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              child: Text("Add Company", style: TTextTheme.btnTextOne(context)),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 16),
+                    _buildDynamicTabsAndDropdownRow(context, controller),
+                    const SizedBox(height: 16),
+                    _buildSearchAndFilterRow(context, controller),
+                    const SizedBox(height: 20),
+                    _buildCompaniesTable(context, controller),
+                    const SizedBox(height: 20),
+                    _buildPaginationFooter(context, controller),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// ---------- Extra Widget ------ ///
+
+  // Kpi Card Section
+  Widget _buildKpiSection(BuildContext context, CompaniesController controller) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        bool isDesktop = constraints.maxWidth > 1000;
+        bool isTablet =
+            constraints.maxWidth > 550 && constraints.maxWidth <= 1000;
+
+        List<Widget> cards = [
+          _kpiCard(context,
+              icon: Icons.article_outlined,
+              iconColor: AppColors.primaryColor,
+              title: "Total Companies",
+              count: "35",
+              subText: "3 more companies joined"),
+          _kpiCard(context,
+              icon: Icons.check_circle_outline,
+              iconColor: AppColors.approvedColor,
+              title: "Active Companies",
+              count: "22",
+              subText: "3 more companies joined"),
+          _kpiCard(context,
+              icon: Icons.cancel_outlined,
+              iconColor: AppColors.rejectedColor,
+              title: "Suspended",
+              count: "6",
+              subText: "20 more employees added"),
+          _kpiCard(context,
+              icon: Icons.push_pin_outlined,
+              iconColor: AppColors.textColor,
+              title: "New Companies Joined",
+              count: "8",
+              subText: "5 more hours added"),
+        ];
+
+        if (isDesktop) {
+          return Row(
+            children: cards
+                .map((card) => Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(right: 12.0),
+                child: card,
+              ),
+            ))
+                .toList()
+              ..last = Expanded(child: cards.last),
+          );
+        } else if (isTablet) {
+          return Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(child: cards[0]),
+                  const SizedBox(width: 12),
+                  Expanded(child: cards[1]),
+                ],
+              ),
+              const SizedBox(height: 12),
+              Row(
+                children: [
+                  Expanded(child: cards[2]),
+                  const SizedBox(width: 12),
+                  Expanded(child: cards[3]),
+                ],
+              ),
+            ],
+          );
+        } else {
+          return Column(
+            children: cards
+                .map((card) => Padding(
+              padding: const EdgeInsets.only(bottom: 12.0),
+              child: card,
+            ))
+                .toList(),
+          );
+        }
+      },
+    );
+  }
+
+  Widget _kpiCard(
+      BuildContext context, {
+        required IconData icon,
+        required Color iconColor,
+        required String title,
+        required String count,
+        required String subText,
+      }) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      decoration: BoxDecoration(
+        color: AppColors.whiteColor,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.5)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.02),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            children: [
+              Icon(icon, size: 18, color: iconColor),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  title,
+                  style: TTextTheme.titleTwo(context),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Text(
+            count,
+            style: TTextTheme.h1Style(context),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            subText,
+            style: TTextTheme.titleRegular11(context),
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Dropdown Container
+  Widget _buildDynamicTabsAndDropdownRow(
+      BuildContext context, CompaniesController controller) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Obx(() {
+        final tabs = controller.currentCategoryTabs;
+
+        return Container(
+          padding: const EdgeInsets.all(4),
+          decoration: BoxDecoration(
+            color: AppColors.backgroundOfScreenColor,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.4)),
+          ),
+          child: Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: [
+              Wrap(
+                spacing: 4,
+                runSpacing: 4,
+                children: tabs.map((tab) {
+                  return _tabButton(
+                    context,
+                    controller,
+                    tab,
+                    controller.getTabCount(tab),
+                  );
+                }).toList(),
+              ),
+              _buildCustomPopupMenu(
+                context: context,
+                currentValue: controller.selectedFilterCategory,
+                isOpen: controller.isCategoryDropdownOpen,
+                options: ['Email Status', 'Account Status', 'Plan Status'],
+                onSelected: (val) => controller.changeFilterCategory(val),
+                minWidthWeb: 120,
+              ),
+            ],
+          ),
+        );
+      }),
+    );
+  }
+
+  // Tab Button
+  Widget _tabButton(
+      BuildContext context,
+      CompaniesController controller,
+      String label,
+      int count,
+      ) {
+    return Obx(() {
+      bool isSelected = controller.activeTab.value == label;
+
+      return InkWell(
+        onTap: () => controller.activeTab.value = label,
+        borderRadius: BorderRadius.circular(8),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 150),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+          decoration: BoxDecoration(
+            color: isSelected ? AppColors.primaryColor : Colors.transparent,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                label,
+                style: isSelected
+                    ? TTextTheme.TabsSelectedText(context)
+                    .copyWith(fontSize: 13)
+                    : TTextTheme.titleFour(context).copyWith(fontSize: 13),
+              ),
+              const SizedBox(width: 6),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                decoration: BoxDecoration(
+                  color: isSelected
+                      ? AppColors.whiteColor
+                      : AppColors.crossBackground,
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: Text(
+                  "$count",
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.bold,
+                    color: isSelected
+                        ? AppColors.primaryColor
+                        : AppColors.textColor,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    });
+  }
+
+  // Search Bar
+  Widget _buildSearchAndFilterRow(
+      BuildContext context, CompaniesController controller) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        bool isMobile = constraints.maxWidth < 600;
+
+        return Flex(
+          direction: isMobile ? Axis.vertical : Axis.horizontal,
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment:
+          isMobile ? CrossAxisAlignment.stretch : CrossAxisAlignment.center,
+          children: [
+            if (!isMobile) const Spacer(),
+            SizedBox(
+              width: isMobile ? double.infinity : 240,
+              height: 38,
+              child: TextField(
+                cursorColor: AppColors.textColor,
+                onChanged: (val) => controller.searchQuery.value = val,
+                style: TTextTheme.titleFour(context)
+                    .copyWith(color: AppColors.textColor),
+                decoration: InputDecoration(
+                  hintText: "Search by Company Name",
+                  hintStyle:
+                  TTextTheme.titleFour(context).copyWith(fontSize: 12),
+                  prefixIcon: const Icon(Icons.search,
+                      size: 18, color: AppColors.tertiaryTextColor),
+                  contentPadding:
+                  const EdgeInsets.symmetric(vertical: 0, horizontal: 12),
+                  filled: true,
+                  fillColor: AppColors.whiteColor,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: const BorderSide(
+                        color: AppColors.borderColor, width: 1),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: const BorderSide(
+                        color: AppColors.primaryColor, width: 1.2),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(width: isMobile ? 0 : 8, height: isMobile ? 8 : 0),
+            _buildCustomPopupMenu(
+              context: context,
+              currentValue: controller.searchFilterField,
+              isOpen: controller.isSearchDropdownOpen,
+              options: ['Company Name', 'Owner Name', 'Email'],
+              onSelected: (val) => controller.searchFilterField.value = val,
+              minWidthWeb: 140,
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  // Dropdown Menu
+  Widget _buildCustomPopupMenu({
+    required BuildContext context,
+    required RxString currentValue,
+    required RxBool isOpen,
+    required List<String> options,
+    required Function(String) onSelected,
+    required double minWidthWeb,
+  }) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool isMobile = screenWidth < 600;
+
+    return PopupMenuButton<String>(
+      constraints: BoxConstraints(
+        minWidth: isMobile ? screenWidth - 60 : minWidthWeb,
+        maxWidth: isMobile ? screenWidth - 60 : minWidthWeb + 40,
+        maxHeight: 300,
+      ),
+      offset: const Offset(0, 36),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      color: AppColors.whiteColor,
+      elevation: 3,
+      onOpened: () => isOpen.value = true,
+      onCanceled: () => isOpen.value = false,
+      onSelected: (String val) {
+        currentValue.value = val;
+        onSelected(val);
+        isOpen.value = false;
+      },
+      child: Obx(() => Container(
+        height: 32,
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+        decoration: BoxDecoration(
+          color: AppColors.whiteColor,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: AppColors.borderColor, width: 1),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              currentValue.value,
+              style: TTextTheme.titleFour(context).copyWith(
+                color: AppColors.textColor,
+                fontSize: 12.5,
+              ),
+            ),
+            const SizedBox(width: 4),
+            Icon(
+              isOpen.value
+                  ? Icons.keyboard_arrow_up_rounded
+                  : Icons.keyboard_arrow_down_rounded,
+              color: AppColors.tertiaryTextColor,
+              size: 16,
+            ),
+          ],
+        ),
+      )),
+      itemBuilder: (BuildContext context) {
+        return options.map((String opt) {
+          final bool isSelected = opt == currentValue.value;
+
+          return PopupMenuItem<String>(
+            value: opt,
+            height: 36,
+            child: Text(
+              opt,
+              style: TextStyle(
+                color: AppColors.subtextColor,
+                fontWeight: isSelected ? FontWeight.w400 : FontWeight.w400,
+                fontSize: 12.5,
+              ),
+            ),
+          );
+        }).toList();
+      },
+    );
+  }
+
+  // Fixed Table Layout
+  Widget _buildCompaniesTable(
+      BuildContext context, CompaniesController controller) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(minWidth: 1250),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 48,
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  decoration: BoxDecoration(
+                    color: AppColors.borderColor.withValues(alpha: 0.3),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                        color: AppColors.borderColor.withValues(alpha: 0.4)),
+                  ),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 40,
+                        child: Obx(() => Checkbox(
+                          value: controller.isAllSelected.value,
+                          activeColor: AppColors.primaryColor,
+                          side: const BorderSide(
+                            color: AppColors.borderColor,
+                            width: 1.5,
+                          ),
+                          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          onChanged: (val) => controller.toggleSelectAll(val),
+                        )),
+                      ),
+                      SizedBox(
+                          width: 170,
+                          child: Text("Company Name",
+                              style: TTextTheme.titleTwo(context))),
+                      SizedBox(
+                          width: 130,
+                          child: Text("Owner Name",
+                              style: TTextTheme.titleTwo(context))),
+                      SizedBox(
+                          width: 210,
+                          child: Text("Email",
+                              style: TTextTheme.titleTwo(context))),
+                      SizedBox(
+                          width: 120,
+                          child: Text("Email Status",
+                              style: TTextTheme.titleTwo(context))),
+                      SizedBox(
+                          width: 130,
+                          child: Text("Account Status",
+                              style: TTextTheme.titleTwo(context))),
+                      SizedBox(
+                          width: 110,
+                          child: Text("Subscription",
+                              style: TTextTheme.titleTwo(context))),
+                      SizedBox(
+                          width: 140,
+                          child: Text("Subscription Status",
+                              style: TTextTheme.titleTwo(context))),
+                      SizedBox(
+                          width: 120,
+                          child: Text("Joining Date",
+                              style: TTextTheme.titleTwo(context))),
+                      SizedBox(
+                          width: 80,
+                          child: Text("Employees",
+                              style: TTextTheme.titleTwo(context))),
+                      SizedBox(
+                          width: 100,
+                          child: Text("Action",
+                              style: TTextTheme.titleTwo(context))),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Obx(() {
+                  final list = controller.filteredCompanies;
+
+                  return Column(
+                    children: list.map((company) {
+                      return Container(
+                        margin: const EdgeInsets.only(bottom: 10),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 12),
+                        decoration: BoxDecoration(
+                          color: AppColors.whiteColor,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                              color: AppColors.borderColor.withValues(alpha: 0.6)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withValues(alpha: 0.015),
+                              blurRadius: 4,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 40,
+                              child: Checkbox(
+                                value: company.isSelected,
+                                activeColor: AppColors.primaryColor,
+                                side: const BorderSide(
+                                  color: AppColors.borderColor,
+                                  width: 1.5,
+                                ),
+                                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                                onChanged: (val) => controller.toggleItemSelection(company, val),
+                              )
+                            ),
+                            SizedBox(
+                              width: 170,
+                              child: Row(
+                                children: [
+                                  SvgPicture.asset(
+                                    IconString.companyTable,
+                                    width: 18,
+                                    height: 18,
+                                    colorFilter: const ColorFilter.mode(
+                                      AppColors.primaryColor,
+                                      BlendMode.srcIn,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Expanded(
+                                    child: Text(
+                                      company.name,
+                                      style: TTextTheme.titleFive(context)
+                                          .copyWith(
+                                        fontWeight: FontWeight.w700,
+                                        color: AppColors.textColor,
+                                      ),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              width: 130,
+                              child: Text(
+                                company.ownerName,
+                                style: TTextTheme.titleFour(context),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 210,
+                              child: Text(
+                                company.email,
+                                style: TTextTheme.titleFour(context),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 120,
+                              child: Text(
+                                company.emailStatus,
+                                style: TextStyle(
+                                  fontSize: 12.5,
+                                  fontWeight: FontWeight.w400,
+                                  color: company.emailStatus == 'Verified'
+                                      ? AppColors.approvedColor
+                                      : AppColors.rejectedColor,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 130,
+                              child: Text(
+                                company.accountStatus,
+                                style: TextStyle(
+                                  fontSize: 12.5,
+                                  fontWeight: FontWeight.w400,
+                                  color: _getAccountStatusColor(
+                                      company.accountStatus),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 110,
+                              child: Text(
+                                company.subscription,
+                                style: TTextTheme.titleFour(context),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 140,
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 14, vertical: 4),
+                                  decoration: BoxDecoration(
+                                    color: _getSubscriptionStatusColor(
+                                        company.subscriptionStatus),
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Text(
+                                    company.subscriptionStatus,
+                                    style: TTextTheme.SubscriptionStatusText(context)
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 120,
+                              child: Text(
+                                company.joiningDate,
+                                style: TTextTheme.titleFour(context),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 80,
+                              child: Text(
+                                "${company.employeesCount}",
+                                style: TTextTheme.titleFour(context),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 100,
+                              child: Row(
+                                children: [
+                                  _actionIconButton(
+                                    svgPath: IconString.eyeIcon,
+                                    backgroundColor: AppColors.primaryColor,
+                                    iconColor: AppColors.whiteColor,
+                                    onTap: () {},
+                                  ),
+                                  const SizedBox(width: 6),
+                                  _actionIconButton(
+                                    svgPath: IconString.blockIcon,
+                                    backgroundColor: Colors.transparent,
+                                    iconColor: AppColors.textColor,
+                                    onTap: () {
+                                      _showSuspendReasonDialog(context);
+                                    },
+                                  ),
+                                  const SizedBox(width: 6),
+                                  _actionIconButton(
+                                    svgPath: IconString.deleteIcon,
+                                    backgroundColor: AppColors.primaryColor,
+                                    iconColor: AppColors.whiteColor,
+                                    onTap: () {
+                                      _showDeleteConfirmationDialog(context);
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }).toList(),
+                  );
+                }),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _actionIconButton({
+    required String svgPath,
+    required VoidCallback onTap,
+    Color? backgroundColor,
+    Color iconColor = AppColors.whiteColor,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(6),
+      child: Container(
+        padding: const EdgeInsets.all(6),
+        decoration: BoxDecoration(
+          color: backgroundColor ?? Colors.transparent,
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: SvgPicture.asset(
+          svgPath,
+          width: 16,
+          height: 16,
+          colorFilter: ColorFilter.mode(
+            iconColor,
+            BlendMode.srcIn,
+          ),
+        ),
+      ),
+    );
+  }
+
+   // Pagination Footer
+  Widget _buildPaginationFooter(
+      BuildContext context, CompaniesController controller) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        bool isMobile = constraints.maxWidth < 600;
+
+        return Flex(
+          direction: isMobile ? Axis.vertical : Axis.horizontal,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment:
+          isMobile ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text("Results per page", style: TTextTheme.titleFour(context)),
+                const SizedBox(width: 8),
+                Obx(() => _buildCustomPopupMenu(
+                  context: context,
+                  currentValue: controller.resultsPerPage.value.toString().obs,
+                  isOpen: controller.isResultsPerPageDropdownOpen,
+                  options: ['5', '10', '20', '50'],
+                  onSelected: (val) =>
+                  controller.resultsPerPage.value = int.parse(val),
+                  minWidthWeb: 60,
+                )),
+              ],
+            ),
+            SizedBox(height: isMobile ? 12 : 0),
+            Wrap(
+              alignment: WrapAlignment.start,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              spacing: 4,
+              runSpacing: 8,
+              children: [
+                InkWell(
+                  onTap: () {},
+                  borderRadius: BorderRadius.circular(6),
+                  child: Container(
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: AppColors.backgroundOfScreenColor,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.chevron_left,
+                            size: 16, color: AppColors.tertiaryTextColor),
+                        const SizedBox(width: 2),
+                        Text(
+                          "Prev",
+                          style: TTextTheme.titleFour(context).copyWith(
+                              fontSize: 12, color: AppColors.tertiaryTextColor),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _pageNumberButton(context,"1", isSelected: true),
+                    _pageNumberButton(context,"2"),
+                    _pageNumberButton(context,"3"),
+                    _pageNumberButton(context,"4"),
+                  ],
+                ),
+                InkWell(
+                  onTap: () {},
+                  borderRadius: BorderRadius.circular(6),
+                  child: Container(
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          "Next",
+                          style: TTextTheme.titleFour(context).copyWith(
+                              fontSize: 12, color: AppColors.textColor),
+                        ),
+                        const SizedBox(width: 2),
+                        Icon(Icons.chevron_right,
+                            size: 16, color: AppColors.textColor),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _pageNumberButton(BuildContext context, String number, {bool isSelected = false}) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 2),
+      width: 28,
+      height: 28,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: isSelected ? AppColors.primaryColor : Colors.transparent,
+        borderRadius: BorderRadius.circular(6),
+      ),
+      child: Text(
+        number,
+        style: TTextTheme.PageNumber(context).copyWith(
+          color: isSelected ? AppColors.whiteColor : AppColors.textColor,
+        ),
+      ),
+    );
+  }
+
+  // HELPER COLOR METHODS
+  Color _getAccountStatusColor(String status) {
+    switch (status) {
+      case 'Active':
+        return AppColors.approvedColor;
+      case 'Pending':
+        return AppColors.pendingColor;
+      case 'Inactive':
+      case 'Suspended':
+        return AppColors.rejectedColor;
+      default:
+        return AppColors.textColor;
+    }
+  }
+
+  Color _getSubscriptionStatusColor(String status) {
+    switch (status) {
+      case 'Subscribed':
+        return AppColors.approvedColor;
+      case 'Demo':
+        return AppColors.subtextColor;
+      case 'Overdue':
+        return AppColors.rejectedColor;
+      case 'Cancelled':
+        return AppColors.tertiaryTextColor;
+      default:
+        return AppColors.primaryColor;
+    }
+  }
+
+    /// Delete Dialogs
+  void _showDeleteConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          backgroundColor: AppColors.whiteColor,
+          child: Container(
+            width: 440,
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: InkWell(
+                    onTap: () => Navigator.of(context).pop(),
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: AppColors.borderColor.withValues(alpha: 0.3),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(Icons.close, size: 16, color: AppColors.tertiaryTextColor),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: AppColors.emojiBackground,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Text("🤨", style: TextStyle(fontSize: 26)),
+                    ),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Delete Company",
+                            style: TTextTheme.h3Style(context).copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.textColor,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            "Are you sure you want to delete it",
+                            style: TTextTheme.titleFour(context).copyWith(
+                              color: AppColors.tertiaryTextColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 24),
+                Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        style: OutlinedButton.styleFrom(
+                          side:  BorderSide(color: AppColors.rejectedColor , width: 1),
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child:  Text(
+                          "Cancel",
+                          style: TTextTheme.cancelBtnText(context)
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          _showSuccessDialog(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColors.rejectedColor,
+                          elevation: 0,
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child:  Text(
+                          "Delete",
+                          style: TTextTheme.whiteColorBtn(context)
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+  void _showSuccessDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          backgroundColor: AppColors.whiteColor,
+          child: Container(
+            width: 440,
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: InkWell(
+                    onTap: () => Navigator.of(context).pop(),
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: AppColors.borderColor.withValues(alpha: 0.3),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(Icons.close, size: 16, color: AppColors.tertiaryTextColor),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: AppColors.emojiBackground,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Text("👍", style: TextStyle(fontSize: 26)),
+                    ),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Company Deleted Successfully",
+                            style: TTextTheme.h3Style(context).copyWith(
+                              color: AppColors.textColor,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            "Congratulation! your company has successfully deleted in the system",
+                            style: TTextTheme.titleFour(context).copyWith(
+                              color: AppColors.tertiaryTextColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+   /// Suspend Dialog
+  void _showSuspendReasonDialog(BuildContext context) {
+    final TextEditingController reasonController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          backgroundColor: AppColors.whiteColor,
+          child: Container(
+            width: 420,
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  Icons.block,
+                  color: AppColors.rejectedColor,
+                  size: 26,
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  "Suspend Company",
+                  style: TTextTheme.h3Style(context).copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.textColor,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Reason",
+                    style: TTextTheme.titleTwo(context).copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.textColor,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 6),
+                TextField(
+                  cursorColor: AppColors.textColor,
+                  controller: reasonController,
+                  maxLines: 3,
+                  style: TTextTheme.titleFour(context),
+                  decoration: InputDecoration(
+                    hintText: "Write here",
+                    hintStyle: TTextTheme.titleFour(context).copyWith(
+                      color: AppColors.tertiaryTextColor,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(
+                          color: AppColors.borderColor.withValues(alpha: 0.8)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: const BorderSide(color: AppColors.primaryColor),
+                    ),
+                    contentPadding: const EdgeInsets.all(12),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        style: OutlinedButton.styleFrom(
+                          side: const BorderSide(color: AppColors.rejectedColor, width: 1),
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child:  Text(
+                          "Cancel",
+                          style: TTextTheme.cancelBtnText(context)
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          _showSuspendConfirmDialog(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColors.rejectedColor,
+                          elevation: 0,
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child:  Text(
+                          "Suspend",
+                          style: TTextTheme.whiteColorBtn(context)
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+  void _showSuspendConfirmDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          backgroundColor: AppColors.whiteColor,
+          child: Container(
+            width: 440,
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: InkWell(
+                    onTap: () => Navigator.of(context).pop(),
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: AppColors.borderColor.withValues(alpha: 0.3),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(Icons.close, size: 16, color: AppColors.tertiaryTextColor),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: AppColors.emojiBackground,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Text("🤨", style: TextStyle(fontSize: 26)),
+                    ),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Suspend Company",
+                            style: TTextTheme.h3Style(context).copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.textColor,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            "Are you sure you want to suspend it",
+                            style: TTextTheme.titleFour(context).copyWith(
+                              color: AppColors.tertiaryTextColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 24),
+                Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          _showSuspendSuccessDialog(context);
+                        },
+                        style: OutlinedButton.styleFrom(
+                          side: const BorderSide(color: AppColors.rejectedColor, width: 1),
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child:  Text(
+                          "Save",
+                          style: TTextTheme.cancelBtnText(context)
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColors.rejectedColor,
+                          elevation: 0,
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child:  Text(
+                          "Cancel",
+                          style: TTextTheme.whiteColorBtn(context)
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+  void _showSuspendSuccessDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          backgroundColor: AppColors.whiteColor,
+          child: Container(
+            width: 440,
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: InkWell(
+                    onTap: () => Navigator.of(context).pop(),
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: AppColors.borderColor.withValues(alpha: 0.3),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(Icons.close, size: 16, color: AppColors.tertiaryTextColor),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: AppColors.emojiBackground,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Text("👍", style: TextStyle(fontSize: 26)),
+                    ),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Company Suspended Successfully",
+                            style: TTextTheme.h3Style(context).copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.textColor,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            "Congratulation! your company has successfully suspended in the system",
+                            style: TTextTheme.titleFour(context).copyWith(
+                              color: AppColors.tertiaryTextColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }

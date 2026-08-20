@@ -1,4 +1,5 @@
 
+import 'package:employee_monitoring_system/Panel/Admin/Companies/Companies.dart';
 import 'package:employee_monitoring_system/Panel/Admin/SidebarAdmin/SidebarAdmin.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -21,7 +22,7 @@ class AdminRoutes {
       // Companies
       GoRoute(
         path: '/Admin/companies',
-        builder: (context, state) => const Center(child: Text("Companies Screen")),
+        builder: (context, state) => Companies(),
       ),
 
       // Reports

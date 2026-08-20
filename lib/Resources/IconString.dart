@@ -87,5 +87,8 @@ class IconString{
   static const String  subscriptionAdminIcon = 'assets/icons/Subscription.svg';
   static const String  userAdminIcon = 'assets/icons/User.svg';
 
+   /// Company
+  static const String  companyTable = 'assets/icons/CompanyTable.svg';
+  static const String  blockIcon = 'assets/icons/blockIcon.svg';
 
 }

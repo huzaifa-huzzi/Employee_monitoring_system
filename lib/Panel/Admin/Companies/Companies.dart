@@ -1,3 +1,4 @@
+import 'package:employee_monitoring_system/Panel/Admin/Companies/Widget/CompaniesWidget.dart';
 import 'package:flutter/material.dart';
 
 
@@ -6,6 +7,8 @@ class Companies extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(
+      body: CompaniesWidget(),
+    );
   }
 }
