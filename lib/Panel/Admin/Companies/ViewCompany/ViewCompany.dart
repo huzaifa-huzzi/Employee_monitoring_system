@@ -275,7 +275,7 @@ class ViewCompany extends StatelessWidget {
                                   ? AppColors.approvedColor
                                   : (company.subscriptionStatus == 'Overdue'
                                   ? AppColors.rejectedColor
-                                  : AppColors.borderColor),
+                                  : AppColors.tertiaryTextColor),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Text(
