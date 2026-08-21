@@ -1,5 +1,8 @@
 
+import 'package:employee_monitoring_system/Panel/Admin/Companies/Add%20Company/AddCompany.dart';
 import 'package:employee_monitoring_system/Panel/Admin/Companies/Companies.dart';
+import 'package:employee_monitoring_system/Panel/Admin/Companies/CompaniesController.dart';
+import 'package:employee_monitoring_system/Panel/Admin/Companies/ViewCompany/ViewCompany.dart';
 import 'package:employee_monitoring_system/Panel/Admin/SidebarAdmin/SidebarAdmin.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -20,9 +23,23 @@ class AdminRoutes {
       ),
 
       // Companies
+      // Parent Companies Route
       GoRoute(
         path: '/Admin/companies',
-        builder: (context, state) => Companies(),
+        builder: (context, state) => const Companies(),
+        routes: [
+          GoRoute(
+            path: 'view/:id',
+            builder: (context, state) {
+              final company = state.extra as CompanyModel;
+              return ViewCompany(company: company);
+            },
+          ),
+        ],
+      ),
+      GoRoute(
+        path: '/Admin/companies-add',
+        builder: (context, state) => const AddCompanyUI(),
       ),
 
       // Reports

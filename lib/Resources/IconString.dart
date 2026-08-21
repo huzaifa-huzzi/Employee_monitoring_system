@@ -93,7 +93,11 @@ class IconString{
   static const String  activeCompany = 'assets/icons/ActiveCompanies.svg';
   static const String  newCompany = 'assets/icons/NewCompany.svg';
   static const String  suspendedCompany = 'assets/icons/SuspendedCompany.svg';
-
+  static const String  facebookIcon = 'assets/icons/facebookIcon.svg';
+  static const String  InstaIcon = 'assets/icons/InstaIcon.svg';
+  static const String  linkedinIcon = 'assets/icons/LinkedInIcon.svg';
+  static const String  xIcon = 'assets/icons/xIcon.svg';
+  static const String  youtubeIcon = 'assets/icons/YoutubeIcon.svg';
 
 
 }

@@ -7,6 +7,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'dart:math' as math;
 
+import 'package:go_router/go_router.dart';
+
 
 class CompaniesWidget extends StatelessWidget {
   const CompaniesWidget({super.key});
@@ -66,7 +68,9 @@ class CompaniesWidget extends StatelessWidget {
                               SizedBox(
                                 width: double.infinity,
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    context.go('/Admin/companies-add');
+                                  },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: AppColors.primaryColor,
                                     elevation: 0,
@@ -106,7 +110,9 @@ class CompaniesWidget extends StatelessWidget {
                             ),
                             const SizedBox(width: 8),
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                context.go('/Admin/companies-add');
+                              },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: AppColors.primaryColor,
                                 elevation: 0,
@@ -759,7 +765,12 @@ class CompaniesWidget extends StatelessWidget {
                                     svgPath: IconString.eyeIcon,
                                     backgroundColor: AppColors.primaryColor,
                                     iconColor: AppColors.whiteColor,
-                                    onTap: () {},
+                                    onTap: () {
+                                      context.go(
+                                        '/Admin/companies/view/${company.id}',
+                                        extra: company,
+                                      );
+                                    },
                                   ),
                                   const SizedBox(width: 6),
                                   _actionIconButton(
