@@ -2,6 +2,7 @@ import 'package:employee_monitoring_system/Panel/Admin/Companies/CompaniesContro
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
 import 'package:employee_monitoring_system/Resources/ImageString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -51,7 +52,7 @@ class AddCompanyUI extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Add Company",
+                        TextString.adminAddCompanyTitle,
                         style: TTextTheme.h3Style(context).copyWith(
                           fontWeight: FontWeight.bold,
                           color: AppColors.textColor,
@@ -61,7 +62,7 @@ class AddCompanyUI extends StatelessWidget {
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        "You can see all companies here",
+                       TextString.adminCompanySubtitle,
                         style: TTextTheme.titleFour(context).copyWith(
                           color: AppColors.tertiaryTextColor,
                           fontSize: 12,
@@ -77,8 +78,8 @@ class AddCompanyUI extends StatelessWidget {
             const SizedBox(height: 20),
             _buildSectionCard(
               context: context,
-              title: "General Information",
-              subtitle: "Enter basic detail here",
+              title: TextString.adminCompanyGeneral,
+              subtitle: TextString.adminCompanyGeneralSubtitle,
               child: LayoutBuilder(
                 builder: (context, constraints) {
                   double width = constraints.maxWidth;
@@ -93,7 +94,7 @@ class AddCompanyUI extends StatelessWidget {
                       _buildInfoContainer(
                         context: context,
                         width: cardWidth,
-                        label: "Company Logo",
+                        label: TextString.adminCompanyGeneralOne,
                         child: Obx(() {
                           final bool hasUploadedImage =
                               controller.selectedFileName.value != null &&
@@ -149,7 +150,7 @@ class AddCompanyUI extends StatelessWidget {
                                     const SizedBox(width: 10),
                                     Expanded(
                                       child: Text(
-                                        "Upload Image",
+                                       TextString.adminCompanyUploadImage,
                                         style: TTextTheme.titleFour(context).copyWith(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w400,
@@ -168,14 +169,14 @@ class AddCompanyUI extends StatelessWidget {
                       _buildInputField(
                         context: context,
                         width: cardWidth,
-                        label: "Company Name",
-                        hint: "Enter company name",
+                        label: TextString.adminCompanyName,
+                        hint:TextString.adminCompanyAddGeneralOne,
                         controller: controller.nameController,
                       ),
                       _buildInfoContainer(
                         context: context,
                         width: cardWidth,
-                        label: "Account Status",
+                        label: TextString.adminCompanyAccountStatus,
                         child: _buildCustomPopupMenu(
                           context: context,
                           currentValue: controller.accountStatus,
@@ -188,45 +189,45 @@ class AddCompanyUI extends StatelessWidget {
                       _buildInputField(
                         context: context,
                         width: cardWidth,
-                        label: "Phone Number",
-                        hint: "Enter Phone Number",
+                        label: TextString.adminCompanyGeneralFour,
+                        hint:TextString.adminCompanyAddGeneralTwo ,
                         controller: controller.phoneController,
                       ),
                       _buildInputField(
                         context: context,
                         width: cardWidth,
-                        label: "Email Address",
-                        hint: "Enter Email",
+                        label: TextString.adminCompanyGeneralFive,
+                        hint:TextString.adminCompanyAddGeneralThree ,
                         controller: controller.emailController,
                       ),
 
                       _buildInputField(
                         context: context,
                         width: cardWidth,
-                        label: "Email Status",
-                        hint: "Enter Email Status",
+                        label: TextString.adminCompanyGeneralSix,
+                        hint:TextString.adminCompanyAddGeneralFour ,
                         controller: controller.emailController,
                       ),
 
                       _buildInputField(
                         context: context,
                         width: cardWidth,
-                        label: "Address",
-                        hint: "Enter Address",
+                        label: TextString.adminCompanyGeneralSeven,
+                        hint:TextString.adminCompanyAddGeneralFive ,
                         controller: controller.addressController,
                       ),
                       _buildInputField(
                         context: context,
                         width: cardWidth,
-                        label: "Number of Employees",
-                        hint: "Enter No of Employee",
+                        label: TextString.adminCompanyGeneralNine,
+                        hint:TextString.adminCompanyAddGeneralSix ,
                         controller: controller.noOfEmployee,
                       ),
                       _buildInputField(
                         context: context,
                         width: cardWidth,
-                        label: "Joining Date",
-                        hint: "Enter Joining Date",
+                        label: TextString.adminCompanyGeneralTen,
+                        hint:TextString.adminCompanyAddGeneralSeven ,
                         controller: controller.joiningDate,
                       ),
                     ],
@@ -238,8 +239,8 @@ class AddCompanyUI extends StatelessWidget {
 
             _buildSectionCard(
               context: context,
-              title: "Social Links",
-              subtitle: "Basic detail about the social links",
+              title: TextString.adminCompanySocial,
+              subtitle: TextString.adminCompanySocialSubtitle,
               child: LayoutBuilder(
                 builder: (context, constraints) {
                   double width = constraints.maxWidth;
@@ -253,40 +254,40 @@ class AddCompanyUI extends StatelessWidget {
                       _buildSocialInputField(
                         context: context,
                         width: cardWidth,
-                        label: "Face Book",
-                        hint: "Add link",
+                        label: TextString.adminCompanySocialOne,
+                        hint: TextString.adminCompanyAddLink,
                         svgPath: IconString.facebookIcon,
                         controller: controller.facebookController,
                       ),
                       _buildSocialInputField(
                         context: context,
                         width: cardWidth,
-                        label: "Twitter",
-                        hint: "Add link",
+                        label: TextString.adminCompanySocialThree,
+                        hint: TextString.adminCompanyAddLink,
                         svgPath: IconString.xIcon,
                         controller: controller.twitterController,
                       ),
                       _buildSocialInputField(
                         context: context,
                         width: cardWidth,
-                        label: "Instagram",
-                        hint: "Add link",
+                        label:TextString.adminCompanySocialFive,
+                        hint: TextString.adminCompanyAddLink,
                         svgPath: IconString.InstaIcon,
                         controller: controller.instagramController,
                       ),
                       _buildSocialInputField(
                         context: context,
                         width: cardWidth,
-                        label: "LinkedIn",
-                        hint: "Add link",
+                        label: TextString.adminCompanySocialSeven,
+                        hint: TextString.adminCompanyAddLink,
                         svgPath: IconString.linkedinIcon,
                         controller: controller.linkedinController,
                       ),
                       _buildSocialInputField(
                         context: context,
                         width: cardWidth,
-                        label: "Youtube",
-                        hint: "Add link",
+                        label: TextString.adminCompanySocialNine,
+                        hint:TextString.adminCompanyAddLink,
                         svgPath: IconString.youtubeIcon,
                         controller: controller.youtubeController,
                       ),
@@ -300,8 +301,8 @@ class AddCompanyUI extends StatelessWidget {
 
             _buildSectionCard(
               context: context,
-              title: "Subscription Information",
-              subtitle: "Enter company subscription here",
+              title: TextString.adminCompanySubscriptionTitle,
+              subtitle: TextString.adminCompanySubscriptionSubtitle,
               child: LayoutBuilder(
                 builder: (context, constraints) {
                   double width = constraints.maxWidth;
@@ -315,7 +316,7 @@ class AddCompanyUI extends StatelessWidget {
                       _buildInfoContainer(
                         context: context,
                         width: cardWidth,
-                        label: "Plan",
+                        label: TextString.adminCompanySubscriptionOne,
                         child: _buildCustomPopupMenu(
                           context: context,
                           currentValue: controller.plan,
@@ -328,7 +329,7 @@ class AddCompanyUI extends StatelessWidget {
                       _buildInfoContainer(
                         context: context,
                         width: cardWidth,
-                        label: "Plan status",
+                        label: TextString.adminCompanyPlanStatus,
                         child: _buildCustomPopupMenu(
                           context: context,
                           currentValue: controller.planStatus,
@@ -341,8 +342,8 @@ class AddCompanyUI extends StatelessWidget {
                       _buildInputField(
                         context: context,
                         width: cardWidth,
-                        label: "Start date",
-                        hint: "Select start date",
+                        label: TextString.adminCompanySubscriptionTwo,
+                        hint: TextString.adminStartDate,
                         suffixSvgPath: IconString.calendarIcon,
                         controller: controller.startDateController,
                         readOnly: true,
@@ -356,8 +357,8 @@ class AddCompanyUI extends StatelessWidget {
                       _buildInputField(
                         context: context,
                         width: cardWidth,
-                        label: "End date",
-                        hint: "4/03/2027",
+                        label: TextString.adminCompanySubscriptionThree,
+                        hint: TextString.adminCompanySubscriptionFour,
                         suffixSvgPath: IconString.calendarIcon,
                         controller: controller.endDateController,
                         readOnly: true,
@@ -467,7 +468,6 @@ class AddCompanyUI extends StatelessWidget {
       )),
       itemBuilder: (BuildContext context) {
         return options.map((String opt) {
-          final bool isSelected = opt == currentValue.value;
 
           return PopupMenuItem<String>(
             value: opt,

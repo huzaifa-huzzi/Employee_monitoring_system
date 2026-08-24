@@ -2,6 +2,7 @@ import 'package:employee_monitoring_system/Panel/Admin/Companies/CompaniesContro
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
 import 'package:employee_monitoring_system/Resources/ImageString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -51,7 +52,7 @@ class ViewCompany extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Companies",
+                        TextString.adminCompanyTitle,
                         style: TTextTheme.h3Style(context).copyWith(
                           fontWeight: FontWeight.bold,
                           color: AppColors.textColor,
@@ -61,7 +62,7 @@ class ViewCompany extends StatelessWidget {
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        "You can see all companies here",
+                        TextString.adminCompanySubtitle,
                         style: TTextTheme.titleFour(context).copyWith(
                           color: AppColors.tertiaryTextColor,
                           fontSize: 12,
@@ -78,8 +79,8 @@ class ViewCompany extends StatelessWidget {
 
             _buildSectionCard(
               context: context,
-              title: "General Information",
-              subtitle: "Basic detail about the company",
+              title:TextString.adminCompanyGeneral,
+              subtitle:TextString.adminCompanyGeneralSubtitle ,
               child: LayoutBuilder(
                 builder: (context, constraints) {
                   double width = constraints.maxWidth;
@@ -92,7 +93,7 @@ class ViewCompany extends StatelessWidget {
                       _buildInfoContainer(
                         context: context,
                         width: _getCardWidth(width, crossAxisCount),
-                        label: "Company Logo",
+                        label: TextString.adminCompanyGeneralOne,
                         child: Container(
                           height: 48,
                           alignment: Alignment.centerLeft,
@@ -112,49 +113,49 @@ class ViewCompany extends StatelessWidget {
                       _buildReadOnlyField(
                         context: context,
                         width: _getCardWidth(width, crossAxisCount),
-                        label: "Company Name",
+                        label:TextString.adminCompanyGeneralTwo ,
                         value: company.name,
                       ),
                       _buildReadOnlyField(
                         context: context,
                         width: _getCardWidth(width, crossAxisCount),
-                        label: "Account Status",
+                        label:TextString.adminCompanyGeneralThree,
                         value: company.accountStatus,
                       ),
                       _buildReadOnlyField(
                         context: context,
                         width: _getCardWidth(width, crossAxisCount),
-                        label: "Phone Number",
+                        label:TextString.adminCompanyGeneralFour ,
                         value: "1234567-8",
                       ),
                       _buildReadOnlyField(
                         context: context,
                         width: _getCardWidth(width, crossAxisCount),
-                        label: "Email Address",
+                        label:TextString.adminCompanyGeneralFive ,
                         value: company.email,
                       ),
                       _buildReadOnlyField(
                         context: context,
                         width: _getCardWidth(width, crossAxisCount),
-                        label: "Email Status",
+                        label:TextString.adminCompanyGeneralSix ,
                         value: company.emailStatus,
                       ),
                       _buildReadOnlyField(
                         context: context,
                         width: _getCardWidth(width, crossAxisCount),
-                        label: "Address",
-                        value: "123 Hay Street",
+                        label:TextString.adminCompanyGeneralSeven ,
+                        value:TextString.adminCompanyGeneralEight ,
                       ),
                       _buildReadOnlyField(
                         context: context,
                         width: _getCardWidth(width, crossAxisCount),
-                        label: "Number of Employees",
+                        label:TextString.adminCompanyGeneralNine ,
                         value: company.employeesCount.toString(),
                       ),
                       _buildReadOnlyField(
                         context: context,
                         width: _getCardWidth(width, crossAxisCount),
-                        label: "Joining Date",
+                        label:TextString.adminCompanyGeneralTen ,
                         value: company.joiningDate,
                       ),
                     ],
@@ -166,8 +167,8 @@ class ViewCompany extends StatelessWidget {
 
             _buildSectionCard(
               context: context,
-              title: "Social Links",
-              subtitle: "Basic detail about the social links",
+              title: TextString.adminCompanySocial ,
+              subtitle:TextString.adminCompanySocialSubtitle ,
               child: LayoutBuilder(
                 builder: (context, constraints) {
                   double width = constraints.maxWidth;
@@ -180,36 +181,36 @@ class ViewCompany extends StatelessWidget {
                       _buildSocialField(
                         context: context,
                         width: _getCardWidth(width, crossAxisCount),
-                        label: "Face Book",
-                        value: "https://facebook.com",
+                        label:TextString.adminCompanySocialOne ,
+                        value:TextString.adminCompanySocialTwo,
                         svgPath: IconString.facebookIcon,
                       ),
                       _buildSocialField(
                         context: context,
                         width: _getCardWidth(width, crossAxisCount),
-                        label: "Twitter",
-                        value: "https://twitter.com",
+                        label:TextString.adminCompanySocialThree,
+                        value:TextString.adminCompanySocialFour ,
                         svgPath: IconString.xIcon,
                       ),
                       _buildSocialField(
                         context: context,
                         width: _getCardWidth(width, crossAxisCount),
-                        label: "Instagram",
-                        value: "https://instagram.com",
+                        label:TextString.adminCompanySocialFive ,
+                        value:TextString.adminCompanySocialSix ,
                         svgPath: IconString.InstaIcon
                       ),
                       _buildSocialField(
                         context: context,
                         width: _getCardWidth(width, crossAxisCount),
-                        label: "LinkedIn",
-                        value: "https://linkedin.com",
+                        label:TextString.adminCompanySocialSeven ,
+                        value:TextString.adminCompanySocialEight ,
                         svgPath: IconString.linkedinIcon
                       ),
                       _buildSocialField(
                         context: context,
                         width: _getCardWidth(width, crossAxisCount),
-                        label: "Youtube",
-                        value: "https://youtube.com",
+                        label:TextString.adminCompanySocialNine ,
+                        value:TextString.adminCompanySocialTen ,
                         svgPath: IconString.youtubeIcon
                       ),
                     ],
@@ -221,12 +222,13 @@ class ViewCompany extends StatelessWidget {
 
             _buildSectionCard(
               context: context,
-              title: "Subscription Information",
-              subtitle: "Company subscription listed here",
+              title: TextString.adminCompanySubscriptionTitle ,
+              subtitle:TextString.adminCompanySubscriptionSubtitle ,
               child: LayoutBuilder(
                 builder: (context, constraints) {
                   double width = constraints.maxWidth;
-                  int crossAxisCount = width > 900 ? 3 : (width > 600 ? 2 : 1);
+                  int crossAxisCount = width > 900 ?
+                  3 : (width > 600 ? 2 : 1);
 
                   return Wrap(
                     spacing: 16,
@@ -235,25 +237,25 @@ class ViewCompany extends StatelessWidget {
                       _buildReadOnlyField(
                         context: context,
                         width: _getCardWidth(width, crossAxisCount),
-                        label: "Plan",
+                        label:TextString.adminCompanySubscriptionOne ,
                         value: company.subscription,
                       ),
                       _buildReadOnlyField(
                         context: context,
                         width: _getCardWidth(width, crossAxisCount),
-                        label: "Start Date",
+                        label: TextString.adminCompanySubscriptionTwo,
                         value: company.joiningDate,
                       ),
                       _buildReadOnlyField(
                         context: context,
                         width: _getCardWidth(width, crossAxisCount),
-                        label: "End Date",
-                        value: "4/03/2027",
+                        label:TextString.adminCompanySubscriptionThree ,
+                        value:TextString.adminCompanySubscriptionFour ,
                       ),
                       _buildInfoContainer(
                         context: context,
                         width: _getCardWidth(width, crossAxisCount),
-                        label: "Payment Status",
+                        label: TextString.adminCompanyPaymentTitle,
                         child: Container(
                           height: 48,
                           padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -292,8 +294,8 @@ class ViewCompany extends StatelessWidget {
                       _buildReadOnlyField(
                         context: context,
                         width: _getCardWidth(width, crossAxisCount),
-                        label: "Remaining Days",
-                        value: "365 Days",
+                        label: TextString.adminCompanyPaymentOne ,
+                        value: TextString.adminCompanyPaymentTwo ,
                       ),
                     ],
                   );

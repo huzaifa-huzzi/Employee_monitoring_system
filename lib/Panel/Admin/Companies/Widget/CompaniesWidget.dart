@@ -1,6 +1,7 @@
 import 'package:employee_monitoring_system/Panel/Admin/Companies/CompaniesController.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -25,10 +26,10 @@ class CompaniesWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Companies", style: TTextTheme.h1Style(context)),
+              Text(TextString.adminCompanyTitle, style: TTextTheme.h1Style(context)),
               const SizedBox(height: 4),
               Text(
-                "You can see all companies here",
+               TextString.adminCompanySubtitle,
                 style: TTextTheme.titleSix(context),
               ),
               const SizedBox(height: 20),
@@ -56,10 +57,10 @@ class CompaniesWidget extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("All companies", style: TTextTheme.h3Style(context)),
+                                  Text(TextString.adminCompanyAllTitle, style: TTextTheme.h3Style(context)),
                                   const SizedBox(height: 2),
                                   Text(
-                                    "List of all registered companies",
+                                   TextString.adminCompanyAllSubtitle,
                                     style: TTextTheme.titleFour(context),
                                   ),
                                 ],
@@ -95,13 +96,13 @@ class CompaniesWidget extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "All companies",
+                                    TextString.adminCompanyAllTitle,
                                     style: TTextTheme.h3Style(context),
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                   const SizedBox(height: 2),
                                   Text(
-                                    "List of all registered companies",
+                                    TextString.adminCompanyAllSubtitle,
                                     style: TTextTheme.titleFour(context),
                                     overflow: TextOverflow.ellipsis,
                                   ),
@@ -159,27 +160,27 @@ class CompaniesWidget extends StatelessWidget {
           _kpiCard(context,
               svgPath: IconString.companyTable,
               iconColor: AppColors.primaryColor,
-              title: "Total Companies",
-              count: "35",
-              subText: "3 more companies joined"),
+              title: TextString.adminCompanyKpiOne ,
+              count:TextString.adminCompanyKpiTwo ,
+              subText:TextString.adminCompanyKpiThree ),
           _kpiCard(context,
               svgPath: IconString.activeCompany,
               iconColor: AppColors.approvedColor,
-              title: "Active Companies",
-              count: "22",
-              subText: "3 more companies joined"),
+              title:TextString.adminCompanyKpiFour ,
+              count:TextString.adminCompanyKpiFive ,
+              subText:TextString.adminCompanyKpiSix ),
           _kpiCard(context,
               svgPath: IconString.suspendedCompany,
               iconColor: AppColors.rejectedColor,
-              title: "Suspended",
-              count: "6",
-              subText: "20 more employees added"),
+              title: TextString.adminCompanyKpiSeven,
+              count: TextString.adminCompanyKpiEight ,
+              subText:TextString.adminCompanyKpiNine ),
           _kpiCard(context,
               svgPath: IconString.newCompany,
               iconColor: AppColors.textColor,
-              title: "New Companies Joined",
-              count: "8",
-              subText: "5 more hours added"),
+              title:TextString.adminCompanyKpiTen ,
+              count:TextString.adminCompanyKpiEleven ,
+              subText:TextString.adminCompanyKpiTwelve ),
         ];
 
         if (isDesktop) {
@@ -418,7 +419,7 @@ class CompaniesWidget extends StatelessWidget {
                 style: TTextTheme.titleFour(context)
                     .copyWith(color: AppColors.textColor),
                 decoration: InputDecoration(
-                  hintText: "Search by Company Name",
+                  hintText: TextString.adminCompanyFieldText,
                   hintStyle:
                   TTextTheme.titleFour(context).copyWith(fontSize: 12),
                   prefixIcon: const Icon(Icons.search,
@@ -576,34 +577,34 @@ class CompaniesWidget extends StatelessWidget {
                       ),
                       Expanded(
                           flex: 17,
-                          child: Text("Company Name", style: TTextTheme.titleTwo(context))),
+                          child: Text(TextString.adminCompanyName, style: TTextTheme.titleTwo(context))),
                       Expanded(
                           flex: 13,
-                          child: Text("Owner Name", style: TTextTheme.titleTwo(context))),
+                          child: Text(TextString.adminOwnerName, style: TTextTheme.titleTwo(context))),
                       Expanded(
                           flex: 21,
-                          child: Text("Email", style: TTextTheme.titleTwo(context))),
+                          child: Text(TextString.adminEmail, style: TTextTheme.titleTwo(context))),
                       Expanded(
                           flex: 12,
-                          child: Text("Email Status", style: TTextTheme.titleTwo(context))),
+                          child: Text(TextString.adminEmailStatus, style: TTextTheme.titleTwo(context))),
                       Expanded(
                           flex: 13,
-                          child: Text("Account Status", style: TTextTheme.titleTwo(context))),
+                          child: Text(TextString.adminCompanyAccountStatus, style: TTextTheme.titleTwo(context))),
                       Expanded(
                           flex: 11,
-                          child: Text("Subscription", style: TTextTheme.titleTwo(context))),
+                          child: Text(TextString.adminCompanySubscription, style: TTextTheme.titleTwo(context))),
                       Expanded(
                           flex: 14,
-                          child: Text("Subscription Status", style: TTextTheme.titleTwo(context))),
+                          child: Text(TextString.adminCompanySubscriptionStatus, style: TTextTheme.titleTwo(context))),
                       Expanded(
                           flex: 12,
-                          child: Text("Joining Date", style: TTextTheme.titleTwo(context))),
+                          child: Text(TextString.adminCompanyJoining, style: TTextTheme.titleTwo(context))),
                       Expanded(
                           flex: 8,
-                          child: Text("Employees", style: TTextTheme.titleTwo(context))),
+                          child: Text(TextString.adminCompanyEmployee, style: TTextTheme.titleTwo(context))),
                        SizedBox(
                           width: 105,
-                          child: Text("Action", style: TTextTheme.titleTwo(context))),
+                          child: Text(TextString.adminCompanyAction, style: TTextTheme.titleTwo(context))),
                     ],
                   ),
                 ),
@@ -851,7 +852,7 @@ class CompaniesWidget extends StatelessWidget {
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text("Results per page", style: TTextTheme.titleFour(context)),
+                Text(TextString.adminResultPErPAge, style: TTextTheme.titleFour(context)),
                 const SizedBox(width: 8),
                 Obx(() => _buildCustomPopupMenu(
                   context: context,
@@ -888,7 +889,7 @@ class CompaniesWidget extends StatelessWidget {
                             size: 16, color: AppColors.tertiaryTextColor),
                         const SizedBox(width: 2),
                         Text(
-                          "Prev",
+                          TextString.adminCompanyPrev,
                           style: TTextTheme.titleFour(context).copyWith(
                               fontSize: 12, color: AppColors.tertiaryTextColor),
                         ),
@@ -919,7 +920,7 @@ class CompaniesWidget extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          "Next",
+                          TextString.adminCompanyNext,
                           style: TTextTheme.titleFour(context).copyWith(
                               fontSize: 12, color: AppColors.textColor),
                         ),
@@ -1032,7 +1033,7 @@ class CompaniesWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Delete Company",
+                            TextString.adminCompanyDialogOne,
                             style: TTextTheme.h3Style(context).copyWith(
                               fontWeight: FontWeight.bold,
                               color: AppColors.textColor,
@@ -1040,7 +1041,7 @@ class CompaniesWidget extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            "Are you sure you want to delete it",
+                            TextString.adminCompanyDialogTwo,
                             style: TTextTheme.titleFour(context).copyWith(
                               color: AppColors.tertiaryTextColor,
                             ),
@@ -1144,14 +1145,14 @@ class CompaniesWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Company Deleted Successfully",
+                            TextString.adminCompanyDialogThree,
                             style: TTextTheme.h3Style(context).copyWith(
                               color: AppColors.textColor,
                             ),
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            "Congratulation! your company has successfully deleted in the system",
+                            TextString.adminCompanyDialogFour,
                             style: TTextTheme.titleFour(context).copyWith(
                               color: AppColors.tertiaryTextColor,
                             ),
@@ -1192,7 +1193,7 @@ class CompaniesWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  "Suspend Company",
+                  TextString.adminCompanySuspendDialogOne,
                   style: TTextTheme.h3Style(context).copyWith(
                     fontWeight: FontWeight.bold,
                     color: AppColors.textColor,
@@ -1202,7 +1203,7 @@ class CompaniesWidget extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Reason",
+                    TextString.adminCompanySuspendDialogReason,
                     style: TTextTheme.titleTwo(context).copyWith(
                       fontWeight: FontWeight.w600,
                       color: AppColors.textColor,
@@ -1216,7 +1217,7 @@ class CompaniesWidget extends StatelessWidget {
                   maxLines: 3,
                   style: TTextTheme.titleFour(context),
                   decoration: InputDecoration(
-                    hintText: "Write here",
+                    hintText: TextString.adminCompanySuspendFieldText ,
                     hintStyle: TTextTheme.titleFour(context).copyWith(
                       color: AppColors.tertiaryTextColor,
                     ),
@@ -1326,7 +1327,7 @@ class CompaniesWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Suspend Company",
+                            TextString.adminSuspendCompanyDialogOne,
                             style: TTextTheme.h3Style(context).copyWith(
                               fontWeight: FontWeight.bold,
                               color: AppColors.textColor,
@@ -1334,7 +1335,7 @@ class CompaniesWidget extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            "Are you sure you want to suspend it",
+                            TextString.adminSuspendCompanyDialogTwo,
                             style: TTextTheme.titleFour(context).copyWith(
                               color: AppColors.tertiaryTextColor,
                             ),
@@ -1438,7 +1439,7 @@ class CompaniesWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Company Suspended Successfully",
+                            TextString.adminSuspendCompanyDialogThree,
                             style: TTextTheme.h3Style(context).copyWith(
                               fontWeight: FontWeight.bold,
                               color: AppColors.textColor,
@@ -1446,7 +1447,7 @@ class CompaniesWidget extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            "Congratulation! your company has successfully suspended in the system",
+                            TextString.adminSuspendCompanyDialogFour,
                             style: TTextTheme.titleFour(context).copyWith(
                               color: AppColors.tertiaryTextColor,
                             ),
