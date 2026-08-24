@@ -99,5 +99,10 @@ class IconString{
   static const String  xIcon = 'assets/icons/xIcon.svg';
   static const String  youtubeIcon = 'assets/icons/YoutubeIcon.svg';
 
+   /// Report
+  static const String  lastGenerated = 'assets/icons/LastGenerated.svg';
+  static const String  reportsGenerated = 'assets/icons/ReportsGenerated.svg';
+  static const String  totalDownload = 'assets/icons/TotalDownload.svg';
+  static const String  totalReport = 'assets/icons/TotalReport.svg';
 
 }

@@ -3,6 +3,8 @@ import 'package:employee_monitoring_system/Panel/Admin/Companies/Add%20Company/A
 import 'package:employee_monitoring_system/Panel/Admin/Companies/Companies.dart';
 import 'package:employee_monitoring_system/Panel/Admin/Companies/CompaniesController.dart';
 import 'package:employee_monitoring_system/Panel/Admin/Companies/ViewCompany/ViewCompany.dart';
+import 'package:employee_monitoring_system/Panel/Admin/Report/Report.dart';
+import 'package:employee_monitoring_system/Panel/Admin/Report/ReportDetails/ReportDetails.dart';
 import 'package:employee_monitoring_system/Panel/Admin/SidebarAdmin/SidebarAdmin.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -23,7 +25,6 @@ class AdminRoutes {
       ),
 
       // Companies
-      // Parent Companies Route
       GoRoute(
         path: '/Admin/companies',
         builder: (context, state) => const Companies(),
@@ -45,7 +46,12 @@ class AdminRoutes {
       // Reports
       GoRoute(
         path: '/Admin/reports',
-        builder: (context, state) => const Center(child: Text("Reports Screen")),
+        builder: (context, state) =>   ReportScreen(),
+      ),
+
+      GoRoute(
+        path: '/Admin/reportsDetails',
+        builder: (context, state) =>   ReportDetailScreen(),
       ),
 
       // Subscription
