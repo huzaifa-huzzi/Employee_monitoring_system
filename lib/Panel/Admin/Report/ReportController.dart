@@ -9,7 +9,7 @@ class ReportModel {
   final String name;
   final String category;
   final String lastGenerated;
-  final String status; // 'Ready', 'In Progress', 'No Reports', 'Failed'
+  final String status;
   bool isSelected;
 
   ReportModel({
@@ -23,47 +23,82 @@ class ReportModel {
 }
 
 class ReportController extends GetxController {
-  // Loading & State Indicators
   var isLoading = false.obs;
 
-  // Stat Summary Data
   var totalReports = '0'.obs;
   var reportsGeneratedToday = '0'.obs;
   var totalDownloads = '0'.obs;
   var lastGeneratedReport = ''.obs;
 
-  // Pagination & Table State
   var rowsPerPage = 5.obs;
   var currentPage = 1.obs;
   var totalPages = 1.obs;
   var isAllSelected = false.obs;
 
-  // Reactive List
   RxList<ReportModel> reportsList = <ReportModel>[].obs;
 
   @override
   void onInit() {
     super.onInit();
-    fetchReports(); // Controller initialize hone par data automatically fetch hoga
+    fetchReports();
   }
 
-  // API Call to Fetch Data
   Future<void> fetchReports() async {
     try {
       isLoading.value = true;
 
-      // TODO: Replace with your actual backend API Service call
-      // Example: var response = await ApiService.getReports(page: currentPage.value, limit: rowsPerPage.value);
+      await Future.delayed(const Duration(milliseconds: 500));
 
-      // Demo Data Assignment
-      await Future.delayed(const Duration(milliseconds: 500)); // Simulating network delay
-
-      // Update Stats & Pagination from Backend Response
       totalReports.value = '6';
       reportsGeneratedToday.value = '10';
       totalDownloads.value = '23';
       lastGeneratedReport.value = 'Company Growth';
       totalPages.value = 4;
+
+      reportsList.assignAll([
+        ReportModel(
+          id: '1',
+          name: 'Organization Growth Report',
+          category: 'Organization',
+          lastGenerated: 'Today',
+          status: 'Ready',
+        ),
+        ReportModel(
+          id: '2',
+          name: 'Revenue Report',
+          category: 'Finance',
+          lastGenerated: 'Today',
+          status: 'Ready',
+        ),
+        ReportModel(
+          id: '3',
+          name: 'Subscription Report',
+          category: 'Billing',
+          lastGenerated: 'Yesterday',
+          status: 'In Progress',
+        ),
+        ReportModel(
+          id: '4',
+          name: 'Payment Report',
+          category: 'Finance',
+          lastGenerated: '5 August, 2026',
+          status: 'In Progress',
+        ),
+        ReportModel(
+          id: '5',
+          name: 'Platform Usage Report',
+          category: 'Usage',
+          lastGenerated: 'Today',
+          status: 'No Reports',
+        ),
+        ReportModel(
+          id: '6',
+          name: 'Organization Performance Report',
+          category: 'Analytics',
+          lastGenerated: 'Yesterday',
+          status: 'Failed',
+        ),
+      ]);
 
     } catch (e) {
       Get.snackbar("Error", "Failed to load reports: $e");
@@ -72,7 +107,6 @@ class ReportController extends GetxController {
     }
   }
 
-  // Checkbox Selection Logic
   void toggleSelectAll(bool? val) {
     isAllSelected.value = val ?? false;
     for (var report in reportsList) {
@@ -87,16 +121,7 @@ class ReportController extends GetxController {
     reportsList.refresh();
   }
 
-  // Backend Actions
-  Future<void> onViewReport(ReportModel report) async {
-    // Navigate or fetch report details API
-  }
-
-  Future<void> onRegenerateReport(ReportModel report) async {
-    // Call Regenerate API
-  }
-
-  Future<void> onDownloadReport(ReportModel report) async {
-    // Call Download API / File Saver
-  }
+  Future<void> onViewReport(ReportModel report) async {}
+  Future<void> onRegenerateReport(ReportModel report) async {}
+  Future<void> onDownloadReport(ReportModel report) async {}
 }

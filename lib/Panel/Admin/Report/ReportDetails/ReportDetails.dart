@@ -5,6 +5,7 @@ import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 
 class ReportDetailScreen extends StatelessWidget {
@@ -71,13 +72,14 @@ class ReportDetailScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               InkWell(
-                onTap: () => Navigator.of(context).pop(),
+                onTap: () {
+                  context.go('/Admin/reports');
+                },
                 child: Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     color: AppColors.whiteColor,
                     borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: AppColors.borderColor),
                   ),
                   child: const Icon(Icons.arrow_back, size: 18, color: AppColors.textColor),
                 ),
