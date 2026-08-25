@@ -1,6 +1,8 @@
 import 'package:employee_monitoring_system/Panel/Admin/Report/ReportController.dart';
+import 'package:employee_monitoring_system/Panel/Admin/Report/ReusableWidget/CustomDatePickerReport.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -59,7 +61,14 @@ class ReportDetailScreen extends StatelessWidget {
   /// ----------- Extra Widget -------------- ///
 
   // Top Header Bar
-  Widget _buildTopHeader(BuildContext context, bool isMobile, double screenWidth, RxString selectedHeaderFilter) {
+  Widget _buildTopHeader(
+      BuildContext context,
+      bool isMobile,
+      double screenWidth,
+      RxString selectedHeaderFilter,
+      ) {
+    final Rx<DateTime> selectedDate = DateTime.now().obs;
+
     return SizedBox(
       width: double.infinity,
       child: Wrap(
@@ -90,14 +99,14 @@ class ReportDetailScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    "Report Details",
+                    TextString.adminReportDetailTitle,
                     style: TTextTheme.h2Style(context).copyWith(
                       fontWeight: FontWeight.bold,
                       color: AppColors.textColor,
                     ),
                   ),
                   Text(
-                    "You can see the report details here",
+                   TextString.adminReportDetailSubtitle,
                     style: TTextTheme.titleSix(context).copyWith(fontSize: 12),
                   ),
                 ],
@@ -107,33 +116,84 @@ class ReportDetailScreen extends StatelessWidget {
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                decoration: BoxDecoration(
-                  color: AppColors.whiteColor,
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: AppColors.borderColor),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(Icons.chevron_left, size: 18, color: AppColors.subtextColor),
-                    const SizedBox(width: 6),
-                    Text(
-                      "2 February, 2026 - 8 February, 2026",
-                      style: TTextTheme.titleFive(context).copyWith(fontSize: 12),
-                    ),
-                    const SizedBox(width: 6),
-                    const Icon(Icons.chevron_right, size: 18, color: AppColors.subtextColor),
-                  ],
-                ),
-              ),
+              Obx(() {
+                final filter = selectedHeaderFilter.value;
+                final currentDate = selectedDate.value;
+                String dateText = "";
+
+                if (filter == "Day") {
+                  dateText = "${currentDate.day} ${_getFullMonthName(currentDate.month)}, ${currentDate.year}";
+                } else if (filter == "Month") {
+                  dateText = "${_getFullMonthName(currentDate.month)} ${currentDate.year}";
+                } else {
+                  final startOfWeek = currentDate.subtract(Duration(days: currentDate.weekday - 1));
+                  final endOfWeek = startOfWeek.add(const Duration(days: 6));
+                  dateText = "${startOfWeek.day} ${_getFullMonthName(startOfWeek.month)}, ${startOfWeek.year} - ${endOfWeek.day} ${_getFullMonthName(endOfWeek.month)}, ${endOfWeek.year}";
+                }
+
+                return Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: AppColors.whiteColor,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: AppColors.borderColor),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          if (filter == "Day") {
+                            selectedDate.value = currentDate.subtract(const Duration(days: 1));
+                          } else if (filter == "Month") {
+                            selectedDate.value = DateTime(currentDate.year, currentDate.month - 1, currentDate.day);
+                          } else {
+                            selectedDate.value = currentDate.subtract(const Duration(days: 7));
+                          }
+                        },
+                        child: const Icon(Icons.chevron_left, size: 18, color: AppColors.subtextColor),
+                      ),
+                      const SizedBox(width: 6),
+                      InkWell(
+                        onTap: () {
+                          _showCustomDatePicker(
+                            context,
+                            initialDate: selectedDate.value,
+                            onDateSelected: (newDate) {
+                              selectedDate.value = newDate;
+                            },
+                          );
+                        },
+                        child: Text(
+                          dateText,
+                          style: TTextTheme.titleFive(context).copyWith(fontSize: 12),
+                        ),
+                      ),
+                      const SizedBox(width: 6),
+                      InkWell(
+                        onTap: () {
+                          if (filter == "Day") {
+                            selectedDate.value = currentDate.add(const Duration(days: 1));
+                          } else if (filter == "Month") {
+                            selectedDate.value = DateTime(currentDate.year, currentDate.month + 1, currentDate.day);
+                          } else {
+                            selectedDate.value = currentDate.add(const Duration(days: 7));
+                          }
+                        },
+                        child: const Icon(Icons.chevron_right, size: 18, color: AppColors.subtextColor),
+                      ),
+                    ],
+                  ),
+                );
+              }),
               const SizedBox(width: 12),
               _buildCustomPopupMenu(
                 context: context,
                 currentValue: selectedHeaderFilter,
                 options: const ["Day", "Week", "Month"],
-                onSelected: (val) {},
+                onSelected: (val) {
+                  selectedHeaderFilter.value = val;
+                },
                 width: 110,
               ),
             ],
@@ -142,17 +202,24 @@ class ReportDetailScreen extends StatelessWidget {
       ),
     );
   }
+  String _getFullMonthName(int monthIndex) {
+    const months = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    return months[monthIndex - 1];
+  }
 
   // Stat Cards
   Widget _buildStatCards(BuildContext context, bool isMobile) {
     if (isMobile) {
       return Column(
         children: [
-          _buildStatCardItem(context, Icons.apartment, "Total Companies", "35", "8.7% vs last day", true),
+          _buildStatCardItem(context, IconString.companyTable,TextString.adminReportDetailKpiOne ,TextString.adminReportDetailKpiTwo ,TextString.adminReportDetailKpiThree , true),
           const SizedBox(height: 12),
-          _buildStatCardItem(context, Icons.description_outlined, "New this period", "10", "4.3% vs last day", true),
+          _buildStatCardItem(context, IconString.companyTable,TextString.adminReportDetailKpiFour ,TextString.adminReportDetailKpiFive ,TextString.adminReportDetailKpiSix , true),
           const SizedBox(height: 12),
-          _buildStatCardItem(context, Icons.show_chart, "Net Growth", "7.8%", "2.2% vs last day", true),
+          _buildStatCardItem(context, IconString.NetGrowth,TextString.adminReportDetailKpiSeven ,TextString.adminReportDetailKpiEight ,TextString.adminReportDetailKpiNine , true),
         ],
       );
     }
@@ -160,15 +227,15 @@ class ReportDetailScreen extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: _buildStatCardItem(context, Icons.apartment, "Total Companies", "35", "8.7% vs last day", true),
+          child: _buildStatCardItem(context, IconString.companyTable, TextString.adminReportDetailKpiOne, TextString.adminReportDetailKpiTwo, TextString.adminReportDetailKpiThree, true),
         ),
         const SizedBox(width: 16),
         Expanded(
-          child: _buildStatCardItem(context, Icons.description_outlined, "New this period", "10", "4.3% vs last day", true),
+          child: _buildStatCardItem(context, IconString.companyTable, TextString.adminReportDetailKpiFour, TextString.adminReportDetailKpiFive, TextString.adminReportDetailKpiSix, true),
         ),
         const SizedBox(width: 16),
         Expanded(
-          child: _buildStatCardItem(context, Icons.show_chart, "Net Growth", "7.8%", "2.2% vs last day", true),
+          child: _buildStatCardItem(context, IconString.NetGrowth, TextString.adminReportDetailKpiSeven, TextString.adminReportDetailKpiEight, TextString.adminReportDetailKpiNine, true),
         ),
       ],
     );
@@ -176,7 +243,7 @@ class ReportDetailScreen extends StatelessWidget {
 
   Widget _buildStatCardItem(
       BuildContext context,
-      IconData icon,
+      String iconPath,
       String title,
       String value,
       String badgeText,
@@ -194,7 +261,15 @@ class ReportDetailScreen extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(icon, size: 18, color: AppColors.primaryColor),
+              SvgPicture.asset(
+                iconPath,
+                width: 18,
+                height: 18,
+                colorFilter: const ColorFilter.mode(
+                  AppColors.primaryColor,
+                  BlendMode.srcIn,
+                ),
+              ),
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
@@ -230,6 +305,7 @@ class ReportDetailScreen extends StatelessWidget {
       double screenWidth,
       RxString revenueFilter,
       ) {
+    final Rx<DateTime> selectedDate = DateTime.now().obs;
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
@@ -249,13 +325,17 @@ class ReportDetailScreen extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Weekly Revenue",
-                    style: TTextTheme.h3Style(context).copyWith(fontSize: 16),
+                  Obx(
+                        () => Text(
+                      revenueFilter.value == "Monthly" ? "Monthly Revenue" : "Weekly Revenue",
+                      style: TTextTheme.h3Style(context).copyWith(fontSize: 16),
+                    ),
                   ),
-                  Text(
-                    "Revenue per day",
-                    style: TTextTheme.titleSix(context).copyWith(fontSize: 12),
+                  Obx(
+                        () => Text(
+                      revenueFilter.value == "Monthly" ? "Revenue per month" : "Revenue per day",
+                      style: TTextTheme.titleSix(context).copyWith(fontSize: 12),
+                    ),
                   ),
                 ],
               ),
@@ -264,34 +344,51 @@ class ReportDetailScreen extends StatelessWidget {
                 runSpacing: 8,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.borderColor),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SvgPicture.asset(
-                          IconString.calendarIcon,
-                          width: 14,
-                          height: 14,
-                          colorFilter: const ColorFilter.mode(
-                            AppColors.subtextColor,
-                            BlendMode.srcIn,
+                  InkWell(
+                    onTap: () {
+                      _showCustomDatePicker(
+                        context,
+                        initialDate: selectedDate.value,
+                        onDateSelected: (newDate) {
+                          selectedDate.value = newDate;
+                        },
+                      );
+                    },
+                    borderRadius: BorderRadius.circular(8),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppColors.borderColor),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SvgPicture.asset(
+                            IconString.calendarIcon,
+                            width: 14,
+                            height: 14,
+                            colorFilter: const ColorFilter.mode(
+                              AppColors.subtextColor,
+                              BlendMode.srcIn,
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: 6),
-                        Text("Pick Date", style: TTextTheme.titleSix(context).copyWith(fontSize: 12)),
-                      ],
+                          const SizedBox(width: 6),
+                          Text(
+                            TextString.PickDate,
+                            style: TTextTheme.titleSix(context).copyWith(fontSize: 12),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   _buildCustomPopupMenu(
                     context: context,
                     currentValue: revenueFilter,
                     options: const ["Weekly", "Monthly"],
-                    onSelected: (val) {},
+                    onSelected: (val) {
+                      revenueFilter.value = val;
+                    },
                     width: 110,
                   ),
                 ],
@@ -299,41 +396,54 @@ class ReportDetailScreen extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 12),
+          Obx(() {
+            final chosenDate = selectedDate.value;
+            final isMonthly = revenueFilter.value == "Monthly";
+            String dateText = "";
 
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-            decoration: BoxDecoration(
-              color: AppColors.backgroundOfScreenColor,
-              borderRadius: BorderRadius.circular(6),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SvgPicture.asset(
-                  IconString.calendarIcon,
-                  width: 14,
-                  height: 14,
-                  colorFilter: const ColorFilter.mode(
-                    AppColors.subtextColor,
-                    BlendMode.srcIn,
+            if (isMonthly) {
+              dateText = "${_getMonthAbbr(chosenDate.month)}, ${chosenDate.year}";
+            } else {
+              final startOfWeek = chosenDate.subtract(Duration(days: chosenDate.weekday - 1));
+              final endOfWeek = startOfWeek.add(const Duration(days: 6));
+              dateText = "${startOfWeek.day} ${_getMonthAbbr(startOfWeek.month)}, ${startOfWeek.year} - ${endOfWeek.day} ${_getMonthAbbr(endOfWeek.month)}, ${endOfWeek.year}";
+            }
+
+            return Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              decoration: BoxDecoration(
+                color: AppColors.backgroundOfScreenColor,
+                borderRadius: BorderRadius.circular(6),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SvgPicture.asset(
+                    IconString.calendarIcon,
+                    width: 14,
+                    height: 14,
+                    colorFilter: const ColorFilter.mode(
+                      AppColors.subtextColor,
+                      BlendMode.srcIn,
+                    ),
                   ),
-                ),
-                const SizedBox(width: 6),
-                Flexible(
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      "Selected Date: 3 Feb,2026- 9 Feb,2026",
-                      style: TTextTheme.titleFive(context).copyWith(
-                        fontSize: 11,
-                        fontWeight: FontWeight.bold,
+                  const SizedBox(width: 6),
+                  Flexible(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        "Selected Date: $dateText",
+                        style: TTextTheme.titleFive(context).copyWith(
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ),
+                ],
+              ),
+            );
+          }),
           const SizedBox(height: 24),
           SizedBox(
             height: 180,
@@ -350,19 +460,43 @@ class ReportDetailScreen extends StatelessWidget {
                 Expanded(
                   child: LayoutBuilder(
                     builder: (context, constraints) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          _buildBar("Mon", 0.9),
-                          _buildBar("Tue", 0.6),
-                          _buildBar("Wed", 0.9),
-                          _buildBar("Thu", 0.75),
-                          _buildBar("Fri", 0.75),
-                          _buildBar("Sat", 0.6),
-                          _buildBar("Sun", 0.85),
-                        ],
-                      );
+                      return Obx(() {
+                        final isMonthly = revenueFilter.value == "Monthly";
+
+                        if (isMonthly) {
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              _buildBar("Jan", 0.4),
+                              _buildBar("Feb", 0.6),
+                              _buildBar("Mar", 0.8),
+                              _buildBar("Apr", 0.5),
+                              _buildBar("May", 0.9),
+                              _buildBar("Jun", 0.7),
+                              _buildBar("Jul", 0.85),
+                              _buildBar("Aug", 0.6),
+                              _buildBar("Sep", 0.75),
+                              _buildBar("Oct", 0.5),
+                              _buildBar("Nov", 0.8),
+                              _buildBar("Dec", 0.95),
+                            ],
+                          );
+                        }
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            _buildBar("Mon", 0.9),
+                            _buildBar("Tue", 0.6),
+                            _buildBar("Wed", 0.9),
+                            _buildBar("Thu", 0.75),
+                            _buildBar("Fri", 0.75),
+                            _buildBar("Sat", 0.6),
+                            _buildBar("Sun", 0.85),
+                          ],
+                        );
+                      });
                     },
                   ),
                 ),
@@ -416,18 +550,18 @@ class ReportDetailScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Organization by Industry", style: TTextTheme.h3Style(context).copyWith(fontSize: 16)),
+          Text(TextString.adminIndustryOrganization, style: TTextTheme.h3Style(context).copyWith(fontSize: 16)),
           const SizedBox(height: 24),
           SizedBox(
             height: 220,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildHorizontalBar("Technology", 0.95),
-                _buildHorizontalBar("BPO Service", 0.3),
-                _buildHorizontalBar("Health care", 0.5),
-                _buildHorizontalBar("Finance", 0.52),
-                _buildHorizontalBar("Education", 0.52),
+                _buildHorizontalBar(TextString.adminIndustryTechnology, 0.95),
+                _buildHorizontalBar(TextString.adminBpoService, 0.3),
+                _buildHorizontalBar(TextString.adminReportHealthCar, 0.5),
+                _buildHorizontalBar(TextString.adminReportFinance, 0.52),
+                _buildHorizontalBar(TextString.adminReportEducation, 0.52),
               ],
             ),
           ),
@@ -508,7 +642,7 @@ class ReportDetailScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Newly Joined Companies",
+            TextString.adminReportJoinedCompanies,
             style: TTextTheme.h3Style(context).copyWith(fontSize: 16),
           ),
           const SizedBox(height: 16),
@@ -534,8 +668,9 @@ class ReportDetailScreen extends StatelessWidget {
                       SizedBox(width: 8),
                       Expanded(
                         child: TextField(
+                          cursorColor: AppColors.textColor,
                           decoration: InputDecoration(
-                            hintText: "Search by Company Name",
+                            hintText: TextString.adminReportFieldText,
                             hintStyle: TextStyle(
                               fontSize: 12,
                               color: AppColors.tertiaryTextColor,
@@ -620,12 +755,12 @@ class ReportDetailScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 12),
-          const Expanded(flex: 3, child: _HeaderText(text: "Company Name")),
-          const Expanded(flex: 2, child: _HeaderText(text: "Owner Name")),
-          const Expanded(flex: 3, child: _HeaderText(text: "Email")),
-          const Expanded(flex: 2, child: _HeaderText(text: "Employees")),
-          const Expanded(flex: 2, child: _HeaderText(text: "Subscription")),
-          const SizedBox(width: 80, child: _HeaderText(text: "Status")),
+          const Expanded(flex: 3, child: _HeaderText(text: TextString.adminReportDetailCompany )),
+          const Expanded(flex: 2, child: _HeaderText(text: TextString.adminReportDetailOwner)),
+          const Expanded(flex: 3, child: _HeaderText(text: TextString.adminReportDetailEmail )),
+          const Expanded(flex: 2, child: _HeaderText(text: TextString.adminReportDetailEmployee )),
+          const Expanded(flex: 2, child: _HeaderText(text: TextString.adminReportDetailSubscription )),
+          const SizedBox(width: 80, child: _HeaderText(text: TextString.adminReportDetailStatus)),
         ],
       ),
     );
@@ -753,7 +888,7 @@ class ReportDetailScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                "Results per page",
+                TextString.adminReportResult,
                 style: TTextTheme.titleSix(context),
               ),
               const SizedBox(width: 8),
@@ -809,7 +944,7 @@ class ReportDetailScreen extends StatelessWidget {
                     ),
                     const SizedBox(width: 2),
                     Text(
-                      "Prev",
+                      TextString.adminReportPrev,
                       style: TTextTheme.titleSeven(context).copyWith(
                         fontSize: 12,
                       ),
@@ -832,7 +967,7 @@ class ReportDetailScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          "Next",
+                          TextString.adminReportNext,
                           style: TTextTheme.titleFive(context).copyWith(
                             fontSize: 12,
                           ),
@@ -955,6 +1090,37 @@ class ReportDetailScreen extends StatelessWidget {
         }).toList();
       },
     );
+  }
+
+  // Dialog Trigger Function
+  void _showCustomDatePicker(
+      BuildContext context, {
+        DateTime? initialDate,
+        required Function(DateTime) onDateSelected,
+      }) {
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext dialogContext) {
+        return Dialog(
+          backgroundColor: Colors.transparent,
+          insetPadding: const EdgeInsets.all(16),
+          child: CustomDatePickerReport(
+            initialDate: initialDate,
+            onCancel: () => Navigator.of(dialogContext).pop(),
+            onDateSelected: (selectedDate) {
+              onDateSelected(selectedDate);
+              Navigator.of(dialogContext).pop();
+            },
+          ),
+        );
+      },
+    );
+  }
+   // Month Abbreviation
+  String _getMonthAbbr(int monthIndex) {
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    return months[monthIndex - 1];
   }
 }
 

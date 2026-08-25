@@ -540,4 +540,55 @@ class TextString{
    static const String  adminCompanyPlanStatus=  "Plan status";
    static const String  adminStartDate=  "Select start date";
 
+    /// Reports
+   static const String  adminReportTitle=  "Report";
+   static const String  adminReportSubtitle=  "You can see all reports here";
+   static const String  adminReportKpiOne=  "Total Reports";
+   static const String  adminReportKpiTwo=  "Available in library";
+   static const String  adminReportKpiThree=  "Report Generated";
+   static const String  adminReportKpiFour=  "3 more report generated today";
+   static const String  adminReportKpiFive=  "Total Downloads";
+   static const String  adminReportKpiSix=  "2 more reports downloaded";
+   static const String  adminReportKpiSeven=  "Last Generated";
+   static const String  adminReportKpiEight=  "Today at 10:12 am";
+   static const String  adminReportsBuisnessTitle=  "Business Reports";
+   static const String  adminRouteReportName=  "Report Name";
+   static const String  adminRouteCategory=  "Category";
+   static const String  adminLastGenerated=  "Last Generated";
+   static const String  adminStatus=  "Status";
+   static const String  adminActions=   "Actions";
+   static const String  adminReportResult=   "Results per page";
+   static const String  adminReportPrev= "Prev";
+   static const String  adminReportNext=  "Next";
+   static const String  adminReportDialogOne=  "Report Generation Failed";
+   static const String  adminReportDialogTwo=   "Database timeout occurred while processing the report.";
+   static const String  adminReportDialogThree=  "Last Attempt: 07 Aug 2026 • 10:45 AM";
+   static const String  adminReportDialogFour=  "Back To Reports";
+   static const String  adminReportDetailTitle=  "Report Details";
+   static const String  adminReportDetailSubtitle=   "You can see the report details here";
+   static const String  adminReportDetailKpiOne=  "Total Companies";
+   static const String  adminReportDetailKpiTwo=  "35";
+   static const String  adminReportDetailKpiThree=  "8.7% vs last day";
+   static const String  adminReportDetailKpiFour=  "New this period";
+   static const String  adminReportDetailKpiFive=  "10";
+   static const String  adminReportDetailKpiSix=  "4.3% vs last day";
+   static const String  adminReportDetailKpiSeven=  "Net Growth";
+   static const String  adminReportDetailKpiEight=  "7.8%";
+   static const String  adminReportDetailKpiNine=  "2.2% vs last day";
+   static const String  PickDate=  "Pick Date";
+   static const String  adminIndustryOrganization=  "Organization by Industry";
+   static const String  adminIndustryTechnology=  "Technology";
+   static const String  adminBpoService=  "BPO Service";
+   static const String  adminReportHealthCar=  "Health care";
+   static const String  adminReportFinance=  "Finance";
+   static const String  adminReportEducation=  "Education";
+   static const String  adminReportJoinedCompanies= "Newly Joined Companies";
+   static const String  adminReportFieldText=  "Search by Company Name";
+   static const String  adminReportDetailCompany=  "Company Name";
+   static const String  adminReportDetailOwner=   "Owner Name";
+   static const String  adminReportDetailEmail=  "Email";
+   static const String  adminReportDetailEmployee=  "Employees";
+   static const String  adminReportDetailSubscription=  "Subscription";
+   static const String  adminReportDetailStatus=   "Status";
+
 }

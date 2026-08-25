@@ -1,6 +1,7 @@
 import 'package:employee_monitoring_system/Panel/Admin/Report/ReportController.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -23,7 +24,7 @@ class ReportScreenWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Report",
+              TextString.adminReportTitle,
               style: TTextTheme.h2Style(context).copyWith(
                 fontWeight: FontWeight.bold,
                 color: AppColors.textColor,
@@ -31,7 +32,7 @@ class ReportScreenWidget extends StatelessWidget {
             ),
             const SizedBox(height: 4),
             Text(
-              "You can see all reports here",
+              TextString.adminReportSubtitle,
               style: TTextTheme.titleFour(context).copyWith(
                 color: AppColors.tertiaryTextColor,
                 fontSize: 13,
@@ -55,9 +56,9 @@ class ReportScreenWidget extends StatelessWidget {
                       icon: IconString.totalReport,
                       iconBgColor: AppColors.primaryColor.withValues(alpha: 0.1),
                       iconColor: AppColors.primaryColor,
-                      title: "Total Reports",
+                      title:TextString.adminReportKpiOne ,
                       value: controller.totalReports.value,
-                      subtitle: "Available in library",
+                      subtitle:TextString.adminReportKpiTwo ,
                     ),
                     _buildStatCard(
                       context: context,
@@ -65,9 +66,9 @@ class ReportScreenWidget extends StatelessWidget {
                       icon: IconString.reportsGenerated,
                       iconBgColor: AppColors.backgroundOfScreenColor,
                       iconColor: AppColors.approvedColor,
-                      title: "Report Generated",
+                      title:TextString.adminReportKpiThree ,
                       value: controller.reportsGeneratedToday.value,
-                      subtitle: "3 more report generated today",
+                      subtitle:TextString.adminReportKpiFour ,
                     ),
                     _buildStatCard(
                       context: context,
@@ -75,9 +76,9 @@ class ReportScreenWidget extends StatelessWidget {
                       icon: IconString.totalDownload,
                       iconBgColor: AppColors.primaryColor.withValues(alpha: 0.1),
                       iconColor: AppColors.primaryColor,
-                      title: "Total Downloads",
+                      title:TextString.adminReportKpiFive ,
                       value: controller.totalDownloads.value,
-                      subtitle: "2 more reports downloaded",
+                      subtitle:TextString.adminReportKpiSix ,
                     ),
                     _buildStatCard(
                       context: context,
@@ -85,9 +86,9 @@ class ReportScreenWidget extends StatelessWidget {
                       icon: IconString.lastGenerated,
                       iconBgColor: AppColors.primaryColor.withValues(alpha: 0.1),
                       iconColor: AppColors.primaryColor,
-                      title: "Last Generated",
+                      title: TextString.adminReportKpiSeven,
                       value: controller.lastGeneratedReport.value,
-                      subtitle: "Today at 10:12 am",
+                      subtitle: TextString.adminReportKpiEight,
                       isValueTextLarge: false,
                     ),
                   ],
@@ -108,7 +109,7 @@ class ReportScreenWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Business Reports",
+                    TextString.adminReportsBuisnessTitle,
                     style: TTextTheme.h3Style(context).copyWith(
                       fontWeight: FontWeight.w700,
                       color: AppColors.textColor,
@@ -268,11 +269,11 @@ class ReportScreenWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 14),
-          const Expanded(flex: 3, child: _HeaderText(text: "Report Name")),
-          const Expanded(flex: 2, child: _HeaderText(text: "Category")),
-          const Expanded(flex: 2, child: _HeaderText(text: "Last Generated")),
-          const SizedBox(width: 120, child: _HeaderText(text: "Status")),
-          const SizedBox(width: 110, child: _HeaderText(text: "Actions")),
+          const Expanded(flex: 3, child: _HeaderText(text: TextString.adminRouteReportName )),
+          const Expanded(flex: 2, child: _HeaderText(text: TextString.adminRouteCategory )),
+          const Expanded(flex: 2, child: _HeaderText(text: TextString.adminLastGenerated )),
+          const SizedBox(width: 120, child: _HeaderText(text: TextString.adminStatus )),
+          const SizedBox(width: 110, child: _HeaderText(text: TextString.adminActions)),
         ],
       ),
     );
@@ -477,7 +478,7 @@ class ReportScreenWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              "Results per page",
+             TextString.adminReportResult,
               style: TTextTheme.titleSix(context),
             ),
             const SizedBox(width: 8),
@@ -525,7 +526,7 @@ class ReportScreenWidget extends StatelessWidget {
                   const Icon(Icons.chevron_left, size: 14, color: AppColors.tertiaryTextColor),
                   const SizedBox(width: 2),
                   Text(
-                    "Prev",
+                    TextString.adminReportPrev,
                     style: TTextTheme.titleSeven(context).copyWith(
                       fontSize: 12,
                     ),
@@ -548,7 +549,7 @@ class ReportScreenWidget extends StatelessWidget {
                   child: Row(
                     children: [
                       Text(
-                        "Next",
+                        TextString.adminReportNext,
                         style: TTextTheme.titleFive(context).copyWith(
                           fontSize: 12,
                         ),
@@ -624,12 +625,12 @@ class ReportScreenWidget extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFFEF0C7),
+                        color: AppColors.emojiBackground,
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Icon(
+                      child:  Icon(
                         Icons.warning_amber_rounded,
-                        color: Color(0xFFDC6803),
+                        color: AppColors.WarningColor,
                         size: 26,
                       ),
                     ),
@@ -639,7 +640,7 @@ class ReportScreenWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Report Generation Failed",
+                            TextString.adminReportDialogOne,
                             style: TTextTheme.h3Style(context).copyWith(
                               fontWeight: FontWeight.bold,
                               color: AppColors.textColor,
@@ -647,7 +648,7 @@ class ReportScreenWidget extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            "Database timeout occurred while processing the report.",
+                            TextString.adminReportDialogTwo,
                             style: TTextTheme.titleFour(context).copyWith(
                               color: AppColors.tertiaryTextColor,
                             ),
@@ -666,7 +667,7 @@ class ReportScreenWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
-                    "Last Attempt: 07 Aug 2026 • 10:45 AM",
+                    TextString.adminReportDialogThree,
                     textAlign: TextAlign.center,
                     style: TTextTheme.loginTexts(context).copyWith(
                       fontSize: 12,
@@ -688,7 +689,7 @@ class ReportScreenWidget extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          "Back To Reports",
+                          TextString.adminReportDialogFour,
                           style: TTextTheme.ForgotPasswordText(context).copyWith(
                             fontWeight: FontWeight.w600,
                           ),

@@ -19,4 +19,5 @@ class AppColors{
   static const Color secondDatePicker = Color(0xFF3B82F6);
   static const Color emojiBackground =  Color(0xFFFFE27D);
   static const Color inProgress =  Color(0xFF0034B8);
+  static const Color WarningColor = Color(0xFFF59E0B);
 }

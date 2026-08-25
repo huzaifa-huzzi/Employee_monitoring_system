@@ -104,5 +104,5 @@ class IconString{
   static const String  reportsGenerated = 'assets/icons/ReportsGenerated.svg';
   static const String  totalDownload = 'assets/icons/TotalDownload.svg';
   static const String  totalReport = 'assets/icons/TotalReport.svg';
-
+  static const String  NetGrowth = 'assets/icons/NetGrowth.svg';
 }
