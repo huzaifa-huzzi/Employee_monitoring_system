@@ -105,4 +105,8 @@ class IconString{
   static const String  totalDownload = 'assets/icons/TotalDownload.svg';
   static const String  totalReport = 'assets/icons/TotalReport.svg';
   static const String  NetGrowth = 'assets/icons/NetGrowth.svg';
+
+    /// Subscription
+  static const String  subscriptionInvoice = 'assets/icons/SubscriptionInvoice.svg';
+  static const String  methodIcon = 'assets/icons/MethodIcon.svg';
 }

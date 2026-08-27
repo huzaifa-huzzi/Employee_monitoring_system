@@ -6,6 +6,10 @@ import 'package:employee_monitoring_system/Panel/Admin/Companies/ViewCompany/Vie
 import 'package:employee_monitoring_system/Panel/Admin/Report/Report.dart';
 import 'package:employee_monitoring_system/Panel/Admin/Report/ReportDetails/ReportDetails.dart';
 import 'package:employee_monitoring_system/Panel/Admin/SidebarAdmin/SidebarAdmin.dart';
+import 'package:employee_monitoring_system/Panel/Admin/Subscription/Subscription.dart';
+import 'package:employee_monitoring_system/Panel/Admin/Subscription/SubscriptionController.dart';
+import 'package:employee_monitoring_system/Panel/Admin/Subscription/SubscriptionInvoice/SubscriptionInvoice.dart';
+import 'package:employee_monitoring_system/Panel/Admin/Subscription/SubscriptionView/SubscriptionView.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -57,7 +61,23 @@ class AdminRoutes {
       // Subscription
       GoRoute(
         path: '/Admin/subscription',
-        builder: (context, state) => const Center(child: Text("Subscription Screen")),
+        builder: (context, state) => const Subscription(),
+        routes: [
+          GoRoute(
+            path: 'view',
+            builder: (context, state) {
+              final item = state.extra as SubscriptionItem?;
+              return SubscriptionView(item: item);
+            },
+          ),
+          GoRoute(
+            path: 'invoice', // Final URL: /Admin/subscription/invoice
+            builder: (context, state) {
+              final item = state.extra as SubscriptionItem?;
+              return SubscriptionInvoice(item: item);
+            },
+          ),
+        ],
       ),
 
       // Pricing Plans
