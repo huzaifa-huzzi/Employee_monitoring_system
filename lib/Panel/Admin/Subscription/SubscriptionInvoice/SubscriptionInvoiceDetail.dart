@@ -63,18 +63,18 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: AppColors.whiteColor,
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: AppColors.borderColor.withValues(alpha: 0.8)),
+                  border: Border.all(color: AppColors.borderColor),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Divider(color: AppColors.borderColor.withValues(alpha: 0.5), thickness: 1),
+                    Divider(color: AppColors.borderColor, thickness: 1),
                     const SizedBox(height: 16),
                     _buildTopActions(context),
                     const SizedBox(height: 20),
                     _buildInvoiceBranding(context),
                     const SizedBox(height: 16),
-                    Divider(color: AppColors.borderColor.withValues(alpha: 0.6), thickness: 1),
+                    Divider(color: AppColors.borderColor, thickness: 1),
                     const SizedBox(height: 20),
                     _buildBillingDetails(context),
                     const SizedBox(height: 24),
@@ -84,7 +84,7 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
                     const SizedBox(height: 24),
                     _buildTermsAndConditions(context),
                     const SizedBox(height: 24),
-                    Divider(color: AppColors.borderColor.withValues(alpha: 0.6), thickness: 1),
+                    Divider(color: AppColors.borderColor, thickness: 1),
                     const SizedBox(height: 16),
                     Center(
                       child: Text(
