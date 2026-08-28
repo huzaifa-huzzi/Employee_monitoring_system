@@ -9,6 +9,7 @@ import 'package:employee_monitoring_system/Panel/Admin/SidebarAdmin/SidebarAdmin
 import 'package:employee_monitoring_system/Panel/Admin/Subscription/Subscription.dart';
 import 'package:employee_monitoring_system/Panel/Admin/Subscription/SubscriptionController.dart';
 import 'package:employee_monitoring_system/Panel/Admin/Subscription/SubscriptionInvoice/SubscriptionInvoice.dart';
+import 'package:employee_monitoring_system/Panel/Admin/Subscription/SubscriptionInvoice/SubscriptionInvoiceDetail.dart';
 import 'package:employee_monitoring_system/Panel/Admin/Subscription/SubscriptionView/SubscriptionView.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -71,10 +72,18 @@ class AdminRoutes {
             },
           ),
           GoRoute(
-            path: 'invoice', // Final URL: /Admin/subscription/invoice
+            path: 'invoice',
             builder: (context, state) {
               final item = state.extra as SubscriptionItem?;
               return SubscriptionInvoice(item: item);
+            },
+          ),
+
+          GoRoute(
+            path: 'invoiceDetails',
+            builder: (context, state) {
+              final item = state.extra as SubscriptionItem?;
+              return SubscriptionInvoiceDetail(item: item);
             },
           ),
         ],

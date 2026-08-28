@@ -6,6 +6,7 @@ import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 
 
@@ -370,7 +371,9 @@ class SubscriptionInvoice extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerLeft,
               child: OutlinedButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  context.go('/Admin/subscription/invoiceDetails', extra: item);
+                },
                 icon: const Icon(
                   Icons.remove_red_eye_outlined,
                   size: 16,
