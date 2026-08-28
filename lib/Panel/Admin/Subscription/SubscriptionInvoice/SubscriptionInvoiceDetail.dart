@@ -1,9 +1,9 @@
 import 'package:employee_monitoring_system/Panel/Admin/Subscription/SubscriptionController.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/IconString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
-
 
 
 class SubscriptionInvoiceDetail extends StatelessWidget {
@@ -11,7 +11,7 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
 
   const SubscriptionInvoiceDetail({super.key, this.item});
 
-   // Logo
+  // Logo
   static Widget buildLogo(BuildContext context, bool isCollapsed) {
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -88,7 +88,7 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
                     const SizedBox(height: 16),
                     Center(
                       child: Text(
-                        "Thanks for your Business",
+                       TextString.adminSubscriptionInvoiceThanks,
                         style: TTextTheme.titleSix(context).copyWith(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
@@ -105,7 +105,7 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
     );
   }
 
-   /// ----------- Extra Widget -------------- ///
+  /// ----------- Extra Widget -------------- ///
 
   // Header
   Widget _buildHeader(BuildContext context) {
@@ -129,7 +129,7 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Invoices Detail",
+                TextString.adminSubscriptionTitleTwo,
                 style: TTextTheme.titleFive(context).copyWith(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -138,7 +138,7 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
               ),
               const SizedBox(height: 2),
               Text(
-                "Your subscription detail is given below",
+                TextString.adminSubscriptionSubtitleTwo,
                 style: TTextTheme.titleSix(context).copyWith(
                   fontSize: 12,
                 ),
@@ -165,17 +165,17 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
             _buildOutlinedActionButton(
               context,
               icon: Icons.picture_as_pdf_outlined,
-              label: "Download PDF",
+              label: TextString.adminSubscriptionPdf,
             ),
             _buildOutlinedActionButton(
               context,
               icon: Icons.mail_outline_rounded,
-              label: "Send Email",
+              label: TextString.adminSubscriptionEmail ,
             ),
             _buildOutlinedActionButton(
               context,
               icon: Icons.print_outlined,
-              label: "Print",
+              label: TextString.adminSubscriptionPrint ,
             ),
           ],
         );
@@ -212,12 +212,12 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
       ),
       child: Text(
         "Paid",
-        style: TTextTheme.whiteColorBtn(context)
+        style: TTextTheme.whiteColorBtn(context),
       ),
     );
   }
 
-   // Outline Action Button
+  // Outline Action Button
   Widget _buildOutlinedActionButton(BuildContext context, {required IconData icon, required String label}) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
@@ -257,7 +257,7 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
               child: buildLogo(context, false),
             ),
             Text(
-              "Original For Recipient",
+             TextString.adminSubscriptionOriginalRecipient,
               style: TTextTheme.titleSix(context).copyWith(
                 fontSize: 11,
               ),
@@ -269,7 +269,7 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
           crossAxisAlignment: isMobile ? CrossAxisAlignment.start : CrossAxisAlignment.end,
           children: [
             Text(
-              "TAX INVOICE",
+              TextString.adminSubscriptionInvoice,
               style: TTextTheme.titleFive(context).copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
@@ -285,15 +285,15 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text("Date: ", style: TTextTheme.titleSix(context).copyWith(fontSize: 11)),
-                    Text("05/12/2024", style: TTextTheme.titleSix(context).copyWith(fontSize: 11, fontWeight: FontWeight.w600)),
+                    Text(TextString.adminSubscriptionDate, style: TTextTheme.titleSix(context).copyWith(fontSize: 11)),
+                    Text(TextString.adminSubscriptionDateTwo, style: TTextTheme.titleSix(context).copyWith(fontSize: 11, fontWeight: FontWeight.w600)),
                   ],
                 ),
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text("Invoice No: ", style: TTextTheme.titleSix(context).copyWith(fontSize: 11)),
-                    Text("INV 00001", style: TTextTheme.titleSix(context).copyWith(fontSize: 11, fontWeight: FontWeight.w600)),
+                    Text(TextString.adminSubscriptionInvoiceNo, style: TTextTheme.titleSix(context).copyWith(fontSize: 11)),
+                    Text(TextString.adminSubscriptionInvoiceNoMain, style: TTextTheme.titleSix(context).copyWith(fontSize: 11, fontWeight: FontWeight.w600)),
                   ],
                 ),
               ],
@@ -334,16 +334,16 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Invoice To :",
+              TextString.adminSubscriptionInvoiceTo,
               style: TTextTheme.titleFive(context).copyWith(
                 fontSize: 13,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 6),
-            Text("Walter Roberson", style: TTextTheme.titleSix(context).copyWith(fontSize: 12)),
+            Text(TextString.adminSubscriptionName, style: TTextTheme.titleSix(context).copyWith(fontSize: 12)),
             const SizedBox(height: 2),
-            Text("92 the Avenue, Alexander Heights 6064.", style: TTextTheme.titleSix(context).copyWith(fontSize: 12)),
+            Text(TextString.adminSubscriptionAddress, style: TTextTheme.titleSix(context).copyWith(fontSize: 12)),
           ],
         );
 
@@ -351,18 +351,18 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Pay To :",
+              TextString.adminSubscriptionPayto,
               style: TTextTheme.titleFive(context).copyWith(
                 fontSize: 13,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 6),
-            Text("Lowell H. Dominguez", style: TTextTheme.titleSix(context).copyWith(fontSize: 12)),
+            Text(TextString.adminSubscriptionpayName, style: TTextTheme.titleSix(context).copyWith(fontSize: 12)),
             const SizedBox(height: 2),
-            Text("84 Spilman Street, London United King", style: TTextTheme.titleSix(context).copyWith(fontSize: 12)),
+            Text(TextString.adminSubscriptionpayAddress, style: TTextTheme.titleSix(context).copyWith(fontSize: 12)),
             const SizedBox(height: 2),
-            Text("domlowell@gmail.com", style: TTextTheme.titleSix(context).copyWith(fontSize: 12)),
+            Text(TextString.adminSubscriptionpayEmail, style: TTextTheme.titleSix(context).copyWith(fontSize: 12)),
           ],
         );
 
@@ -410,8 +410,8 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Item", style: TTextTheme.titleFive(context).copyWith(fontSize: 12, fontWeight: FontWeight.bold)),
-                Text("Price", style: TTextTheme.titleFive(context).copyWith(fontSize: 12, fontWeight: FontWeight.bold)),
+                Text(TextString.adminSubscriptionITem, style: TTextTheme.titleFive(context).copyWith(fontSize: 12, fontWeight: FontWeight.bold)),
+                Text(TextString.adminSubscriptionPrice, style: TTextTheme.titleFive(context).copyWith(fontSize: 12, fontWeight: FontWeight.bold)),
               ],
             ),
           ),
@@ -424,17 +424,17 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Active Vehicle", style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w500)),
+                    Text(TextString.adminSubscriptionActiveEmployee, style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w500)),
                     const SizedBox(height: 4),
-                    Text("Rate per Car", style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w500)),
+                    Text(TextString.adminSubscriptionActiveEmployeeSubtitle, style: TTextTheme.titleSix(context).copyWith(fontSize: 12, fontWeight: FontWeight.w500)),
                   ],
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text("20.00", style: TTextTheme.titleFive(context).copyWith(fontSize: 12, fontWeight: FontWeight.bold)),
+                    Text(TextString.adminSubscriptionActiveEmployee, style: TTextTheme.titleFive(context).copyWith(fontSize: 12, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 4),
-                    Text("\$8.00", style: TTextTheme.titleFive(context).copyWith(fontSize: 12, fontWeight: FontWeight.bold)),
+                    Text(TextString.adminSubscriptionActiveEmployeeTwo, style: TTextTheme.titleFive(context).copyWith(fontSize: 12, fontWeight: FontWeight.bold)),
                   ],
                 ),
               ],
@@ -450,10 +450,10 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
                 Widget noteWidget = Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Important Note:", style: TTextTheme.titleSix(context).copyWith(fontSize: 11, fontWeight: FontWeight.w500)),
+                    Text(TextString.adminSubscriptionImportant, style: TTextTheme.titleSix(context).copyWith(fontSize: 11, fontWeight: FontWeight.w500)),
                     const SizedBox(height: 2),
                     Text(
-                      "Payments are verified after receipt. Subscription renewals are activated once the payment has been successfully confirmed.",
+                      TextString.adminSubscriptionImportantSubtitle,
                       style: TTextTheme.titleSix(context).copyWith(fontSize: 11, height: 1.3),
                     ),
                   ],
@@ -466,8 +466,8 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       mainAxisSize: isMobile ? MainAxisSize.max : MainAxisSize.min,
                       children: [
-                        Text("Taxable Amount ", style: TTextTheme.titleFive(context).copyWith(fontSize: 12, fontWeight: FontWeight.bold)),
-                        Text("\$20.00", style: TTextTheme.titleFive(context).copyWith(fontSize: 12, fontWeight: FontWeight.bold)),
+                        Text(TextString.adminSubscriptionTaxable, style: TTextTheme.titleFive(context).copyWith(fontSize: 12, fontWeight: FontWeight.bold)),
+                        Text(TextString.adminSubscriptionTaxableSubtitle, style: TTextTheme.titleFive(context).copyWith(fontSize: 12, fontWeight: FontWeight.bold)),
                       ],
                     ),
                     const SizedBox(height: 6),
@@ -475,8 +475,8 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       mainAxisSize: isMobile ? MainAxisSize.max : MainAxisSize.min,
                       children: [
-                        Text("Discount 0% ", style: TTextTheme.titleFive(context).copyWith(fontSize: 12, fontWeight: FontWeight.bold)),
-                        Text("+ \$0.00", style: TTextTheme.titleFive(context).copyWith(fontSize: 12, fontWeight: FontWeight.bold)),
+                        Text(TextString.adminSubscriptionDiscount, style: TTextTheme.titleFive(context).copyWith(fontSize: 12, fontWeight: FontWeight.bold)),
+                        Text(TextString.adminSubscriptionDiscountSubtitle, style: TTextTheme.titleFive(context).copyWith(fontSize: 12, fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ],
@@ -517,14 +517,14 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
                 final isSmall = constraints.maxWidth < 280;
 
                 final qtyText = Text(
-                  "Total Items / Qty : 4 / 4.00",
+                  TextString.adminSubscriptionTotalItems,
                   style: TTextTheme.titleSix(context).copyWith(fontSize: 11),
                 );
 
                 final totalText = Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text("Total", style: TTextTheme.titleFive(context).copyWith(fontSize: 15, fontWeight: FontWeight.bold)),
+                    Text(TextString.adminSubscriptionTotal, style: TTextTheme.titleFive(context).copyWith(fontSize: 15, fontWeight: FontWeight.bold)),
                     const SizedBox(width: 12),
                     Text(item?.pricing ?? "\$180.00", style: TTextTheme.titleFive(context).copyWith(fontSize: 15, fontWeight: FontWeight.bold)),
                   ],
@@ -559,7 +559,7 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    "Total amount ( in words): One Hundred Eighty Dollars Only",
+                   TextString.adminSubscriptionTotalAmount,
                     style: TTextTheme.titleSix(context).copyWith(fontSize: 11),
                   ),
                 ),
@@ -581,26 +581,26 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Payment Info:",
+              TextString.adminPaymentInfo,
               style: TTextTheme.titleFive(context).copyWith(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 6),
-            Text("Debit Card : 465 *************645", style: TTextTheme.titleSix(context).copyWith(fontSize: 11)),
+            Text(TextString.adminPaymentInfoSubtitle, style: TTextTheme.titleSix(context).copyWith(fontSize: 11)),
             const SizedBox(height: 2),
-            Text("Amount : ${item?.pricing ?? '\$1,815'}", style: TTextTheme.titleSix(context).copyWith(fontSize: 11)),
+            Text("Amount : ${item?.pricing ?? '\$180.00'}", style: TTextTheme.titleSix(context).copyWith(fontSize: 11)),
           ],
         );
 
         final signature = Column(
           crossAxisAlignment: isMobile ? CrossAxisAlignment.start : CrossAxisAlignment.end,
           children: [
-            Text("From Soft Snipt", style: TTextTheme.titleSix(context).copyWith(fontSize: 11)),
+            Text(TextString.adminPaymentSoftSnip, style: TTextTheme.titleSix(context).copyWith(fontSize: 11)),
             const SizedBox(height: 4),
             Text(
-              "James Paulo",
+              TextString.adminSubscriptionSignature,
               style: TextStyle(
                 fontFamily: 'Cursive',
                 fontSize: 24,
@@ -640,7 +640,7 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Terms & Conditions :",
+          TextString.adminSubscriptionTerms,
           style: TTextTheme.titleFive(context).copyWith(
             fontSize: 13,
             fontWeight: FontWeight.bold,
@@ -648,12 +648,12 @@ class SubscriptionInvoiceDetail extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Text(
-          "1. Subscription fees are non-refundable once payment has been successfully verified and the subscription has been activated.",
+          TextString.adminSubscriptionTermsOne,
           style: TTextTheme.titleSix(context).copyWith(fontSize: 11, height: 1.4),
         ),
         const SizedBox(height: 4),
         Text(
-          "2. Customers are responsible for ensuring all billing information and payment references are accurate before submitting a payment.",
+          TextString.adminSubscriptionTermsTwo,
           style: TTextTheme.titleSix(context).copyWith(fontSize: 11, height: 1.4),
         ),
       ],

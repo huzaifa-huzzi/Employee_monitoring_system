@@ -63,7 +63,7 @@ class SubscriptionInvoice extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "All Invoices",
+                              TextString.adminSubscriptionInvoiceTitle,
                               style: TTextTheme.titleFive(context).copyWith(
                                 fontWeight: FontWeight.bold,
                                 color: AppColors.textColor,
@@ -77,7 +77,7 @@ class SubscriptionInvoice extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "All Invoices",
+                              TextString.adminSubscriptionInvoiceTitle,
                               style: TTextTheme.titleFive(context).copyWith(
                                 fontWeight: FontWeight.bold,
                                 color: AppColors.textColor,
@@ -130,7 +130,7 @@ class SubscriptionInvoice extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Invoices Detail",
+                TextString.adminSubscriptionTitleTwo,
                 style: TTextTheme.titleFive(context).copyWith(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -140,7 +140,7 @@ class SubscriptionInvoice extends StatelessWidget {
               ),
               const SizedBox(height: 2),
               Text(
-                "Your subscription detail is given below",
+               TextString.adminSubscriptionSubtitleTwo,
                 style: TTextTheme.titleSix(context).copyWith(
                   color: AppColors.subtextColor,
                   fontSize: 12,
@@ -163,7 +163,7 @@ class SubscriptionInvoice extends StatelessWidget {
         controller: controller.searchController,
         onChanged: (val) => controller.searchQuery.value = val,
         decoration: InputDecoration(
-          hintText: "Search by Company Name",
+          hintText: TextString.adminSubscriptionFieldText,
           hintStyle: const TextStyle(fontSize: 12, color: AppColors.subtextColor),
           prefixIcon: const Icon(Icons.search, size: 18, color: AppColors.subtextColor),
           contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 12),
@@ -220,14 +220,14 @@ class SubscriptionInvoice extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 12),
-                      Expanded(flex: 3, child: Text("Invoice ID", style: _headerTextStyle(context))),
-                      Expanded(flex: 2, child: Text("Payment Date", style: _headerTextStyle(context))),
-                      Expanded(flex: 2, child: Text("Billing Period", style: _headerTextStyle(context))),
-                      Expanded(flex: 2, child: Text("Plan", style: _headerTextStyle(context))),
-                      Expanded(flex: 2, child: Text("Amount", style: _headerTextStyle(context))),
-                      Expanded(flex: 2, child: Text("Method", style: _headerTextStyle(context))),
-                      Expanded(flex: 3, child: Text("Status", style: _headerTextStyle(context))),
-                      Expanded(flex: 2, child: Text("Action", style: _headerTextStyle(context))),
+                      Expanded(flex: 3, child: Text(TextString.adminSubscriptionInvoiceTableOne, style: _headerTextStyle(context))),
+                      Expanded(flex: 2, child: Text(TextString.adminSubscriptionInvoiceTableTwo, style: _headerTextStyle(context))),
+                      Expanded(flex: 2, child: Text(TextString.adminSubscriptionInvoiceTableThree, style: _headerTextStyle(context))),
+                      Expanded(flex: 2, child: Text(TextString.adminSubscriptionSubscribeOne, style: _headerTextStyle(context))),
+                      Expanded(flex: 2, child: Text(TextString.adminSubscriptionInvoiceTableFour, style: _headerTextStyle(context))),
+                      Expanded(flex: 2, child: Text(TextString.adminSubscriptionInvoiceTableFive, style: _headerTextStyle(context))),
+                      Expanded(flex: 3, child: Text(TextString.adminSubscriptionTableSeven, style: _headerTextStyle(context))),
+                      Expanded(flex: 2, child: Text(TextString.adminSubscriptionTableEight, style: _headerTextStyle(context))),
                     ],
                   ),
                 ),
@@ -238,7 +238,7 @@ class SubscriptionInvoice extends StatelessWidget {
                     return  Padding(
                       padding: EdgeInsets.all(32.0),
                       child: Center(
-                        child: Text("No records found", style: TTextTheme.TextError(context)),
+                        child: Text(TextString.adminSubscriptionInvoiceError, style: TTextTheme.TextError(context)),
                       ),
                     );
                   }

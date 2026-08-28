@@ -1,6 +1,7 @@
 import 'package:employee_monitoring_system/Panel/Admin/Subscription/SubscriptionController.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:employee_monitoring_system/Resources/ImageString.dart';
+import 'package:employee_monitoring_system/Resources/TextString.dart';
 import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 
@@ -57,7 +58,7 @@ class SubscriptionView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Subscription",
+                TextString.adminSubscriptionTitle,
                 style: TTextTheme.titleFive(context).copyWith(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -67,7 +68,7 @@ class SubscriptionView extends StatelessWidget {
               ),
               const SizedBox(height: 2),
               Text(
-                "Your subscription detail is given below",
+                TextString.adminSubscriptionSubtitle,
                 style: TTextTheme.titleSix(context).copyWith(
                   color: AppColors.subtextColor,
                   fontSize: 12,
@@ -95,7 +96,7 @@ class SubscriptionView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "General Information",
+            TextString.adminSubscriptionGeneralTitle,
             style: TTextTheme.titleFive(context).copyWith(
               fontWeight: FontWeight.bold,
               color: AppColors.textColor,
@@ -103,7 +104,7 @@ class SubscriptionView extends StatelessWidget {
           ),
           const SizedBox(height: 2),
           Text(
-            "Basic detail about the company",
+            TextString.adminSubscriptionGeneralSubtitle,
             style: TTextTheme.titleSix(context).copyWith(
               color: AppColors.subtextColor,
               fontSize: 12,
@@ -125,7 +126,7 @@ class SubscriptionView extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _buildLabel(context, "Company Logo"),
+                        _buildLabel(context,TextString.adminSubscriptionGeneralOne ),
                         const SizedBox(height: 12),
                         Image.asset(
                           ImageString.companyLogo,
@@ -136,14 +137,14 @@ class SubscriptionView extends StatelessWidget {
                       ],
                     ),
                   ),
-                  _buildReadOnlyField(context, "Company Name", item?.companyName ?? "Soft Snip", fieldWidth),
-                  _buildReadOnlyField(context, "Account Status", "Active", fieldWidth),
-                  _buildReadOnlyField(context, "Phone Number", "1234567-8", fieldWidth),
-                  _buildReadOnlyField(context, "Email Address", "aussie@gmail.com", fieldWidth),
-                  _buildReadOnlyField(context, "Email Status", "Verified", fieldWidth),
-                  _buildReadOnlyField(context, "Address", "123 Hay Street", fieldWidth),
-                  _buildReadOnlyField(context, "Number of Employees", "258", fieldWidth),
-                  _buildReadOnlyField(context, "Joining Date", item?.startDate ?? "4/03/2026", fieldWidth),
+                  _buildReadOnlyField(context,TextString.adminSubscriptionGeneralTwo , item?.companyName ?? "Soft Snip", fieldWidth),
+                  _buildReadOnlyField(context,TextString.adminSubscriptionGeneralThree , "Active", fieldWidth),
+                  _buildReadOnlyField(context,TextString.adminSubscriptionGeneralFour , "1234567-8", fieldWidth),
+                  _buildReadOnlyField(context, TextString.adminSubscriptionGeneralFive , "aussie@gmail.com", fieldWidth),
+                  _buildReadOnlyField(context, TextString.adminSubscriptionGeneralSix, "Verified", fieldWidth),
+                  _buildReadOnlyField(context, TextString.adminSubscriptionGeneralSeven , "123 Hay Street", fieldWidth),
+                  _buildReadOnlyField(context, TextString.adminSubscriptionGeneralEight, "258", fieldWidth),
+                  _buildReadOnlyField(context, TextString.adminSubscriptionGeneralNine , item?.startDate ?? "4/03/2026", fieldWidth),
                 ],
               );
             },
@@ -167,7 +168,7 @@ class SubscriptionView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Subscription Information",
+            TextString.adminSubscriptionSubscribeTitle,
             style: TTextTheme.titleFive(context).copyWith(
               fontWeight: FontWeight.bold,
               color: AppColors.textColor,
@@ -175,7 +176,7 @@ class SubscriptionView extends StatelessWidget {
           ),
           const SizedBox(height: 2),
           Text(
-            "Company subscription listed here",
+            TextString.adminSubscriptionSubscribeSubtitle,
             style: TTextTheme.titleSix(context).copyWith(
               color: AppColors.subtextColor,
               fontSize: 12,
@@ -192,16 +193,16 @@ class SubscriptionView extends StatelessWidget {
                 spacing: 16,
                 runSpacing: 16,
                 children: [
-                  _buildReadOnlyField(context, "Plan", item?.plan ?? "Monthly", fieldWidth),
-                  _buildReadOnlyField(context, "Start Date", item?.startDate ?? "4/03/2026", fieldWidth),
-                  _buildReadOnlyField(context, "End Date", item?.endDate ?? "4/03/2027", fieldWidth),
+                  _buildReadOnlyField(context,TextString.adminSubscriptionSubscribeOne , item?.plan ?? "Monthly", fieldWidth),
+                  _buildReadOnlyField(context, TextString.adminSubscriptionSubscribeTwo , item?.startDate ?? "4/03/2026", fieldWidth),
+                  _buildReadOnlyField(context,TextString.adminSubscriptionSubscribeThree , item?.endDate ?? "4/03/2027", fieldWidth),
 
                   SizedBox(
                     width: fieldWidth,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _buildLabel(context, "Payment Status"),
+                        _buildLabel(context,TextString.adminSubscriptionSubscribeFour ),
                         const SizedBox(height: 8),
                         Container(
                           height: 48,
@@ -219,7 +220,7 @@ class SubscriptionView extends StatelessWidget {
                     ),
                   ),
 
-                  _buildReadOnlyField(context, "Remaining Days", "365 Days", fieldWidth),
+                  _buildReadOnlyField(context, TextString.adminSubscriptionSubscribeFive, "365 Days", fieldWidth),
                 ],
               );
             },

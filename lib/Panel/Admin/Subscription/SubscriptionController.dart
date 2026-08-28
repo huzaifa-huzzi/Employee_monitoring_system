@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class SubscriptionItem {
   final String id;
@@ -12,7 +10,7 @@ class SubscriptionItem {
   final String startDate;
   final String endDate;
   final String pricing;
-  final String status; // 'Active', 'Suspended', 'Expired'
+  final String status;
   RxBool isSelected;
 
   SubscriptionItem({
@@ -29,11 +27,8 @@ class SubscriptionItem {
 }
 
 class SubscriptionController extends GetxController {
-  // Tabs State
   final selectedTab = 'All'.obs;
   final tabs = ['All', 'Active', 'Suspended', 'Expired'];
-
-  // Search & Filter State
   final searchQuery = ''.obs;
   final selectedFilter = 'Company Name'.obs;
   final resultsPerPage = 5.obs;
@@ -50,29 +45,22 @@ class SubscriptionController extends GetxController {
     SubscriptionItem(id: '5', companyName: 'Hello People', plan: 'Trail', cycle: 'Yearly', startDate: '4/06/26', endDate: '4/07/27', pricing: '\$3200', status: 'Active'),
   ].obs;
 
-  // Header Stat Cards Data
   final totalNewSubscriptions = '12'.obs;
   final totalWeeklySubscriptions = '5'.obs;
   final totalMonthlySubscriptions = '345'.obs;
   final totalYearlySubscriptions = '10k'.obs;
 
-  // Select All Checkbox State
   final isSelectAll = false.obs;
 
-  // Filtered List Computed Property
   List<SubscriptionItem> get filteredSubscriptions {
     return allSubscriptions.where((item) {
-      // Tab Filtering
       bool matchesTab = selectedTab.value == 'All' || item.status == selectedTab.value;
-
-      // Search Query Filtering
       bool matchesSearch = item.companyName.toLowerCase().contains(searchQuery.value.toLowerCase());
 
       return matchesTab && matchesSearch;
     }).toList();
   }
 
-  // Header Select All Toggle
   void toggleSelectAll(bool? val) {
     isSelectAll.value = val ?? false;
     for (var item in filteredSubscriptions) {
@@ -80,11 +68,9 @@ class SubscriptionController extends GetxController {
     }
   }
 
-  // Individual Row Selection Toggle
   void toggleRowSelection(SubscriptionItem item, bool? val) {
     item.isSelected.value = val ?? false;
 
-    // Check if all filtered rows are selected
     if (filteredSubscriptions.isNotEmpty) {
       isSelectAll.value = filteredSubscriptions.every((element) => element.isSelected.value);
     } else {

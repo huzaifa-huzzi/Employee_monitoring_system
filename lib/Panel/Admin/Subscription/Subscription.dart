@@ -2,8 +2,6 @@ import 'package:employee_monitoring_system/Panel/Admin/Subscription/Subscription
 import 'package:employee_monitoring_system/Panel/Admin/Subscription/Widget/SubscriptionWidget.dart';
 import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:flutter/material.dart';
-
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Subscription extends StatelessWidget {

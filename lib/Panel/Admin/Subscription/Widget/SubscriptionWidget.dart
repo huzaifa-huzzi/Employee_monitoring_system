@@ -23,7 +23,7 @@ class SubscriptionWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Subscription",
+             TextString.adminSubscriptionTitle,
               style: TTextTheme.h2Style(context).copyWith(
                 fontWeight: FontWeight.bold,
                 color: AppColors.textColor,
@@ -31,7 +31,7 @@ class SubscriptionWidget extends StatelessWidget {
             ),
             const SizedBox(height: 4),
             Text(
-              "Your subscription detail is given below",
+              TextString.adminSubscriptionSubtitle,
               style: TTextTheme.titleSix(context).copyWith(fontSize: 13),
             ),
             const SizedBox(height: 20),
@@ -48,7 +48,7 @@ class SubscriptionWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "All Subscriptions",
+                  TextString.adminAllSubscription,
                     style: TTextTheme.h3Style(context).copyWith(fontSize: 18),
                   ),
                   const SizedBox(height: 16),
@@ -71,10 +71,10 @@ class SubscriptionWidget extends StatelessWidget {
   // Stat Cards
   Widget _buildStatCardsRow(BuildContext context, SubscriptionController controller, bool isMobile) {
     final cards = [
-      _buildStatCard(context, "Total New Subscriptions", controller.totalNewSubscriptions.value, "3 more subscriber Added"),
-      _buildStatCard(context, "Total Weekly Subscriptions", controller.totalWeeklySubscriptions.value, "3 more subscriber Added"),
-      _buildStatCard(context, "Total Monthly Subscriptions", controller.totalMonthlySubscriptions.value, "3 more subscriber Added"),
-      _buildStatCard(context, "Total Yearly Subscriptions", controller.totalYearlySubscriptions.value, "3 more subscription Added"),
+      _buildStatCard(context,TextString.adminSubscriptionKpiOne , controller.totalNewSubscriptions.value, TextString.adminSubscriptionKpiTwo),
+      _buildStatCard(context,TextString.adminSubscriptionKpiThree , controller.totalWeeklySubscriptions.value,TextString.adminSubscriptionKpiFour),
+      _buildStatCard(context,TextString.adminSubscriptionKpiFive , controller.totalMonthlySubscriptions.value,TextString.adminSubscriptionKpiSix ),
+      _buildStatCard(context,TextString.adminSubscriptionKpiSeven , controller.totalYearlySubscriptions.value,TextString.adminSubscriptionKpiEight),
     ];
 
     if (isMobile) {
@@ -196,7 +196,7 @@ class SubscriptionWidget extends StatelessWidget {
         cursorColor: AppColors.textColor,
         onChanged: (val) => controller.searchQuery.value = val,
         decoration: InputDecoration(
-          hintText: "Search by Company Name",
+          hintText: TextString.adminSubscriptionFieldText,
           hintStyle: TTextTheme.titleSix(context).copyWith(fontSize: 12),
           prefixIcon: const Icon(Icons.search, size: 18, color: AppColors.subtextColor),
           contentPadding: const EdgeInsets.symmetric(vertical: 8),
@@ -248,14 +248,14 @@ class SubscriptionWidget extends StatelessWidget {
                         )),
                       ),
                       const SizedBox(width: 12),
-                      Expanded(flex: 3, child: Text("Company Name", style: _headerTextStyle(context))),
-                      Expanded(flex: 2, child: Text("Plan", style: _headerTextStyle(context))),
-                      Expanded(flex: 2, child: Text("Cycle", style: _headerTextStyle(context))),
-                      Expanded(flex: 2, child: Text("Start Date", style: _headerTextStyle(context))),
-                      Expanded(flex: 2, child: Text("End Date", style: _headerTextStyle(context))),
-                      Expanded(flex: 2, child: Text("Pricing", style: _headerTextStyle(context))),
-                      Expanded(flex: 2, child: Text("Status", style: _headerTextStyle(context))),
-                      Expanded(flex: 2, child: Text("Action", style: _headerTextStyle(context))),
+                      Expanded(flex: 3, child: Text(TextString.adminSubscriptionTableOne, style: _headerTextStyle(context))),
+                      Expanded(flex: 2, child: Text(TextString.adminSubscriptionTableTwo, style: _headerTextStyle(context))),
+                      Expanded(flex: 2, child: Text(TextString.adminSubscriptionTableThree, style: _headerTextStyle(context))),
+                      Expanded(flex: 2, child: Text(TextString.adminSubscriptionTableFour, style: _headerTextStyle(context))),
+                      Expanded(flex: 2, child: Text(TextString.adminSubscriptionTableFive, style: _headerTextStyle(context))),
+                      Expanded(flex: 2, child: Text(TextString.adminSubscriptionTableSix, style: _headerTextStyle(context))),
+                      Expanded(flex: 2, child: Text(TextString.adminSubscriptionTableSeven, style: _headerTextStyle(context))),
+                      Expanded(flex: 2, child: Text(TextString.adminSubscriptionTableEight, style: _headerTextStyle(context))),
                     ],
                   ),
                 ),
@@ -268,7 +268,7 @@ class SubscriptionWidget extends StatelessWidget {
                       padding: const EdgeInsets.all(32),
                       alignment: Alignment.center,
                       child: Text(
-                        "No Subscriptions Found",
+                        TextString.adminSubscriptionErrorText,
                         style: TTextTheme.TextError(context),
                       ),
                     );
