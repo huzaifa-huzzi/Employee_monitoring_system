@@ -3,6 +3,9 @@ import 'package:employee_monitoring_system/Panel/Admin/Companies/Add%20Company/A
 import 'package:employee_monitoring_system/Panel/Admin/Companies/Companies.dart';
 import 'package:employee_monitoring_system/Panel/Admin/Companies/CompaniesController.dart';
 import 'package:employee_monitoring_system/Panel/Admin/Companies/ViewCompany/ViewCompany.dart';
+import 'package:employee_monitoring_system/Panel/Admin/Pricing/CreatePlan/CreatePlan.dart';
+import 'package:employee_monitoring_system/Panel/Admin/Pricing/EditPlan/EditPlan.dart';
+import 'package:employee_monitoring_system/Panel/Admin/Pricing/Pricing.dart';
 import 'package:employee_monitoring_system/Panel/Admin/Report/Report.dart';
 import 'package:employee_monitoring_system/Panel/Admin/Report/ReportDetails/ReportDetails.dart';
 import 'package:employee_monitoring_system/Panel/Admin/SidebarAdmin/SidebarAdmin.dart';
@@ -92,7 +95,17 @@ class AdminRoutes {
       // Pricing Plans
       GoRoute(
         path: '/Admin/pricing-plans',
-        builder: (context, state) => const Center(child: Text("Pricing Plans Screen")),
+        builder: (context, state) => Pricing(),
+      ),
+
+      GoRoute(
+        path: '/Admin/pricing-plans/CreatePlan',
+        builder: (context, state) => CreatePlan(),
+      ),
+
+      GoRoute(
+        path: '/Admin/pricing-plans/EditPlan',
+        builder: (context, state) => EditPlan(),
       ),
 
       // Demo Requests

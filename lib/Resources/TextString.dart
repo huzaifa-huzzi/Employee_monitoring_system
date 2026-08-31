@@ -680,5 +680,39 @@ class TextString{
    static const String  adminSubscriptionTermsOne=  "1. Subscription fees are non-refundable once payment has been successfully verified and the subscription has been activated.";
    static const String  adminSubscriptionTermsTwo=  "2. Customers are responsible for ensuring all billing information and payment references are accurate before submitting a payment.";
 
+    /// Pricing
+   static const String  adminPricingTitle=   "Pricing Plans";
+   static const String  adminPricingSubtitle= "Your pricing plans detail is given below";
+   static const String  adminPricingDialogOne=   "Delete Plan";
+   static const String  adminPricingDialogTwo=   "Are you Sure you want to Delete it";
+   static const String  adminPricingDialogThree=   "Plan Deleted Successfully";
+   static const String  adminPricingDialogFour=   "Congratulations! Your Plan has successfully deleted in the System";
+   static const String  adminPricingCreatePlan=   "Create Plan";
+   static const String  adminPricingPlanSubtitle=  "Set Price Limit trial availability and feature access";
+   static const String  adminPricingPlanDetails=   "Plan Details";
+   static const String  adminPricingPlanDetailsSubtitle=    "Here put the plan details";
+   static const String  adminFieldLAbelOne=   "Plan Name";
+   static const String  adminFieldLAbelOneSubtitle=   "Enter name";
+   static const String  adminFieldLAbelTwo=   "Description";
+   static const String  adminFieldLAbelTwoSubtitle=   "Enter Description";
+   static const String  adminFirldLabelThree=    "Monthly Price";
+   static const String  adminFirldLabelThreeSubtitle=   "Enter Price";
+   static const String  adminFieldLabelFour=   "Yearly Price";
+   static const String  adminFieldLabelFourSubtitle=    "Enter Price";
+   static const String  adminFieldLabelFive=   "Monthly Price";
+   static const String  adminFieldLabelFiveSubtitle=   "Enter Price";
+   static const String  adminFieldLabelSix=   "Yearly Price";
+   static const String  adminFieldLabelSixSubtitle=  "Enter Price";
+   static const String  adminFieldLabelSeven=   "Employee Limit";
+   static const String  adminFieldLabelSevenSubtitle=   "Enter Limit";
+   static const String  adminTrailDuration=   "Trail Duration";
+   static const String  adminTrailDurationSubtitle=   "Enter days";
+   static const String  adminTrailAvailable=   "Trail available";
+   static const String  adminLabelFeature=    "Features ";
+   static const String  adminLabelFeatureSubtitle=  "(One Per Line)";
+   static const String  adminLabelFeatureSubtitleTwo=   "Enter here";
+   static const String  adminPricingEditTitle=    "Edit Plan";
+   static const String  adminPricingEditSubtitle=    "Set Price Limit trial availability and feature access";
+
 
 }
