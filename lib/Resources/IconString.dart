@@ -109,4 +109,12 @@ class IconString{
     /// Subscription
   static const String  subscriptionInvoice = 'assets/icons/SubscriptionInvoice.svg';
   static const String  methodIcon = 'assets/icons/MethodIcon.svg';
+
+    /// Demo Request
+  static const String  demoCalendar = 'assets/icons/DemoCalendar.svg';
+  static const String  demoCompleted = 'assets/icons/DemoCompleted.svg';
+  static const String  message = 'assets/icons/Message.svg';
+  static const String  completedDemo = 'assets/icons/CompletedDemo.svg';
+  static const String  scheduledDemo = 'assets/icons/ScheduledDemo.svg';
+  static const String  demoMail = 'assets/icons/DemoMail.svg';
 }
