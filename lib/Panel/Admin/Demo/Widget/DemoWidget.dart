@@ -548,13 +548,17 @@ class DemoWidget extends StatelessWidget {
                 _buildSvgActionButton(
                   svgPath: IconString.demoCompleted,
                   iconColor: AppColors.approvedColor,
-                  onTap: () {},
+                  onTap: () {
+                    _showCompletedConfirmationDialog(context);
+                  },
                 ),
                 const SizedBox(width: 4),
                 _buildSvgActionButton(
                   svgPath: IconString.deleteIcon,
                   iconColor: AppColors.rejectedColor,
-                  onTap: () {},
+                  onTap: () {
+                    _showDeleteConfirmationDialog(context);
+                  },
                 ),
               ],
             ),
@@ -597,7 +601,7 @@ class DemoWidget extends StatelessWidget {
           status,
           style: TTextTheme.titleSix(context).copyWith(
               fontSize: 12,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w500,
               color: AppColors.whiteColor),
         ),
       ),
@@ -683,6 +687,373 @@ class DemoWidget extends StatelessWidget {
           colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
         ),
       ),
+    );
+  }
+
+  /// Delete Dialogs
+  void _showDeleteConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          backgroundColor: AppColors.whiteColor,
+          child: Container(
+            width: 440,
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: InkWell(
+                    onTap: () => Navigator.of(context).pop(),
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: AppColors.borderColor.withValues(alpha: 0.3),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(Icons.close, size: 16, color: AppColors.tertiaryTextColor),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: AppColors.emojiBackground,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Text("🤨", style: TextStyle(fontSize: 26)),
+                    ),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Delete Request",
+                            style: TTextTheme.h3Style(context).copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.textColor,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            "Are you Sure you want to Delete it",
+                            style: TTextTheme.titleFour(context).copyWith(
+                              color: AppColors.tertiaryTextColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 24),
+                Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        style: OutlinedButton.styleFrom(
+                          side:  BorderSide(color: AppColors.rejectedColor , width: 1),
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child:  Text(
+                            "Cancel",
+                            style: TTextTheme.cancelBtnText(context)
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          _showSuccessDialog(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColors.rejectedColor,
+                          elevation: 0,
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child:  Text(
+                            "Delete",
+                            style: TTextTheme.whiteColorBtn(context)
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+  void _showSuccessDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          backgroundColor: AppColors.whiteColor,
+          child: Container(
+            width: 440,
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: InkWell(
+                    onTap: () => Navigator.of(context).pop(),
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: AppColors.borderColor.withValues(alpha: 0.3),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(Icons.close, size: 16, color: AppColors.tertiaryTextColor),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: AppColors.emojiBackground,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Text("👍", style: TextStyle(fontSize: 26)),
+                    ),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Request Deleted Successfully",
+                            style: TTextTheme.h3Style(context).copyWith(
+                              color: AppColors.textColor,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            "Congratulations! Request has deleted successfully in the System",
+                            style: TTextTheme.titleFour(context).copyWith(
+                              color: AppColors.tertiaryTextColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+   /// Completed Dialog
+  void _showCompletedConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          backgroundColor: AppColors.whiteColor,
+          child: Container(
+            width: 440,
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: InkWell(
+                    onTap: () => Navigator.of(context).pop(),
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: AppColors.borderColor.withValues(alpha: 0.3),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(Icons.close, size: 16, color: AppColors.tertiaryTextColor),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: AppColors.emojiBackground,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Text("🤨", style: TextStyle(fontSize: 26)),
+                    ),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Mark as Complete",
+                            style: TTextTheme.h3Style(context).copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.textColor,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            "Are you Sure you want to mark as complete this",
+                            style: TTextTheme.titleFour(context).copyWith(
+                              color: AppColors.tertiaryTextColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 24),
+                Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton(
+                        onPressed: () {
+                          _showCompletedSuccessDialog(context);
+                        },
+                        style: OutlinedButton.styleFrom(
+                          side:  BorderSide(color: AppColors.primaryColor , width: 1),
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child:  Text(
+                            "Save",
+                            style: TTextTheme.cancelBtnText(context).copyWith(color: AppColors.primaryColor)
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColors.primaryColor,
+                          elevation: 0,
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child:  Text(
+                            "Cancel",
+                            style: TTextTheme.whiteColorBtn(context)
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+  void _showCompletedSuccessDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          backgroundColor: AppColors.whiteColor,
+          child: Container(
+            width: 440,
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: InkWell(
+                    onTap: () => Navigator.of(context).pop(),
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: AppColors.borderColor.withValues(alpha: 0.3),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(Icons.close, size: 16, color: AppColors.tertiaryTextColor),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: AppColors.emojiBackground,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Text("👍", style: TextStyle(fontSize: 26)),
+                    ),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Marked as Completed saved successfully",
+                            style: TTextTheme.h3Style(context).copyWith(
+                              color: AppColors.textColor,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            "Congratulations! Your company Subscription fee has successfully saved in the System",
+                            style: TTextTheme.titleFour(context).copyWith(
+                              color: AppColors.tertiaryTextColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
