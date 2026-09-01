@@ -6,6 +6,7 @@ import 'package:employee_monitoring_system/Resources/TextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class DemoWidget extends StatelessWidget {
   const DemoWidget({super.key});
@@ -18,7 +19,7 @@ class DemoWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Demo Request",
+          TextString.adminDemoTitle,
           style: TTextTheme.titleFive(context).copyWith(
             fontSize: 22,
             fontWeight: FontWeight.bold,
@@ -26,7 +27,7 @@ class DemoWidget extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         Text(
-          "Here is all the demo request",
+          TextString.adminDemoSubtitle,
           style: TTextTheme.titleSix(context).copyWith(fontSize: 13),
         ),
         const SizedBox(height: 24),
@@ -45,9 +46,9 @@ class DemoWidget extends StatelessWidget {
                 _buildStatCard(
                   context,
                   width: cardWidth,
-                  title: "Total Request",
-                  count: "12",
-                  subtitle: "3 more request Added",
+                  title: TextString.adminDemoKpiOne,
+                  count: TextString.adminDemoKpiTwo ,
+                  subtitle:TextString.adminDemoKpiThree ,
                   svgPath: IconString.demoMail,
                   iconBg: AppColors.primaryColor,
                   iconColor: AppColors.primaryColor,
@@ -55,9 +56,9 @@ class DemoWidget extends StatelessWidget {
                 _buildStatCard(
                   context,
                   width: cardWidth,
-                  title: "New Request",
-                  count: "4",
-                  subtitle: "3 more request Added",
+                  title:TextString.adminDemoKpiFour ,
+                  count:TextString.adminDemoKpiFive ,
+                  subtitle:TextString.adminDemoKpiSix ,
                   svgPath: IconString.demoMail,
                   iconBg: AppColors.primaryColor,
                   iconColor: AppColors.primaryColor,
@@ -65,9 +66,9 @@ class DemoWidget extends StatelessWidget {
                 _buildStatCard(
                   context,
                   width: cardWidth,
-                  title: "Scheduled Demos",
-                  count: "8",
-                  subtitle: "3 more demos scheduled",
+                  title:TextString.adminDemoKpiSeven ,
+                  count:TextString.adminDemoKpiEight ,
+                  subtitle:TextString.adminDemoKpiNine ,
                   svgPath: IconString.scheduledDemo,
                   iconBg: AppColors.primaryColor,
                   iconColor: AppColors.primaryColor,
@@ -75,9 +76,9 @@ class DemoWidget extends StatelessWidget {
                 _buildStatCard(
                   context,
                   width: cardWidth,
-                  title: "Completed Demos",
-                  count: "4",
-                  subtitle: "3 more demos completed",
+                  title:TextString.adminDemoKpiTen ,
+                  count:TextString.adminDemoKpiEleven,
+                  subtitle:TextString.adminDemoKpiTwelve ,
                   svgPath: IconString.completedDemo,
                   iconBg: AppColors.primaryColor,
                   iconColor: AppColors.primaryColor,
@@ -99,7 +100,7 @@ class DemoWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "All Requests",
+               TextString.adminDemoRequest,
                 style: TTextTheme.titleFive(context).copyWith(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -218,15 +219,15 @@ class DemoWidget extends StatelessWidget {
                                 side: BorderSide(color: AppColors.borderColor),
                               )),
                             ),
-                            _buildHeaderCell(context, "Request Id", width: 110),
-                            _buildHeaderCell(context, "Company", width: 160),
-                            _buildHeaderCell(context, "Owner Name", width: 140),
-                            _buildHeaderCell(context, "Owner Email", width: 170),
-                            _buildHeaderCell(context, "Phone Number", width: 140),
-                            _buildHeaderCell(context, "No. of employees", width: 120),
-                            _buildHeaderCell(context, "Submission Date", width: 120),
-                            _buildHeaderCell(context, "Status", width: 110),
-                            _buildHeaderCell(context, "Action", width: 140),
+                            _buildHeaderCell(context,TextString.adminDemoTableOne , width: 110),
+                            _buildHeaderCell(context,TextString.adminDemoTableTwo , width: 160),
+                            _buildHeaderCell(context,TextString.adminDemoTableThree , width: 140),
+                            _buildHeaderCell(context,TextString.adminDemoTableFour , width: 170),
+                            _buildHeaderCell(context,TextString.adminDemoTableFive , width: 140),
+                            _buildHeaderCell(context,TextString.adminDemoTableSix , width: 120),
+                            _buildHeaderCell(context,TextString.adminDemoTableSeven , width: 120),
+                            _buildHeaderCell(context,TextString.adminDemoTableEight , width: 110),
+                            _buildHeaderCell(context,TextString.adminDemoTableNine , width: 140),
                           ],
                         ),
                       ),
@@ -237,7 +238,7 @@ class DemoWidget extends StatelessWidget {
                           return Padding(
                             padding: const EdgeInsets.all(32.0),
                             child: Text(
-                              "No requests found",
+                             TextString.adminDemoError,
                               style: TTextTheme.TextError(context),
                             ),
                           );
@@ -536,13 +537,17 @@ class DemoWidget extends StatelessWidget {
                 _buildSvgActionButton(
                   svgPath: IconString.message,
                   iconColor: AppColors.primaryColor,
-                  onTap: () {},
+                  onTap: () {
+                    context.go('/Admin/demo-Email');
+                  },
                 ),
                 const SizedBox(width: 4),
                 _buildSvgActionButton(
                   svgPath: IconString.demoCalendar,
                   iconColor: AppColors.graphColor,
-                  onTap: () {},
+                  onTap: () {
+                    context.go('/Admin/demo-schedule');
+                  },
                 ),
                 const SizedBox(width: 4),
                 _buildSvgActionButton(
@@ -736,7 +741,7 @@ class DemoWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Delete Request",
+                            TextString.adminDemoDialogOne,
                             style: TTextTheme.h3Style(context).copyWith(
                               fontWeight: FontWeight.bold,
                               color: AppColors.textColor,
@@ -744,7 +749,7 @@ class DemoWidget extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            "Are you Sure you want to Delete it",
+                            TextString.adminDemoDialogTwo,
                             style: TTextTheme.titleFour(context).copyWith(
                               color: AppColors.tertiaryTextColor,
                             ),
@@ -848,14 +853,14 @@ class DemoWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Request Deleted Successfully",
+                            TextString.adminDemoDialogThree,
                             style: TTextTheme.h3Style(context).copyWith(
                               color: AppColors.textColor,
                             ),
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            "Congratulations! Request has deleted successfully in the System",
+                            TextString.adminDemoDialogFour,
                             style: TTextTheme.titleFour(context).copyWith(
                               color: AppColors.tertiaryTextColor,
                             ),
@@ -919,7 +924,7 @@ class DemoWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Mark as Complete",
+                           TextString.adminDemoDialogFive,
                             style: TTextTheme.h3Style(context).copyWith(
                               fontWeight: FontWeight.bold,
                               color: AppColors.textColor,
@@ -927,7 +932,7 @@ class DemoWidget extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            "Are you Sure you want to mark as complete this",
+                            TextString.adminDemoDialogSix,
                             style: TTextTheme.titleFour(context).copyWith(
                               color: AppColors.tertiaryTextColor,
                             ),
@@ -1032,14 +1037,14 @@ class DemoWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Marked as Completed saved successfully",
+                            TextString.adminDemoDialogSeven,
                             style: TTextTheme.h3Style(context).copyWith(
                               color: AppColors.textColor,
                             ),
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            "Congratulations! Your company Subscription fee has successfully saved in the System",
+                            TextString.adminDemoDialogEight,
                             style: TTextTheme.titleFour(context).copyWith(
                               color: AppColors.tertiaryTextColor,
                             ),

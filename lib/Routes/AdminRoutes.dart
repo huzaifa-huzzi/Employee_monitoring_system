@@ -4,6 +4,8 @@ import 'package:employee_monitoring_system/Panel/Admin/Companies/Companies.dart'
 import 'package:employee_monitoring_system/Panel/Admin/Companies/CompaniesController.dart';
 import 'package:employee_monitoring_system/Panel/Admin/Companies/ViewCompany/ViewCompany.dart';
 import 'package:employee_monitoring_system/Panel/Admin/Demo/Demo.dart';
+import 'package:employee_monitoring_system/Panel/Admin/Demo/DemoEmail/DemoEmail.dart';
+import 'package:employee_monitoring_system/Panel/Admin/Demo/DemoRequest/DemoRequest.dart';
 import 'package:employee_monitoring_system/Panel/Admin/Pricing/CreatePlan/CreatePlan.dart';
 import 'package:employee_monitoring_system/Panel/Admin/Pricing/EditPlan/EditPlan.dart';
 import 'package:employee_monitoring_system/Panel/Admin/Pricing/Pricing.dart';
@@ -113,6 +115,15 @@ class AdminRoutes {
       GoRoute(
         path: '/Admin/demo-requests',
         builder: (context, state) => Demo(),
+      ),
+      GoRoute(
+        path: '/Admin/demo-Email',
+        builder: (context, state) => DemoEmail(),
+      ),
+
+      GoRoute(
+        path: '/Admin/demo-schedule',
+        builder: (context, state) => DemoRequest(),
       ),
 
       // Payment

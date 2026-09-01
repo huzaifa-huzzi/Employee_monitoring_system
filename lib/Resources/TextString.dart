@@ -714,5 +714,57 @@ class TextString{
    static const String  adminPricingEditTitle=    "Edit Plan";
    static const String  adminPricingEditSubtitle=    "Set Price Limit trial availability and feature access";
 
+    /// Demo
+   static const String  adminDemoTitle=   "Demo Request";
+   static const String  adminDemoSubtitle=  "Here is all the demo request";
+   static const String  adminDemoKpiOne=   "Total Request";
+   static const String  adminDemoKpiTwo=   "12";
+   static const String  adminDemoKpiThree=   "3 more request Added";
+   static const String  adminDemoKpiFour=   "New Request";
+   static const String  adminDemoKpiFive=   "4";
+   static const String  adminDemoKpiSix=   "3 more request Added";
+   static const String  adminDemoKpiSeven=   "Scheduled Demos";
+   static const String  adminDemoKpiEight=   "8";
+   static const String  adminDemoKpiNine=   "3 more demos scheduled";
+   static const String  adminDemoKpiTen=   "Completed Demos";
+   static const String  adminDemoKpiEleven=    "4";
+   static const String  adminDemoKpiTwelve=   "3 more demos completed";
+   static const String  adminDemoRequest=    "All Requests";
+   static const String  adminDemoTableOne=   "Request Id";
+   static const String  adminDemoTableTwo=   "Company";
+   static const String  adminDemoTableThree=   "Owner Name";
+   static const String  adminDemoTableFour=   "Owner Email";
+   static const String  adminDemoTableFive=   "Phone Number";
+   static const String  adminDemoTableSix=   "No. of employees";
+   static const String  adminDemoTableSeven=   "Submission Date";
+   static const String  adminDemoTableEight=   "Status";
+   static const String  adminDemoTableNine=   "Action";
+   static const String  adminDemoError=    "No requests found";
+   static const String  adminDemoDialogOne=   "Delete Request";
+   static const String  adminDemoDialogTwo=    "Are you Sure you want to Delete it";
+   static const String  adminDemoDialogThree=   "Request Deleted Successfully";
+   static const String  adminDemoDialogFour=   "Congratulations! Request has deleted successfully in the System";
+   static const String  adminDemoDialogFive=    "Mark as Complete";
+   static const String  adminDemoDialogSix=   "Are you Sure you want to mark as complete this";
+   static const String  adminDemoDialogSeven=   "Marked as Completed saved successfully";
+   static const String  adminDemoDialogEight=   "Congratulations! Your company Subscription fee has successfully saved in the System";
+   static const String  adminDemoRequestTitle=    "Demo Request";
+   static const String  adminDemoRequestSubtitle=   "Here is all the demo request";
+   static const String  adminDemoSendEmail=   "Send email";
+   static const String  adminDemoSendEmailSubtitle=   "Here you can send email to the user";
+   static const String  adminDemoFieldOne=    "Subject";
+   static const String  adminDemoFieldOneSubtilte=   "Enter Subject";
+   static const String  adminDemoFieldTwo=   "Message";
+   static const String  adminDemoFieldTwoSubtitle=   "Enter message";
+   static const String  adminDemoSchedule=    "Schedule Demo";
+   static const String  adminDemoScheduleSubtitle=   "Here you can schedule the demo";
+   static const String  adminDemoDate=   "Demo Date";
+   static const String  adminDemoDateField=    "DD/MM/YY";
+   static const String  adminDemoTime=   "Demo Time";
+   static const String  adminDemoSelectTime=   "Select time";
+   static const String  adminDemoDuration=   "Duration";
+   static const String  adminDurationField=   "Enter Duration";
+   static const String  adminDemoMeeting=   "Meeting Type";
+
 
 }

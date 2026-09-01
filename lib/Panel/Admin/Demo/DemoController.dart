@@ -1,8 +1,7 @@
+import 'package:employee_monitoring_system/Resources/Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class DemoRequestModel {
   final String requestId;
@@ -134,9 +133,100 @@ class DemoController extends GetxController {
     isAllSelected.value = filteredRequests.every((req) => req.isSelected.value);
   }
 
+  final subjectController = TextEditingController();
+  final messageController = TextEditingController();
+  final RxBool isLoading = false.obs;
+
+  void sendEmail() async {
+    if (subjectController.text.trim().isEmpty || messageController.text.trim().isEmpty) {
+      Get.snackbar("Error", "Please fill all fields",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: AppColors.rejectedColor,
+          colorText: AppColors.whiteColor);
+      return;
+    }
+
+    try {
+      isLoading.value = true;
+      // TODO: Add your API service call here
+      await Future.delayed(const Duration(seconds: 2));
+
+      Get.snackbar("Success", "Email sent successfully",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: AppColors.approvedColor,
+          colorText: AppColors.whiteColor);
+
+      subjectController.clear();
+      messageController.clear();
+    } catch (e) {
+      Get.snackbar("Error", "Failed to send email: $e",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: AppColors.rejectedColor,
+          colorText: AppColors.whiteColor);
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+
+  final demoDateController = TextEditingController();
+  final demoTimeController = TextEditingController();
+  final durationController = TextEditingController();
+
+  final RxString selectedMeetingType = 'Enter Type'.obs;
+  final RxBool isMeetingTypeDropdownOpen = false.obs;
+
+  void scheduleDemo() async {
+    if (demoDateController.text.isEmpty ||
+        demoTimeController.text.isEmpty ||
+        durationController.text.isEmpty ||
+        selectedMeetingType.value == 'Enter Type') {
+      Get.snackbar(
+        "Error",
+        "Please fill all fields",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: AppColors.rejectedColor,
+        colorText: AppColors.whiteColor,
+      );
+      return;
+    }
+
+    try {
+      isLoading.value = true;
+      // TODO: Call your Schedule Demo API endpoint here
+      await Future.delayed(const Duration(seconds: 2));
+
+      Get.snackbar(
+        "Success",
+        "Demo scheduled successfully",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: AppColors.approvedColor,
+        colorText: AppColors.whiteColor,
+      );
+
+      demoDateController.clear();
+      demoTimeController.clear();
+      durationController.clear();
+      selectedMeetingType.value = 'Enter Type';
+    } catch (e) {
+      Get.snackbar(
+        "Error",
+        "Failed to schedule demo: $e",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: AppColors.rejectedColor,
+        colorText: AppColors.whiteColor,
+      );
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
   @override
   void onClose() {
     searchController.dispose();
+    searchController.dispose();
+    subjectController.dispose();
+    messageController.dispose();
     super.onClose();
   }
 }
